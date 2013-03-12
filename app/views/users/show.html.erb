@@ -1,0 +1,5 @@
+<%= form_for @current_user do |f|%>
+  <%= f.label :language %>
+  <%= f.select(:lang, options_for_select([['English', 'en'], ['Spanish', 'es']])) %>
+  <%= f.submit 'Send' %>
+<% end%>

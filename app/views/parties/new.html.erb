@@ -1,0 +1,42 @@
+<% content_for :head do%>
+
+
+    <%= stylesheet_link_tag  "parties", "style" , "home", "menu"%>
+    <%= javascript_include_tag "parties" %>
+
+<% end %>
+
+
+<script type = "text/javascript">
+    $(document).ready(function(){
+        $("#party_numplayer").change(function(elem){
+            if (!$("select option")[0].selected) {
+            $("select").css('color', '#fff');
+            } else {
+
+                $("select").removeAttr("style");
+                    }
+        });
+    })
+</script>
+
+<%= form_for @party, :html =>{:class=> 'form-4'} do |f| %>
+
+
+    <h1>Crear Partida</h1>
+    <p>
+      <%=  f.label 'name' %>
+      <%=  f.text_field 'name', {:placeholder =>'Nombre'} %>
+    </p>
+    <p>
+      <%=  f.label 'numplayer' %>
+      <%=  f.select 'numplayer', Party::PLAYERS_ENABLE,{:prompt =>"Numero jugadores"}%>
+    </p>
+
+    <p>
+      <%= f.submit "Crear"%>
+    </p>
+
+    <%= link_to "Atrás", root_path %>
+
+<% end%>

@@ -1,0 +1,49 @@
+<h3>Oponentes</h3>
+<table border="1">
+
+<% oppenents =    current_user.player.opponents
+   oppenents.each do |opponent|  %>
+
+      <tr>
+        <td rowspan="4">
+
+          <% character_card = opponent.player_character
+             if   ['ACTION', 'TURN', 'WAITINGENDROUND'].include?(opponent.state) %>
+              <%= render :partial => 'character_card', :object => character_card %>
+              <% else %>
+
+           <%= image_tag 'cards/cardback.jpg' %>
+          <%end%>
+
+        </td>
+
+        <td><%= opponent.name %></td>
+
+
+
+
+       <% cards = opponent.districts_on_game
+          cards.each do |district_card|%>
+
+
+
+            <td rowspan="4"><%= render :partial => 'district_card', :object => district_card %></td>
+
+
+
+       <% end%>
+
+      </tr>
+      <tr><td>Oro: <%= opponent.coins %></td></tr>
+      <tr><td>Puntos: <%= opponent.recount() %></td></tr>
+      <tr><td> Cartas: <%= opponent.districts_on_hand.count %></td></tr>
+
+
+
+
+
+<%end%>
+
+
+</table>
+

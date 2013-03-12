@@ -1,0 +1,17 @@
+<% characters = Card.characters.where("name <> 'assasin' AND name <> 'thief' AND murdered <> 'TRUE' and party_id = ? AND state <> 'BACKS'", @game.id)%>
+
+<table border="1">
+
+  <th colspan="<%= characters.size %>"> Robar</th>
+  <tr>
+    <%characters.each do |character_card|%>
+        <td>
+          <%#= link_to (render :partial => 'character_card', :object => character),
+                      { :controller => :parties, :action => :steal,:party_id => character.party_id, :card_id => character.id}%>
+          <%= link_to (render :partial => 'character_card', :object => character_card),
+                      party_action_path(@game.id, [action.id,character_card.id])%>
+
+        </td>
+    <% end %>
+  </tr>
+</table>

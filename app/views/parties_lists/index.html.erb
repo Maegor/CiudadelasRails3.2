@@ -1,0 +1,33 @@
+<p>Partidas disponibles</p>
+
+<% party_list = Party.all %>
+
+
+
+<table border="1">
+
+
+  <tr>
+    <th>Nombre</th>
+    <th>Numero de jugadores</th>
+    <th>jugadores máximo</th>
+  </tr>
+
+  <% party_list.each do |party| %>
+      <tr>
+        <td> <%=  party.name %> </td>
+        <td> <%= party.current_player  %></td>
+        <td> <%= party.numplayer  %></td>
+        <td>  <%= link_to "Unirse", {:action => join, :id => party.id }%> </td>
+
+      </tr>
+  <% end %>
+
+
+
+
+
+
+</table>
+
+

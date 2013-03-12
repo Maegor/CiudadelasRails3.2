@@ -1,0 +1,10 @@
+
+<h3>Descartes</h3>
+<table>
+  <% backscards = @game.cards.characters.where("state = 'BACKS'")
+     backscards.each do |character_card|%>
+
+      <td><%= render :partial =>  'parties/character_card', :object => character_card %></td>
+
+    <% end %>
+</table>

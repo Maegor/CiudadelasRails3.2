@@ -1,0 +1,53 @@
+
+<h3>Acciones</h3>
+<% if current_user.player.state == 'SELECTION_TURN'  %>
+
+
+    <table>
+      <% ongamecards = @game.cards.characters.where("state = 'ONGAME'")
+         ongamecards.each do |character_card|
+
+          if character_card.player_id.nil?  %>
+          <td><%= link_to (render :partial =>  'character_card', :object => character_card),
+                          { :controller => :parties, :action => :select_card,:party_id => character_card.party_id, :card_id => character_card.id}%> </td>
+
+      <% end
+         end %>
+    </table>
+
+<% elsif current_user.player.state == 'TURN'
+  #== "ACTION"
+
+
+action_list = current_user.player.actions
+
+    action_list.each do |action|%>
+
+        <%= render :partial => action.base_action.partialname, :locals => {:action => action}%>
+
+
+     <% end %>
+
+
+
+<% elsif current_user.player.state == 'ACTION'
+
+     action_list = current_user.player.actions%>
+
+
+
+      <%action_list.each do |action|%>
+            <div class="actiondiv">
+            <%= render :partial => action.base_action.partialname, :locals => {:action => action} %>
+        </div>
+
+      <%end%>
+
+
+ <div id="finturno">
+<h2><%= link_to 'finalizar turno', end_turn_path([1,2]) %></h2>
+ </div>
+<% end %>
+
+
+

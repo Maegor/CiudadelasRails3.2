@@ -1,0 +1,52 @@
+<div  id="ficha_jugador" class="player_lane">
+<table >
+<tr>
+
+  <% if (personaje = current_user.player.player_character) %>
+      <td rowspan="3"><%=  image_tag 'cards/' + personaje.base_card.name.downcase + '.jpg', :title => personaje.base_card.name %> </td>
+  <% else%>
+      <td rowspan="3"><%=  image_tag 'cards/cardback.jpg' %> </td>
+  <%end%>
+
+    <td><%= (t :coins) %></td>
+    <td><%= current_user.player.coins %></td>
+  </tr>
+  <tr>
+    <td><%= t :points %></td>
+    <td><%= current_user.player.recount %></td>
+  </tr>
+
+  <tr>
+    <td><% if current_user.player.crown == 'TRUE' %>
+             <%= image_tag 'crown.jpg'  %>
+           <% end %>
+    </td>
+  </tr>
+
+</table>
+
+</div>
+
+<div id="cartas_mano" class="player_lane">
+
+<table >
+  <tr>
+    <% current_user.player.districts_on_hand.each do |district_card|%>
+
+        <td><%= render :partial => 'district_card', :object => district_card %></td>
+    <% end %>
+  </tr>
+</table>
+</div>
+<div id="distritos_construidos" class="player_lane">
+<table >
+  <tr>
+    <% current_user.player.districts_on_game.each do |district_card|%>
+
+        <td><%= render :partial => 'district_card', :object => district_card %></td>
+
+    <% end %>
+  </tr>
+</table>
+    </div>
+

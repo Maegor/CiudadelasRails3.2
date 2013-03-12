@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: ciudadelas_development
+  pool: 5
+  username: postgres
+  password: 40141985
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: ciudadelas_test
+  pool: 5
+  username: postgres
+  password: 40141985

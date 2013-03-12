@@ -1,0 +1,25 @@
+<div id="changes">
+<table>
+
+  <tr>
+    <td>
+      Cambiar con jugador
+      <%= link_to 'Cambiar', party_action_path(@game.id, [action.id,'change_with_player']) %>
+
+    </td>
+
+    <td>
+     Cambiar con mazo
+    <%= link_to 'Cambiar', party_action_path(@game.id, [action.id,'change_with_maze']) %>
+
+
+    </td>
+
+
+
+  </tr>
+
+
+
+</table>
+</div>

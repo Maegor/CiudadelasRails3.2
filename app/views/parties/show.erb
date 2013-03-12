@@ -1,0 +1,46 @@
+<% content_for :head do%>
+
+
+    <%= stylesheet_link_tag  "parties" %>
+    <%= javascript_include_tag "parties" %>
+
+<% end %>
+
+
+<div id="tablero">
+
+<h1 id="nombre_partida"> <%= @game.name %></h1>
+
+
+<div id="top_tablero">
+<div id="jugador" class="hueco_tablero" >
+
+<%= render :partial => "mano" %>
+
+</div>
+
+
+<div id="descartes" class="hueco_tablero" >
+
+<%= render :partial => "descartes" %>
+
+</div>
+
+</div>
+
+  <div id="seleccion_personaje" class="hueco_tablero">
+
+<%= render :partial => 'seleccion' %>
+
+
+</div>
+
+
+
+<div id="lista_jugadores" class="hueco_tablero">
+
+ <%= render :partial => 'oponentes' %>
+
+
+</div>
+</div>

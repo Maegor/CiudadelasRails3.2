@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PFC</title>
+
+  <%= stylesheet_link_tag    "application" %>
+
+  <%= javascript_include_tag "application" %>
+  <%= yield :head %>
+  <%= csrf_meta_tags %>
+
+
+</head>
+<body id="bo">
+
+<div id="header">
+
+ </div>
+
+ <%= yield %>
+
+</body>
+</html>

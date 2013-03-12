@@ -1,0 +1,9 @@
+<%displayed_cards = @game.card_to_select()
+
+displayed_cards.each do |districit_card| %>
+<%= link_to (render :partial => 'parties/district_card', :object => districit_card),
+            party_action_path(@game.id, [action.id,districit_card.id]) %>
+
+
+
+<% end%>

@@ -1,0 +1,200 @@
+// Place all the styles related to the parties controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*FORM*/
+#parties_content{
+
+  font-family: 'Raleway', 'Lato', Arial, sans-serif;
+  color: white;
+  text-shadow: 0 2px 1px rgba(0,0,0,0.3);
+  width: 40%;
+  margin-left: 29%;
+}
+#parties_content tbody{
+
+
+  overflow: auto;
+
+}
+#parties_content tbody,thead{
+
+   display: compact;
+}
+#parties_content tbody td{
+  width: 175px;
+
+}
+
+#parties_content thead th{
+
+  width: 175px;
+  background: #e1c192;
+}
+
+#parties_content thead th {
+
+
+  background: #e69835;
+}
+
+#parties_content .right_side {
+
+  text-align: center;
+}
+
+#scroll-pane,.scroll-pane{position:relative}
+.scroll-content {position:absolute;top:0;left:0}
+.slider-wrap{position:absolute;right:0;top:0;background-color:lightgrey;width:20px;border-left:1px solid gray;}
+.slider-vertical{position:relative;height:100%}
+.ui-slider-handle{width:20px;height:10px;margin:0 auto;background-color:darkgray;display:block;position:absolute}
+.ui-slider-handle img{border:none}
+.scrollbar-top{position:absolute;top:0;}
+.scrollbar-bottom{position:absolute;bottom:0;}
+.scrollbar-grip{position:absolute;top:50%;margin-top:-6px;}
+.ui-slider-range{position:absolute;width:100%;background-color:lightgrey}
+
+
+#nombre_partida{
+
+  text-align: center;
+
+}
+
+.form-4 select
+  {
+  /* Size and position */
+  width: 100%;
+  padding: 8px 4px 8px 10px;
+  margin-bottom: 15px;
+
+  /* Styles */
+  border: 1px solid #4e3043; /* Fallback */
+  border: 1px solid rgba(78,48,67, 0.8);
+  background: #f6d6a5;
+
+
+  //border-radius: 2px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.2),
+    inset 0 1px 1px rgba(0,0,0,0.1);
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+
+  /* Font styles */
+;
+
+}
+
+.form-4 select:hover
+  {
+  border-color: #333;
+}
+
+.form-4 select {
+
+  color: rgba(37,21,26,0.5);
+  text-shadow: 0 1px 0 rgba(255,255,255,0.15);
+
+}
+
+.form-4 select option:nth-child(n+2) {
+
+  color: #fff;
+
+}
+
+.form-4 select:focus
+  {
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.2),
+    inset 0 1px 1px rgba(0,0,0,0.1),
+    0 0 0 3px rgba(255,255,255,0.15);
+  outline: none;
+}
+
+.no-boxshadow .form-4 select:focus
+  {
+  outline: 1px solid white;
+}
+
+/*TABLERO*/
+
+
+#tablero{
+
+
+
+}
+
+#tablero div{
+
+
+  border: solid 1px;
+  background: #f6d6a5;
+}
+
+#top_tablero{
+
+
+  margin: 1px;
+  height: 250px;
+
+}
+#jugador{
+   float: left;
+   width: 70%;
+  height: 250px;
+
+}
+.player_lane{
+
+  height: 125px;
+
+}
+
+#ficha_jugador {
+     float: left;
+
+}
+
+
+#descartes{
+
+     height: 250px;
+
+}
+
+
+ #seleccion_personaje{
+
+    position: relative;
+
+ }
+
+ .image-radio-container{
+
+   display: inline-block;
+
+ }
+.image-radio-container input[type="radio"]{
+  display: none;
+}
+
+.image-radio-container img{
+
+  margin: 4px;
+}
+.image-checkbox-container input[type="checkbox"]{
+  display: none;
+}
+
+.image-checkbox-container img{
+  border: 0;
+  margin: 4px;
+}
+
+

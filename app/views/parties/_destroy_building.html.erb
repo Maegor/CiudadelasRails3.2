@@ -1,0 +1,64 @@
+
+
+<table border="1">
+  <tr><th>Destruir</th></tr>
+<% @game.players.each do |player|
+
+ player_cards = player.cards.districts.where( "state = 'ONGAME'")
+
+ if player_cards.size.between?(1,7)
+
+    character_list = player.cards.characters.where("name = 'bishop' AND murdered = 'FALSE'")
+
+  if character_list.size == 0 %>
+
+              <tr>
+
+                <td rowspan="3">
+
+                  <% character = player.player_character
+                     if character != nil  && player.state != "WAITING_TURN"%>
+                      <%=  image_tag "cards/" + character.base_card.name.to_s + ".jpg" %>
+                  <% else %>
+
+                      <%= image_tag "cards/cardback.jpg" %>
+                  <%end%>
+
+                </td>
+
+                <td><%= player.name %></td>
+
+                <% cards = current_user.player.get_destrutible_building(player)
+                   cards.each do |district_card|
+
+                     if district_card.state == 'ONGAME' %>
+
+                        <td rowspan="3">
+
+     <%= link_to (render :partial => 'district_card', :object => district_card),
+                 party_action_path(@game.id, [action.id, district_card.id]) %>
+                         </td>
+
+                    <% end%>
+
+                <% end%>
+
+              </tr>
+              <tr><td>Oro: <%= player.coins %></td></tr>
+              <tr><td>Puntos: <%#= player.points_recount() %></td></tr>
+
+
+              <tr>
+               <td></td>
+                <td>Coste</td>
+              <% cards.each do |card| %>
+                 <td ><%= card.base_card.cost %></td>
+                <%end%>
+                </tr>
+
+          <%end%>
+  <%end
+ end%>
+
+
+</table>

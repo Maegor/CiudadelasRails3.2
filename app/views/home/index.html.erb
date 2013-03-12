@@ -1,0 +1,108 @@
+<% content_for :head do%>
+
+
+    <%= stylesheet_link_tag  "style" , "home", "menu"%>
+    <%= javascript_include_tag "menu" %>
+
+<% end %>
+
+
+<%= link_to 'Test', 'home/get_menu', :remote => 'true' %>
+<% if session[:user_id].nil? %>
+<%= form_tag 'login', :class => 'form-4' do %>
+
+      <%= t :hello %>
+      <h1>Login or Register</h1>
+      <p>
+    <%=  label_tag 'email', "Correo" %>
+    <%=  text_field_tag 'email',nil, {:placeholder =>'Email'} %>
+      </p>
+      <p>
+    <%=  label_tag 'password', "Contraseña" %>
+    <%=  password_field_tag 'password',nil, {:placeholder =>'Password'} %>
+      </p>
+      <p>
+    <%= submit_tag "Login"%>
+      </p>
+
+    <%= link_to "Crear cuenta" , new_user_path%>
+
+<% end
+
+
+
+
+   else%>
+ <div id="menucontent">
+     <ul id="menu">
+
+       <% if User.find(session[:user_id]).player.nil? %>
+
+      <li>
+        <a href="#">Jugar</a>
+        <ul>
+          <li><%= link_to "Buscar", parties_path  %></li>
+          <li><%= link_to "Crear", new_party_path  %></li>
+        </ul>
+      </li>
+
+       <% else %>
+
+           <li><%= link_to "Jugar", party_path(User.find(session[:user_id]).player.party.id) %></li>
+
+
+      <% end %>
+
+
+
+      <li><%= link_to "Perfil", user_path(current_user) %></li>
+      <li> <%= link_to "Cerrar sesion", logout_path, :method => :delete %>    </li>
+
+    </ul>
+
+
+
+
+<% end %>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<h1 >Bienvenido a Ciudadelas</h1>
+<p>Ciudadelas es un juego de cartas para 2-7 jugadores. Diseñado por Bruno Faidutti
+  el año 2000, publicado orginalmente en alemán como Ohne Furcht und Adel, cuya traducción es
+  "Sin Miedo ni Nobleza". El juego fue finalista del premio Spiel des Jahres (Juego del año) del
+  mismo año que vio la luz.  En españa este juego ha sido publicado por la editorial
+  <a href="http://www.edgeent.com">www.edgeent.com</a>
+
+</p>-->
+
+
+<%= #link_to "test", '/parties/test',:update => 'left_bar',:position => :bottom, :remote => true
+%>
+
+<!--
+<script>
+    $.getJSON('/parties/test', function(data) {
+        var output="<ul>";
+        for (var i in data) {
+            output+="<li>" + data[i]+"</li>";
+        }
+
+        output+="</ul>";
+        document.getElementById("left_bar").innerHTML=output;
+    });
+</script>-->

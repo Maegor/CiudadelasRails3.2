@@ -1,0 +1,17 @@
+<%districts = current_user.player.district_to_construct
+
+
+if districts.size != 0
+%>
+
+<table border="1">
+  <th colspan="<%= districts.size %>"> Construir</th>
+   <tr>
+  <%districts.each do |districit_card|%>
+ <td>
+        <%= link_to (render :partial => 'district_card', :object => districit_card), party_action_path(@game.id, [action.id,districit_card.id]) %>
+ </td>
+<%end%>
+   </tr>
+</table>
+<% end %>

@@ -1,0 +1,16 @@
+<%= form_tag 'create_party' do %>
+
+
+<%= label_tag 'name' ,'Name'  %> :
+<%= text_field_tag 'name', nil, {:placeholder =>'Name of party'} %>
+
+<%= label_tag 'numplayer' ,'Number of players'  %> :
+<%= number_field_tag 'numplayer',2, :in=> 2..9 %>
+
+<%= submit_tag 'Create' %>
+
+<% end %>
+
+<%= link_to 'logout', logout_path, :method => :delete %>
+
+
