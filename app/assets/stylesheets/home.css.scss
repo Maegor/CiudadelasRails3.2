@@ -21,8 +21,9 @@
   padding-bottom: 20px;
 }
 
-.form-4 input[type=text],
-.form-4 input[type=password]
+.form-4 input[type=text]:not(.placeholder),
+.form-4 input[type=password]:not(.placeholder)
+
   {
   /* Size and position */
   width: 95%;
@@ -46,17 +47,15 @@
 
   /* Font styles */
   font-family: 'Raleway', 'Lato', Arial, sans-serif;
-  color: #fff;
   font-size: 13px;
 }
 
 /* Placeholder style (from http://stackoverflow.com/questions/2610497/change-an-inputs-html5-placeholder-color-with-css) */
 
-.form-4 input::-webkit-input-placeholder {
+.form-4 input::-webkit-input-placeholder{
   color: rgba(37,21,26,0.5);
   text-shadow: 0 1px 0 rgba(255,255,255,0.15);
 }
-
 
 .form-4 input:-moz-placeholder {
   color: rgba(37,21,26,0.5);
@@ -67,6 +66,37 @@
   color: rgba(37,21,26,0.5);
   text-shadow: 0 1px 0 rgba(255,255,255,0.15);
 }
+
+.placeholder {
+
+  color: rgba(37,21,26,0.5);
+  text-shadow: 0 1px 0 rgba(255,255,255,0.15);
+  /* Size and position */
+  width: 95%;
+  padding: 8px 4px 8px 10px;
+  margin-bottom: 15px;
+
+  /* Styles */
+  border: 1px solid #4e3043; /* Fallback */
+  border: 1px solid rgba(78,48,67, 0.8);
+  //background: rgba(0,0,0,0.15);
+  background: #f6d6a5;
+  border-radius: 2px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.2),
+    inset 0 1px 1px rgba(0,0,0,0.1);
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  /* Font styles */
+  font-family: 'Raleway', 'Lato', Arial, sans-serif;
+  //color: #ff0;
+  font-size: 13px;
+
+}
+
 
 .form-4 input[type=text]:hover,
 .form-4 input[type=password]:hover,
@@ -149,3 +179,4 @@
 .no-placeholder .form-4 label {
   display: block;
 }
+
