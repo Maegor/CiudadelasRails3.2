@@ -1,0 +1,27 @@
+<table class="bordered">
+  <thead>
+
+  <tr>
+    <th><%= t 'show.users' %></th>
+  </tr>
+
+  </thead>
+
+
+  <% for i in 0..(@room.user - 1) %>
+      <tr>
+        <td>
+          <%if (user = @room.users[i])%>
+              <%= user.name %>
+              <%if user.id == @room.owner_id%>
+                  <%=  image_tag 'cards/crown.jpg' %>
+              <%end%>
+          <%else%>
+              <%= t 'show.waiting' %>
+          <% end %>
+        </td>
+      </tr>
+
+  <% end %>
+
+</table>

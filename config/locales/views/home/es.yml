@@ -1,0 +1,7 @@
+es:
+ login_menu:
+  login: "Identificarse"
+  email: "Correo"
+  password: "Contraseña"
+  login_button: "Entrar"
+  signup: "Crear cuenta"

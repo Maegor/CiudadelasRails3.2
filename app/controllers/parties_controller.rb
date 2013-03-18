@@ -33,24 +33,7 @@ class PartiesController < ApplicationController
 
 
   def index
-=begin
-   user = session[:user_id]
 
-    if user == nil
-      redirect_to '/sessions'
-    else
-
-      player = Player.find_by_user_id(user)
-
-      if player != nil &&player.party_id != nil
-        redirect_to party_path(player.party_id)
-      else
-
-        @party_list = Party.all
-        render "index"
-    end
-    end
-=end
     @party_list = Party.all
 
    end
@@ -60,9 +43,6 @@ class PartiesController < ApplicationController
    @game = Party.find(params[:party_id])
 
  end
-
-
-
 
   def create
     
@@ -215,21 +195,6 @@ class PartiesController < ApplicationController
 
 
 
-
-
-=begin
-    if player_actions.count == 0
-
-      player.change_status("WAITINGENDROUND")
-      player.save
-      turn = player.turn
-
-      if turn < (party.numplayer - 1)
-        party.select_next_player(player,"TURN")
-      end
-
-    end
-=end
 
     redirect_to party_path(card.party_id)
 

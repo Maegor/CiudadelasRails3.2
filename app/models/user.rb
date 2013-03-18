@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
 has_many :players
 has_many :parties, :through => :players
+belongs_to :waiting_room
 
 
 

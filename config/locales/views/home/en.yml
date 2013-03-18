@@ -1,2 +1,7 @@
 en:
-  hello: "ola k ase"
+ login_menu:
+  login: "Login"
+  email: "Email"
+  password: "Password"
+  login_button: "Log In"
+  signup: "Sign up"

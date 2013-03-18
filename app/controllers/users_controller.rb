@@ -5,6 +5,14 @@ class UsersController < ApplicationController
   def index
   end
 
+  def testt
+
+    @user = User.all
+
+  end
+
+
+
   def show
     current_user
   end

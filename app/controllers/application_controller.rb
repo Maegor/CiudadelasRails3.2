@@ -5,9 +5,9 @@ before_filter :set_locale
 
  private
  def set_locale
-   if session[:user_id]
-    I18n.locale = current_user.lang
-   end
+   #if session[:user_id]
+    I18n.locale = 'en'
+  # end
   end
 
   helper_method :current_user

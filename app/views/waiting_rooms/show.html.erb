@@ -1,0 +1,34 @@
+<% content_for :head do %>
+
+  <%= stylesheet_link_tag 'waiting_rooms' %>
+
+
+<%end%>
+           ddd
+ <%= link_to 'test' , waiting_room_path(@room.id), :remote => true %>
+<div id='room_container'>
+<h1><%= @room.name %></h1>
+<div id="table_container">
+<%= render :partial => 'users_table' %>
+</div>
+<%= link_to (t 'show.leave'), leave_waiting_room_path(@room.id) %>
+
+
+</div>
+
+<script type="text/javascript">
+
+   $(document).ready(
+           function(){
+               setInterval(function(){
+                   $.ajax({
+                       url: "<%= waiting_room_path(@room.id) %>",
+                       type: "GET",
+                       dataType: "script"
+                   });
+               }, 5000 );
+           });
+
+
+
+</script>

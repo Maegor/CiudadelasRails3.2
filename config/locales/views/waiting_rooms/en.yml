@@ -1,0 +1,19 @@
+en:
+ index:
+  available_games: 'Games'
+  game_name: 'Name'
+  num_players: 'Players(Max.)'
+  join: 'Join'
+  full_room: 'Full'
+  back: 'Back'
+  error_join: 'The room is completed'
+
+ new:
+  error: 'The game has not been created'
+
+ show:
+  users: 'Users'
+  waiting: 'Waiting player'
+  leave: 'Leave'
+  leave_game_ok: "You've left the game"
+  leave_game_error: 'Accion denied'

@@ -2,6 +2,8 @@ CiudadelsRails32::Application.routes.draw do
 
 
 
+  get "waiting_rooms/leave"
+
   match 'home/get_menu' => 'home#get_menu'
 
    match '/parties/join/:id' => 'parties#join'
@@ -20,8 +22,24 @@ CiudadelsRails32::Application.routes.draw do
    match '/parties/:party_id/destroy_building/:card_id' => 'parties#destroy_building'
    #match '/parties/:party_id/resumen' => 'parties#resumen'
 
-  resources :users
+  resources :users  do
+    collection do
+      get 'testt'
+    end
+
+  end
   resources :sessions
+
+
+  resources :waiting_rooms do
+
+    member do
+     get 'join'
+     get 'leave'
+    end
+
+
+  end
 
    resources :parties do
      get 'leave_game'

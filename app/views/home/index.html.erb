@@ -7,48 +7,51 @@
 <% end %>
 
 
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+<% end %>
+
 <%= link_to 'Test', 'home/get_menu', :remote => 'true' %>
 <% if session[:user_id].nil? %>
-<%= form_tag 'login', :class => 'form-4' do %>
+    <%= form_tag 'login', :class => 'form-4' do %>
 
-      <%= t :hello %>
-      <h1>Login or Register</h1>
+      <h1><%= t 'login_menu.login' %></h1>
       <p>
-    <%=  label_tag 'email', "Correo" %>
-    <%=  text_field_tag 'email',nil, {:placeholder =>'Email'} %>
+    <%=  label_tag 'email', (t 'login_menu.email') %>
+    <%=  text_field_tag 'email',nil, {:placeholder => (t 'login_menu.email')} %>
       </p>
       <p>
-    <%=  label_tag 'password', "Contraseña" %>
-    <%=  password_field_tag 'password',nil, {:placeholder =>'Password'} %>
+    <%=  label_tag 'password', (t 'login_menu.password') %>
+    <%=  password_field_tag 'password',nil, {:placeholder => (t 'login_menu.password')} %>
       </p>
       <p>
-    <%= submit_tag "Login"%>
+    <%= submit_tag (t 'login_menu.login_button')%>
       </p>
 
-    <%= link_to "Crear cuenta" , new_user_path%>
+    <%= link_to (t 'login_menu.signup') , new_user_path%>
 
-<% end
-
-
-
+    <% end
 
    else%>
  <div id="menucontent">
      <ul id="menu">
+       <%if current_user.waiting_room %>
 
-       <% if User.find(session[:user_id]).player.nil? %>
+           <li><%= link_to "Jugar", waiting_room_path(current_user.waiting_room_id) %></li>
+
+       <% elsif current_user.player.nil? %>
 
       <li>
         <a href="#">Jugar</a>
         <ul>
-          <li><%= link_to "Buscar", parties_path  %></li>
-          <li><%= link_to "Crear", new_party_path  %></li>
+          <li><%= link_to "Buscar", waiting_rooms_path  %></li>
+          <li><%= link_to "Crear", new_waiting_room_path  %></li>
         </ul>
       </li>
 
-       <% else %>
+       <% elsif  current_user.player %>
 
-           <li><%= link_to "Jugar", party_path(User.find(session[:user_id]).player.party.id) %></li>
+           <li><%= link_to "Jugar", party_path(current_user.player.party.id) %></li>
 
 
       <% end %>
@@ -68,6 +71,6 @@
 
     </div>
 <script type="text/javascript">
-    $('input, textarea').placeholder();
+$('input, textarea').placeholder();
 
 </script>

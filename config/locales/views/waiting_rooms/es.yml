@@ -1,0 +1,5 @@
+es:
+ index:
+  users: 'Nombre de los jugadores'
+ new:
+  error: 'No se ha podido crear la partida'
