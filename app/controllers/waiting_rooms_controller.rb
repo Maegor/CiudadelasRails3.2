@@ -1,13 +1,14 @@
 class WaitingRoomsController < ApplicationController
 
   def show
-    @room = WaitingRoom.find(params[:id])
 
+   @room = WaitingRoom.find(params[:id])
     respond_to do |format|
-
       format.html
       format.js
     end
+
+
 
   end
 
@@ -78,5 +79,18 @@ class WaitingRoomsController < ApplicationController
 
     end
 
+  end
+
+  def start
+    room = WaitingRoom.find(params[:id])
+    if room.user == room.users.count && room.owner_id == current_user.id
+      game = Party.new(:numplayer => room.user, :name => room.name, :current_round => 0 )
+      if game.save
+        game.initialize_party(room.users)
+      end
+       redirect_to party_path(game.id)
+    else
+       redirect_to root_path
+    end
   end
 end

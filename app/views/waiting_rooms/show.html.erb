@@ -11,7 +11,7 @@
 <div id="table_container">
 <%= render :partial => 'users_table' %>
 </div>
-<%= link_to (t 'show.leave'), leave_waiting_room_path(@room.id) %>
+<%= link_to (t 'show.leave'), leave_waiting_room_path(@room.id), :class => 'button_room' %>
 
 
 </div>
@@ -22,7 +22,7 @@
            function(){
                setInterval(function(){
                    $.ajax({
-                       url: "<%= waiting_room_path(@room.id) %>",
+                       url: "<%= waiting_room_path(@room.id)%>",
                        type: "GET",
                        dataType: "script"
                    });

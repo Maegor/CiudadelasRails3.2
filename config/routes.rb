@@ -34,6 +34,7 @@ CiudadelsRails32::Application.routes.draw do
   resources :waiting_rooms do
 
     member do
+     get 'start'
      get 'join'
      get 'leave'
     end

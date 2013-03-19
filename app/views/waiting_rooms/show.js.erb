@@ -1,1 +1,17 @@
-$('#table_container').html("dddd<%=escape_javascript (render :partial => 'users_table') %>");
+
+<%if current_user.player.nil?%>
+    $('#table_container').html("<%=escape_javascript (render :partial => 'users_table') %>")
+    <% if @room.users.count == @room.user  && current_user.id == @room.owner_id%>
+      .append("<%=escape_javascript(link_to 'Start', start_waiting_room_path, :class => 'button_room')%>");
+    <%end%>
+
+<%else%>
+
+
+function enter_game(){
+ window.location.replace("<%= party_path(current_user.player.party.id) %>")
+ window.location = "<%=party_path(current_user.player.party.id) %>"
+ }
+ enter_game();
+
+<%end%>

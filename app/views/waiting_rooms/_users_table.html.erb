@@ -13,9 +13,6 @@
         <td>
           <%if (user = @room.users[i])%>
               <%= user.name %>
-              <%if user.id == @room.owner_id%>
-                  <%=  image_tag 'cards/crown.jpg' %>
-              <%end%>
           <%else%>
               <%= t 'show.waiting' %>
           <% end %>
@@ -25,3 +22,4 @@
   <% end %>
 
 </table>
+

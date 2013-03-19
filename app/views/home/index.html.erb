@@ -35,7 +35,7 @@
    else%>
  <div id="menucontent">
      <ul id="menu">
-       <%if current_user.waiting_room %>
+       <%if current_user.waiting_room && current_user.player.nil?%>
 
            <li><%= link_to "Jugar", waiting_room_path(current_user.waiting_room_id) %></li>
 

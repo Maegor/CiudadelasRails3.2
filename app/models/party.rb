@@ -16,7 +16,14 @@ class Party < ActiveRecord::Base
 
 
 
-  def initialize_party
+
+
+
+  def initialize_party(users)
+
+    users.each do |user|
+      add_player_to_party(user.id)
+    end
 
     #Init districts
 
@@ -31,7 +38,7 @@ class Party < ActiveRecord::Base
     #Init players
     first_initialization_players
 
-
+    round_initialization
 
 
   end
