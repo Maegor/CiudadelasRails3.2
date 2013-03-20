@@ -5,9 +5,13 @@ before_filter :set_locale
 
  private
  def set_locale
-   #if session[:user_id]
-    I18n.locale = 'en'
-  # end
+   #f session[:user_id]
+
+   if cookies[:lang].nil?
+   cookies[:lang] = 'es'
+   end
+    I18n.locale = cookies[:lang]
+   #end
   end
 
   helper_method :current_user

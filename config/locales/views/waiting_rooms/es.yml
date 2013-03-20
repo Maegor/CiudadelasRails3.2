@@ -1,5 +1,19 @@
 es:
  index:
-  users: 'Nombre de los jugadores'
+  available_games: 'Partidas'
+  game_name: 'Nombre'
+  num_players: 'Jugadores(Max.)'
+  join: 'Unirse'
+  full_room: 'Llena'
+  back: 'Atrás'
+  error_join: 'La sala está completa'
+
  new:
-  error: 'No se ha podido crear la partida'
+  error: 'La sala no ha sido creada'
+
+ show:
+  users: 'Usuarios'
+  waiting: 'Esperando jugadores'
+  leave: 'Abandonar'
+  leave_game_ok: "Has dejado la sala"
+  leave_game_error: 'Acción denegada'

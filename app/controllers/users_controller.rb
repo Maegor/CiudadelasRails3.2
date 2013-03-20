@@ -50,10 +50,16 @@ class UsersController < ApplicationController
 
   def update
 
-    lang = params[:user][:lang]
+    lang = params[:lang]
     current_user.update_attribute(:lang,lang)
     I18n.locale = lang
     redirect_to user_path(current_user)
+
+   ## respond_to do |format|
+     # format.html
+      #format.js
+
+   # end
 
   end
   

@@ -5,3 +5,9 @@ en:
   password: "Password"
   login_button: "Log In"
   signup: "Sign up"
+ main_menu:
+  play: "Play"
+  search: "Search"
+  create: "Create"
+  profile: "Profile"
+  logout: "Logout"

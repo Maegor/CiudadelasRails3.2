@@ -1,8 +1,29 @@
 <% content_for :head do %>
 
 
-    <%= stylesheet_link_tag  "style" , "home", "menu"%>
-    <%= javascript_include_tag "menu", "jquery.placeholder.min" %>
+    <%= stylesheet_link_tag  "style" , "home", "menu", "polyglot-language-switcher"%>
+    <%= javascript_include_tag "menu", "jquery.placeholder.min", "jquery.polyglot.language.switcher" %>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#polyglotLanguageSwitcher').polyglotLanguageSwitcher({
+                effect: 'fade',
+                testMode: true,
+                onChange: function(evt){
+
+                    //console.log(evt.selectedItem.toString());
+                    //alert("The selected language is: "+evt.selectedItem);
+                    // $(this).load('/users/1');
+
+
+                  document.cookie= "lang" + "=" + evt.selectedItem;
+                   location.reload();
+
+                }
+
+            });
+        });
+    </script>
+
 
 <% end %>
 
@@ -11,7 +32,7 @@
     <div class="notice"><%= flash[:notice] %></div>
 <% end %>
 
-<%= link_to 'Test', 'home/get_menu', :remote => 'true' %>
+
 <% if session[:user_id].nil? %>
     <%= form_tag 'login', :class => 'form-4' do %>
 
@@ -28,38 +49,42 @@
     <%= submit_tag (t 'login_menu.login_button')%>
       </p>
 
-    <%= link_to (t 'login_menu.signup') , new_user_path%>
 
-    <% end
 
-   else%>
+
+        <%= link_to (t 'login_menu.signup') , new_user_path%>
+    <% end%>
+
+
+
+   <%else%>
  <div id="menucontent">
      <ul id="menu">
        <%if current_user.waiting_room && current_user.player.nil?%>
 
-           <li><%= link_to "Jugar", waiting_room_path(current_user.waiting_room_id) %></li>
+           <li><%= link_to (t 'main_menu.play'), waiting_room_path(current_user.waiting_room_id) %></li>
 
        <% elsif current_user.player.nil? %>
 
       <li>
         <a href="#">Jugar</a>
         <ul>
-          <li><%= link_to "Buscar", waiting_rooms_path  %></li>
-          <li><%= link_to "Crear", new_waiting_room_path  %></li>
+          <li><%= link_to (t 'main_menu.search'), waiting_rooms_path  %></li>
+          <li><%= link_to (t 'main_menu.create'), new_waiting_room_path  %></li>
         </ul>
       </li>
 
        <% elsif  current_user.player %>
 
-           <li><%= link_to "Jugar", party_path(current_user.player.party.id) %></li>
+           <li><%= link_to (t 'main_menu.play'), party_path(current_user.player.party.id) %></li>
 
 
       <% end %>
 
 
 
-      <li><%= link_to "Perfil", user_path(current_user) %></li>
-      <li> <%= link_to "Cerrar sesion", logout_path, :method => :delete %>    </li>
+      <li><%= link_to (t 'main_menu.profile'), user_path(current_user) %></li>
+      <li> <%= link_to (t 'main_menu.logout'), logout_path, :method => :delete %>    </li>
 
     </ul>
 
@@ -70,6 +95,15 @@
 
 
     </div>
+
+<div id="polyglotLanguageSwitcher">
+  <%= form_tag ("#") do %>
+      <%= select_tag(:polyglot, options_for_select([['English', "en", {:id => "en"}], ['Español', "es", {:id => "es"}]], cookies[:lang]), :id => "polyglot-language-options") %>
+  <%end%>
+</div>
+
+
+
 <script type="text/javascript">
 $('input, textarea').placeholder();
 
