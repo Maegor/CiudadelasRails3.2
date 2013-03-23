@@ -40,7 +40,7 @@ es:
         fortress: "Fortaleza"
 
         #purple
-        imperial_treasure: "Imperial Treasure"
+        imperial_treasure: "Tesoro imperial"
         miracle_courtyard: "Miracle Courtyard"
         keep: "Keep"
         lighthouse: "Lighthouse"
@@ -106,3 +106,6 @@ es:
           protection: "Your districts may not be destroyed by the Warlord."
           take_extra_cards: "Draw two extra district cards and put both in your hand."
           build_severals: "You may build up to three districts during your turn."
+  points_recount:
+        districts_points: "Puntos por distritos"
+        all_colors: "Todos los colores"

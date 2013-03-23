@@ -64,6 +64,8 @@ District.create!(name:'watchtower', colour:'red', cost:1, points:1, quantity:3, 
 District.create!(name:'prison', colour:'red', cost:2, points:2, quantity:3, type:'District')
 District.create!(name:'barracks', colour:'red', cost:3, points:3, quantity:3, type:'District')
 District.create!(name:'fortress', colour:'red', cost:5, points:5, quantity:3, type:'District')
+#purple
+District.create!(name:'imperial_treasure', colour:'purple', cost:4, points:4, quantity:1, type:'District')
 
 ### Init card_base_action
 

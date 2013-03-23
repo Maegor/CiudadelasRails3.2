@@ -33,6 +33,8 @@ class Player < ActiveRecord::Base
     Card.characters.where("player_id = ?",id).first
   end
 
+
+
   def opponents
 
     party.players.reject{|player| player.id == id}
@@ -41,7 +43,7 @@ class Player < ActiveRecord::Base
 
   def get_destrutible_building(target_player)
 
-    list_cards = target_player.cards.districts.where("state = 'ONGAME'")
+    list_cards = target_player.cards.districts.where("state = 'ONGAME' and name <> 'keep'")
 
     list_cards.each do |card|
 
@@ -100,15 +102,20 @@ end
   end
 
   def recount
+    points_distribution = Hash.new
     points = 0
     districts_on_game.each do |district|
+
       points = points + district.base_card.points
+      points_distribution[:districts_points]= points
+
     end
 
-    player_districts =   districts_on_game.count(:colour)
+    player_districts =   districts_on_game.count(:colour, :distinct => :colour)
 
     if player_districts >= 4
       points += 3
+      points_distribution[:all_colors] = 3
     end
      points
 
@@ -117,13 +124,52 @@ end
 
     if (exist_player.nil? and districts_on_game.size >= 8)
       points += 4
+      points_distribution[:first_eight] = 4
     elsif  districts_on_game.size >= 8
       points += 2
-
+      points_distribution[:eight] = 2
     end
 
-   points
+
+    check_special_card(points_distribution)
+    points_distribution
   end
+
+ def check_special_card(points_distribution)
+   logger.debug "##############################"
+     purple_districts = districts_on_game.where("colour = 'purple'")
+
+   if purple_districts.exists?
+
+     if purple_districts.exists?(["name = 'imperial_treasure'"])
+       points_distribution[:imperial_treasure] = coins
+     end
+
+     if purple_districts.exists?(["name = 'map_room'"])
+       points_distribution[:map_room] = districts_on_hand.count
+     end
+
+     if purple_districts.exists?(["name = 'fountain_wishes'"])
+       points_distribution[:fountain_wishes] = purple_districts.count
+     end
+
+     if purple_districts.exists?(["name = 'dragon_gate'"])
+       points_distribution[:dragon_gate] = 2
+     end
+
+     if purple_districts.exists?(["name = 'university'"])
+       points_distribution[:university] = 2
+     end
+
+   end
+
+
+
+ end
+
+
+
+
 
   def get_character()
 
@@ -162,10 +208,7 @@ end
 
       district_list.uniq{|district| district.base_card.name }
 
-
-
-
-  end
+end
 
 
   def add_coins(coins)
@@ -180,45 +223,6 @@ end
     player_character.base_card.base_actions.each do |action|
       actions.create!(base_action_id: action.id)
     end
-
-
-=begin
-    party = self.party
-    card = self.cards.where(:type => "Personaje").first
-
-
-    self.actions.create(:name => "CONSTRUIR", :player_id => self.id, :round => party.current_round, :quantity => 1,:base_action_id => 1 )
-     case card.name
-       when "Obispo", "Rey"
-
-         self.actions.create(:name => "IMPUESTOS", :player_id => self.id, :round => party.current_round, :quantity => 1)
-       when "Mercader"
-
-         self.actions.create(:name => "IMPUESTOS", :player_id => self.id, :round => party.current_round, :quantity => 1)
-         self.actions.create(:name => "OROEXTRA", :player_id => self.id, :round => party.current_round, :quantity => 1)
-       when "Arquitecto"
-
-         self.actions.create(:name => "TAKEEXTRACARDS", :player_id => self.id, :round => party.current_round, :quantity => 1)
-       when "Asesino"
-
-         self.actions.create(:name => "MURDER", :player_id => self.id, :round => party.current_round, :quantity => 1)
-       when "Ladron"
-
-         self.actions.create(:name => "STEAL", :player_id => self.id, :round => party.current_round, :quantity => 1)
-       when "Mago"
-
-         self.actions.create(:name => "CHANGECARDS", :player_id => self.id, :round => party.current_round, :quantity => 1)
-       when "Guerrero"
-
-         self.actions.create(:name => "DESTROYBUILDING", :player_id => self.id, :round => party.current_round, :quantity => 1)
-         self.actions.create(:name => "IMPUESTOS", :player_id => self.id, :round => party.current_round, :quantity => 1)
-
-
-     end
-
-
-=end
-
 
   end
 

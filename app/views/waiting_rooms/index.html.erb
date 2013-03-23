@@ -1,12 +1,13 @@
 
 <% content_for :head do%>
 
-    <%= stylesheet_link_tag "menu", "parties" %>
-    <%= javascript_include_tag "menu", "jquery.jscrollpane", "jquery.mousewheel" %>
+    <%= stylesheet_link_tag "menu", "parties", "polyglot-language-switcher" %>
+    <%= javascript_include_tag "menu", "jquery.jscrollpane", "jquery.mousewheel", "jquery.polyglot.language.switcher" %>
 
 <% end %>
 
 
+<%= render :partial => 'shared/langs' %>
 
 <% if flash[:notice] %>
     <div class="notice"><%= flash[:notice] %></div>

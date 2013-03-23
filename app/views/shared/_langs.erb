@@ -1,0 +1,25 @@
+<% content_for :head do%>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#polyglotLanguageSwitcher').polyglotLanguageSwitcher({
+                effect: 'fade',
+                testMode: true,
+                onChange: function(evt){
+                    document.cookie= "lang" + "=" + evt.selectedItem + "; path=/";
+                    location.reload();
+                }
+            });
+        });
+    </script>
+<% end %>
+
+
+
+<%= content_for :lang_bar do %>
+    <div id="polyglotLanguageSwitcher">
+      <%= form_tag ("#") do %>
+          <%= select_tag(:polyglot, options_for_select([['English', "en", {:id => "en"}], ['Español', "es", {:id => "es"}]], cookies[:lang]), :id => "polyglot-language-options") %>
+      <%end%>
+    </div>
+
+<% end %>

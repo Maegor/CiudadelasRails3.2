@@ -7,13 +7,7 @@
       <tr>
         <td rowspan="4">
 
-          <% character_card = opponent.player_character
-             if   ['ACTION', 'TURN', 'WAITINGENDROUND'].include?(opponent.state) %>
-              <%= render :partial => 'character_card', :object => character_card %>
-              <% else %>
-
-           <%= image_tag 'cards/cardback.jpg' %>
-          <%end%>
+        <%= character_img opponent %>
 
         </td>
 
@@ -35,7 +29,7 @@
 
       </tr>
       <tr><td>Oro: <%= opponent.coins %></td></tr>
-      <tr><td>Puntos: <%= opponent.recount() %></td></tr>
+      <tr><td>Puntos: <%= count_points opponent.recount() %></td></tr>
       <tr><td> Cartas: <%= opponent.districts_on_hand.count %></td></tr>
 
 

@@ -1,42 +1,33 @@
 <% content_for :head do%>
 
 
-    <%= stylesheet_link_tag  "parties", "style" , "home", "menu"%>
-    <%= javascript_include_tag "parties" %>
+    <%= stylesheet_link_tag  'parties', 'style' , 'home', 'menu', 'polyglot-language-switcher' %>
+    <%= javascript_include_tag "jquery.polyglot.language.switcher" %>
 
 <% end %>
 
+<%= render 'shared/langs' %>
 
-<script type = "text/javascript">
-    $(document).ready(function(){
-        $("#party_numplayer").change(function(elem){
-            if (!$("select option")[0].prop("selected")) {
-            $("select").css('color', '#fAA');
-            } else {
 
-                $("select").removeAttr("style");
-                    }
-        });
-    })
-</script>
+
 
 <%= form_for @waiting_room, :html =>{:class=> 'form-4'} do |f| %>
 
 
-    <h1>Crear Partida</h1>
+    <h1><%= t 'new.create_game' %></h1>
     <p>
       <%=  f.label 'name' %>
-      <%=  f.text_field 'name', {:placeholder =>'Nombre'} %>
+      <%=  f.text_field 'name', {:placeholder =>(t 'new.name')} %>
     </p>
     <p>
       <%=  f.label 'user' %>
-      <%=  f.select 'user', Party::PLAYERS_ENABLE,{:prompt =>"Numero jugadores"}%>
+      <%=  f.select 'user', Party::PLAYERS_ENABLE,{:prompt =>(t 'new.players')}%>
     </p>
 
     <p>
-      <%= f.submit "Crear"%>
+      <%= f.submit (t 'new.create')%>
     </p>
 
-    <%= link_to "Atrás", root_path %>
+    <%= link_to (t 'back'), root_path %>
 
 <% end%>

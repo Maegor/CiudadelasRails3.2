@@ -9,11 +9,15 @@ en:
   error_join: 'The room is completed'
 
  new:
+  create_game: 'Create game'
+  name: 'Name'
+  players: 'Number of players'
+  create: 'Create'
   error: 'The game has not been created'
-
  show:
   users: 'Users'
   waiting: 'Waiting player'
   leave: 'Leave'
   leave_game_ok: "You've left the game"
   leave_game_error: 'Accion denied'
+ back: 'Back'

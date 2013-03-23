@@ -13,7 +13,7 @@
   </tr>
   <tr>
     <td><%= t :points %></td>
-    <td><%= current_user.player.recount %></td>
+    <td title="<%= tooltip current_user.player.recount %>"><%= count_points current_user.player.recount %></td>
   </tr>
 
   <tr>

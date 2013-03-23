@@ -106,3 +106,7 @@ en:
             protection: "Your districts may not be destroyed by the Warlord."
             take_extra_cards: "Draw two extra district cards and put both in your hand."
             build_severals: "You may build up to three districts during your turn."
+
+  points_recount:
+           districts_points: "Points by districts"
+           all_colors: "All colours"

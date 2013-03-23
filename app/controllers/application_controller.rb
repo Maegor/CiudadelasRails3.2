@@ -8,7 +8,10 @@ before_filter :set_locale
    #f session[:user_id]
 
    if cookies[:lang].nil?
-   cookies[:lang] = 'es'
+   cookies[:lang] = {
+   :value =>'es',
+   :domain => 'localhost'
+   }
    end
     I18n.locale = cookies[:lang]
    #end

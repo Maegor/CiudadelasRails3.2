@@ -9,6 +9,10 @@ es:
   error_join: 'La sala está completa'
 
  new:
+  create_game: 'Crear partida'
+  name: 'Nombre'
+  players: 'Número de jugadores'
+  create: 'Crear'
   error: 'La sala no ha sido creada'
 
  show:
@@ -17,3 +21,4 @@ es:
   leave: 'Abandonar'
   leave_game_ok: "Has dejado la sala"
   leave_game_error: 'Acción denegada'
+ back: 'Atrás'

@@ -470,5 +470,23 @@ end
 
   end
 
+
+  def players_to_destroy
+
+    target_players = Array.new
+
+    players.each do |player|
+
+        if player.districts_on_game.size.between?(1,7)
+           if player.player_character.base_card.name != 'bishop'
+               target_players << player
+           elsif player.murdered == 'TRUE'
+                target_players << player
+           end
+        end
+      end
+    target_players
   end
+
+end
 
