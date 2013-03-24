@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /*FORM*/
+//div{ border: 1px solid;}
+
 #parties_content{
 
   font-family: 'Raleway', 'Lato', Arial, sans-serif;
@@ -130,7 +132,7 @@
 
 }
 
-#tablero div{
+#tablero {
 
 
   border: solid 1px;
@@ -196,5 +198,111 @@
   border: 0;
   margin: 4px;
 }
+
+/*cards*/
+
+.card{
+  background-repeat: no-repeat ;
+  background-size: cover;
+  width: 75px;
+  height: 120px ;
+  display: inline-block;
+}
+/* District */
+#tavern{ background-image: url('cards/tavern.jpg');}
+#store{ background-image: url('cards/store.jpg');}
+#market{  background-image: url('cards/store.jpg');}
+#harbor{background-image: url('cards/harbor.jpg')}
+#docks{background-image: url('cards/docks.jpg')}
+#town_hall{background-image: url('cards/town_hall.jpg')}
+#temple{background-image: url('cards/temple.jpg')}
+#church{background-image: url('cards/church.jpg')}
+#monastery{background-image: url('cards/monastery.jpg')}
+#cathedral{background-image: url('cards/cathedral.jpg')}
+#domain{background-image: url('cards/domain.jpg')}
+#castle{background-image: url('cards/castle.jpg')}
+#palace{background-image: url('cards/palace.jpg')}
+#watchtower{background-image: url('cards/watchtower.jpg')}
+#prison{background-image: url('cards/prison.jpg')}
+#barracks{background-image: url('cards/barracks.jpg')}
+#fortress{background-image: url('cards/fortress.jpg')}
+#imperial_treasure{background-image: url('cards/imperial_treasure.jpg')}
+#haunted_city{background-image: url('cards/haunted_city.jpg')}
+#keep{background-image: url('cards/keep.jpg')}
+#lighthouse{background-image: url('cards/lighthouse.jpg')}
+#powderhouse{background-image: url('cards/powderhouse.jpg')}
+#museum{background-image: url('cards/museum.jpg')}
+#poorhouse{background-image: url('cards/poorhouse.jpg')}
+#bell_tower{background-image: url('cards/bell_tower.jpg')}
+#smithy{background-image: url('cards/smithy.jpg')}
+#quarry{background-image: url('cards/quarry.jpg')}
+#map_room{background-image: url('cards/map_room.jpg')}
+#fountain_wishes{background-image: url('cards/fountain_wishes.jpg')}
+#observatory{background-image: url('cards/observatory.jpg')}
+#laboratory{background-image: url('cards/laboratory.jpg')}
+#factory{background-image: url('cards/factory.jpg')}
+#graveyard{background-image: url('cards/graveyard.jpg')}
+#library{background-image: url('cards/library.jpg')}
+#school_magic{background-image: url('cards/school_magic.jpg')}
+#ballroom{background-image: url('cards/ballroom.jpg')}
+#park{background-image: url('cards/park.jpg')}
+#hospital{background-image: url('cards/hospital.jpg')}
+#great_wall{background-image: url('cards/great_wall.jpg')}
+#throne_hall{background-image: url('cards/throne_hall.jpg')}
+#dragon_gate{background-image: url('cards/dragon_gate.jpg')}
+#university{background-image: url('cards/university.jpg')}
+
+/* Characters */
+
+#assasin{background-image: url('cards/assasin.jpg')}
+#thief{background-image: url('cards/thief.jpg')}
+#magician{background-image: url('cards/magician.jpg')}
+#king{background-image: url('cards/king.jpg')}
+#bishop{background-image: url('cards/bishop.jpg')}
+#merchant{background-image: url('cards/merchant.jpg')}
+#architect{background-image: url('cards/architect.jpg')}
+#warlord{background-image: url('cards/warlord.jpg')}
+
+/* Actions */
+
+#coins{background-image: url('cards/coins.jpg')}
+#cardback{background-image: url('cards/cardback.jpg')}
+
+/* Opponents */
+
+#opponent_iu{
+
+  width: 258px;
+  height: 122px;
+
+}
+
+.data_opponent{
+  height: 40px;
+  width: 170px;
+  position: relative;
+  bottom: 128px;
+  left: 79px;
+
+}
+
+#opponent_cards{
+
+  position: relative;
+  width: 800px;
+  left: 259px;
+  bottom: 122px;
+}
+
+.opponent{
+  height: 130px;
+
+
+}
+
+
+
+
+
 
 

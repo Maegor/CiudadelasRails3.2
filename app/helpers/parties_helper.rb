@@ -29,7 +29,7 @@ module PartiesHelper
     if   ['ACTION', 'TURN', 'WAITINGENDROUND'].include?(opponent.state)
       render :partial => 'character_card', :object => character_card
     else
-      image_tag 'cards/cardback.jpg'
+       '<div class="card" id="cardback"></div>'.html_safe
     end
   end
   

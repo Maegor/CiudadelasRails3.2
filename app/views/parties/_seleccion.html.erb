@@ -3,17 +3,17 @@
 <% if current_user.player.state == 'SELECTION_TURN'  %>
 
 
-    <table>
+
       <% ongamecards = @game.cards.characters.where("state = 'ONGAME'")
          ongamecards.each do |character_card|
 
           if character_card.player_id.nil?  %>
-          <td><%= link_to (render :partial =>  'character_card', :object => character_card),
-                          { :controller => :parties, :action => :select_card,:party_id => character_card.party_id, :card_id => character_card.id}%> </td>
+          <%= link_to (render :partial =>  'character_card', :object => character_card),
+                          { :controller => :parties, :action => :select_card,:party_id => character_card.party_id, :card_id => character_card.id}%>
 
       <% end
          end %>
-    </table>
+
 
 <% elsif current_user.player.state == 'TURN'
   #== "ACTION"

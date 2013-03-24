@@ -1,43 +1,53 @@
-<h3>Oponentes</h3>
-<table border="1">
+<h3>Oponentessss</h3>
+
 
 <% oppenents =    current_user.player.opponents
    oppenents.each do |opponent|  %>
+ <div class="opponent">
+   <div id="opponent_iu">
 
-      <tr>
-        <td rowspan="4">
+     <div id="oppent_char">
 
-        <%= character_img opponent %>
+       <%= character_img opponent %>
 
-        </td>
+     </div>
 
-        <td><%= opponent.name %></td>
+     <div class="data_opponent" id="name">
+        <%= (t 'name');%>:
+         <%=   opponent.name %>
+     </div>
+     <div class="data_opponent" id="points">
+       <%= t 'points' %>:
+       <%= count_points opponent.recount %>
+     </div>
+     <div class="data_opponent" id="cards">
+       <%= t 'coins' %>:
+       <%= opponent.coins %>
+     </div>
 
 
 
 
+   </div>
+   <div id="opponent_cards">
        <% cards = opponent.districts_on_game
           cards.each do |district_card|%>
 
 
 
-            <td rowspan="4"><%= render :partial => 'district_card', :object => district_card %></td>
+            <%= render :partial => 'district_card', :object => district_card %>
 
 
 
        <% end%>
 
-      </tr>
-      <tr><td>Oro: <%= opponent.coins %></td></tr>
-      <tr><td>Puntos: <%= count_points opponent.recount() %></td></tr>
-      <tr><td> Cartas: <%= opponent.districts_on_hand.count %></td></tr>
+   </div>
 
 
 
-
-
+ </div>
 <%end%>
 
 
-</table>
+
 

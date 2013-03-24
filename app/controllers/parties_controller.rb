@@ -15,6 +15,15 @@ class PartiesController < ApplicationController
 
    end
 
+    respond_to do |format|
+
+      format.html
+     # format.json {render :json => @game}
+      format.js
+
+    end
+
+
   end
 
 

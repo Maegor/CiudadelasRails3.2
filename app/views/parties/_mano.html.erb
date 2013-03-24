@@ -29,24 +29,22 @@
 
 <div id="cartas_mano" class="player_lane">
 
-<table >
-  <tr>
+
+
     <% current_user.player.districts_on_hand.each do |district_card|%>
 
-        <td><%= render :partial => 'district_card', :object => district_card %></td>
+        <%= render :partial => 'district_card', :object => district_card %>
     <% end %>
-  </tr>
-</table>
+
+
 </div>
 <div id="distritos_construidos" class="player_lane">
-<table >
-  <tr>
+
     <% current_user.player.districts_on_game.each do |district_card|%>
 
-        <td><%= render :partial => 'district_card', :object => district_card %></td>
+        <%= render :partial => 'district_card', :object => district_card %>
 
     <% end %>
-  </tr>
-</table>
+
     </div>
 
