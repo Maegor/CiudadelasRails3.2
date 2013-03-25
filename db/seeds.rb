@@ -45,27 +45,46 @@ Character.create!(name: 'architect', turn: 7,quantity: 1,  type: 'Character')
 Character.create!(name: 'warlord', turn: 8,quantity: 1,  type: 'Character')
 #green districts
 District.create!(name:'tavern', colour:'green', cost:1, points:1, quantity:5, type:'District')
+=begin
 District.create!(name:'market', colour:'green', cost:2, points:2, quantity:4, type:'District')
 District.create!(name:'store', colour:'green', cost:2, points:2, quantity:5, type:'District')
 District.create!(name:'docks', colour:'green', cost:3, points:3, quantity:3, type:'District')
 District.create!(name:'harbor', colour:'green', cost:4, points:4, quantity:3, type:'District')
 District.create!(name:'town_hall', colour:'green', cost:5, points:5, quantity:2, type:'District')
+=end
 #blue districts
 District.create!(name:'temple', colour:'blue', cost:1, points:1, quantity:3, type:'District')
+=begin
 District.create!(name:'church', colour:'blue', cost:2, points:2, quantity:3, type:'District')
 District.create!(name:'monastery', colour:'blue', cost:3, points:3, quantity:4, type:'District')
 District.create!(name:'cathedral', colour:'blue', cost:4, points:4, quantity:2, type:'District')
+=end
 #yellow districts
 District.create!(name:'domain', colour:'yellow', cost:3, points:3, quantity:5, type:'District')
+=begin
 District.create!(name:'castle', colour:'yellow', cost:4, points:4, quantity:5, type:'District')
 District.create!(name:'palace', colour:'yellow', cost:5, points:5, quantity:2, type:'District')
+=end
 #red districts
 District.create!(name:'watchtower', colour:'red', cost:1, points:1, quantity:3, type:'District')
+=begin
 District.create!(name:'prison', colour:'red', cost:2, points:2, quantity:3, type:'District')
 District.create!(name:'barracks', colour:'red', cost:3, points:3, quantity:3, type:'District')
 District.create!(name:'fortress', colour:'red', cost:5, points:5, quantity:3, type:'District')
+=end
 #purple
 District.create!(name:'imperial_treasure', colour:'purple', cost:4, points:4, quantity:1, type:'District')
+District.create!(name:'map_room', colour:'purple', cost:5, points:5, quantity:1, type:'District')
+District.create!(name:'fountain_wishes', colour:'purple', cost:5, points:5, quantity:1, type:'District')
+District.create!(name:'dragon_gate', colour:'purple', cost:6, points:8, quantity:1, type:'District')
+District.create!(name:'university', colour:'purple', cost:6, points:8, quantity:1, type:'District')
+District.create!(name:'keep', colour:'purple', cost:3, points:3, quantity:1, type:'District')
+District.create!(name:'park', colour:'purple', cost:6, points:6, quantity:1, type:'District')
+District.create!(name:'great_wall', colour:'purple', cost:6, points:6, quantity:1, type:'District')
+District.create!(name:'poorhouse', colour:'purple', cost:4, points:4, quantity:1, type:'District')
+#District.create!(name:'library', colour:'purple', cost:6, points:6, quantity:1, type:'District')
+
+
 
 ### Init card_base_action
 

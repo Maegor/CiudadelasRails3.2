@@ -1,0 +1,8 @@
+en:
+ new:
+  title: 'Enter user details'
+  name: 'Name'
+  email: 'Email'
+  password: 'Password'
+  repeat_password: 'Repeat password'
+  create_user: 'Create user'

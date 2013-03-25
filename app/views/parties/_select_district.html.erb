@@ -1,4 +1,4 @@
-<%displayed_cards = @game.card_to_select()
+<%displayed_cards = @game.card_to_select(current_user.player)
 
 displayed_cards.each do |districit_card| %>
 <%= link_to (render :partial => 'parties/district_card', :object => districit_card),

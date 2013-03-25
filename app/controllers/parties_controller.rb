@@ -9,6 +9,11 @@ class PartiesController < ApplicationController
   @game = Party.find(params[:id])
   @game.tick
 
+  if session[:refresh].nil?
+    session[:refresh] = true
+
+  end
+
    if @game.state == 'FINISHED'
 
      redirect_to  party_resumen_path(@game.id)
@@ -18,7 +23,6 @@ class PartiesController < ApplicationController
     respond_to do |format|
 
       format.html
-     # format.json {render :json => @game}
       format.js
 
     end
@@ -214,7 +218,9 @@ class PartiesController < ApplicationController
 
 
     player = current_user.player
+    player.action_end_turn
     player.update_attribute(:state, "WAITINGENDROUND")
+
     player.actions.destroy_all
     party = Party.find(player.party_id)
 
@@ -456,6 +462,7 @@ def leave_game
 
   player = current_user.player
   player.update_attribute(:current, 'FALSE')
+  current_user.update_attribute(:waitin_room_id)
 
   redirect_to root_path
 

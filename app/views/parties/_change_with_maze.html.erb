@@ -13,7 +13,7 @@
 
 <script type="text/javascript">
 
-  $('.image-checkbox-container img').on('click', function(){
+  $('.image-checkbox-container div').on('click', function(){
         if(!$(this).prev('input[type="checkbox"]').prop('checked')){
             $(this).prev('input[type="checkbox"]').prop('checked', true).attr('checked','checked');
             this.style.border = '4px solid #38A';

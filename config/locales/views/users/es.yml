@@ -1,0 +1,8 @@
+es:
+ new:
+  title: 'Introduzca datos de usuario'
+  name: 'Nombre'
+  email: 'Correo'
+  password: 'Contraseña'
+  repeat_password: 'Repetir contraseña'
+  create_user: 'Crear usuario'

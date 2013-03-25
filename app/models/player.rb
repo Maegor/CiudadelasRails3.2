@@ -43,11 +43,13 @@ class Player < ActiveRecord::Base
 
   def get_destrutible_building(target_player)
 
-    list_cards = target_player.cards.districts.where("state = 'ONGAME' and name <> 'keep'")
+    list_cards = target_player.districts_on_game.where("name <> 'keep'")
+
+    great_wall = target_player.districts_on_game.exists?(["name = 'great_wall'"]) ? 1 : 0
 
     list_cards.each do |card|
 
-      card.base_card.cost -= 1
+      card.base_card.cost = (card.base_card.cost - 1) + great_wall
 
     end
 
@@ -113,7 +115,7 @@ end
 
     player_districts =   districts_on_game.count(:colour, :distinct => :colour)
 
-    if player_districts >= 4
+    if player_districts >= 5
       points += 3
       points_distribution[:all_colors] = 3
     end
@@ -136,7 +138,7 @@ end
   end
 
  def check_special_card(points_distribution)
-   logger.debug "##############################"
+
      purple_districts = districts_on_game.where("colour = 'purple'")
 
    if purple_districts.exists?
@@ -153,19 +155,26 @@ end
        points_distribution[:fountain_wishes] = purple_districts.count
      end
 
-     if purple_districts.exists?(["name = 'dragon_gate'"])
-       points_distribution[:dragon_gate] = 2
-     end
+  end
+end
 
-     if purple_districts.exists?(["name = 'university'"])
-       points_distribution[:university] = 2
-     end
+  def action_end_turn
+    purple_districts = districts_on_game.where("colour = 'purple'")
 
-   end
+    if purple_districts.exists?(["name = 'poorhouse'"]) && coins == 0
+      update_attribute(:coins, coins + 1)
+    end
+
+    if purple_districts.exists?(["name = 'park'"]) && districts_on_hand.count == 0
+
+      cards = party.cards.districts.where("player_id is NULL").order('position').limit(2)
+      card_list.each do |card|
+        Card.update(card.id, :state => 'ONHAND', :player_id => id)
+      end
+    end
+  end
 
 
-
- end
 
 
 
@@ -283,6 +292,11 @@ end
 
 
   end
+
+
+
+
+
 ### Actions
  private
   def build (action_array)
@@ -371,7 +385,7 @@ end
     if card.player_id
 
       Player.update(card.player_id,:murdered => 'TRUE')
-      #, :state => 'WAITINGENDROUND')
+
 
     end
 

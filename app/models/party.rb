@@ -404,9 +404,10 @@ class Party < ActiveRecord::Base
   end
 
 
-  def card_to_select()
+  def card_to_select(player)
 
-    card_list = cards.districts.where("player_id is NULL").order('position').limit(2)
+    limit = player.districts_on_game.exists?(["name = 'library'"]) ? 3 : 2
+    card_list = cards.districts.where("player_id is NULL").order('position').limit(limit)
     card_list.each do |card|
 
       Card.update(card.id, :state => 'SELECTABLE')

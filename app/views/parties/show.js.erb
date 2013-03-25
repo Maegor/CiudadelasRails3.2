@@ -1,6 +1,26 @@
 //$('#mano').html("<%#=escape_javascript (render :partial => 'mano') %>");
 //$('#seleccion_personaje').html("<%#=escape_javascript (render :partial => 'seleccion') %>");
 //$('#lista_jugadores').html("<%#=escape_javascript (render :partial => 'oponentes') %>");
-$('#tablero').html("<%=escape_javascript (render :partial => 'tablero') %>");
 
+<% if @game.state != 'FINISHED'%>
 
+    <%if session[:refresh] %>
+     $('#tablero').replaceWith("<%=escape_javascript (render :partial => 'tablero') %>");
+        <% if %w(TURN ACTION).include?(current_user.player.state)
+                session[:refresh] = false
+             end
+     else
+         unless %w(TURN ACTION).include?(current_user.player.state)
+                  session[:refresh] = true
+          end
+      end
+     %>
+
+<%else%>
+        function enter_game(){
+            window.location.replace("<%= party_resumen_path(@game.id) %>")
+            window.location = "<%=party_resumen_path(@game.id) %>"
+        }
+        enter_game();
+
+<%end%>

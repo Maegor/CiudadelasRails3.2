@@ -47,7 +47,7 @@ $("input[type=checkbox][name='cards[]']").not(":checked").attr("disabled",bol);
     }});
     */
 
-    $('.image-checkbox-container img').on('click', function(){
+    $('.image-checkbox-container div').on('click', function(){
         check = $(this).prev('input[type="checkbox"]')
 
         if(!check.attr("disabled")) {

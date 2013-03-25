@@ -2,12 +2,12 @@
 <% content_for :head do%>
 
 
-    <%= stylesheet_link_tag    "home" %>
-    <%= javascript_include_tag "menu", "jquery.placeholder.min" %>
+    <%= stylesheet_link_tag    'home', 'polyglot-language-switcher' %>
+    <%= javascript_include_tag 'menu', 'jquery.placeholder.min', 'jquery.polyglot.language.switcher' %>
 
 <% end %>
 
-<%= t :hello %>
+<%= render 'shared/langs' %>
 
 <%= render 'form' %>
 
