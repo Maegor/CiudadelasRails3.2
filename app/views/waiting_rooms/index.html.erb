@@ -27,7 +27,10 @@
       </tr>
       </thead>
       <tbody>
-      <% @rooms.each do |room| %>
+      <% @rooms.each do |room|
+
+      if room.users.count > 0 %>
+
           <tr>
             <td> <%=  room.name %> </td>
             <td align="center"> <%= room.users.count  %>   (<%= room.user  %>)</td>
@@ -41,7 +44,8 @@
             <% end %>
 
           </tr>
-      <% end %>
+      <% end
+      end%>
       </tbody>
 
     </table>

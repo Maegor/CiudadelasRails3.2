@@ -174,6 +174,10 @@ end
     end
   end
 
+  def card_to_take
+     districts_on_game.exists?(["name = 'library'"]) ? 2 : 1
+
+  end
 
 
 
@@ -328,9 +332,12 @@ end
 
   def select_district(action_array)
 
-     card = card = Card.find(action_array[1])
-     card.update_attributes(:player_id => self.id, :state => 'ONHAND')
+     cards = action_array.drop(1)
+      cards.each do |card_id|
 
+        Card.update(card_id,:player_id => self.id, :state => 'ONHAND' )
+
+      end
      party.reorder_cards()
      get_actions
      update_attribute(:state, "ACTION")

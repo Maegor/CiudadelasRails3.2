@@ -9,7 +9,7 @@
       <tr>
           <td><%= User.find(player.user_id).name %></td>
           <td><%=player.districts_on_game.count%> </td>
-          <td><%= player.recount %></td>
+          <td title="<%= tooltip player.recount %>"><%= count_points player.recount %></td>
 
         <% district_list = player.districts_on_game
            district_list.each do |card|%>

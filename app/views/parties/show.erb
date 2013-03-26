@@ -10,7 +10,7 @@
 
             setInterval(function(){
 
-                $.getScript("/parties/1");
+                $.getScript("/parties/<%= current_user.player.party.id %>");
 
             }, 3000);
 

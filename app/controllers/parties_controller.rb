@@ -14,15 +14,15 @@ class PartiesController < ApplicationController
 
   end
 
-   if @game.state == 'FINISHED'
 
-     redirect_to  party_resumen_path(@game.id)
-
-   end
 
     respond_to do |format|
 
-      format.html
+      format.html{
+        if @game.state == 'FINISHED'
+          redirect_to (party_resumen_path(@game.id))
+        end
+      }
       format.js
 
     end
@@ -462,7 +462,7 @@ def leave_game
 
   player = current_user.player
   player.update_attribute(:current, 'FALSE')
-  current_user.update_attribute(:waitin_room_id)
+  current_user.update_attribute(:waiting_room_id, nil)
 
   redirect_to root_path
 

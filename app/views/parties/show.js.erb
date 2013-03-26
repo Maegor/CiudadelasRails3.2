@@ -1,7 +1,3 @@
-//$('#mano').html("<%#=escape_javascript (render :partial => 'mano') %>");
-//$('#seleccion_personaje').html("<%#=escape_javascript (render :partial => 'seleccion') %>");
-//$('#lista_jugadores').html("<%#=escape_javascript (render :partial => 'oponentes') %>");
-
 <% if @game.state != 'FINISHED'%>
 
     <%if session[:refresh] %>
@@ -18,8 +14,8 @@
 
 <%else%>
         function enter_game(){
-            window.location.replace("<%= party_resumen_path(@game.id) %>")
-            window.location = "<%=party_resumen_path(@game.id) %>"
+            window.location.replace("<%= party_resumen_path(@game.id) %>");
+            window.location = "<%=party_resumen_path(@game.id) %>";
         }
         enter_game();
 
