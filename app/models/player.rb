@@ -168,7 +168,7 @@ end
     if purple_districts.exists?(["name = 'park'"]) && districts_on_hand.count == 0
 
       cards = party.cards.districts.where("player_id is NULL").order('position').limit(2)
-      card_list.each do |card|
+      cards.each do |card|
         Card.update(card.id, :state => 'ONHAND', :player_id => id)
       end
     end

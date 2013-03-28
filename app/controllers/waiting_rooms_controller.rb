@@ -49,7 +49,7 @@ class WaitingRoomsController < ApplicationController
       redirect_to  waiting_room_path(room.id)
     else
 
-      flash[:notice] = (t '')
+      flash[:notice] = (t 'new.error')
       redirect_to new_waiting_room_path
 
     end
@@ -87,8 +87,9 @@ class WaitingRoomsController < ApplicationController
       game = Party.new(:numplayer => room.user, :name => room.name, :current_round => 0 )
       if game.save
         game.initialize_party(room.users)
+        redirect_to party_path(game.id)
       end
-       redirect_to party_path(game.id)
+
     else
        redirect_to root_path
     end

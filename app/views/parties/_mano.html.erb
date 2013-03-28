@@ -1,50 +1,65 @@
 <div  id="ficha_jugador" class="player_lane">
-<table >
-<tr>
+  <div id="char">
 
-  <% if (personaje = current_user.player.player_character) %>
-      <td rowspan="3"><%=  image_tag 'cards/' + personaje.base_card.name.downcase + '.jpg', :title => personaje.base_card.name %> </td>
-  <% else%>
-      <td rowspan="3"><%=  image_tag 'cards/cardback.jpg' %> </td>
-  <%end%>
+    <% if (character_card = current_user.player.player_character) %>
+        <%= render :partial => 'character_card', :object => character_card %>
 
-    <td><%= (t :coins) %></td>
-    <td><%= current_user.player.coins %></td>
-  </tr>
-  <tr>
-    <td><%= t :points %></td>
-    <td title="<%= tooltip current_user.player.recount %>"><%= count_points current_user.player.recount %></td>
-  </tr>
+    <% else%>
+        <div class="card" id="cardback"></div>
+    <%end%>
 
-  <tr>
-    <td><% if current_user.player.crown == 'TRUE' %>
-             <%= image_tag 'crown.jpg'  %>
-           <% end %>
-    </td>
-  </tr>
+  </div>
 
-</table>
-
+  <div class="data_user" id="points">
+    <%= t 'points' %>:
+    <%= count_points current_user.player.recount %>
+  </div>
+  <div class="data_user" id="cards">
+    <%= t 'coins' %>:
+    <%= current_user.player.coins %>
+  </div>
 </div>
+
+
+
+
+<div id="distritos_construidos" class="player_lane">
+  <div class="card_container">
+  <% current_user.player.districts_on_game.each do |district_card|%>
+
+      <%= render :partial => 'district_card', :object => district_card %>
+
+  <% end %>
+  </div>
+</div>
+
 
 <div id="cartas_mano" class="player_lane">
-
-
-
-    <% current_user.player.districts_on_hand.each do |district_card|%>
+<div class="card_container">
+  <% current_user.player.districts_on_hand.each do |district_card|%>
 
         <%= render :partial => 'district_card', :object => district_card %>
-    <% end %>
-
-
+  <% end %>
 </div>
-<div id="distritos_construidos" class="player_lane">
+</div>
 
-    <% current_user.player.districts_on_game.each do |district_card|%>
+<script type="text/javascript">
+    num_cards = $('#distritos_construidos .card').size()
+    card_width = $('#ficha_jugador .card').css('width')
+    multiplier = parseInt(card_width.substring(0, card_width.length - 2))
 
-        <%= render :partial => 'district_card', :object => district_card %>
 
-    <% end %>
+  $('#distritos_construidos .card_container').css('width',(num_cards * multiplier) + 25)
 
-    </div>
+    num_cards = $('#cartas_mano .card').size();
+    card_width = $('#ficha_jugador .card').css('width');
+    multiplier = parseInt(card_width.substring(0, card_width.length - 2))
+    $('#cartas_mano .card_container').css('width',(num_cards * multiplier) + 25);
 
+
+            $('#distritos_construidos, #cartas_mano').jScrollPane({
+         autoReinitialise: true
+                });
+
+
+</script>

@@ -1,12 +1,12 @@
 <% content_for :head do%>
 
 
-    <%= stylesheet_link_tag  "parties" %>
-    <%#= javascript_include_tag "parties" %>
+    <%= stylesheet_link_tag  'parties', 'jquery.jscrollpane' %>
+    <%= javascript_include_tag 'jquery.jscrollpane.js' %>
 
     <script type="text/javascript">
 
-         $(document).ready(function (){
+        $(document).ready(function (){
 
             setInterval(function(){
 
@@ -15,6 +15,11 @@
             }, 3000);
 
         });
+
+             /*  $('.jspContainer').css('width', 520 )
+            $('.jspPane').css('width', 520 )
+            $('#cartas_mano').css('width', 480 )  */
+
 
 
         /*setTimeout(function(){
