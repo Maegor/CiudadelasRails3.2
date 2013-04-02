@@ -32,5 +32,16 @@ module PartiesHelper
        '<div class="card" id="cardback"></div>'.html_safe
     end
   end
-  
+
+  def actions_tooltip(character_name)
+    string = String.new
+
+    string << (t 'characters.' + character_name  + '.name')
+    string << "\n"
+    string << (t 'characters.' + character_name + '.description')
+
+
+  end
+
+
 end

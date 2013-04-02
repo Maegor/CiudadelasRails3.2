@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130316193254) do
+ActiveRecord::Schema.define(:version => 20130401175011) do
 
   create_table "actions", :force => true do |t|
     t.integer  "round"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(:version => 20130316193254) do
   end
 
   create_table "base_actions", :force => true do |t|
-    t.string   "name"
     t.string   "description"
     t.string   "partialname"
     t.datetime "created_at",  :null => false

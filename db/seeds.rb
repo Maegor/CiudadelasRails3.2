@@ -12,25 +12,25 @@ User.create!(name: 'molero3', email: 'molero3', password: '1234', password_confi
 
 ### Init base_actions
 
-BaseAction.create!(name: 'take_gold', description: 'take_gold', partialname: 'take_gold')
-BaseAction.create!(name: 'take_districts', description: 'take_districts', partialname: 'take_districts')
-BaseAction.create!(name: 'select_district', description: 'select_district', partialname: 'select_district')
-BaseAction.create!(name: 'kill', description: 'kill', partialname: 'kill')
-BaseAction.create!(name: 'steal', description: 'steal', partialname: 'steal')
-BaseAction.create!(name: 'taxes', description: 'take_yellow_taxes', partialname: 'take_taxes')
-BaseAction.create!(name: 'taxes', description: 'take_red_taxes', partialname: 'take_taxes')
-BaseAction.create!(name: 'taxes', description: 'take_blue_taxes', partialname: 'take_taxes')
-BaseAction.create!(name: 'taxes', description: 'take_green_taxes', partialname: 'take_taxes')
-BaseAction.create!(name: 'extra_gold', description: 'take_extra_gold', partialname: 'extra_coin')
-BaseAction.create!(name: 'build', description: 'build', partialname: 'build')
-BaseAction.create!(name: 'destroy', description: 'destroy', partialname: 'destroy_building')
-BaseAction.create!(name: 'change', description:'change', partialname: 'change_cards')
-BaseAction.create!(name: 'change_with_maze', description:'change_with_maze', partialname: 'change_with_maze')
-BaseAction.create!(name: 'change_with_player', description:'change_with_player', partialname: 'change_with_player')
-BaseAction.create!(name: 'crown', description:'crown', partialname: 'crown')
-BaseAction.create!(name: 'protection', description: 'protection', partialname: 'protection')
-BaseAction.create!(name: 'extra_districts', description: 'take_extra_districts', partialname: 'take_extra_cards')
-BaseAction.create!(name: 'build_districts', description: 'build_several_districts', partialname: 'build_severals')
+BaseAction.create!(description: 'take_gold', partialname: 'take_gold')
+BaseAction.create!(description: 'take_districts', partialname: 'take_districts')
+BaseAction.create!(description: 'select_district', partialname: 'select_district')
+BaseAction.create!(description: 'kill', partialname: 'kill')
+BaseAction.create!(description: 'steal', partialname: 'steal')
+BaseAction.create!(description: 'take_yellow_taxes', partialname: 'take_taxes')
+BaseAction.create!(description: 'take_red_taxes', partialname: 'take_taxes')
+BaseAction.create!(description: 'take_blue_taxes', partialname: 'take_taxes')
+BaseAction.create!(description: 'take_green_taxes', partialname: 'take_taxes')
+BaseAction.create!(description: 'extra_gold', partialname: 'extra_coin')
+BaseAction.create!(description: 'build', partialname: 'build')
+BaseAction.create!(description: 'destroy', partialname: 'destroy_building')
+BaseAction.create!(description: 'change', partialname: 'change_cards')
+BaseAction.create!(description: 'change_with_maze', partialname: 'change_with_maze')
+BaseAction.create!(description: 'change_with_player', partialname: 'change_with_player')
+BaseAction.create!(description: 'crown', partialname: 'crown')
+BaseAction.create!(description: 'protection', partialname: 'protection')
+BaseAction.create!(description: 'take_extra_cards', partialname: 'take_extra_cards')
+BaseAction.create!(description: 'build_severals', partialname: 'build_severals')
 
 ### Init base_cards
 
@@ -88,35 +88,35 @@ District.create!(name:'library', colour:'purple', cost:6, points:6, quantity:1, 
 
 ### Init card_base_action
 
-build_id = BaseAction.find_by_name('build').id
+build_id = BaseAction.find_by_description('build').id
 # assasin's actions
 CardBaseAction.create!(base_action_id: build_id, base_card_id: BaseCard.find_by_name('assasin').id )
-CardBaseAction.create!(base_action_id: BaseAction.find_by_name('kill').id, base_card_id: BaseCard.find_by_name('assasin').id )
+CardBaseAction.create!(base_action_id: BaseAction.find_by_description('kill').id, base_card_id: BaseCard.find_by_name('assasin').id )
 #thief's actions
 CardBaseAction.create!(base_action_id: build_id, base_card_id: BaseCard.find_by_name('thief').id )
-CardBaseAction.create!(base_action_id: BaseAction.find_by_name('steal').id, base_card_id: BaseCard.find_by_name('thief').id )
+CardBaseAction.create!(base_action_id: BaseAction.find_by_description('steal').id, base_card_id: BaseCard.find_by_name('thief').id )
 #magician's actions
 CardBaseAction.create!(base_action_id: build_id, base_card_id: BaseCard.find_by_name('magician').id )
-CardBaseAction.create!(base_action_id: BaseAction.find_by_name('change').id, base_card_id: BaseCard.find_by_name('magician').id )
+CardBaseAction.create!(base_action_id: BaseAction.find_by_description('change').id, base_card_id: BaseCard.find_by_name('magician').id )
 #king's actions
 CardBaseAction.create!(base_action_id: build_id, base_card_id: BaseCard.find_by_name('king').id )
-CardBaseAction.create!(base_action_id: BaseAction.find_by_name('crown').id, base_card_id: BaseCard.find_by_name('king').id )
+CardBaseAction.create!(base_action_id: BaseAction.find_by_description('crown').id, base_card_id: BaseCard.find_by_name('king').id )
 CardBaseAction.create!(base_action_id: BaseAction.find_by_description('take_yellow_taxes').id, base_card_id: BaseCard.find_by_name('king').id )
 #bishop's actions
 CardBaseAction.create!(base_action_id: build_id, base_card_id: BaseCard.find_by_name('bishop').id )
 CardBaseAction.create!(base_action_id: BaseAction.find_by_description('take_blue_taxes').id, base_card_id: BaseCard.find_by_name('bishop').id )
-CardBaseAction.create!(base_action_id: BaseAction.find_by_name('protection').id, base_card_id: BaseCard.find_by_name('bishop').id )
+CardBaseAction.create!(base_action_id: BaseAction.find_by_description('protection').id, base_card_id: BaseCard.find_by_name('bishop').id )
 #merchant's actions
 CardBaseAction.create!(base_action_id: build_id, base_card_id: BaseCard.find_by_name('merchant').id )
 CardBaseAction.create!(base_action_id: BaseAction.find_by_description('take_green_taxes').id, base_card_id: BaseCard.find_by_name('merchant').id )
-CardBaseAction.create!(base_action_id: BaseAction.find_by_name('extra_gold').id, base_card_id: BaseCard.find_by_name('merchant').id )
+CardBaseAction.create!(base_action_id: BaseAction.find_by_description('extra_gold').id, base_card_id: BaseCard.find_by_name('merchant').id )
 #architect's actions
-CardBaseAction.create!(base_action_id: BaseAction.find_by_name('extra_districts').id, base_card_id: BaseCard.find_by_name('architect').id )
-CardBaseAction.create!(base_action_id: BaseAction.find_by_name('build_districts').id, base_card_id: BaseCard.find_by_name('architect').id )
+CardBaseAction.create!(base_action_id: BaseAction.find_by_description('take_extra_cards').id, base_card_id: BaseCard.find_by_name('architect').id )
+CardBaseAction.create!(base_action_id: BaseAction.find_by_description('build_severals').id, base_card_id: BaseCard.find_by_name('architect').id )
 #warlord's actions
 CardBaseAction.create!(base_action_id: build_id, base_card_id: BaseCard.find_by_name('warlord').id )
 CardBaseAction.create!(base_action_id: BaseAction.find_by_description('take_red_taxes').id, base_card_id: BaseCard.find_by_name('warlord').id )
-CardBaseAction.create!(base_action_id: BaseAction.find_by_name('destroy').id, base_card_id: BaseCard.find_by_name('warlord').id )
+CardBaseAction.create!(base_action_id: BaseAction.find_by_description('destroy').id, base_card_id: BaseCard.find_by_name('warlord').id )
 
 
 

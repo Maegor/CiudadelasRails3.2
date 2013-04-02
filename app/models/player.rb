@@ -179,11 +179,6 @@ end
 
   end
 
-
-
-
-
-
   def get_character()
 
     character = cards.where("type='Personaje'").first

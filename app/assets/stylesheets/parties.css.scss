@@ -154,6 +154,17 @@ $card_height: 120px;
 
 }
 #jugador{
+
+  background: #ffc477; /* Old browsers */
+  background: -moz-linear-gradient(top,  #ffc477 13%, #ffa347 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(13%,#ffc477), color-stop(100%,#ffa347)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #ffc477 13%,#ffa347 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #ffc477 13%,#ffa347 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #ffc477 13%,#ffa347 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #ffc477 13%,#ffa347 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc477', endColorstr='#ffa347',GradientType=0 ); /* IE6-9 */
+
+
    float: left;
    //width: 70%;
   //height: 250px;
@@ -210,7 +221,7 @@ $card_height: 120px;
 
 .card{
   background-repeat: no-repeat ;
-
+  background-size: cover;
   width: 75px;
   height: 120px;
   display: inline-block;
@@ -264,19 +275,64 @@ $card_height: 120px;
 
 /* Characters */
 
-#assasin{background-image: url('cards/assasin.jpg')}
-#thief{background-image: url('cards/thief.jpg')}
-#magician{background-image: url('cards/magician.jpg')}
-#king{background-image: url('cards/king.jpg')}
-#bishop{background-image: url('cards/bishop.jpg')}
-#merchant{background-image: url('cards/merchant.jpg')}
-#architect{background-image: url('cards/architect.jpg')}
-#warlord{background-image: url('cards/warlord.jpg')}
+#assasin{background-image: url('cards/assasin.png')}
+#thief{background-image: url('cards/thief.png')}
+#magician{background-image: url('cards/magician.png')}
+#king{background-image: url('cards/king.png')}
+#bishop{background-image: url('cards/bishop.png')}
+#merchant{background-image: url('cards/merchant.png')}
+#architect{background-image: url('cards/architect.png')}
+#warlord{background-image: url('cards/warlord.png')}
 
 /* Actions */
 
 #coins{background-image: url('cards/coins.jpg')}
 #cardback{background-image: url('cards/cardback.jpg')}
+
+
+.action_icon{
+  background-repeat: no-repeat ;
+  background-size: cover;
+  height:60px;
+  width: 60px;
+  display: inline-block;
+
+
+}
+#build.action_icon{
+  background-image: url('action_icons/build.png');
+}
+#change_cards.action_icon{
+   background-image: url('action_icons/change.png');
+
+ }
+#take_taxes.action_icon{
+  background-image: url('action_icons/taxes.png');
+
+}
+#crown.action_icon{
+  background-image: url('action_icons/crown.png');
+
+}
+#extra_coin.action_icon{
+   background-image: url('action_icons/extra_gold.png');
+
+ }
+
+#steal.action_icon{
+  background-image: url('action_icons/steal.png');
+
+}
+
+#build #popupContainer .card{
+
+  display: inline-block;
+
+
+
+
+}
+
 
 /* Opponent style */
 
@@ -313,12 +369,30 @@ $card_height: 120px;
 /* Player style*/
 
 
-#jugador .card{
-  background-size: cover;
+#ficha_jugador{
+  width: 200px;
+  height: 180px;
+
+
+}
+
+#distritos_construidos .card, #cartas_mano .card{
+
   width: $card_width;
   height: $card_height;
 }
 
+#distritos_construidos, #cartas_mano{
+  margin-top: 30px;
+
+
+}
+
+#char .card{
+  width: 162px * 0.60;
+  height: 260px * 0.60;
+
+}
 .player_lane{
   display: inline-block;
 }
@@ -335,18 +409,27 @@ $card_height: 120px;
 
 .card_container{
 
-  height: $card_height + 25;
+  height: $card_height;
+  margin-bottom: 20px;
 
 }
 .data_user{
   height: 30px;
-  width: 200px;
+  width: 75px;
   position: relative;
-  bottom: 96px;
-  left: 90px;
+  bottom: 130px;
+  left: 100px;
+  margin-bottom: 30px;
+  text-align: center;
 
 }
 
+#icons_bar{
+
+  position: relative;
+  bottom: 210px;
+  left: 250px;
+}
 
 /* rejected */
 

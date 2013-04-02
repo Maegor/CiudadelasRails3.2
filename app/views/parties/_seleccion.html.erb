@@ -1,7 +1,7 @@
-
-<h3>Acciones</h3>
 <% if current_user.player.state == 'SELECTION_TURN'  %>
 
+    <div class="popupContainer" class="hidden">
+      <h2>Elige Personaje</h2>
 
 
       <% ongamecards = @game.cards.characters.where("state = 'ONGAME'")
@@ -14,12 +14,23 @@
       <% end
          end %>
 
+   <div id="descartes">
+     <h4>Descartados</h4>
+    <%= render :partial => 'descartes' %>
+   </div>
 
-<% elsif current_user.player.state == 'TURN'
-  #== "ACTION"
+      </div>
+    <script type="text/javascript">
+        loadPopup();
+    </script>
 
 
-action_list = current_user.player.actions
+<% elsif current_user.player.state == 'TURN'%>
+
+
+<div class="popupContainer" class="hidden">
+     <h2>Elige una acción</h2>
+<%action_list = current_user.player.actions
 
     action_list.each do |action|%>
 
@@ -28,7 +39,12 @@ action_list = current_user.player.actions
 
      <% end %>
 
+</div>
 
+
+    <script type="text/javascript">
+        loadPopup();
+    </script>
 
 <% elsif current_user.player.state == 'ACTION'
 

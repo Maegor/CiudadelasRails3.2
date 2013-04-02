@@ -1,3 +1,6 @@
+
+
+
 <div  id="ficha_jugador" class="player_lane">
   <div id="char">
 
@@ -11,12 +14,13 @@
   </div>
 
   <div class="data_user" id="points">
-    <%= t 'points' %>:
-    <%= count_points current_user.player.recount %>
+   <div class="title"><%= t 'board.points' %></div>
+   <div class="value"><%= count_points current_user.player.recount %></div>
+
   </div>
-  <div class="data_user" id="cards">
-    <%= t 'coins' %>:
-    <%= current_user.player.coins %>
+  <div class="data_user" id="golds">
+    <div class="title"><%= t 'board.coins' %></div>
+     <div class="value"> <%= current_user.player.coins %></div>
   </div>
 </div>
 
@@ -42,6 +46,9 @@
   <% end %>
 </div>
 </div>
+
+<%= render :partial => 'action_icons' %>
+
 
 <script type="text/javascript">
     num_cards = $('#distritos_construidos .card').size()

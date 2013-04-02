@@ -1,4 +1,138 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
 es:
-   coins: "Monedas"
-   points: "Puntos"
-   name: "Nombre"
+
+ characters:
+  assasin:
+   name: "Asesino"
+   description: "Puede elegir un personaje para asesinarlo. Ese personaje pierde su turno completo."
+  thief:
+   name: "Ladrón"
+   description: "Puede robar a un Personaje de su elección. No puede robar al Asesino ni al Personaje asesinado. El robo tendrá lugar al principio del turno del Personaje robado."
+  magician:
+   name: "Mago"
+   description: "Puede o bien intercambiar la mano con otro jugador o bien intercambiar cualquier número de cartas de su mano por el mismo número del mazo."
+  king:
+   name: "Rey"
+   description: "El Rey coge la carta de Corona y será quien escoja Personaje la siguiente ronda. Cada Distrito amarillo que poseas te reporta una moneda de oro."
+  bishop:
+   name: "Obispo"
+   description: "No puede ser atacado por el Condotiero. Cada Distrito azul que poseas te reporta una moneda de oro."
+  merchant:
+   name: "Mercader"
+   description: "Recibe una moneda de oro adicional al principio de su turno. Cada Distrito verde que poseas te reporta una moneda de oro."
+  architect:
+   name: "Arquitecto"
+   description: "Recibe dos cartas adicionales. Puedes construir hasta tres Distritos este turno."
+  warlord:
+   name: "Guerrero"
+   description: "Puede destruir un Distrito de su elección pagando a la banca su coste de construcción menos uno. Cada Distrito red que poseas te reporta una moneda de oro."
+
+ districts:
+  #green
+  tavern: "Taberna"
+  store: "Tienda"
+  market: "Mercado"
+  docks: "Almacén"
+  harbor: "Puerto"
+  town_hall: "Ayuntamiento"
+
+  #blue
+  temple: "Templo"
+  church: "Iglesia"
+  monastery: "Monasterio"
+  cathedral: "Catedral"
+
+  #yellow
+  domain: "Señorío"
+  castle: "Castillo"
+  palace: "Palacio"
+
+  #red
+  watchtower: "Atalaya"
+  prison: "Prisión"
+  barracks: "Cuartel"
+  fortress: "Fortaleza"
+
+  #purple
+  imperial_treasure: "Tesoro imperial"
+  haunted_city: "Ciudad encantada"
+  keep: "Torreón"
+  lighthouse: "Faro"
+  powderhouse: "Polvorín"
+  museum: "Museo"
+  poorhouse: "Hospicio"
+  bell_tower: "Campanario"
+  smithy: "Forja"
+  quarry: "Cantera"
+  map_room: "Sala de mapa"
+  fountain_wishes: "Fuente de los deseos"
+  observatory: "Observatorio"
+  laboratory: "Laboratorio"
+  factory: "Fábrica"
+  graveyard: "Cementerio"
+  library: "Biblioteca"
+  school_magic: "Escuela de magia"
+  ballroom: "Sala de baile"
+  park: "Parque"
+  hospital: "Hospital"
+  great_wall: "Gran muralla"
+  throne_hall: "Sala del trono"
+  dragon_gate: "Puerta del dragón"
+  university: "Universidad"
+
+ actions:
+  take_gold: "Take two gold from the bank."
+  take_districts: "Draw two district cards from the District Deck, choose one to put in your hand, and put the other on the bottom of the deck."
+  select_district: "Put a district in your hand"
+  kill: "Announce a character you wish to murder. The player who has the murdered character says nothing, and says nothing when the character is called to take his turn. The murdered character misses his entire turn."
+  steal: "Announce a character from whom you wish to steal. When the player who has this character is called upon and shows his character card, you take all of his gold. You may not steal from the Assassin or the character that the Assassin murdered."
+  take_yellow_taxes: "You receive one gold for each noble (yellow) district in your city."
+  take_blue_taxes: "You receive one gold for each religious (blue) district in your city."
+  take_red_taxes: "You receive one gold for each military (red) district in your city."
+  take_green_taxes: "You receive one gold for each trade (green) district in your city."
+  extra_gold: "After you take an action, you receive one extra gold."
+  build: "You may build one district card into your city. In order to do so, you must pay the cost of the district, in gold, to the bank. You may never have two identical districts in your city."
+  destroy: "At the end of your turn, you may destroy one district of your choice by paying a number of gold equal to one less than the cost of the district."
+  change_with_player: "Exchange your entire hand of cards (not the cards in your city) with the hand of another player. This applies even if you have no cards in your hand, in which case you simply take the other player’s cards."
+  change_with_maze: "Discard any number of cards from your hand to the bottom of the District Deck, then draw an equal number of cards from the top of the District Deck."
+  change: "Change your card with another player o discard any number of card from your hands"
+  crown: "You will be the first player to choose your character during the next round."
+  protection: "Your districts may not be destroyed by the Warlord."
+  take_extra_cards: "Draw two extra district cards and put both in your hand."
+  build_severals: "You may build up to three districts during your turn."
+
+ points_recount:
+  districts_points: "Puntos por distritos"
+  all_colors: "Todos los colores"
+  imperial_treasure: "Tesoro imperial"
+  haunted_city: "Ciudad encantada"
+  keep: "Torreón"
+  lighthouse: "Faro"
+  powderhouse: "Polvorín"
+  museum: "Museo"
+  poorhouse: "Hospicio"
+  bell_tower: "Campanario"
+  smithy: "Forja"
+  quarry: "Cantera"
+  map_room: "Sala de mapa"
+  fountain_wishes: "Fuente de los deseos"
+  observatory: "Observatorio"
+  laboratory: "Laboratorio"
+  factory: "Fábrica"
+  graveyard: "Cementerio"
+  library: "Biblioteca"
+  school_magic: "Escuela de magia"
+  ballroom: "Sala de baile"
+  park: "Parque"
+  hospital: "Hospital"
+  great_wall: "Gran muralla"
+  throne_hall: "Sala del trono"
+  dragon_gate: "Puerta del dragón"
+  university: "Universidad"
+
+ board:
+  coins: "Monedas"
+  points: "Puntos"
+  name: "Nombre"

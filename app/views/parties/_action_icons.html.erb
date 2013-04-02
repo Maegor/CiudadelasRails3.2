@@ -1,0 +1,15 @@
+
+<div id="icons_bar">
+<%if current_user.player.state == 'ACTION'
+
+action_list = current_user.player.actions%>
+
+
+
+<%action_list.each do |action|%>
+    <div class="action_icon" id="<%= action.base_action.partialname  %>" title="<%= t ('actions.' + action.base_action.description.to_s) %>">
+    </div>
+
+<%end
+end%>
+</div>

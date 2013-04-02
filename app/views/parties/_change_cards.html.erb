@@ -1,25 +1,14 @@
-<div id="changes">
-<table>
+  <div id="change_cards" class="hidden">
+    <div class="popupContainer">
+      <a class="closePopup" title="close popup"></a>
 
-  <tr>
-    <td>
-      Cambiar con jugador
-      <%= link_to 'Cambiar', party_action_path(@game.id, [action.id,'change_with_player']) %>
+    Cambiar con jugador
+     <%= link_to 'Cambiar', party_action_path(@game.id, [action.id,'change_with_player']) %>
 
-    </td>
 
-    <td>
-     Cambiar con mazo
+    Cambiar con mazo
     <%= link_to 'Cambiar', party_action_path(@game.id, [action.id,'change_with_maze']) %>
 
 
-    </td>
-
-
-
-  </tr>
-
-
-
-</table>
-</div>
+    </div>
+  </div>

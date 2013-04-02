@@ -1,20 +1,22 @@
 <% content_for :head do%>
 
 
-    <%= stylesheet_link_tag  'parties', 'jquery.jscrollpane' %>
-    <%= javascript_include_tag 'jquery.jscrollpane.js' %>
+    <%= stylesheet_link_tag  'parties', 'jquery.jscrollpane','popup' %>
+    <%= javascript_include_tag 'jquery.jscrollpane.js', 'popup.js' %>
 
     <script type="text/javascript">
 
-        $(document).ready(function (){
+//        $(document).ready(function (){
+//
+//            setInterval(function(){
+//
+//                $.getScript("/parties/<%#= current_user.player.party.id %>");
+//
+//            }, 3000);
+//
+//        });
 
-            setInterval(function(){
 
-                $.getScript("/parties/<%= current_user.player.party.id %>");
-
-            }, 3000);
-
-        });
 
              /*  $('.jspContainer').css('width', 520 )
             $('.jspPane').css('width', 520 )

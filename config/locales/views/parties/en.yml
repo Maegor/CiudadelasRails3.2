@@ -1,4 +1,139 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
 en:
-   coins: "Coins"
-   points: "Points"
-   name: "Name"
+
+ characters:
+  assasin:
+   name: "Assasin"
+   description: "May select a character to Assassinate. That character loses their turn."
+  thief:
+   name: "Thief"
+   description: "May select a character to steal from. At the start of their turn, the Thief takes their gold."
+  magician:
+   name: "Magician"
+   description: "May either exchange hands with another player, or swap cards in his hand for cards from the deck."
+  king:
+   name: "King"
+   description: "Receives income for yellow Districts. Also gets first choice of characters during the next turn."
+  bishop:
+   name: "Bishop"
+   description: "Receives income from blue Districts. His Buildings cannot be Destroyed by the Warlord or swapped by the Diplomat."
+  merchant:
+   name: "Merchant"
+   description: "Receives income from green Districts. Also receives one gold at the start of his turn."
+  architect:
+   name: "Architect"
+   description: "Receives 2 additional cards when he takes his 2 gold or 1 card. Can build up to 3 Districts per turn."
+  warlord:
+   name: "Warlord"
+   description: "Receives income from red Districts. At the end of his turn, he may destroy a District for the cost of that District -1 gold."
+
+ districts:
+
+  #green
+  tavern: "Tavern"
+  store: "Store"
+  market: "Market"
+  docks: "Docks"
+  harbor: "Harbor"
+  town_hall: "Town Hall"
+
+  #blue
+  temple: "Temple"
+  church: "Church"
+  monastery: "Monastery"
+  cathedral: "Cathedral"
+
+  #yellow
+  domain: "Domain"
+  castle: "Castle"
+  palace: "Palace"
+
+  #red
+  watchtower: "Watchtower"
+  prison: "Prison"
+  barracks: "Barracks"
+  fortress: "Fortress"
+
+  #purple
+  imperial_treasure: "Imperial Treasure"
+  haunted_city: "Miracle Courtyard"
+  keep: "Keep"
+  lighthouse: "Lighthouse"
+  powderhouse: "Powderhouse"
+  museum: "Museum"
+  poorhouse: "Poorhouse"
+  bell_tower: "Tower Bell"
+  smithy: "Workshop"
+  quarry: "Quarry"
+  map_room: "Map Room"
+  fountain_wishes: "Fountain of Wishes"
+  observatory: "Observatory"
+  laboratory: "Laboratory"
+  factory: "Factory"
+  graveyard: "Graveyard"
+  library: "Library"
+  school_magic: "School of Magic"
+  ballroom: "Ballroom"
+  park: "Park"
+  hospital: "Hospital"
+  great_wall: "Great Wall"
+  throne_hall: "Throne Hall"
+  dragon_gate: "Dragon gate"
+  university: "University"
+
+ actions:
+  take_gold: "Take two gold from the bank."
+  take_districts: "Draw two district cards from the District Deck, choose one to put in your hand, and put the other on the bottom of the deck."
+  select_district: "Put a district in your hand"
+  kill: "Announce a character you wish to murder. The player who has the murdered character says nothing, and says nothing when the character is called to take his turn. The murdered character misses his entire turn."
+  steal: "Announce a character from whom you wish to steal. When the player who has this character is called upon and shows his character card, you take all of his gold. You may not steal from the Assassin or the character that the Assassin murdered."
+  take_yellow_taxes: "You receive one gold for each noble (yellow) district in your city."
+  take_blue_taxes: "You receive one gold for each religious (blue) district in your city."
+  take_red_taxes: "You receive one gold for each military (red) district in your city."
+  take_green_taxes: "You receive one gold for each trade (green) district in your city."
+  take_extra_gold: "After you take an action, you receive one extra gold."
+  build: "You may build one district card into your city. In order to do so, you must pay the cost of the district, in gold, to the bank. You may never have two identical districts in your city."
+  destroy: "At the end of your turn, you may destroy one district of your choice by paying a number of gold equal to one less than the cost of the district."
+  change_with_player: "Exchange your entire hand of cards (not the cards in your city) with the hand of another player. This applies even if you have no cards in your hand, in which case you simply take the other player’s cards."
+  change_with_maze: "Discard any number of cards from your hand to the bottom of the District Deck, then draw an equal number of cards from the top of the District Deck."
+  change: "Change your card with another player o discard any number of card from your hands"
+  crown: "You will be the first player to choose your character during the next round."
+  protection: "Your districts may not be destroyed by the Warlord."
+  take_extra_cards: "Draw two extra district cards and put both in your hand."
+  build_severals: "You may build up to three districts during your turn."
+
+ points_recount:
+  districts_points: "Points by districts"
+  all_colors: "All colours"
+  imperial_treasure: "Imperial Treasure"
+  haunted_city: "Miracle Courtyard"
+  keep: "Keep"
+  lighthouse: "Lighthouse"
+  powderhouse: "Powderhouse"
+  museum: "Museum"
+  poorhouse: "Poorhouse"
+  bell_tower: "Tower Bell"
+  smithy: "Workshop"
+  quarry: "Quarry"
+  map_room: "Map Room"
+  fountain_wishes: "Fountain of Wishes"
+  observatory: "Observatory"
+  laboratory: "Laboratory"
+  factory: "Factory"
+  graveyard: "Graveyard"
+  library: "Library"
+  school_magic: "School of Magic"
+  ballroom: "Ballroom"
+  park: "Park"
+  hospital: "Hospital"
+  great_wall: "Great Wall"
+  throne_hall: "Throne Hall"
+  dragon_gate: "Dragon gate"
+  university: "University"
+
+ board:
+  coins: "Coins"
+  points: "Points"
+  name: "Name"
