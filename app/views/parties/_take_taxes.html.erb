@@ -2,6 +2,6 @@
   <div class="popupContainer">
     <a  class="closePopup" title="close popup"></a>
 
-<%= link_to (t 'actions.names.taxes'),party_action_path(@game.id, [action.id])%>
+<%= link_to (t ('actions.' + action.base_action.description.to_s)),party_action_path(@game.id, [action.id])%>
       </div>
 </div>

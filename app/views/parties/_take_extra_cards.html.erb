@@ -1,3 +1,6 @@
-
-        <%= link_to "Coger cartas extras", party_action_path(@game.id, [action.id]) %>
-
+<div id="take_extra_cards" class="hidden">
+  <div class="popupContainer">
+    <a  class="closePopup" title="close popup"></a>
+      <%= link_to "Coger cartas extras", party_action_path(@game.id, [action.id]) %>
+  </div>
+</div>

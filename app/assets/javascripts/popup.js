@@ -29,9 +29,9 @@ $('.action_icon').click(function (ev){
          console.log(currentPopup);
     if(currentPopup == ""){
         currentPopup = ev.currentTarget.id
-        $("#" + ev.currentTarget.id + ".hidden").fadeIn("slow");
-        $("#" + ev.currentTarget.id + "  .popupContainer").fadeIn("slow");
-        $("#" + ev.currentTarget.id + ".closePopup").fadeIn("slow");
+        $("#" + currentPopup + ".hidden").fadeIn("slow");
+        $("#" + currentPopup + " .popupContainer").fadeIn("slow");
+        $("#" + currentPopup + ".closePopup").fadeIn("slow");
         console.log(currentPopup);
         center(currentPopup);
 
@@ -56,13 +56,18 @@ $('.action_icon').click(function (ev){
     }
 
 
-    function center(){
-        console.log("center");
+    function center(currentPopup){
+
+
+        container =  $("#" + currentPopup + " .popupContainer");
         var windowWidth = $(document).width();
         var windowHeight = $(document).height();
-        var popupHeight = $(".popupContainer").height();
-        var popupWidth =  $(".popupContainer").width();
-        $(".popupContainer").css({
+
+        var popupHeight = container.height();
+        var popupWidth =  container.width();
+
+
+        container.css({
             "position": "absolute",
             "top": windowHeight/4-popupHeight/2,
             "left": windowWidth/2-popupWidth/2

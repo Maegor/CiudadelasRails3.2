@@ -165,7 +165,7 @@ $card_height: 120px;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffc477', endColorstr='#ffa347',GradientType=0 ); /* IE6-9 */
 
 
-   float: left;
+  // float: left;
    //width: 70%;
   //height: 250px;
 
@@ -316,12 +316,29 @@ $card_height: 120px;
 }
 #extra_coin.action_icon{
    background-image: url('action_icons/extra_gold.png');
-
  }
 
 #steal.action_icon{
   background-image: url('action_icons/steal.png');
+}
 
+#protection.action_icon{
+  background-image: url('action_icons/protection.png');
+}
+
+#kill.action_icon{
+  background-image: url('action_icons/kill.png');
+}
+
+#build_severals.action_icon{
+  background-image: url('action_icons/build.png');
+}
+
+#take_extra_cards.action_icon{
+  background-image: url('action_icons/take_extra_cards.png');
+}
+#destroy_building.action_icon{
+  background-image: url('action_icons/destroy.png');
 }
 
 #build #popupContainer .card{
@@ -428,7 +445,7 @@ $card_height: 120px;
 
   position: relative;
   bottom: 210px;
-  left: 250px;
+  //left: 250px;
 }
 
 /* rejected */

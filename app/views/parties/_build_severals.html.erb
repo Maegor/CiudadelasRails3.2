@@ -1,5 +1,7 @@
 
-
+<div id="build_severals" class="hidden">
+  <div class="popupContainer">
+    <a  class="closePopup" title="close popup"></a>
  <% district_list = current_user.player.district_to_construct  %>
 <%= form_tag form_action 'build_severals' do %>
 
@@ -20,32 +22,6 @@
          cost_hash[<%= card.id %>] = <%= card.base_card.cost %>
 
       <% end%>
-
-/* $('input[type=checkbox][name="cards[]"]').click(function(event) {
-
-    if($(event.target).is(":checked")){
-
-        coins = coins - cost_hash[event.target.value]
-    }else{
-
-        coins = coins + cost_hash[event.target.value]
-
-    }
-
-    var bol = $("input[type=checkbox][name='cards[]']:checked").length >= 3;
-
-    if (bol){
-$("input[type=checkbox][name='cards[]']").not(":checked").attr("disabled",bol);
-
-    }else{
-
-    $("input[type=checkbox][name='cards[]']").not(":checked").each(function( index) {
-
-        var bol =  (coins - cost_hash[$(this).val()] < 0)
-        $(this).attr("disabled",bol);
-    });
-    }});
-    */
 
     $('.image-checkbox-container div').on('click', function(){
         check = $(this).prev('input[type="checkbox"]')
@@ -87,3 +63,5 @@ $("input[type=checkbox][name='cards[]']").not(":checked").attr("disabled",bol);
 
 
 </script>
+   </div>
+</div>

@@ -44,4 +44,14 @@ module PartiesHelper
   end
 
 
+  def district_tooltip(district_name)
+    string = String.new
+
+    string << (t 'districts.' + district_name)
+    string << "\n"
+
+
+  end
+
+
 end

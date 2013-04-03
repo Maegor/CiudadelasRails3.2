@@ -1,49 +1,45 @@
+<div id="destroy_building" class="hidden">
+  <div class="popupContainer">
+    <a  class="closePopup" title="close popup"></a>
 
-
-<table border="1">
-  <tr><th>Destruir</th></tr>
 <% @game.players_to_destroy.each do |player| %>
 
-              <tr>
+ <div class="player_data">
 
-                <td rowspan="3">
+                  <%#= render :partial => 'character_card', :object => player.player_character %>
 
-                  <%= render :partial => 'character_card', :object => player.player_character %>
 
-                </td>
 
-                <td><%= player.name %></td>
+                <h5><%= player.name %></h5>
 
                 <% cards = current_user.player.get_destrutible_building(player)
                    cards.each do |district_card|
 
                      if district_card.state == 'ONGAME' %>
 
-                        <td rowspan="3">
+
 
      <%= link_to (render :partial => 'district_card', :object => district_card),
                  party_action_path(@game.id, [action.id, district_card.id]) %>
-                         </td>
+
 
                     <% end%>
 
                 <% end%>
 
-              </tr>
-              <tr><td>Oro: <%= player.coins %></td></tr>
-              <tr><td>Puntos: <%= count_points player.recount %></td></tr>
+
+           <!--   Oro: <%#= player.coins %>
+              Puntos: <%#= count_points player.recount %>
 
 
-              <tr>
-               <td></td>
-                <td>Coste</td>
-              <% cards.each do |card| %>
-                 <td ><%= card.base_card.cost %></td>
-                <%end%>
-                </tr>
 
+                Coste-->
+              <%# cards.each do |card| %>
+                 <%#= card.base_card.cost %>
+                <%#end%>
+
+        </div>
           <%end%>
 
-
-
-</table>
+  </div>
+</div>
