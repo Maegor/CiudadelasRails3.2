@@ -406,13 +406,16 @@ end
   def change_cards(action_array)
 
     action = action_array[1]
-    actions.create!(base_action_id: BaseAction.find_by_partialname(action).id)
+
+    method  = method(action)
+    method.call(action_array.drop(2))
+
+    #actions.create!(base_action_id: BaseAction.find_by_partialname(action).id)
 
   end
 
-  def change_with_maze(action_array)
+  def change_with_maze(cards_to_change)
 
-   cards_to_change = action_array.drop(1)
    last_position = party.last_position
    unless cards_to_change.nil?
 
@@ -432,7 +435,7 @@ end
   end
 
   def change_with_player(action_array)
-    opponent = Player.find(action_array[1])
+    opponent = Player.find(action_array[0])
 
     opponent_cards_on_hand = opponent.cards.districts.where("state = 'ONHAND'").to_a
     player_cards_on_hand = cards.districts.where("state = 'ONHAND'").to_a

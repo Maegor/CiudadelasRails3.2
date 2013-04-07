@@ -75,8 +75,5 @@ $('.action_icon').click(function (ev){
 
     }
 
-
-
-
 });
 

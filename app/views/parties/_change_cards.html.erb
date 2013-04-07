@@ -1,14 +1,51 @@
-  <div id="change_cards" class="hidden">
+<div id="change_cards" class="hidden" xmlns="http://www.w3.org/1999/html">
     <div class="popupContainer">
       <a class="closePopup" title="close popup"></a>
 
-    Cambiar con jugador
-     <%= link_to 'Cambiar', party_action_path(@game.id, [action.id,'change_with_player']) %>
+    <div id="action_button">
+      <div class="options selected"><p>Cambiar con jugador</p></div>
+      <div class="options unselected"><p>Cambiar con mazo</p></div>
+    </div>
 
-
-    Cambiar con mazo
-    <%= link_to 'Cambiar', party_action_path(@game.id, [action.id,'change_with_maze']) %>
-
+     <div class="visible">
+      <%= render :partial => 'change_with_player' %>
+     </div>
+      <div class="hidden">
+      <%= render :partial => 'change_with_maze' %>
+      </div>
 
     </div>
   </div>
+
+<script type="text/javascript">
+
+
+    $(function (){
+
+        $('.options').click(function(ev){
+            console.log("unselect");
+             var option = $('.options.unselected');
+             var no_option = $('.options.selected');
+             var hidden = $('.hidden');
+             var visible = $('.visible');
+
+            option.removeClass("unselected");
+            option.addClass("selected");
+            no_option.removeClass("selected");
+            no_option.addClass("unselected");
+
+            hidden.removeClass("hidden");
+            hidden.addClass("visible");
+            visible.removeClass("visible");
+            visible.addClass("hidden");
+
+
+
+        })
+
+
+
+    })
+
+
+</script>

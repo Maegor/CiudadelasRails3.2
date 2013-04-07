@@ -44,13 +44,21 @@ module PartiesHelper
   end
 
 
-  def district_tooltip(district_name)
+  def district_tooltip(district_card)
     string = String.new
 
-    string << (t 'districts.' + district_name)
-    string << "\n"
+    if district_card.base_card.colour == 'purple'
+        string << (t 'districts.' + district_card.base_card.name + '.name')
+        string << "\n"
+        string << (t 'districts.' + district_card.base_card.name + '.description')
 
+    else
 
+      string << (t 'districts.' + district_card.base_card.name)
+
+    end
+
+    string
   end
 
 

@@ -1,4 +1,4 @@
-<%= form_tag form_action 'change_with_maze' do %>
+<%= form_tag form_action('change_cards','change_with_maze') do %>
 
   <% current_user.player.districts_on_hand.each do |card|%>
         <span class="image-checkbox-container">

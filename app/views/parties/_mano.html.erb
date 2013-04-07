@@ -45,23 +45,33 @@
         <%= render :partial => 'district_card', :object => district_card %>
   <% end %>
 </div>
+
 </div>
 
 <%= render :partial => 'action_icons' %>
 
 
+<%if current_user.player.state == 'ACTION'%>
+
+<div id="finturno">
+  <h2><%= link_to 'finalizar turno', end_turn_path %></h2>
+</div>
+<%end%>
+
 <script type="text/javascript">
-    num_cards = $('#distritos_construidos .card').size()
-    card_width = $('#ficha_jugador .card').css('width')
-    multiplier = parseInt(card_width.substring(0, card_width.length - 2))
+
+    multiplier = 75;
+    num_cards = $('#distritos_construidos .card').size();
+   // card_width = $('#distritos_construidos .card').css('width');
+   // multiplier = parseInt(card_width.substring(0, card_width.length));
 
 
-  $('#distritos_construidos .card_container').css('width',(num_cards * multiplier) + 25)
+  $('#distritos_construidos .card_container').css('width',(num_cards * multiplier) + (num_cards * 5)) ;
 
     num_cards = $('#cartas_mano .card').size();
-    card_width = $('#ficha_jugador .card').css('width');
-    multiplier = parseInt(card_width.substring(0, card_width.length - 2))
-    $('#cartas_mano .card_container').css('width',(num_cards * multiplier) + 25);
+  //  card_width = $('#cartas_mano .card').css('width');
+   // multiplier = parseInt(card_width.substring(0, card_width.length - 2));
+    $('#cartas_mano .card_container').css('width',(num_cards * multiplier) + (num_cards * 5));
 
 
             $('#distritos_construidos, #cartas_mano').jScrollPane({

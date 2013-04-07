@@ -1,24 +1,41 @@
-<h1><%= @game.name %></h1>
 
-<table border="1">
-  <th>Nombre</th>
-  <th>Distritos</th>
-  <th>Puntos</th>
-  <th colspan="10">Cartas</th>
-  <% @game.players.each do |player| %>
-      <tr>
+<% content_for :head do%>
+
+
+    <%= stylesheet_link_tag  'parties' %>
+
+
+<%end%>
+
+<div id="resumen_content">
+  <h1><%= @game.name %></h1>
+
+  <table>
+    <th>Nombre</th>
+    <th>Distritos</th>
+    <th>Puntos</th>
+    <th colspan="10">Cartas</th>
+    <% @game.players.each do |player| %>
+        <tr>
           <td><%= User.find(player.user_id).name %></td>
           <td><%=player.districts_on_game.count%> </td>
           <td title="<%= tooltip player.recount %>"><%= count_points player.recount %></td>
 
-        <% district_list = player.districts_on_game
-           district_list.each do |card|%>
-                     <td><%= image_tag "cards/" + card.base_card.name.downcase + ".jpg",  :title => card.base_card.name  %></td>
+          <% district_list = player.districts_on_game
+             district_list.each do |card|%>
+              <td><%= image_tag "cards/" + card.base_card.name.downcase + ".jpg",  :title => card.base_card.name  %></td>
 
 
-        <% end %>
-     </tr>
- <% end  %>
-</table>
+          <% end %>
+        </tr>
+    <% end  %>
+  </table>
 
-<%= link_to 'Salir', party_leave_game_path(@game.id) %>
+  <%= link_to 'Salir', party_leave_game_path(@game.id) %>
+
+
+
+
+
+
+</div>

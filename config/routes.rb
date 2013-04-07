@@ -11,7 +11,7 @@ CiudadelsRails32::Application.routes.draw do
    match '/parties/take_coins/:party_id' => 'parties#take_coins'
    match '/parties/:party_id/select_district/:card_id' => 'parties#select_district'
    match '/parties/build_district/:card_id' => 'parties#build_district'
-   match '/parties/end_turn/id/*ids' => 'parties#end_turn', :as => :end_turn
+   match '/parties/end_turn/' => 'parties#end_turn', :as => :end_turn
    match '/parties/:party_id/cards/:card_id/murder' => 'parties#murder'
    match '/parties/:party_id/cards/:card_id/steal' => 'parties#steal'
    match '/parties/:party_id/change_with_maze' => 'parties#change_with_maze'

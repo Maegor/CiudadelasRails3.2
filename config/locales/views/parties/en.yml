@@ -57,31 +57,81 @@ en:
   fortress: "Fortress"
 
   #purple
-  imperial_treasure: "Imperial Treasure"
-  haunted_city: "Miracle Courtyard"
-  keep: "Keep"
-  lighthouse: "Lighthouse"
-  powderhouse: "Powderhouse"
-  museum: "Museum"
-  poorhouse: "Poorhouse"
-  bell_tower: "Tower Bell"
-  smithy: "Workshop"
-  quarry: "Quarry"
-  map_room: "Map Room"
-  fountain_wishes: "Fountain of Wishes"
-  observatory: "Observatory"
-  laboratory: "Laboratory"
-  factory: "Factory"
-  graveyard: "Graveyard"
-  library: "Library"
-  school_magic: "School of Magic"
-  ballroom: "Ballroom"
-  park: "Park"
-  hospital: "Hospital"
-  great_wall: "Great Wall"
-  throne_hall: "Throne Hall"
-  dragon_gate: "Dragon gate"
-  university: "University"
+  imperial_treasure:
+   name: "Imperial Treasure"
+   description: "The Imperial Treasure has a cost of 4 gold pieces, but gives you points equal to the amount of gold you have at the end of the game."
+  haunted_city:
+   name: "Miracle Courtyard"
+   description: "At the end of the game, the Miracle Courtyard counts as a colour of your choice. You cannot use this if you have built the Miracle Courtyard in the last turn of the game."
+  keep:
+   name: "Keep"
+   description: "The Keep cannot be destroyed by the Warlord."
+  lighthouse:
+   name: "Lighthouse"
+   description: "When you play the lighthouse in your city, look through the district cards deck, choose one card and place it in your hand, then reshuffle the deck."
+  powderhouse:
+   name: "Powderhouse"
+   description: "During your turn, you can destroy the powderhouse and destroy another district card of your choice in any player´s city."
+  museum:
+   name: "Museum"
+   description: "On your turn, you may place one district card from your hand, face down, under the Museum. At the end of the game, you score 1 extra victory point for each card under the Museum."
+  poorhouse:
+   name: "Poorhouse"
+   description: "If you have no gold at the end of your turn, get 1 gold from the bank."
+  bell_tower:
+   name: "Tower Bell"
+   description: "When you play the Tower Bell in your city, you may shorten the game and decide that it will end at the end of the turn in which a player builds one less district than the specified in the game. You can do this even if the Tower Bell is your last district. If the Tower bell is later destroyed by the Warlord, end conditions go back to normal."
+  smithy:
+   name: "Workshop"
+   description: "The building cost for any other purple building you build in your city is reduced by one. This doesn´t affect the price paid by the Warlord to destroy it."
+  quarry:
+   name: "Quarry"
+   description: "Allows you to build Districts named as others you\'ve already built."
+  map_room:
+   name: "Map Room"
+   description: "At the end of the game, you score 1 victory point bonus for each card in your hand."
+  fountain_wishes:
+   name: "Fountain of Wishes"
+   description: " At the end of the game, the Fountain of Wishes gives you 5 points, plus one more for every other purple District you have built."
+  observatory:
+   name: "Observatory"
+   description: "If you choose to draw cards at the begining of your turn, you may pick three cards, keep one of your choice and place the two others at the bottom the deck."
+  laboratory:
+   name: "Laboratory"
+   description: "Once per turn, you may discard a District card from your hand and get a gold piece in return."
+  factory:
+   name: "Factory"
+   description: "Once per turn, you may pay 3 gold to draw 3 cards."
+  graveyard:
+   name: "Graveyard"
+   description: " When the Warlord destroys a District, you may pay a gold piece to take the destroyed District into your hand. You cannot do this if you are the Warlord."
+  library:
+   name: "Library"
+   description: "If you choose to draw cards at the begining of your turn, you keep the two cards you have drawn."
+  school_magic:
+   name: "School of Magic"
+   description: "For the purposes of income, the School of Magic is considered to be the colour of your choice."
+  ballroom:
+   name: "Ballroom"
+   description: "When you have the crown, all other players must say \'Thanks, your Excellency\' after you call his character. If a player forgets and starts his turn without saying it, he loses his turn."
+  park:
+   name: "Park"
+   description: "If you have no card in hand at the end of your turn, draw two cards from the drawing pile."
+  hospital:
+   name: "Hospital"
+   description: "If you are assassinated, you still take two gold or draw two cards and discard one when comes your turn, but that´s all you do this turn."
+  great_wall:
+   name: "Great Wall"
+   description: "The cost to swap or destroy your Districts is increased by one."
+  throne_hall:
+   name: "Throne Hall"
+   description: "Every time the crown moves from a player to another, you receive 1 gold from the bank."
+  dragon_gate:
+   name: "Dragon gate"
+   description: "This is a sign of prestige - the kingdom has not seen a dragon in over 1000 years. It costs 6 gold to build, but it´s worth 8 points at the end of the game."
+  university:
+   name: "University"
+   description: "This is a sign of prestige - nobody ever understood what it´s for. It costs 6 gold to build, but it´s worth 8 points at the end of the game."
 
  actions:
   take_gold: "Take two gold from the bank."

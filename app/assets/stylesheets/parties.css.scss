@@ -167,7 +167,7 @@ $card_height: 120px;
 
   // float: left;
    //width: 70%;
-  //height: 250px;
+  height: 225px;
 
 }
 .player_lane{
@@ -206,7 +206,7 @@ $card_height: 120px;
 
 .image-radio-container img{
 
-  margin: 4px;
+ // margin: 4px;
 }
 .image-checkbox-container input[type="checkbox"]{
   display: none;
@@ -214,7 +214,12 @@ $card_height: 120px;
 
 .image-checkbox-container img{
   border: 0;
-  margin: 4px;
+
+}
+
+#action_button{
+  margin-bottom: 10px;
+
 }
 
 /*cards*/
@@ -344,10 +349,6 @@ $card_height: 120px;
 #build #popupContainer .card{
 
   display: inline-block;
-
-
-
-
 }
 
 
@@ -397,6 +398,7 @@ $card_height: 120px;
 
   width: $card_width;
   height: $card_height;
+  //display: inline-block;
 }
 
 #distritos_construidos, #cartas_mano{
@@ -416,11 +418,12 @@ $card_height: 120px;
 
 #distritos_construidos{
   margin-right: 150px;
-  width: ($card_width * 4) + 100 ;
+  width: (($card_width + 3) * 4)  ;
+  height: 150px;
 }
 #cartas_mano{
 
-  width: ($card_width * 4) +100 ;
+ width: (($card_width + 5) * 4) ;
 
 }
 
@@ -428,6 +431,7 @@ $card_height: 120px;
 
   height: $card_height;
   margin-bottom: 20px;
+ //display: inline-block;
 
 }
 .data_user{
@@ -444,10 +448,40 @@ $card_height: 120px;
 #icons_bar{
 
   position: relative;
-  bottom: 210px;
-  //left: 250px;
+  bottom: 218px;
+  height: 75px;
+  left: 200px;
 }
 
+
+#finturno{
+  text-align: center;
+  position: relative;
+  bottom: 75px;
+
+}
 /* rejected */
 
 
+#resumen_content{
+
+ position: relative;
+  left:  25%;
+}
+
+.options{
+  text-align: center;
+  border: #cb8d48 solid 3px;
+  width: 160px;
+  background-color: #f5b220;
+  display: inline-block;
+  margin-right: 40px;
+  margin-left: 40px;
+}
+.selected{
+  border: #cb3e23 solid 3px;
+
+  background-color: #f5b220;
+
+
+}
