@@ -5,14 +5,8 @@
 
          <div class="image-radio-container">
            <%= radio_button_tag 'opponent[]', opponent.id %>
-          <% character = opponent.player_character
-             #only displays characters of player that finished his turn
-             if character != nil  && opponent.state != "WAITING_TURN"%>
-              <%=  image_tag "cards/" + character.base_card.name + ".jpg" %>
-          <% else %>
 
-              <%= image_tag "cards/cardback.jpg" %>
-          <%end%>
+             <%= character_img opponent %>
 
 
 
@@ -30,7 +24,7 @@
 
 <script type="text/javascript">
 
-    $('.image-radio-container img').on('click', function(){
+    $('.image-radio-container div').on('click', function(){
 
 
 
@@ -40,7 +34,7 @@
         }else{
 
             $('.image-radio-container input:radio:checked').prop('checked', false).each(function(){
-                  console.log ("rrrr");
+
                 //$(this).removeAttr('checked');
                 $(this).siblings('img').each(function(){
                     $(this).css("border", "0")

@@ -23,11 +23,12 @@
     $(function (){
 
         $('.options').click(function(ev){
-            console.log("unselect");
+            console.log($(ev.currentTarget).hasClass("unselected"));
+              if ($(ev.currentTarget).hasClass("unselected")){
              var option = $('.options.unselected');
              var no_option = $('.options.selected');
-             var hidden = $('.hidden');
-             var visible = $('.visible');
+             var hidden = $('#change_cards .hidden');
+             var visible = $('#change_cards .visible');
 
             option.removeClass("unselected");
             option.addClass("selected");
@@ -38,7 +39,7 @@
             hidden.addClass("visible");
             visible.removeClass("visible");
             visible.addClass("hidden");
-
+              }
 
 
         })
