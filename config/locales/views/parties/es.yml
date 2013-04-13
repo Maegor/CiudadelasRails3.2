@@ -82,7 +82,7 @@ es:
    description: "Cuando juegas el Campanario en tu ciudad, puedes decidir acortar el juego en un Distrito. Esto funciona aunque el  Campanario sea tu último distrito. Si el Condotiero te destruye el Campanario, el juego vuelve a la normalidad."
   smithy:
    name: "Forja"
-   description: "El coste de construcción para otros Distritos Purpuras en tu ciudad es reducido en uno. Esto no afecta al precio del Condotiero para destruirlo."
+   description: "Una vez por turno, puedes pagar tres monedas de oro para robar tres cartas."
   quarry:
    name: "Cantera"
    description: "Puedes construir Distritos con el mismo nombre que otros que ya tengas en juego. No perderás las construcciones realizadas de esta forma si la Cantera es destruida."
@@ -100,7 +100,7 @@ es:
    description: "Una vez por turno, puedes descartar una carta de Distrito de tu mano y recibir una moneda de oro a cambio."
   factory:
    name: "Fábrica"
-   description: "Una vez por turno, puedes pagar tres monedas de oro para robar tres cartas."
+   description: "El coste de construcción para otros Distritos Purpuras en tu ciudad es reducido en uno. Esto no afecta al precio del Condotiero para destruirlo."
   graveyard:
    name: "Cementerio"
    description: "Cuando el Condotiero destruye un Distrito, puedes pagar una moneda de oro para cogerlo y ponerlo en tu mano. No puedes hacer esto si eres el Condotiero."
@@ -133,9 +133,9 @@ es:
    description: "La construcción de esta Maravilla - nunca nadie comprendió completamente para que puede servir una Universidad - cuesta seis monedas de oro pero proporciona ocho puntos al final del juego."
 
  actions:
-  take_gold: "Take two gold from the bank."
+  take_gold: "Coger 2 monedas del banco."
   take_districts: "Draw two district cards from the District Deck, choose one to put in your hand, and put the other on the bottom of the deck."
-  select_district: "Put a district in your hand"
+  select_district: "Poner un distrito en tu mano"
   kill: "Announce a character you wish to murder. The player who has the murdered character says nothing, and says nothing when the character is called to take his turn. The murdered character misses his entire turn."
   steal: "Announce a character from whom you wish to steal. When the player who has this character is called upon and shows his character card, you take all of his gold. You may not steal from the Assassin or the character that the Assassin murdered."
   take_yellow_taxes: "You receive one gold for each noble (yellow) district in your city."
@@ -151,11 +151,14 @@ es:
   crown: "You will be the first player to choose your character during the next round."
   protection: "Your districts may not be destroyed by the Warlord."
   take_extra_cards: "Draw two extra district cards and put both in your hand."
-  build_severals: "You may build up to three districts during your turn."
+  build_severals: "Puedes construir hasta 3 distritos en tu turno"
+  card_to_coin: "Descartar un dsitrito ha cambio de una moneda de oro"
+  coins_to_cards: "Pagar 3 monedas para conseguir 3 distritos"
 
  points_recount:
   districts_points: "Puntos por distritos"
   all_colors: "Todos los colores"
+  first_eight: "Primer jugador ocho distritos"
   imperial_treasure: "Tesoro imperial"
   haunted_city: "Ciudad encantada"
   keep: "Torreón"

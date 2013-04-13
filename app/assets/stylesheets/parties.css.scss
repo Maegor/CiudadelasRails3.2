@@ -237,7 +237,7 @@ $card_height: 120px;
 /* District */
 #tavern{ background-image: url('cards/tavern.jpg');}
 #store{ background-image: url('cards/store.jpg');}
-#market{  background-image: url('cards/store.jpg');}
+#market{  background-image: url('cards/market.jpg');}
 #harbor{background-image: url('cards/harbor.jpg')}
 #docks{background-image: url('cards/docks.jpg')}
 #town_hall{background-image: url('cards/town_hall.jpg')}
@@ -346,6 +346,16 @@ $card_height: 120px;
   background-image: url('action_icons/destroy.png');
 }
 
+
+#card_to_coin.action_icon{
+  background-image: url("action_icons/card_to_coin.png");
+}
+
+#coins_to_cards.action_icon{
+  background-image: url("action_icons/coins_to_cards.png");
+}
+
+
 #build #popupContainer .card{
 
   display: inline-block;
@@ -451,6 +461,7 @@ $card_height: 120px;
   bottom: 218px;
   height: 75px;
   left: 200px;
+  width: 400px;
 }
 
 
@@ -483,5 +494,11 @@ $card_height: 120px;
 
   background-color: #f5b220;
 
+
+}
+
+.image-checkbox-container div, .image-radio-container div{
+
+  margin: 4px;
 
 }

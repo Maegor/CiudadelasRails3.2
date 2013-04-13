@@ -7,9 +7,10 @@
  if districts.size != 0 %>
 
 
-  <%districts.each do |districit_card|%>
+  <%districts.each do |district_card|%>
 
-        <%= link_to (render :partial => 'district_card', :object => districit_card), party_action_path(@game.id, [action.id,districit_card.id]) %>
+        <%= #noinspection RubyResolve
+            link_to (render :partial => 'district_card', :object => district_card), party_action_path(@game.id, [action.id,district_card.id]) %>
 
  <%end
 

@@ -12,19 +12,22 @@
         <%#= label_tag 'cards[]', (t 'districts.' + card.base_card.name) %>
         </span>
     <% end %>
+        <div id="submit">
     <%= submit_tag  'Construir' %>
+        </div>
 
 <% end %>
 <script type="text/javascript">
-    var coins = <%= current_user.player.coins %>
-    var cost_hash = new Object();
+    var coins = <%= current_user.player.coins %>;
+    var cost_hash = {};
     <% district_list.each do |card|%>
-         cost_hash[<%= card.id %>] = <%= card.base_card.cost %>
+         cost_hash[<%= card.id %>] = <%= #noinspection RubyResolve
+card.base_card.cost %>
 
       <% end%>
 
     $('.image-checkbox-container div').on('click', function(){
-        check = $(this).prev('input[type="checkbox"]')
+       var  check = $(this).prev('input[type="checkbox"]');
 
         if(!check.attr("disabled")) {
         if(!check.prop('checked') ){
@@ -45,15 +48,15 @@
 
 
         if (bol){
-            unchecked_checks = $("input[type=checkbox][name='cards[]']").not(":checked")
+            var unchecked_checks = $("input[type=checkbox][name='cards[]']").not(":checked");
             unchecked_checks.attr("disabled",bol);
 
 
         }else{
 
-            $("input[type=checkbox][name='cards[]']").not(":checked").each(function( index, check) {
+            $("input[type=checkbox][name='cards[]']").not(":checked").each(function() {
 
-                var bol =  (coins - cost_hash[$(this).val()] < 0)
+                var bol =  (coins - cost_hash[$(this).val()] < 0);
                 $(this).attr("disabled",bol);
 
             })

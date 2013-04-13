@@ -63,8 +63,10 @@ class Player < ActiveRecord::Base
   if (action = actions.where(:id => action_array[0]).first)
 
       method  = method(action.base_action.partialname)
-      method.call(action_array)
-      action.destroy
+
+      if method.call(action_array)
+        action.destroy
+      end
 
       true
 
@@ -192,31 +194,40 @@ end
   end
 
 
+  #En esta funcion hay que tener en cuenta las cartas Factoria y Cantera
+  #Factoria reduce el coste de los edificios purpuras en uno
+  #Cantera permite costruir edificios repetidos
   def district_to_construct
+    purple_districts = districts_on_game.where("colour = 'purple'")
 
-    no_played_cards = cards.districts.where("state = 'ONHAND' AND cost <=" + coins.to_s)
-    played_cards = cards.districts.where("state = 'ONGAME'")
+    if purple_districts.exists?(["name = 'factory'"])
+      no_played_cards = cards.districts.where("state = 'ONHAND' AND colour <> 'purple' AND cost <=" + coins.to_s).to_a
+      no_played_cards.concat(cards.districts.where("state = 'ONHAND' AND colour = 'purple' AND cost <=" + (coins + 1).to_s).to_a)
 
+    else
 
-    district_list = Array.new(no_played_cards)
-
-    no_played_cards.each do |card_no_played|
-
-      played_cards.each do |card_played|
-
-
-               if card_no_played.base_card.name == card_played.base_card.name
-
-                 district_list.delete(card_no_played)
-               end
-
-      end
-
+      no_played_cards = cards.districts.where("state = 'ONHAND' AND cost <=" + coins.to_s).to_a
     end
 
-      district_list.uniq{|district| district.base_card.name }
+    if purple_districts.exists?(["name = 'quarry'"])
+      district_to_build = no_played_cards.to_a
+    else
+      played_cards = cards.districts.where("state = 'ONGAME'")
+      district_list = Array.new(no_played_cards)
+      no_played_cards.each do |card_no_played|
+        played_cards.each do |card_played|
+          if card_no_played.base_card.name == card_played.base_card.name
+            district_list.delete(card_no_played)
+          end
 
-end
+        end
+
+      end
+      district_to_build = district_list
+    end
+
+    district_to_build.uniq{|district| district.base_card.name }
+  end
 
 
   def add_coins(coins)
@@ -226,11 +237,25 @@ end
   end
 
 
+  #Carga las acciones que puede realizar el jugador durante su turno
   def get_actions ()
 
+    #acciones del personaje que esta jugando
     player_character.base_card.base_actions.each do |action|
       actions.create!(base_action_id: action.id)
     end
+
+    #acciones por distritos morados
+
+    purple_districts = districts_on_game.where("colour = 'purple'")
+    purple_districts.each do |district|
+      district.base_card.base_actions.each do |action|
+        actions.create!(base_action_id: action.id)
+      end
+    end
+
+
+
 
   end
 
@@ -277,35 +302,22 @@ end
 
   def special_status
 
-        if stolen == 'TRUE'
+   if stolen == 'TRUE'
 
-          thief_id = party.cards.characters.where("name = 'thief'").first.player_id
-          thief = Player.find(thief_id)
+    thief_id = party.cards.characters.where("name = 'thief'").first.player_id
+    thief = Player.find(thief_id)
+    thief.update_attribute(:coins, thief.coins + self.coins)
+    update_attributes(:coins => 0, :stolen => 'FALSE')
 
-
-          thief.update_attribute(:coins, thief.coins + self.coins)
-          update_attributes(:coins => 0, :stolen => 'FALSE')
-
-        end
-
-
-
+   end
   end
-
-
-
 
 
 ### Actions
  private
   def build (action_array)
 
-    card = Card.find(action_array[1])
-    card.update_attribute(:state, 'ONGAME')
-
-    update_attribute(:coins , coins - card.base_card.cost )
-
-
+   build_district(action_array)
 
   end
 
@@ -340,18 +352,21 @@ end
 
   end
 
-  def steal(action_array)
+ def steal(action_array)
 
-    card = card = Card.find(action_array[1])
-    card.update_attribute(:stolen, 'TRUE')
+  exist = true
+  card = Card.characters.where( "id = ? AND name <> 'assasin' AND state <> 'BACKS'", action_array[1])
 
-    if card.player_id
-
-       Player.update(card.player_id,:stolen => 'TRUE')
-
-    end
-
+  if (card && card.party_id == party.id )
+   card.update_attribute(:stolen, 'TRUE')
+   if card.player_id
+    Player.update(card.player_id,:stolen => 'TRUE')
+   end
+  else
+   exist = false
   end
+   exist
+ end
 
 
   def take_taxes(action_array)
@@ -381,26 +396,45 @@ end
 
   def kill(action_array)
 
-    card = card = Card.find(action_array[1])
-    card.update_attribute(:murdered, 'TRUE')
+    exist = true
+    card = Card.find_by_id(action_array[1])
 
-    if card.player_id
-
+    if (card && card.party_id == self.party_id)
+     card.update_attribute(:murdered, 'TRUE')
+     if card.player_id
       Player.update(card.player_id,:murdered => 'TRUE')
-
-
+     end
+    else
+       exist = false
     end
-
+    exist
   end
 
+
+
+  #destruye el distrito seleccionado
+  #validaciones:
+  # - estado de la carta es correcto
+  # - cartas que modifican el comportamiento: obispo y great wall
+  # - coste es menor o igual que las monedas disponibles
   def destroy_building (action_array)
 
-    card = card = Card.find(action_array[1])
-    card.update_attributes(:state => 'INDECK', :position => card.party.last_position, :player_id => nil)
+   exist = false
+   #card = Card.districts.where("name <> 'keep' AND cards.id = ? AND state = 'ONGAME'", action_array[1]).first
+   card =  Card.districts.find(:first, :conditions =>  ["name <> 'keep' AND cards.id = ? AND state = 'ONGAME'", action_array[1]])
+   current_coins = self.coins
 
-    update_attribute(:coins, coins - (card.base_card.cost - 1))
-
-
+   if (card && card.party_id == self.party_id)
+    if (card.player.player_character.base_card.name != 'bishop')
+     current_coins -= card.base_card.cost - 1 +(1 * (card.player.districts_on_game.exists?(["name = 'great_wall'"])? 1:0 ))
+     if current_coins >= 0
+      Card.update(card.id,:state => 'INDECK', :position => card.party.last_position, :player_id => nil)
+      update_attribute(:coins, current_coins)
+      exist = true
+     end
+    end
+   end
+   exist
   end
 
   def change_cards(action_array)
@@ -462,20 +496,76 @@ end
   end
 
   def build_severals(action_array)
+    build_district(action_array)
+  end
+
+  def build_district(action_array)
 
     districts_to_build = action_array.drop(1)
-    districts_to_build.each do |district|
-       card = Card.find(district)
-       card.update_attribute(:state, 'ONGAME')
-       update_attribute(:coins , coins - card.base_card.cost )
+    costs = 0
+    current_coins = self.coins
+    cards = Array.new(districts_to_build.length)
+    exist = true
 
+    able_to_build = district_to_construct
+
+    purple_districts = districts_on_game.where("colour = 'purple'")
+    factory =  purple_districts.exists?(["name = 'factory'"])
+
+   index = 0
+   while (exist && index <= cards.length - 1) do
+     district_id = districts_to_build[index]
+     card = Card.find(district_id)
+     if able_to_build.include?(card) && ( current_coins >= 0)
+
+        current_coins  -= card.base_card.cost + (1 * ((factory && card.base_card.colour == 'purple')? 1:0 ))
+        cards[index] = card
+
+     else
+        exist = false
+     end
+     index += 1
+   end
+
+
+    if  exist && (current_coins >= 0)
+      cards.each do |card|
+        card.update_attribute(:state, 'ONGAME')
+      end
+        update_attribute(:coins , current_coins)
     end
+
+
+  exist
   end
+
 
   def destroy_other_actions(action_id)
 
     other_action = self.actions.where("id <> " + action_id).first
     other_action.destroy
+
+  end
+
+
+  def card_to_coin(action_array)
+    #discard, the selected card return to the deck at last position
+     Card.update(action_array[1], :state => 'INDECK', :position => party.last_position, :player_id => nil)
+     update_attribute(:coins, coins + 1)
+
+  end
+
+  def coins_to_cards(action_array)
+
+
+    card_list = party.cards.districts.where("player_id is NULL").order('position').limit(3)
+    card_list.each do |card|
+      Card.update(card.id, :player_id => id, :state => 'ONHAND')
+    end
+    update_attribute(:coins, coins - 3)
+
+
+
 
   end
 

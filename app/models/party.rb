@@ -1,3 +1,4 @@
+#noinspection ALL
 class Party < ActiveRecord::Base
 
 
@@ -207,6 +208,7 @@ class Party < ActiveRecord::Base
 
  #TODO resolver la recurrencia
 
+ #noinspection RubyResolve
   def tick
     if self.state == 'SELECTION_CHAR_STARTED'
 
@@ -221,7 +223,7 @@ class Party < ActiveRecord::Base
               player.save
           end
 
-       player_list = players.order("turn ASC")
+       player_list = players.order('turn ASC')
 
           player_list.each_with_index do |player,index|
 

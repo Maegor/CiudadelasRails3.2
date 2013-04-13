@@ -83,7 +83,7 @@ en:
    description: "When you play the Tower Bell in your city, you may shorten the game and decide that it will end at the end of the turn in which a player builds one less district than the specified in the game. You can do this even if the Tower Bell is your last district. If the Tower bell is later destroyed by the Warlord, end conditions go back to normal."
   smithy:
    name: "Workshop"
-   description: "The building cost for any other purple building you build in your city is reduced by one. This doesn´t affect the price paid by the Warlord to destroy it."
+   description: "Once per turn, you may pay 3 gold to draw 3 cards."
   quarry:
    name: "Quarry"
    description: "Allows you to build Districts named as others you\'ve already built."
@@ -101,7 +101,7 @@ en:
    description: "Once per turn, you may discard a District card from your hand and get a gold piece in return."
   factory:
    name: "Factory"
-   description: "Once per turn, you may pay 3 gold to draw 3 cards."
+   description:  "The building cost for any other purple building you build in your city is reduced by one. This doesn´t affect the price paid by the Warlord to destroy it."
   graveyard:
    name: "Graveyard"
    description: " When the Warlord destroys a District, you may pay a gold piece to take the destroyed District into your hand. You cannot do this if you are the Warlord."
@@ -153,10 +153,13 @@ en:
   protection: "Your districts may not be destroyed by the Warlord."
   take_extra_cards: "Draw two extra district cards and put both in your hand."
   build_severals: "You may build up to three districts during your turn."
+  card_to_coin: "Discard a District card from your hand and get a gold piece in return."
+  coins_to_cards: "Pay 3 gold to draw 3 cards."
 
  points_recount:
   districts_points: "Points by districts"
   all_colors: "All colours"
+  first_eight: "First player with eight districts"
   imperial_treasure: "Imperial Treasure"
   haunted_city: "Miracle Courtyard"
   keep: "Keep"
@@ -165,7 +168,6 @@ en:
   museum: "Museum"
   poorhouse: "Poorhouse"
   bell_tower: "Tower Bell"
-  smithy: "Workshop"
   quarry: "Quarry"
   map_room: "Map Room"
   fountain_wishes: "Fountain of Wishes"
