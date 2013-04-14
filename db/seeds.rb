@@ -48,7 +48,7 @@ Character.create!(name: 'merchant', turn: 6,quantity: 1,  type: 'Character')
 Character.create!(name: 'architect', turn: 7,quantity: 1,  type: 'Character')
 Character.create!(name: 'warlord', turn: 8,quantity: 1,  type: 'Character')
 #green districts
-=begin
+
 District.create!(name:'tavern', colour:'green', cost:1, points:1, quantity:5, type:'District')
 
 District.create!(name:'market', colour:'green', cost:2, points:2, quantity:4, type:'District')
@@ -56,16 +56,16 @@ District.create!(name:'store', colour:'green', cost:2, points:2, quantity:5, typ
 District.create!(name:'docks', colour:'green', cost:3, points:3, quantity:3, type:'District')
 District.create!(name:'harbor', colour:'green', cost:4, points:4, quantity:3, type:'District')
 District.create!(name:'town_hall', colour:'green', cost:5, points:5, quantity:2, type:'District')
-=end
 
-=begin
+
+
 #blue districts
 District.create!(name:'temple', colour:'blue', cost:1, points:1, quantity:3, type:'District')
 
 District.create!(name:'church', colour:'blue', cost:2, points:2, quantity:3, type:'District')
 District.create!(name:'monastery', colour:'blue', cost:3, points:3, quantity:4, type:'District')
 District.create!(name:'cathedral', colour:'blue', cost:4, points:4, quantity:2, type:'District')
-=end
+
 
 #yellow districts
 District.create!(name:'domain', colour:'yellow', cost:3, points:3, quantity:5, type:'District')
@@ -95,7 +95,7 @@ District.create!(name:'quarry', colour:'purple', cost:5, points:5, quantity:1, t
 District.create!(name:'factory', colour:'purple', cost:5, points:5, quantity:1, type:'District')
 District.create!(name:'laboratory', colour:'purple', cost:5, points:5, quantity:1, type:'District')
 District.create!(name:'smithy', colour:'purple', cost:5, points:5, quantity:1, type:'District')
-
+District.create!(name:'school_magic', colour:'purple', cost:6, points:6, quantity:1, type:'District')
 
 
 ### Init card_base_action

@@ -263,25 +263,32 @@ end
 
  def calculate_taxes
 
-    character = self.cards.where(:type=> "Personaje").first
+   character_name = player_character.base_card.name
 
-    color_districts = self.cards.where("type = 'Distrito' AND color = ? AND state='enJuego'", character.color)
-
-   if !color_districts.nil?
-
-     add_coins(color_districts.size)
-
+   case character_name
+     when 'merchant'
+       colour = 'green'
+     when 'king'
+       colour = 'yellow'
+     when 'warlord'
+       colour = 'red'
+     else
+       colour = 'blue'
    end
+
+
+
+   purple_district = districts_on_game.where("colour = 'purple'")
+   colour_recount = cards.districts.where("state = 'ONGAME' AND colour = ?", colour).count + (purple_district.exists?(["name = 'school_magic'"])? 1:0)
+
+
 
  end
 
 def player_actions
 
-
   actions.create(:base_action_id => BaseAction.find_by_partialname("take_gold").id)
   actions.create(:base_action_id => BaseAction.find_by_partialname("take_districts").id)
-
-
 
 end
 
@@ -371,21 +378,9 @@ end
 
   def take_taxes(action_array)
 
-    character_name = player_character.base_card.name
 
-    case character_name
-      when 'merchant'
-        colour = 'green'
-      when 'king'
-        colour = 'yellow'
-      when 'warlord'
-        colour = 'red'
-      else
-        colour = 'blue'
-    end
 
-    colour_recount = cards.districts.where("state = 'ONGAME' AND colour = ?", colour).count
-    update_attribute(:coins, coins + colour_recount)
+    update_attribute(:coins, coins + calculate_taxes)
   end
 
   def extra_coin(action_array)

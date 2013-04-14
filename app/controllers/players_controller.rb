@@ -1,27 +1,6 @@
 class PlayersController < ApplicationController
 
 
-  def take_taxes
-
-    player = Player.find(params[:player_id])
-    player.calculate_taxes
-
-=begin
-    round = player.party.current_round
-    action = player.actions.where(:name => "IMPUESTOS", :round => round).first
-    action.quantity -= 1
-    action.save
-=end
-
-    player.update_actions(["IMPUESTOS"])
-
-    redirect_to party_path(player.party.id)
-
-
-
-  end
-
-
   def take_extra_gold
 
     player = Player.find(params[:player_id])

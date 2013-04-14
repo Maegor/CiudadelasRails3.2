@@ -1,7 +1,27 @@
 <div id="take_taxes" class="hidden">
   <div class="popupContainer">
     <a  class="closePopup" title="close popup"></a>
+    <% taxes = current_user.player.calculate_taxes %>
 
-<%= link_to (t ('actions.' + action.base_action.description.to_s)),party_action_path(@game.id, [action.id])%>
+      <% if taxes > 0 %>
+        <div id="taxes_recount">
+          <p>Recibirás</p>
+              <%= taxes %>
+          <p>monedas</p>
+          <%= link_to 'Recibir', party_action_path(@game.id, [action.id])%>
+        </div>
+
+
+      <% else %>
+
+             <p>No hay impuesto para recaudar</p>
+
+       <%end%>
+
+
+
+
+
+
       </div>
 </div>
