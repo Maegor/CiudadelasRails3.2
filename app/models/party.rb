@@ -64,43 +64,37 @@ class Party < ActiveRecord::Base
 
     king_id = cards.characters.where("name = 'king'").first.player_id
     previous_king = players.where(:crown => 'TRUE').first
+    player_list = players.order("position ASC")
+    position_array = Array.new(self.numplayer){|i| i}
 
-    logger.debug king_id.to_s
-    logger.debug previous_king.to_s
-
+     #Si el rey ha cambiado de mano rotamos la posiciones para que el rey
+     #nuevo este en primera posicion
+     #throne_room: cuando el rey cambia de manos el jugador que posee esta carta
+     #recibe 1 oro
     if king_id and  king_id != previous_king.id
 
-      king = Player.find(king_id)
+      throne_hall = cards.districts.find(:first, :conditions => ["name = 'throne_hall'"])
 
-      player_list = players.order("position ASC")
-      position_array = Array.new(self.numplayer){|i| i}
-      position_array = position_array.rotate(-1 * king.position)
+      player_id = throne_hall.player_id
 
-      player_list.each_with_index do |player, index|
-
-        player.update_attributes(:position => position_array[index], :turn => position_array[index], :state => 'WAITING_SELECTION', :stolen => 'FALSE', :murdered => 'FALSE')
+      unless player_id.nil?
+        player = Player.find(player_id)
+        player.update_attribute(:coins, player.coins + 1)
       end
 
-        king.crown = 'TRUE'
-        king.save
-        previous_king.crown = 'FALSE'
-        previous_king.save
 
-  else
+     king = Player.find(king_id)
 
-      player_list = players.order('position ASC')
-      position_array = Array.new(self.numplayer){|i| i}
+     position_array = position_array.rotate(-1 * king.position)
 
+     king.update_attribute(:crown, 'TRUE')
+     previous_king.update_attribute(:crown, 'FALSE')
 
-      player_list.each_with_index do |player, index|
+    end
 
-        player.position = position_array[index]
-        player.turn = position_array[index]
-        player.state = 'WAITING_SELECTION'
-        player.save
-
-      end
-   end
+    player_list.each_with_index do |player, index|
+      player.update_attributes(:position => position_array[index], :turn => position_array[index], :state => 'WAITING_SELECTION', :stolen => 'FALSE', :murdered => 'FALSE')
+    end
  end
 
 
@@ -408,12 +402,10 @@ class Party < ActiveRecord::Base
 
   def card_to_select(player)
 
-    limit = player.districts_on_game.exists?(["name = 'library'"]) ? 3 : 2
+    limit = player.districts_on_game.exists?(["name = 'observatory'"]) ? 3 : 2
     card_list = cards.districts.where("player_id is NULL").order('position').limit(limit)
     card_list.each do |card|
-
       Card.update(card.id, :state => 'SELECTABLE')
-
     end
     card_list
 
@@ -490,6 +482,16 @@ end
       end
     target_players
   end
+
+  def cards_in_deck
+
+    district_in_deck = cards.districts.find(:all, :conditions => ["state = 'INDECK'"])
+
+     district_in_deck.uniq{|card| card.base_card.name}
+
+  end
+
+
 
 end
 

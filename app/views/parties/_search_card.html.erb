@@ -1,0 +1,28 @@
+<div id="search_card" class="hidden">
+  <div class="popupContainer">
+    <a  class="closePopup" title="close popup"></a>
+
+    <% @game.cards_in_deck.each do |district_card| %>
+
+
+              <%= link_to (render :partial => 'district_card', :object => district_card),
+                          party_action_path(@game.id, [action.id, district_card.id]) %>
+
+    <% end%>
+
+
+    <!--   Oro: <%#= player.coins %>
+              Puntos: <%#= count_points player.recount %>
+
+
+
+                Coste-->
+    <%# cards.each do |card| %>
+    <%#= card.base_card.cost %>
+    <%#end%>
+
+    </div>
+
+
+  </div>
+</div>

@@ -47,7 +47,7 @@
 
 
                   var bol = $("input[type=checkbox][name='cards[]']:checked").length >= max_selection;
-                      unchecked_checks = $("input[type=checkbox][name='cards[]']").not(":checked");
+                      var unchecked_checks = $("input[type=checkbox][name='cards[]']").not(":checked");
                       unchecked_checks.attr("disabled",bol);
               }
           });

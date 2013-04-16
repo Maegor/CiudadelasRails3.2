@@ -35,6 +35,9 @@ BaseAction.create!(description: 'build_severals', partialname: 'build_severals')
 #Actions of purple cards.
 BaseAction.create!(description: 'card_to_coin', partialname: 'card_to_coin')
 BaseAction.create!(description: 'coins_to_cards', partialname: 'coins_to_cards')
+BaseAction.create!(description: 'self_destruction', partialname: 'self_destruction')
+BaseAction.create!(description: 'search_card', partialname: 'search_card')
+
 
 ### Init base_cards
 
@@ -50,15 +53,13 @@ Character.create!(name: 'warlord', turn: 8,quantity: 1,  type: 'Character')
 #green districts
 
 District.create!(name:'tavern', colour:'green', cost:1, points:1, quantity:5, type:'District')
-
 District.create!(name:'market', colour:'green', cost:2, points:2, quantity:4, type:'District')
 District.create!(name:'store', colour:'green', cost:2, points:2, quantity:5, type:'District')
 District.create!(name:'docks', colour:'green', cost:3, points:3, quantity:3, type:'District')
 District.create!(name:'harbor', colour:'green', cost:4, points:4, quantity:3, type:'District')
 District.create!(name:'town_hall', colour:'green', cost:5, points:5, quantity:2, type:'District')
 
-
-
+=begin
 #blue districts
 District.create!(name:'temple', colour:'blue', cost:1, points:1, quantity:3, type:'District')
 
@@ -79,7 +80,7 @@ District.create!(name:'watchtower', colour:'red', cost:1, points:1, quantity:3, 
 District.create!(name:'prison', colour:'red', cost:2, points:2, quantity:3, type:'District')
 District.create!(name:'barracks', colour:'red', cost:3, points:3, quantity:3, type:'District')
 District.create!(name:'fortress', colour:'red', cost:5, points:5, quantity:3, type:'District')
-
+=end
 #purple
 District.create!(name:'imperial_treasure', colour:'purple', cost:4, points:4, quantity:1, type:'District')
 District.create!(name:'map_room', colour:'purple', cost:5, points:5, quantity:1, type:'District')
@@ -96,6 +97,10 @@ District.create!(name:'factory', colour:'purple', cost:5, points:5, quantity:1, 
 District.create!(name:'laboratory', colour:'purple', cost:5, points:5, quantity:1, type:'District')
 District.create!(name:'smithy', colour:'purple', cost:5, points:5, quantity:1, type:'District')
 District.create!(name:'school_magic', colour:'purple', cost:6, points:6, quantity:1, type:'District')
+District.create!(name:'throne_hall', colour:'purple', cost:6, points:6, quantity:1, type:'District')
+District.create!(name:'powderhouse', colour:'purple', cost:3, points:3, quantity:1, type:'District')
+District.create!(name:'lighthouse', colour:'purple', cost:3, points:3, quantity:1, type:'District')
+District.create!(name:'observatory', colour:'purple', cost:5, points:5, quantity:1, type:'District')
 
 
 ### Init card_base_action
@@ -132,11 +137,14 @@ CardBaseAction.create!(base_action_id: BaseAction.find_by_description('destroy')
 
 #####  Purple cards
 
-
 #Laboratory
-CardBaseAction.create!(base_action_id: BaseAction.find_by_description('card_to_coin').id, base_card_id: BaseCard.find_by_name('laboratory').id )
+CardBaseAction.create!(base_action_id: BaseAction.find_by_description('card_to_coin').id, base_card_id: BaseCard.find_by_name('laboratory').id)
 #smithy
-CardBaseAction.create!(base_action_id: BaseAction.find_by_description('coins_to_cards').id, base_card_id: BaseCard.find_by_name('smithy').id )
+CardBaseAction.create!(base_action_id: BaseAction.find_by_description('coins_to_cards').id, base_card_id: BaseCard.find_by_name('smithy').id)
+#powderhouse
+CardBaseAction.create!(base_action_id: BaseAction.find_by_description('self_destruction').id, base_card_id: BaseCard.find_by_name('powderhouse').id)
+#lighthouse
+CardBaseAction.create!(base_action_id: BaseAction.find_by_description('search_card').id, base_card_id: BaseCard.find_by_name('lighthouse').id)
 
 
 

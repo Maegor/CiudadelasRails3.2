@@ -247,7 +247,7 @@ end
 
     #acciones por distritos morados
 
-    purple_districts = districts_on_game.where("colour = 'purple'")
+    purple_districts = districts_on_game.where("colour = 'purple' AND name <> 'lighthouse'")
     purple_districts.each do |district|
       district.base_card.base_actions.each do |action|
         actions.create!(base_action_id: action.id)
@@ -260,7 +260,8 @@ end
   end
 
 
-
+#Calcula los impuestos teniendo en cuenta el personaje
+# y  si tiene la carta school_magic
  def calculate_taxes
 
    character_name = player_character.base_card.name
@@ -275,14 +276,8 @@ end
      else
        colour = 'blue'
    end
-
-
-
    purple_district = districts_on_game.where("colour = 'purple'")
    colour_recount = cards.districts.where("state = 'ONGAME' AND colour = ?", colour).count + (purple_district.exists?(["name = 'school_magic'"])? 1:0)
-
-
-
  end
 
 def player_actions
@@ -362,10 +357,10 @@ end
  def steal(action_array)
 
   exist = true
-  card = Card.characters.where( "id = ? AND name <> 'assasin' AND state <> 'BACKS'", action_array[1])
+  card = Card.characters.find(:first,:conditions => ["cards.id = ? AND name <> 'assasin' AND state <> 'BACKS'", action_array[1]])
 
   if (card && card.party_id == party.id )
-   card.update_attribute(:stolen, 'TRUE')
+    Card.update(card.id, :stolen => 'TRUE')
    if card.player_id
     Player.update(card.player_id,:stolen => 'TRUE')
    end
@@ -526,6 +521,20 @@ end
     if  exist && (current_coins >= 0)
       cards.each do |card|
         card.update_attribute(:state, 'ONGAME')
+
+
+        card_name = card.base_card.name
+
+        case card_name
+          when 'lighthouse'
+            action = BaseAction.find_by_description('search_card')
+            actions.create!(base_action_id: action.id)
+          when 'powderhouse'
+            action = BaseAction.find_by_description('self_destruction')
+            actions.create!(base_action_id: action.id)
+        end
+
+
       end
         update_attribute(:coins , current_coins)
     end
@@ -559,9 +568,37 @@ end
     end
     update_attribute(:coins, coins - 3)
 
+  end
 
 
+  def self_destruction(action_array)
+    exist = false
+    card  = Card.districts.find(:first, :conditions => ["cards.id = ? AND state = 'ONGAME' AND name <> 'powderhouse'", action_array[1]], :readonly => false)
 
+    if card && card.party_id == party_id
+
+      #actualizamos el target
+      position = party.last_position
+      card.update_attributes(:state => 'INDECK', :player_id => nil, :position => position)
+      #actualizamos el powderhouse
+      powderhouse = cards.districts.find(:first, :conditions => ["name = 'powderhouse'"], :readonly => false)
+      powderhouse.update_attributes(:state => 'INDECK', :player_id => nil, :position => position + 1)
+      exist = true
+    end
+    exist
+  end
+
+  def search_card(action_array)
+
+    exist = false
+    card  = Card.districts.find(:first, :conditions => ["cards.id = ? AND state = 'INDECK'", action_array[1]], :readonly => false)
+
+    if card
+
+       card.update_attributes(:state => 'ONHAND', :player_id => id)
+       exist = true
+    end
+    exist
   end
 
 

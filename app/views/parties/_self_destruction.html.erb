@@ -1,0 +1,33 @@
+<div id="self_destruction" class="hidden">
+  <div class="popupContainer">
+    <a  class="closePopup" title="close popup"></a>
+
+    <% @game.players.each do |player| %>
+
+        <div class="player_data">
+
+          <h5><%= player.name %></h5>
+
+          <% player.districts_on_game.where("name <> 'powderhouse'").each do |district_card| %>
+
+              <%= link_to (render :partial => 'district_card', :object => district_card),
+                              party_action_path(@game.id, [action.id, district_card.id]) %>
+              <% end%>
+          <% end%>
+
+
+          <!--   Oro: <%#= player.coins %>
+              Puntos: <%#= count_points player.recount %>
+
+
+
+                Coste-->
+          <%# cards.each do |card| %>
+          <%#= card.base_card.cost %>
+          <%#end%>
+
+        </div>
+
+
+  </div>
+</div>

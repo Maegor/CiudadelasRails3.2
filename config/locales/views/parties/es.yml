@@ -154,6 +154,8 @@ es:
   build_severals: "Puedes construir hasta 3 distritos en tu turno"
   card_to_coin: "Descartar un dsitrito ha cambio de una moneda de oro"
   coins_to_cards: "Pagar 3 monedas para conseguir 3 distritos"
+  search_card: "Search a card in the deck and put it on your hands"
+  self_destruction: "Destruye el Polvorín para destruir otro edificio"
 
  points_recount:
   districts_points: "Puntos por distritos"
