@@ -19,11 +19,16 @@ class PartiesController < ApplicationController
     respond_to do |format|
 
       format.html{
+
         if @game.state == 'FINISHED'
+
           redirect_to (party_resumen_path(@game.id))
+        else
+          render :layout=> 'game_table'
         end
+
       }
-      format.js
+      format.js { render :layout=> 'game_table'}
 
     end
 
@@ -54,7 +59,7 @@ class PartiesController < ApplicationController
  def resumen
 
    @game = Party.find(params[:party_id])
-
+   render :layout=> 'game_table'
  end
 
   def create

@@ -131,23 +131,28 @@ $card_height: 120px;
 
 /*TABLERO*/
 
-
-#tablero{
-
-
-
-}
-
 #tablero {
 
-
+  //width: 1366px;
   border: 1px solid;
   background: #f6d6a5;
+  padding-left: 5px;
+
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
 }
 
 #top_tablero{
   margin-top: 150px;
   //height: 250px;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+
+  width: 100%;
 
 }
 #jugador{
@@ -164,6 +169,7 @@ $card_height: 120px;
 
   // float: left;
    //width: 70%;
+  padding-left: 5px;
   height: 225px;
 
 }
@@ -288,7 +294,53 @@ $card_height: 120px;
 
 /* Actions */
 
-#coins{background-image: url('cards/coins.jpg')}
+#coins{
+  background-image: url('cards/coins.png');
+  background-repeat: no-repeat ;
+  width: 133px;
+  height: 144px;
+}
+
+
+#cardsback{
+  background-image: url('cards/bocabajo.png');
+  background-repeat: no-repeat ;
+  width: 133px;
+  height: 144px;
+}
+
+#acciones{
+  a{
+  margin-top: 10%;
+  margin-left: 10%;
+  margin-right: 10%;
+   }
+  form{
+    margin-top: 10%;
+  }
+
+  input[type=submit]{
+    border: none;
+    width: 160px;
+    height: 45px;
+    background:  url('nohover.png') no-repeat;
+    text-align: center;
+    padding-bottom: 8px;
+  }
+
+  input[type=submit]:hover{
+    border: none;
+    background:  url('hover.png') no-repeat;
+    padding-bottom: 6px;
+  }
+
+
+}
+
+
+
+
+
 #cardback{background-image: url('cards/cardback.jpg')}
 
 
@@ -344,6 +396,7 @@ $card_height: 120px;
 }
 
 
+
 #card_to_coin.action_icon{
   background-image: url("action_icons/card_to_coin.png");
 }
@@ -359,14 +412,14 @@ $card_height: 120px;
 #search_card.action_icon{
   background-image: url("action_icons/search_card.png");
 }
-
-
-#build #popupContainer .card{
-
-  display: inline-block;
+#store_card.action_icon{
+  background-image: url("action_icons/store_card.png");
 }
 
 
+#build #popupContainer .card{
+  display: inline-block;
+}
 /* Opponent style */
 
 #opponent_iu{
@@ -477,7 +530,7 @@ $card_height: 120px;
 #finturno{
   text-align: center;
   position: relative;
-  bottom: 75px;
+  bottom: 100px;
 
 }
 /* rejected */
@@ -498,9 +551,8 @@ $card_height: 120px;
   margin-right: 40px;
   margin-left: 40px;
 }
-.selected{
+#change_cards .selected{
   border: #cb3e23 solid 3px;
-
   background-color: #f5b220;
 
 
@@ -540,3 +592,4 @@ $card_height: 120px;
   color: #cecece;
 
 }
+

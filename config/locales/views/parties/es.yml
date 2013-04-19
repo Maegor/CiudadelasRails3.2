@@ -156,6 +156,7 @@ es:
   coins_to_cards: "Pagar 3 monedas para conseguir 3 distritos"
   search_card: "Search a card in the deck and put it on your hands"
   self_destruction: "Destruye el Polvorín para destruir otro edificio"
+  store_card: "Poner una carta debajo del museo"
 
  points_recount:
   districts_points: "Puntos por distritos"

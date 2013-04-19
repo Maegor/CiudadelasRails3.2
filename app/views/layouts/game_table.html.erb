@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html>
 <head>
   <title>PFC</title>
 
-  <%= stylesheet_link_tag 'application' %>
+  <%#= stylesheet_link_tag 'application' %>
   <%= javascript_include_tag 'application' %>
   <%= yield :head %>
   <%= csrf_meta_tags %>
@@ -13,9 +12,9 @@
 <%= yield :lang_bar %>
 <div id="header">
 
- </div>
+</div>
 
- <%= yield %>
+<%= yield %>
 
 </body>
 </html>

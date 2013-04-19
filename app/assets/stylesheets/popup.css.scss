@@ -77,15 +77,17 @@ a:visited
 }
 .popupContainer
 {
-	position:fixed;
-	left:50%;
-	top:50%;
-	width:500px;
-	background:url('body_bg.jpg') repeat-x left bottom #e5e5e5;
-	border:5px solid #cecece;
+	//position:fixed;
+	//left:50%;
+	//top:50%;
+	width:600px;
+	//background:url('body_bg.jpg') repeat-x left bottom #e5e5e5;
+	//border:5px solid #cecece;
+  //background:  url("popup_background/destroy_building.png");
+
 	z-index:2;
-	padding:10px;
-	border: 1px solid rgba(33, 33, 33, 0.6);
+	//padding:10px;
+	//border: 1px solid rgba(33, 33, 33, 0.6);
 	-moz-box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
 	-webkit-box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
 	box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
@@ -98,14 +100,40 @@ a:visited
   }
 
 }
+
+#seleccion_personaje{
+  .popupContainer{
+  height: 400px;
+  background-image:  url("popup_background/destroy_building.png");
+  }
+
+  h2{
+    margin-bottom: 0px;
+    margin-top: 30px;
+  }
+
+  h4{
+    margin-bottom: 1px;
+  }
+}
+
+#take_taxes .popupContainer{
+
+  height: 400px;
+  background-image:  url("popup_background/destroy_building.png");
+
+}
+
 #change_cards .popupContainer{
 
   height: 280px;
+
 }
 #destroy_building .popupContainer{
 
-
-  width: 600px;
+  height: 400px;
+  background-image:  url("popup_background/destroy_building.png");
+  background-repeat: no-repeat;
 }
 
 
@@ -116,11 +144,51 @@ a:visited
 
 }
 
-#destroy_building h5{
-
+ h5{
   margin: 4px;
+}
+
+
+
+#destroy_building .player_tab{
+
+  //width: 130px;
+  height: 35px;
+  text-align: center;
+  position: relative;
+  left: -159px;
+  top: 30px;
+  padding-top: 9px;
 
 }
+#destroy_building .unselected, #destroy_building .disabled{
+  width: 130px;
+  left: -129px;
+  //border: 3px solid #f6d6a5;
+  background-image: url("popup_background/player_unselected.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+
+
+}
+
+#destroy_building .selected{
+  width: 160px;
+  background-image: url("popup_background/player_selected.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+
+
+.player_data .cards{
+
+    position: absolute;
+    left: 50px;
+    top: 31%;
+}
+
+
 
 
 

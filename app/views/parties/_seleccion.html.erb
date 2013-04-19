@@ -1,6 +1,6 @@
 <% if current_user.player.state == 'SELECTION_TURN'  %>
 
-    <div class="popupContainer" class="hidden">
+    <div id="lista_personajes" class="popupContainer" class="hidden">
       <h2>Elige Personaje</h2>
 
 
@@ -28,19 +28,17 @@
 <% elsif current_user.player.state == 'TURN'%>
 
 
-<div class="popupContainer" class="hidden">
-     <h2>Elige una acción</h2>
-<%action_list = current_user.player.actions
+<div id="acciones" class="popupContainer" class="hidden">
 
-    action_list.each do |action|%>
+<% action_list = current_user.player.actions%>
+  <h2><%= action_title(action_list) %></h2>
 
-        <%= render :partial => action.base_action.partialname, :locals => {:action => action}%>
-
-
+  <% action_list.each do |action|%>
+        <%= #noinspection RubyResolve
+            render :partial => action.base_action.partialname, :locals => {:action => action}%>
      <% end %>
 
 </div>
-
 
     <script type="text/javascript">
         loadPopup();
@@ -54,7 +52,8 @@
 
       <%action_list.each do |action|%>
             <div class="actiondiv">
-            <%= render :partial => action.base_action.partialname, :locals => {:action => action} %>
+            <%= #noinspection RubyResolve
+                render :partial => action.base_action.partialname, :locals => {:action => action} %>
         </div>
 
       <%end%>

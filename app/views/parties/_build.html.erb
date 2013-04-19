@@ -1,9 +1,9 @@
-
 <div id="build" class="hidden">
   <div class="popupContainer">
   <a  class="closePopup" title="close popup"></a>
     <h3>Construir</h3>
-<%districts = current_user.player.district_to_construct
+<% player = current_user.player
+   districts = player.district_to_construct
  if districts.size != 0 %>
 
 
@@ -11,9 +11,28 @@
 
         <%= #noinspection RubyResolve
             link_to (render :partial => 'district_card', :object => district_card), party_action_path(@game.id, [action.id,district_card.id]) %>
+  <% end
 
- <%end
+     if player.districts_on_game.exists?(["name = 'factory'"]) %>
+       <div>
+         Factoria: el coste de los edificio de los distritos púrpuras se reduce en uno
+       </div>
+    <% if player.districts_on_game.exists?(["name = 'quarry'"])%>
+        <div>
+          Cantera: Puedes construir distritos con el mismo nombre
+        </div>
 
- end %>
+         <% end
+          end
+        else%>
+
+
+        <div>
+          No puedes construir distritos en este turno
+
+        </div>
+
+
+ <%end%>
 </div>
 </div>

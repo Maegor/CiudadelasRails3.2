@@ -200,15 +200,11 @@ class Party < ActiveRecord::Base
 
 
 
- #TODO resolver la recurrencia
-
- #noinspection RubyResolve
+#noinspection RubyResolve
   def tick
     if self.state == 'SELECTION_CHAR_STARTED'
 
       cards_with_player = cards.characters.where("player_id IS NOT NULL" )
-
-
       if cards_with_player.count == numplayer
 
           players.each do |player|
@@ -239,7 +235,6 @@ class Party < ActiveRecord::Base
         self.next_player
 
       end
-
     end
 
 
@@ -262,12 +257,11 @@ class Party < ActiveRecord::Base
 
       else
         self.next_character
-
       end
     end
   end
 
-
+  #selecciona al próximo jugador en elegir personaje
   def next_player
 
     player_list = self.players.order('turn ASC').to_a
@@ -299,6 +293,7 @@ class Party < ActiveRecord::Base
 
   end
 
+  #selecciona el próximo personaje en jugar su turno
   def next_character
 
     player_list = players.order('turn ASC').to_a
@@ -313,9 +308,12 @@ class Party < ActiveRecord::Base
 
             player_index = player_list.index {|player| player.state == 'WAITING_TURN'}
 
-
+            #Comprobamos si el jugador tiene en juego la carta hospital
             player = player_list[player_index]
-            if player.murdered == 'TRUE'
+
+            hospital = player.districts_on_game.find(:first, :conditions => ["name = 'hospital'"])
+
+            if player.murdered == 'TRUE' && hospital.nil?
               player.update_attribute(:state,'WAITINGENDROUND')
               next_character
             else

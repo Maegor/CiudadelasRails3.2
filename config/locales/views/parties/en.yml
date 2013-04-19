@@ -157,6 +157,7 @@ en:
   coins_to_cards: "Pay 3 gold to draw 3 cards."
   search_card: "Search a card in the deck and put it on your hands"
   self_destruction: "Destroy the powderhouse and destroy another district card of your choice in any player´s city."
+  store_card: "Put a card under the museum"
 
  points_recount:
   districts_points: "Points by districts"

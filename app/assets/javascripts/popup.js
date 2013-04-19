@@ -4,11 +4,13 @@ function center(){
 	var windowWidth = $(document).width();
 	var windowHeight = $(document).height();
 	var popupHeight = $(".popupContainer").height();
+    console.log(popupHeight);
 	var popupWidth = $(".popupContainer").width();
 	$(".popupContainer").css({
 		"position": "absolute",
-		"top": windowHeight/4-popupHeight/2,
+		"top": windowHeight/2-popupHeight/2,
 		"left": windowWidth/2-popupWidth/2
+
 	});
 	
 	}
@@ -59,18 +61,20 @@ $('.action_icon').click(function (ev){
     function center(currentPopup){
 
 
-        container =  $("#" + currentPopup + " .popupContainer");
+        var container =  $("#" + currentPopup + " .popupContainer");
         var windowWidth = $(document).width();
         var windowHeight = $(document).height();
 
         var popupHeight = container.height();
+        console.log(popupHeight);
         var popupWidth =  container.width();
 
 
         container.css({
             "position": "absolute",
-            "top": windowHeight/4-popupHeight/2,
+            "top": windowHeight/2-popupHeight/2,
             "left": windowWidth/2-popupWidth/2
+
         });
 
     }

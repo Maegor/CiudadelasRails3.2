@@ -1,0 +1,13 @@
+<div id="store_card" class="hidden">
+  <div class="popupContainer">
+    <a  class="closePopup" title="close popup"></a>
+    <h3>Guardar en el museo</h3>
+    <%districts = current_user.player.districts_on_hand
+      if districts.size != 0 %>
+        <%districts.each do |district_card|%>
+            <%= #noinspection RubyResolve
+                link_to (render :partial => 'district_card', :object => district_card), party_action_path(@game.id, [action.id,district_card.id]) %>
+        <%end
+      end %>
+  </div>
+</div>

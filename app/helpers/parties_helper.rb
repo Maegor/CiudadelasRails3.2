@@ -26,7 +26,7 @@ module PartiesHelper
   def character_img(opponent)
 
     character_card = opponent.player_character
-    if   ['ACTION', 'TURN', 'WAITINGENDROUND'].include?(opponent.state)
+    if   %w(ACTION TURN WAITINGENDROUND).include?(opponent.state)
       render :partial => 'character_card', :object => character_card
     else
        '<div class="card" id="cardback"></div>'.html_safe
@@ -46,7 +46,7 @@ module PartiesHelper
 
   def district_tooltip(district_card)
     string = String.new
-
+    #noinspection RubyResolve
     if district_card.base_card.colour == 'purple'
         string << (t 'districts.' + district_card.base_card.name + '.name')
         string << "\n"
@@ -61,5 +61,43 @@ module PartiesHelper
     string
   end
 
+  def selected_class(other_class, index)
+    div_class = String.new(other_class)
+    if index == 0
+      div_class << ' selected'
+    else
+      div_class << ' unselected'
+    end
+  end
 
+  def visible_class(other_class, index)
+    div_class = String.new(other_class)
+    if index == 0
+      div_class << ' visible'
+    else
+      div_class << ' hidden'
+    end
+
+  end
+
+  def action_title(actions)
+
+    title = String.new
+
+    if actions.count == 2
+      title << 'Elige una accion'
+    else
+       action = actions.first
+       if action.player.districts_on_game.exists?(["name = 'library'"])
+
+         title << 'Coge dos cartas'
+
+       else
+         title << 'Coge una carta'
+      end
+
+    end
+
+    title
+  end
 end

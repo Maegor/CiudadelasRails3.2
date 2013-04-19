@@ -43,18 +43,20 @@ class Player < ActiveRecord::Base
 
   def get_destrutible_building(target_player)
 
-    list_cards = target_player.districts_on_game.where("name <> 'keep'")
-
+    list_cards = target_player.districts_on_game.find(:all, :conditions =>["name <> 'keep'"])
     great_wall = target_player.districts_on_game.exists?(["name = 'great_wall'"]) ? 1 : 0
+    cost_list = Array.new(list_cards.length)
+    cards_to_destroy = Array.new(list_cards.length)
 
-    list_cards.each do |card|
-
-      card.base_card.cost = (card.base_card.cost - 1) + great_wall
-
+    list_cards.each_with_index do |card,index|
+      cost_list[index] = (card.base_card.cost - 1) + great_wall
     end
-
-    list_cards.delete_if{|card| card.base_card.cost > coins}
-
+    for index in 0..(cost_list.length-1)
+        if cost_list[index] <= coins
+          cards_to_destroy[index] = list_cards[index]
+        end
+    end
+    cards_to_destroy.compact
   end
 
 
@@ -157,6 +159,9 @@ end
        points_distribution[:fountain_wishes] = purple_districts.count
      end
 
+     if purple_districts.exists?(["name = 'museum'"])
+       points_distribution[:museum] = cards.where("state = 'INMUSEUM'").count
+     end
   end
 end
 
@@ -324,11 +329,16 @@ end
   end
 
   def take_gold(action_array)
-
-    self.update_attributes(:coins => self.coins + 2, :state => "ACTION")
+    new_state = String.new
     destroy_other_actions(action_array.first)
-    get_actions
-
+    if murdered == 'TRUE'
+      new_state = 'WAITINGENDROUND'
+    else
+      new_state = 'ACTION'
+      get_actions
+    end
+    update_attributes(:coins => self.coins + 2, :state => new_state)
+    true
   end
 
 
@@ -340,18 +350,25 @@ end
   end
 
   def select_district(action_array)
-
-     cards = action_array.drop(1)
+    exist = false
+    if action_array.length > 1
+    new_state = String.new
+    cards = action_array.drop(1)
       cards.each do |card_id|
-
-        Card.update(card_id,:player_id => self.id, :state => 'ONHAND' )
-
+        Card.update(card_id,:player_id => self.id, :state => 'ONHAND')
       end
      party.reorder_cards()
-     get_actions
-     update_attribute(:state, "ACTION")
 
-
+    if murdered == 'TRUE'
+      new_state = 'WAITINGENDROUND'
+    else
+      new_state = 'ACTION'
+      get_actions
+    end
+     update_attribute(:state, new_state)
+    exist = true
+    end
+    exist
   end
 
  def steal(action_array)
@@ -418,7 +435,12 @@ end
     if (card.player.player_character.base_card.name != 'bishop')
      current_coins -= card.base_card.cost - 1 +(1 * (card.player.districts_on_game.exists?(["name = 'great_wall'"])? 1:0 ))
      if current_coins >= 0
-      Card.update(card.id,:state => 'INDECK', :position => card.party.last_position, :player_id => nil)
+       position = Array.new(1,party.last_position )
+       #Si la carta destruir es el museo debemos actualizar las carta que estaban bajo el
+       if card.base_card.name == 'museum'
+         update_museum(card, position)
+       end
+      Card.update(card.id,:state => 'INDECK', :position => position[0], :player_id => nil)
       update_attribute(:coins, current_coins)
       exist = true
      end
@@ -570,7 +592,7 @@ end
 
   end
 
-
+  #powderhouse
   def self_destruction(action_array)
     exist = false
     card  = Card.districts.find(:first, :conditions => ["cards.id = ? AND state = 'ONGAME' AND name <> 'powderhouse'", action_array[1]], :readonly => false)
@@ -578,28 +600,64 @@ end
     if card && card.party_id == party_id
 
       #actualizamos el target
-      position = party.last_position
-      card.update_attributes(:state => 'INDECK', :player_id => nil, :position => position)
+
+      position = Array.new(1, party.last_position) #Necesitamos pasar la position como referencia a la funcion update_museum
+      card.update_attributes(:state => 'INDECK', :player_id => nil, :position => position[0])
+      position[0] += 1
+
+      #si la carta es el musuem entonces devolvemos las cartas con state 'INMUSEUM al mazo'
+      if card.base_card.name == 'museum'
+        update_museum(card, position)
+      end
+
       #actualizamos el powderhouse
       powderhouse = cards.districts.find(:first, :conditions => ["name = 'powderhouse'"], :readonly => false)
-      powderhouse.update_attributes(:state => 'INDECK', :player_id => nil, :position => position + 1)
+      powderhouse.update_attributes(:state => 'INDECK', :player_id => nil, :position => position[0])
       exist = true
     end
     exist
   end
+
+
+  def update_museum(card, position)
+
+    inmuseum_cards = Card.districts.find(:all, :conditions => ["player_id = ? AND state = 'INMUSEUM'", card.player_id], :readonly => false)
+    inmuseum_cards.each do |card|
+      card.update_attributes(:state => 'INDECK', :position => position[0], :player_id => nil)
+      position[0] += 1
+    end
+
+
+  end
+
+
 
   def search_card(action_array)
 
     exist = false
     card  = Card.districts.find(:first, :conditions => ["cards.id = ? AND state = 'INDECK'", action_array[1]], :readonly => false)
 
-    if card
+    if card && card.party_id == party_id
 
        card.update_attributes(:state => 'ONHAND', :player_id => id)
        exist = true
     end
     exist
   end
+
+
+  def store_card(action_array)
+
+    exist = false
+    card = Card.districts.find(:first, :conditions => ["cards.id = ? AND state = 'ONHAND' AND player_id = ?", action_array[1], id], :readonly => false)
+
+    if card && card.party_id == party_id
+      card.update_attributes(:state => 'INMUSEUM')
+      exist = true
+    end
+    exist
+  end
+
 
 
 end
