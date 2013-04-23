@@ -192,3 +192,5 @@ en:
   coins: "Coins"
   points: "Points"
   name: "Name"
+  change_with_player: "Player"
+  change_with_maze: "Cards"

@@ -192,3 +192,5 @@ es:
   coins: "Monedas"
   points: "Puntos"
   name: "Nombre"
+  change_with_player: "Jugadores"
+  change_with_maze: "Cartas"

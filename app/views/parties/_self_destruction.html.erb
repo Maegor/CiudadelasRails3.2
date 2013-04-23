@@ -2,32 +2,33 @@
   <div class="popupContainer">
     <a  class="closePopup" title="close popup"></a>
 
-    <% @game.players.each do |player| %>
+    <% @game.players.each_with_index  do |player,index| %>
 
-        <div class="player_data">
+        <div class="tab_data">
 
-          <h5><%= player.name %></h5>
+          <div class="<%=selected_class('tab', index)%>"><%= player.name %>
+          </div>
+          <div class="<%= visible_class('cards', index)%>">
 
-          <% player.districts_on_game.where("name <> 'powderhouse'").each do |district_card| %>
+            <% player.districts_on_game.where("name <> 'powderhouse'").each do |district_card| %>
 
-              <%= link_to (render :partial => 'district_card', :object => district_card),
-                              party_action_path(@game.id, [action.id, district_card.id]) %>
-              <% end%>
-          <% end%>
-
-
-          <!--   Oro: <%#= player.coins %>
-              Puntos: <%#= count_points player.recount %>
+                <%= link_to (render :partial => 'district_card', :object => district_card),
+                            party_action_path(@game.id, [action.id, district_card.id]) %>
+            <% end%>
 
 
-
-                Coste-->
-          <%# cards.each do |card| %>
-          <%#= card.base_card.cost %>
-          <%#end%>
-
+          </div>
         </div>
+    <% end%>
 
 
+    <%  (7 - @game.players_to_destroy.count).times do %>
+        <div class="tab disabled" >
+        </div>
+    <% end %>
   </div>
 </div>
+
+<script type="text/javascript">
+    tabs("self_destruction");
+</script>

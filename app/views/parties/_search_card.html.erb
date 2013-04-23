@@ -1,28 +1,34 @@
 <div id="search_card" class="hidden">
   <div class="popupContainer">
-    <a  class="closePopup" title="close popup"></a>
-
-    <% @game.cards_in_deck.each do |district_card| %>
+    <a class="closePopup" title="close popup"></a>
 
 
-              <%= link_to (render :partial => 'district_card', :object => district_card),
-                          party_action_path(@game.id, [action.id, district_card.id]) %>
+    <% index = 0
+       @game.cards_in_deck.each do |colour, array| %>
+        <div class="tab_data">
 
-    <% end%>
+          <div class="<%= selected_class('tab', index) %>"><%= colour %> </div>
+          <div class="<%= visible_class('cards', index) %>">
 
+            <% index += 1
+               array.each do |district_card| %>
 
-    <!--   Oro: <%#= player.coins %>
-              Puntos: <%#= count_points player.recount %>
+                <%= link_to (render :partial => 'district_card', :object => district_card),
+                            party_action_path(@game.id, [action.id, district_card.id]) %>
 
+            <% end %>
+          </div>
+        </div>
 
-
-                Coste-->
-    <%# cards.each do |card| %>
-    <%#= card.base_card.cost %>
-    <%#end%>
-
+    <% end %>
+    </div>
     </div>
 
 
-  </div>
-</div>
+
+<script type="text/javascript">
+
+tabs("search_card");
+
+
+</script>

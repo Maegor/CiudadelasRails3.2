@@ -483,10 +483,23 @@ end
 
   def cards_in_deck
 
-    district_in_deck = cards.districts.find(:all, :conditions => ["state = 'INDECK'"])
+    colours = BaseCard.find(:all,:select => "DISTINCT base_cards.colour").reject{|x| x.colour == nil}
+    district_by_colours = Hash.new(colours.length)
 
-     district_in_deck.uniq{|card| card.base_card.name}
+    colours.each_with_index do |colour, index|
+      district_in_deck = cards.districts.find(:all, :conditions => ["state = 'INDECK' AND colour = ?", colour.colour])
+      district_by_colours[colour.colour] = district_in_deck.uniq{|card| card.base_card.name}
+    end
 
+    district_by_colours
+
+  end
+
+  def players_to_kill
+    cards.characters.find(:all,:conditions => ["name <> 'assasin' AND state <> 'BACKS'"])
+  end
+  def players_to_steal
+    cards.characters.find(:all, :conditions => ["name <> 'assasin' AND name <> 'thief' AND murdered <> 'TRUE'  AND state <> 'BACKS'"])
   end
 
 

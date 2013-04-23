@@ -100,4 +100,17 @@ module PartiesHelper
 
     title
   end
+
+
+  def district_hash(districts)
+    district_hash = Hash.new
+
+    districts.each do |district|
+      district_hash[district.id] = district.base_card.cost
+    end
+
+    district_hash
+
+  end
+
 end

@@ -234,6 +234,13 @@ $card_height: 120px;
   height: 120px;
   display: inline-block;
 }
+.character_card{
+  background-repeat: no-repeat ;
+  background-size: cover;
+  width: 179*0.75px;
+  height: 174*0.75px;
+  display: inline-block;
+}
 
 
 
@@ -329,7 +336,7 @@ $card_height: 120px;
   }
 
   input[type=submit]:hover{
-    border: none;
+   // border: none;
     background:  url('hover.png') no-repeat;
     padding-bottom: 6px;
   }
@@ -337,8 +344,34 @@ $card_height: 120px;
 
 }
 
+.character_target{
+  display: inline-block;
+ h3{
+   margin-bottom: 3%;
+ }
+}
 
 
+
+.popupContainer {
+
+
+  input[type=submit]{
+    border: none;
+    width: 160px;
+    height: 45px;
+    background:  url('nohover.png') no-repeat;
+    text-align: center;
+    padding-bottom: 8px;
+  }
+
+  input[type=submit]:hover{
+    border: none;
+    background:  url('hover.png') no-repeat;
+    padding-bottom: 6px;
+  }
+
+}
 
 
 #cardback{background-image: url('cards/cardback.jpg')}
@@ -477,9 +510,9 @@ $card_height: 120px;
 
 }
 
-#char .card{
-  width: 162px * 0.60;
-  height: 260px * 0.60;
+#char .character_card{
+  width: 179px;
+  height: 174px;
 
 }
 .player_lane{
@@ -550,12 +583,6 @@ $card_height: 120px;
   display: inline-block;
   margin-right: 40px;
   margin-left: 40px;
-}
-#change_cards .selected{
-  border: #cb3e23 solid 3px;
-  background-color: #f5b220;
-
-
 }
 
 .image-checkbox-container div, .image-radio-container div{

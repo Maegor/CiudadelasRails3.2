@@ -1,15 +1,15 @@
-<% characters = Card.characters.where("name <> 'assasin' AND state <> 'BACKS' AND party_id = ?", @game.id)%>
-
-
 <div id="kill" class="hidden">
   <div class="popupContainer">
     <a  class="closePopup" title="close popup"></a>
+   <h3>Elige tu víctima</h3>
 
-
-  <%characters.each do |character_card|%>
-
- <%= link_to (render :partial => 'character_card', :object => character_card), party_action_path(@game.id, [action.id,character_card.id])%>
-
+  <%@game.players_to_kill.each do |character_card|%>
+ <div class="character_target">
+    <%= #noinspection RubyResolve
+        link_to (render :partial => 'character_card', :object => character_card), party_action_path(@game.id, [action.id,character_card.id])%>
+    <div class="character_name"><%=  #noinspection RubyResolve
+                                     t ('characters.'+ character_card.base_card.name + '.name') %></div>
+ </div>
  <% end %>
 
   </div>
