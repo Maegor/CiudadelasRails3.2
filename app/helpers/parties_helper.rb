@@ -25,11 +25,11 @@ module PartiesHelper
 
   def character_img(opponent)
 
-    character_card = opponent.player_character
+    opponent_char = opponent.player_character
     if   %w(ACTION TURN WAITINGENDROUND).include?(opponent.state)
-      render :partial => 'character_card', :object => character_card
+      render :partial => 'parties/opponent_char', :object => opponent_char
     else
-       '<div class="card" id="cardback"></div>'.html_safe
+       '<div class="opponent_iu" id="nochar"></div>'.html_safe
     end
   end
 

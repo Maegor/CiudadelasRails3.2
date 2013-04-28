@@ -1,10 +1,10 @@
 <% oppenents =    current_user.player.opponents
    oppenents.each do |opponent|  %>
  <div class="opponent">
-   <div class="opponent_name"> <h3><%= opponent.name.capitalize %></h3></div>
-   <div id="opponent_iu">
+   <!--<div class="opponent_name"> <h3><#%= opponent.name.capitalize %></h3></div>-->
+   <div class="opponent_iu">
 
-     <div id="oppent_char">
+     <div class="oppent_char">
 
        <%= character_img opponent %>
 
@@ -12,11 +12,11 @@
 
 
      <div class="data_opponent" id="points">
-       <div class ="title"> <%= t 'board.points' %></div>
+       <!--<div class ="title"> <%#= t 'board.points' %></div>-->
        <div class="value"> <%= count_points opponent.recount %></div>
      </div>
      <div class="data_opponent" id="cards">
-       <div class ="title"> <%= t 'board.coins' %></div>
+       <!--<div class ="title"> <%#= t 'board.coins' %></div>-->
        <div class="value"> <%= opponent.coins %></div>
      </div>
 
@@ -24,7 +24,7 @@
 
 
    </div>
-   <div id="opponent_cards">
+   <div class="opponent_cards">
        <% cards = opponent.districts_on_game
           cards.each do |district_card|%>
 

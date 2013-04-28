@@ -133,7 +133,7 @@ $card_height: 120px;
 
 #tablero {
 
-  //width: 1366px;
+  //
   border: 1px solid;
   background: #f6d6a5;
   padding-left: 5px;
@@ -141,8 +141,8 @@ $card_height: 120px;
   position: fixed;
   left: 0px;
   top: 0px;
-  width: 100%;
-  height: 100%;
+  width: 1366px;
+  height: 768px;
 }
 
 #top_tablero{
@@ -233,6 +233,7 @@ $card_height: 120px;
   width: 75px;
   height: 120px;
   display: inline-block;
+  border: 1px solid;
 }
 .character_card{
   background-repeat: no-repeat ;
@@ -242,6 +243,22 @@ $card_height: 120px;
   display: inline-block;
 }
 
+
+
+.opponent_cards .card{
+ // margin-right: -30px ;
+  width: 75;
+  height: 120;
+
+}
+
+
+
+
+
+#nochar {
+  background-image: url('characters/nochar.png');
+}
 
 
 /* District */
@@ -290,14 +307,60 @@ $card_height: 120px;
 
 /* Characters */
 
-#assasin{background-image: url('cards/assasin.png')}
-#thief{background-image: url('cards/thief.png')}
-#magician{background-image: url('cards/magician.png')}
-#king{background-image: url('cards/king.png')}
-#bishop{background-image: url('cards/bishop.png')}
-#merchant{background-image: url('cards/merchant.png')}
-#architect{background-image: url('cards/architect.png')}
-#warlord{background-image: url('cards/warlord.png')}
+#assasin{background-image: url('characters/assassin.png')}
+#thief{background-image: url('characters/thief.png')}
+#magician{background-image: url('characters/magician.png')}
+#king{background-image: url('characters/king.png')}
+#bishop{background-image: url('characters/bishop.png')}
+#merchant{background-image: url('characters/merchant.png')}
+#architect{background-image: url('characters/architect.png')}
+#warlord{background-image: url('characters/warlord.png')}
+
+
+/*select characters*/
+
+
+
+
+.select_char{
+
+  width: 135px;
+  height: 135px;
+  display: inline-block;
+
+}
+
+#seleccion_personaje a{
+  margin: 0px;
+
+
+}
+#seleccion_personaje .cards{
+  width: 548px;
+  text-align: center;
+  top: 80px;
+  margin-left: 31px;
+
+}
+
+/*Select action*/
+
+#assassin_select{background-image: url('select_char/assassin_select.png')}
+#thief_select{background-image: url('select_char/thief_select.png')}
+#magician_select{background-image: url('select_char/magician_select.png')}
+#king_select{background-image: url('select_char/king_select.png')}
+#bishop_select{background-image: url('select_char/bishop_select.png')}
+#merchant_select{background-image: url('select_char/merchant_select.png')}
+#architect_select{background-image: url('select_char/architect_select.png')}
+#warlord_select{background-image: url('select_char/warlord_select.png')}
+
+.char_name{
+
+  margin-top: 104px;
+  font-size: 20px;
+  color: black;
+}
+
 
 /* Actions */
 
@@ -318,12 +381,14 @@ $card_height: 120px;
 
 #acciones{
   a{
+  display: inline-block;
   margin-top: 10%;
-  margin-left: 10%;
+  margin-left: 85px;
   margin-right: 10%;
    }
   form{
     margin-top: 10%;
+    margin-left: 36%;
   }
 
   input[type=submit]{
@@ -340,8 +405,6 @@ $card_height: 120px;
     background:  url('hover.png') no-repeat;
     padding-bottom: 6px;
   }
-
-
 }
 
 .character_target{
@@ -389,6 +452,16 @@ $card_height: 120px;
 #build.action_icon{
   background-image: url('action_icons/build.png');
 }
+#build_container{
+
+
+  width: 541px;
+  text-align: center;
+  margin-left: 28px;
+
+}
+
+
 #change_cards.action_icon{
    background-image: url('action_icons/change.png');
 
@@ -408,6 +481,17 @@ $card_height: 120px;
 #steal.action_icon{
   background-image: url('action_icons/steal.png');
 }
+
+#steal_container{
+
+  width: 541px;
+  text-align: center;
+  margin-left: 28px;
+}
+
+
+
+
 
 #protection.action_icon{
   background-image: url('action_icons/protection.png');
@@ -455,26 +539,33 @@ $card_height: 120px;
 }
 /* Opponent style */
 
-#opponent_iu{
+.opponent_iu{
 
-  width: 200px;
-  height: 122px;
+  width: 190px;
+  height: 145px;
+ // background-image: url("UIoponente.png");
+  //background-repeat: no-repeat;
 
 }
 
 .data_opponent{
   height: 40px;
-  width: 70px;
+  width: 40px;
   position: relative;
-  bottom: 118px;
-  left: 79px;
+  bottom: 124px;
+  left: 140px;
   text-align: center;
-  margin-bottom: 20px;
-
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow:
+    1px 1px 0 #CCC,
+    2px 2px 0 #CCC;
 }
 
-#opponent_cards{
+.opponent_cards{
 
+  border: 1px solid;
   position: relative;
   width: 800px;
   left: 200px;
@@ -482,9 +573,7 @@ $card_height: 120px;
 }
 
 .opponent{
-  height: 130px;
-
-
+  height: 145px;
 }
 
 /* Player style*/
@@ -493,8 +582,6 @@ $card_height: 120px;
 #ficha_jugador{
   width: 200px;
   height: 180px;
-
-
 }
 
 #distritos_construidos .card, #cartas_mano .card{
@@ -506,9 +593,8 @@ $card_height: 120px;
 
 #distritos_construidos, #cartas_mano{
   margin-top: 30px;
-
-
 }
+
 
 #char .character_card{
   width: 179px;
@@ -598,7 +684,7 @@ $card_height: 120px;
 }
 
 #lista_jugadores{
-  margin-top: 100px;
+  margin-top: 20px;
 }
 
 .opponent_name{
@@ -610,7 +696,7 @@ $card_height: 120px;
 
 .opponent_name h3{
 
-  margin-left: 43%;
+  //margin-left: 43%;
   margin-bottom: 0px;
   background-image: url("marconombre.png");
   background-repeat: no-repeat;

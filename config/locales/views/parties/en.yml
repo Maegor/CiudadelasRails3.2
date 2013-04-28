@@ -4,8 +4,8 @@
 en:
 
  characters:
-  assasin:
-   name: "Assasin"
+  assassin:
+   name: "Assassin"
    description: "May select a character to Assassinate. That character loses their turn."
   thief:
    name: "Thief"
@@ -194,3 +194,5 @@ en:
   name: "Name"
   change_with_player: "Player"
   change_with_maze: "Cards"
+  faceup: "Faceup"
+  characters_list: "Available"

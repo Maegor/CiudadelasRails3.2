@@ -37,7 +37,7 @@ class Player < ActiveRecord::Base
 
   def opponents
 
-    party.players.reject{|player| player.id == id}
+    party.players.order('id DESC').reject{|player| player.id == id}
 
   end
 

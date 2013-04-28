@@ -2,26 +2,18 @@
 
     <div id="lista_personajes" class="popupContainer" class="hidden">
       <h2>Elige Personaje</h2>
-
-
-      <% ongamecards = @game.cards.characters.where("state = 'ONGAME'")
-         ongamecards.each do |character_card|
-
-          if character_card.player_id.nil?  %>
-          <%= link_to (render :partial =>  'character_card', :object => character_card),
-                          { :controller => :parties, :action => :select_card,:party_id => character_card.party_id, :card_id => character_card.id}%>
-
-      <% end
-         end %>
-
-   <div id="descartes">
-     <h4>Descartados</h4>
-    <%= render :partial => 'descartes' %>
-   </div>
-
+      <% %w(characters_list  faceup).each_with_index do |option,index| %>
+      <div class="tab_data">
+        <div class="<%= selected_class('tab', index) %>"><%=t ('board.' + option)%></div>
+        <div class="<%= visible_class('cards', index) %>">
+          <%= render :partial => option %>
+        </div>
       </div>
+    <% end %>
+    </div>
     <script type="text/javascript">
         loadPopup();
+        tabs("lista_personajes");
     </script>
 
 

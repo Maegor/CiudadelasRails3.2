@@ -4,7 +4,7 @@
 es:
 
  characters:
-  assasin:
+  assassin:
    name: "Asesino"
    description: "Puede elegir un personaje para asesinarlo. Ese personaje pierde su turno completo."
   thief:
@@ -194,3 +194,5 @@ es:
   name: "Nombre"
   change_with_player: "Jugadores"
   change_with_maze: "Cartas"
+  faceup: "Descartados"
+  characters_list: "Disponibles"

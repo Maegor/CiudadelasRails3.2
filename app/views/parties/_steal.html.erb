@@ -4,17 +4,17 @@
   <div class="popupContainer">
     <a  class="closePopup" title="close popup"></a>
 
-    <h3>Elige tu víctima</h3>
-    <%@game.players_to_steal.each do |character_card|%>
+    <h2>Elige tu víctima</h2>
+    <div id="steal_container">
+    <%@game.players_to_steal.each do |select_char|%>
         <div class="character_target">
           <%= #noinspection RubyResolve
-              link_to (render :partial => 'character_card', :object => character_card),
-                      party_action_path(@game.id, [action.id,character_card.id])%>
-          <div class="character_name"><%=  #noinspection RubyResolve
-                                           t ('characters.'+ character_card.base_card.name + '.name') %></div>
+              link_to (render :partial => 'select_char', :object => select_char),
+                      party_action_path(@game.id, [action.id,select_char.id])%>
+
       </div>
     <% end %>
-
+    </div>
 
     </div>
 </div>

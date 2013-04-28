@@ -91,11 +91,12 @@ a:visited
 	-moz-box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
 	-webkit-box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
 	box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
-    text-align: center;
+   // text-align: center;
 
   a{
 
-    display: inline-block;
+   // display: inline-block;
+    text-decoration: none;
 
   }
 
@@ -110,6 +111,7 @@ a:visited
   h2{
     margin-bottom: 0px;
     margin-top: 30px;
+    text-align: center;
   }
 
   h4{
@@ -180,8 +182,8 @@ a:visited
 .tab_data .cards{
 
   position: absolute;
-  left: 40px;
-  top: 12%;
+  //left: 40px;
+  //top: 12%;
 }
 
 .popupContainer input[type="submit"]{

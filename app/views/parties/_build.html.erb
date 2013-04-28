@@ -1,7 +1,9 @@
 <div id="build" class="hidden">
   <div class="popupContainer">
   <a  class="closePopup" title="close popup"></a>
-    <h3>Construir</h3>
+    <h2>Construir</h2>
+
+    <div id="build_container">
 <% player = current_user.player
    districts = player.district_to_construct
  if districts.size != 0 %>
@@ -29,9 +31,9 @@
 
         <div>
           No puedes construir distritos en este turno
-
         </div>
 
+          </div>
 
  <%end%>
 </div>
