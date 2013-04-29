@@ -2,7 +2,22 @@
 <div id="coins_to_cards" class="hidden">
   <div class="popupContainer">
     <a  class="closePopup" title="close popup"></a>
-     <%= #noinspection RubyResolve
-         link_to (t 'districts.smithy.description'), party_action_path(@game.id, [action.id]) %>
-  </div>
+    <h2>Forja</h2>
+
+    <div id="coins_to_cards_container">
+      <h3>Pagar 3 monedas para coger 3 distritos</h3>
+
+      <% if current_user.player.coins >= 4 %>
+
+      <div class="ok_button">
+      <%= #noinspection RubyResolve
+         link_to 'Vale', party_action_path(@game.id, [action.id]) %>
+      </div>
+
+      <% else %>
+          <h4>No tienes monedas suficiente</h4>
+      <% end %>
+
+      </div>
+    </div>
 </div>

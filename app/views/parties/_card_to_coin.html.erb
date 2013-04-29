@@ -2,9 +2,11 @@
 <div id="card_to_coin" class="hidden">
   <div class="popupContainer">
     <a  class="closePopup" title="close popup"></a>
-    <h3>Descartar</h3>
+    <h2>Laboratorio</h2>
+    <div id="card_to_coin_container">
      <% current_user.player.districts_on_hand.each do |district_card| %>
         <%= link_to (render :partial => 'district_card', :object => district_card), party_action_path(@game.id, [action.id,district_card.id]) %>
      <%end%>
+    </div>
   </div>
 </div>

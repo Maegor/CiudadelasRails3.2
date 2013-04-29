@@ -3,7 +3,8 @@
   <div class="popupContainer">
     <a  class="closePopup" title="close popup"></a>
 
-    <h3>Contruye tus  distritos</h3>
+    <h2>Contruye tus  distritos</h2>
+    <div id="build_severals_container">
  <% district_list = current_user.player.district_to_construct  %>
     <% if district_list.length > 0 %>
         <%= form_tag form_action 'build_severals' do %>
@@ -27,5 +28,6 @@
      <% else %>
         <h3> No puedes construir en este turno</h3>
     <%end %>
+  </div>
    </div>
 </div>

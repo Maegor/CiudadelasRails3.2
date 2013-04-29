@@ -24,12 +24,13 @@
 
 <% action_list = current_user.player.actions%>
   <h2><%= action_title(action_list) %></h2>
-
+  <div id="action_container">
   <% action_list.each do |action|%>
         <%= #noinspection RubyResolve
             render :partial => action.base_action.partialname, :locals => {:action => action}%>
      <% end %>
 
+ </div>
 </div>
 
     <script type="text/javascript">

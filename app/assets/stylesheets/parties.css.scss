@@ -307,7 +307,7 @@ $card_height: 120px;
 
 /* Characters */
 
-#assasin{background-image: url('characters/assassin.png')}
+#assassin{background-image: url('characters/assassin.png')}
 #thief{background-image: url('characters/thief.png')}
 #magician{background-image: url('characters/magician.png')}
 #king{background-image: url('characters/king.png')}
@@ -356,7 +356,7 @@ $card_height: 120px;
 
 .char_name{
 
-  margin-top: 104px;
+  margin-top: 106px;
   font-size: 20px;
   color: black;
 }
@@ -382,15 +382,10 @@ $card_height: 120px;
 #acciones{
   a{
   display: inline-block;
-  margin-top: 10%;
-  margin-left: 85px;
+  margin-top: 30px;
+  margin-left: 80px;
   margin-right: 10%;
    }
-  form{
-    margin-top: 10%;
-    margin-left: 36%;
-  }
-
   input[type=submit]{
     border: none;
     width: 160px;
@@ -406,6 +401,14 @@ $card_height: 120px;
     padding-bottom: 6px;
   }
 }
+#action_container{
+  width: 541px;
+  text-align: center;
+  margin-left: 28px;
+  margin-top: 50px;
+
+}
+
 
 .character_target{
   display: inline-block;
@@ -414,7 +417,26 @@ $card_height: 120px;
  }
 }
 
+.ok_button{
 
+  background: url('nohover.png') no-repeat center;
+  padding-top: 15px;
+  height: 45px;
+  width: 160px;
+  margin-left: 189px;
+  a{
+    color: #000000;
+
+  }
+
+
+}
+
+.ok_button:hover{
+  background: url('hover.png') no-repeat center;
+  padding-top: 17px;
+
+}
 
 .popupContainer {
 
@@ -500,14 +522,34 @@ $card_height: 120px;
 #kill.action_icon{
   background-image: url('action_icons/kill.png');
 }
+#kill_container{
+  width: 541px;
+  text-align: center;
+  margin-left: 28px;
+}
+
 
 #build_severals.action_icon{
   background-image: url('action_icons/build.png');
 }
 
+#build_severals_container{
+  width: 541px;
+  text-align: center;
+  margin-left: 28px;
+  margin-top: 10px;
+}
+
 #take_extra_cards.action_icon{
   background-image: url('action_icons/take_extra_cards.png');
 }
+#take_extra_cards_container{
+  width: 541px;
+  text-align: center;
+  margin-left: 28px;
+
+}
+
 #destroy_building.action_icon{
   background-image: url('action_icons/destroy.png');
 }
@@ -517,9 +559,18 @@ $card_height: 120px;
 #card_to_coin.action_icon{
   background-image: url("action_icons/card_to_coin.png");
 }
+#card_to_coin_container{
+  width: 541px;
+  text-align: center;
+  margin-left: 28px;
+}
 
 #coins_to_cards.action_icon{
   background-image: url("action_icons/coins_to_cards.png");
+}
+
+#coins_to_cards_container{
+
 }
 
 #self_destruction.action_icon{

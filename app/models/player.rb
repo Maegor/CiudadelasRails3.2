@@ -583,13 +583,15 @@ end
 
   def coins_to_cards(action_array)
 
-
+    exists = false
+    if coins >= 3
     card_list = party.cards.districts.where("player_id is NULL").order('position').limit(3)
     card_list.each do |card|
       Card.update(card.id, :player_id => id, :state => 'ONHAND')
     end
     update_attribute(:coins, coins - 3)
-
+      exists = true
+    end
   end
 
   #powderhouse

@@ -2,7 +2,7 @@
   <div class="popupContainer">
     <a  class="closePopup" title="close popup"></a>
    <h2>Elige tu víctima</h2>
-
+    <div id="kill_container">
   <%@game.players_to_kill.each do |select_char|%>
  <div class="character_target">
     <%= #noinspection RubyResolve
@@ -10,7 +10,7 @@
 
  </div>
  <% end %>
-
+      </div>
   </div>
 </div>
 
