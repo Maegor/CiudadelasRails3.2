@@ -23,13 +23,22 @@ module PartiesHelper
   end
 
 
+
+  def character_img_steal(opponent)
+
+    opponent_char = opponent.player_character
+
+
+  end
+
+
   def character_img(opponent)
 
     opponent_char = opponent.player_character
     if   %w(ACTION TURN WAITINGENDROUND).include?(opponent.state)
-      render :partial => 'parties/opponent_char', :object => opponent_char
+      render :partial => 'parties/opponent_char', :locals => {:opponent_char => opponent_char, :name => opponent.user.name}
     else
-       '<div class="opponent_iu" id="nochar"></div>'.html_safe
+       ('<div class="opponent_iu" id="nochar"><div class="player_name">' + opponent.user.name.capitalize  + '</div></div>').html_safe
     end
   end
 

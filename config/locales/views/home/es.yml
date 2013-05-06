@@ -5,6 +5,8 @@ es:
   password: "Contraseña"
   login_button: "Entrar"
   signup: "Crear cuenta"
+  errors:
+   invalid_user_pass: "Combinación Usuario/Clave inválida"
  main_menu:
   play: "Jugar"
   search: "Buscar"

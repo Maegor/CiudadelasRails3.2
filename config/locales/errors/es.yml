@@ -1,0 +1,33 @@
+es:
+ activerecord:
+  models:
+   user: "Usuario"
+  attributes:
+   user:
+    name: "Nombre"
+    email: "Correo"
+    password: "Contraseña"
+    repeat_password: "Repetir contraseña"
+  errors:
+   models:
+    user:
+     attributes:
+      name:
+       blank: "no puede estar vacío."
+       taken: "ya está en uso."
+       too_short: "demasiado corto(minimo %{count} carácteres)."
+       too_long: "demasiado largo (máximo %{count} carácteres)."
+      email:
+       blank: "no puede estar vacío."
+       taken: "ya está en uso."
+       invalid: "no es válido."
+      password:
+       blank: "no puede estar vacía"
+       too_short: "demasiado corta (minimo %{count} carácteres)."
+       too_long: "demasiado larga (máximo %{count} carácteres)."
+       confirmation: "no coincide."
+
+
+
+
+

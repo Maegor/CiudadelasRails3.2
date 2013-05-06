@@ -10,12 +10,21 @@ belongs_to :waiting_room
 
 
 attr_accessible :name, :email, :password, :password_confirmation, :lang
-validates :name,:email, :presence => true, :uniqueness => true
-validates :password, :confirmation => true
+validates :email, :presence => true, :uniqueness => true
+validates :name,
+          :presence => true,
+          :uniqueness =>  true,
+          :length => {:in => 3..12}
+validates :password,
+          :confirmation => true,
+          :presence => true,
+          :length => {:in => 6..12}
+
+validates :email, :format => {:with => /^.+@.+$/}
 attr_accessor :password_confirmation
 attr_reader :password
 
-validate :password_must_be_present
+#validate :password_must_be_present
 
 def player
 

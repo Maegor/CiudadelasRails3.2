@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
       I18n.locale = user.lang
       redirect_to root_path
     else 
-       flash[:notice]=  "Invalid user/pass name combination"
+       flash[:notice]= (t 'login_menu.errors.invalid_user_pass')
       redirect_to root_path
       
     end     

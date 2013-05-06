@@ -450,13 +450,16 @@ end
   end
 
   def change_cards(action_array)
-
+   exist = false
+   if action_array.lenght >= 3
     action = action_array[1]
 
     method  = method(action)
     method.call(action_array.drop(2))
-
+    exist  = true
     #actions.create!(base_action_id: BaseAction.find_by_partialname(action).id)
+   end
+
 
   end
 

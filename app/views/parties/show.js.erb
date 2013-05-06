@@ -1,6 +1,9 @@
 <% if @game.state != 'FINISHED'%>
 
-    <%if session[:refresh] %>
+console.log (blocked);
+
+
+<%if session[:refresh] %>
      $('#tablero').replaceWith("<%=escape_javascript (render :partial => 'tablero') %>");
         <% if %w(TURN ACTION).include?(current_user.player.state)
                 session[:refresh] = false

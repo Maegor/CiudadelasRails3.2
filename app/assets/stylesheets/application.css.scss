@@ -14,7 +14,8 @@ body{
   height: 8em;
   background-image: url("Ciudadelas_LOGO_ES.png") ;
   background-repeat: no-repeat ;
-  background-position: center
+  background-position: center;
+  margin-bottom: 5%;
 }
 #left_bar  {
 
@@ -38,4 +39,27 @@ body{
   margin-left: 27px;
 
 
+}
+
+.error_explanation{
+
+
+  margin-top: 5%;
+ // margin-left: 30%;
+  //text-align: left;
+  /* Font styles */
+  font-family: 'Raleway', 'Lato', Arial, sans-serif;
+  color: white;
+  text-shadow: 0 2px 1px rgba(0,0,0,0.3);
+}
+
+.error_explanation > h2 {
+  text-align: center;
+
+}
+
+.error_explanation > ul {
+
+  text-align: left;
+  margin-left: 36%;
 }
