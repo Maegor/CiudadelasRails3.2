@@ -451,7 +451,7 @@ end
 
   def change_cards(action_array)
    exist = false
-   if action_array.lenght >= 3
+   if action_array.length >= 3
     action = action_array[1]
 
     method  = method(action)

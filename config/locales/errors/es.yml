@@ -2,12 +2,16 @@ es:
  activerecord:
   models:
    user: "Usuario"
+   waiting_room: "Sala de espera"
   attributes:
    user:
     name: "Nombre"
     email: "Correo"
     password: "Contraseña"
     repeat_password: "Repetir contraseña"
+   waiting_room:
+    name: "Nombre"
+    user: "Jugadores"
   errors:
    models:
     user:
@@ -26,6 +30,16 @@ es:
        too_short: "demasiado corta (minimo %{count} carácteres)."
        too_long: "demasiado larga (máximo %{count} carácteres)."
        confirmation: "no coincide."
+    waiting_room:
+     attributes:
+      name:
+       blank: "no puede estar vacío"
+       taken: "ya está en uso"
+       too_short: "demasiado corto(minimo %{count} carácteres)."
+       too_long: "demasiado largo (máximo %{count} carácteres)."
+      user:
+       blank: "no puede estar vacío"
+       inclusion: "no tiene un valor válido"
 
 
 

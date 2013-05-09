@@ -196,3 +196,6 @@ en:
   change_with_maze: "Cards"
   faceup: "Faceup"
   characters_list: "Available"
+  take_2_gold: "TAKE 2 GOLD"
+  take_cards: "TAKE CARDS"
+  take_the_card: "TAKE"

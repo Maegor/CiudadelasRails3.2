@@ -13,7 +13,12 @@ class WaitingRoomsController < ApplicationController
   end
 
   def index
-    @rooms = WaitingRoom.all
+    @rooms = WaitingRoom.all(:conditions => ['visible = true'])
+
+    unless current_user.waiting_room_id.nil?
+
+      redirect_to waiting_room_path(current_user.waiting_room_id)
+     end
 
   end
 
@@ -40,17 +45,17 @@ class WaitingRoomsController < ApplicationController
 
   def create
 
-    room = WaitingRoom.new(params[:waiting_room])
+    @waiting_room = WaitingRoom.new(params[:waiting_room])
+    @waiting_room.visible = true
 
-    if room.save
+    if @waiting_room.save
 
-      current_user.update_attribute(:waiting_room_id ,room.id)
-      room.update_attribute(:owner_id, current_user.id)
-      redirect_to  waiting_room_path(room.id)
+      current_user.update_attribute(:waiting_room_id ,@waiting_room.id)
+      @waiting_room.update_attribute(:owner_id, current_user.id)
+      redirect_to  waiting_room_path(@waiting_room.id)
     else
 
-      flash[:notice] = (t 'new.error')
-      redirect_to new_waiting_room_path
+      render :action => 'new'
 
     end
 
@@ -86,6 +91,7 @@ class WaitingRoomsController < ApplicationController
     if room.user == room.users.count && room.owner_id == current_user.id
       game = Party.new(:numplayer => room.user, :name => room.name, :current_round => 0 )
       if game.save
+        room.update_attribute(:visible, false)
         game.initialize_party(room.users)
         redirect_to party_path(game.id)
       end

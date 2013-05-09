@@ -1,8 +1,8 @@
 
 <% content_for :head do%>
 
-    <%= stylesheet_link_tag "menu", "parties", "polyglot-language-switcher" %>
-    <%= javascript_include_tag "menu", "jquery.jscrollpane", "jquery.mousewheel", "jquery.polyglot.language.switcher" %>
+    <%= stylesheet_link_tag 'menu', 'parties', 'polyglot-language-switcher' %>
+    <%= javascript_include_tag 'menu', 'jquery.jscrollpane', 'jquery.mousewheel', 'jquery.polyglot.language.switcher' %>
 
 <% end %>
 
@@ -10,7 +10,7 @@
 <%= render :partial => 'shared/langs' %>
 
 <% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
+    <div class="error_explanation"><h2><%= flash[:notice] %></h2></div>
 <% end %>
 
 <div id="parties_content" xmlns="http://www.w3.org/1999/html">
@@ -29,7 +29,7 @@
       <tbody>
       <% @rooms.each do |room|
 
-      if room.users.count > 0 %>
+      if room.users.count > 0 && room.visible %>
 
           <tr>
             <td> <%=  room.name %> </td>

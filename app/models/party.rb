@@ -499,7 +499,7 @@ end
     cards.characters.find(:all,:conditions => ["name <> 'assassin' AND state <> 'BACKS'"])
   end
   def players_to_steal
-    cards.characters.find(:all, :conditions => ["name <> 'assasin' AND name <> 'thief' AND murdered <> 'TRUE'  AND state <> 'BACKS'"])
+    cards.characters.find(:all, :conditions => ["name <> 'assassin' AND name <> 'thief' AND murdered <> 'TRUE'  AND state <> 'BACKS'"])
   end
 
 

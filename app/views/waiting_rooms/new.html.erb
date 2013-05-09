@@ -2,12 +2,25 @@
 
 
     <%= stylesheet_link_tag  'parties', 'style' , 'home', 'menu', 'polyglot-language-switcher' %>
-    <%= javascript_include_tag "jquery.polyglot.language.switcher" %>
+    <%= javascript_include_tag 'jquery.polyglot.language.switcher' %>
 
 <% end %>
 
 <%= render 'shared/langs' %>
 
+
+
+<% if @waiting_room.errors.any? %>
+    <div class="error_explanation">
+      <h2><%= pluralize(@waiting_room.errors.count, 'error') %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% @waiting_room.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
 
 
 

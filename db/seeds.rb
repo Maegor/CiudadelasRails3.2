@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.create!(name: 'molero1', email: 'molero1', password: '1234', password_confirmation: '1234', lang: 'en')
-User.create!(name: 'molero2', email: 'molero2', password: '1234', password_confirmation: '1234', lang: 'en')
-User.create!(name: 'molero3', email: 'molero3', password: '1234', password_confirmation: '1234', lang: 'en')
+User.create!(name: 'molero1', email: 'molero1@pfc.net', password: '123456', password_confirmation: '123456', lang: 'en')
+User.create!(name: 'molero2', email: 'molero2@pfc.net', password: '123456', password_confirmation: '123456', lang: 'en')
+User.create!(name: 'molero3', email: 'molero3@pfc.net', password: '123456', password_confirmation: '123456', lang: 'en')
 
 ### Init base_actions
 
@@ -43,7 +43,7 @@ BaseAction.create!(description: 'store_card', partialname: 'store_card')
 ### Init base_cards
 
 #Characters
-Character.create!(name: 'assasin', turn: 1,quantity: 1,type: 'Character')
+Character.create!(name: 'assassin', turn: 1,quantity: 1,type: 'Character')
 Character.create!(name: 'thief', turn: 2,quantity: 1, type: 'Character')
 Character.create!(name: 'magician', turn: 3,quantity: 1, type: 'Character')
 Character.create!(name: 'king', turn: 4,quantity: 1, type: 'Character')

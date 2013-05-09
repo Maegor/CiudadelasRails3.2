@@ -8,12 +8,13 @@
         </span>
     <% end %>
     <div>
-    <%= submit_tag  'Coger' %>
+    <%= submit_tag  (t 'board.take_the_card') %>
     </div>
 
 <% end %>
 
 <script type="text/javascript">
+    $('.image-checkbox-container div').css({'margin':'4px'});
 
   max_selection =  <%= current_user.player.card_to_take  %>
 
@@ -23,7 +24,7 @@
               if(!check.attr("disabled")) {
                   if(!check.prop('checked') ){
                       check.prop('checked', true).attr('checked','checked');
-                      this.style.border = '4px solid #38F';
+                      this.style.border = '4px ridge  #38F';
                       this.style.margin = '0px';
 
 

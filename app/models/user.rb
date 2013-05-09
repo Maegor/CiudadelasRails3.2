@@ -44,7 +44,7 @@ class << self
   end
 
   def encrypt_password(password, salt)
-    Digest::SHA2.hexdigest(password + "wibble" + salt)
+    Digest::SHA2.hexdigest(password + 'wibble' + salt)
   end
 
 end
@@ -61,7 +61,7 @@ end
 
 private
 def password_must_be_present
-  errors.add(:password, "Missing password") unless hashed_password.present?
+  errors.add(:password, 'Missing password') unless hashed_password.present?
   
 end
 

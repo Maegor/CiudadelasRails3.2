@@ -196,3 +196,6 @@ es:
   change_with_maze: "Cartas"
   faceup: "Descartados"
   characters_list: "Disponibles"
+  take_2_gold: "COGER 2 MONEDAS"
+  take_cards: "COGER CARTAS"
+  take_the_card: "COGER"
