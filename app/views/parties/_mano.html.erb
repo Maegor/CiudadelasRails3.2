@@ -4,24 +4,21 @@
 <div  id="ficha_jugador" class="player_lane">
   <div id="char">
 
-    <% if (character_card = current_user.player.player_character) %>
-        <%= render :partial => 'character_card', :object => character_card %>
+    <% if (character_ui = current_user.player.player_character) %>
+        <%= render :partial => 'character_ui', :object => character_ui %>
 
     <% else%>
-        <div class="card" id="cardback"></div>
+        <div class="character_ui" id="nochar_ui"></div>
     <%end%>
 
   </div>
-
-  <div class="data_user" id="points">
-   <div class="title"><%= t 'board.points' %></div>
-   <div class="value"><%= count_points current_user.player.recount %></div>
-
-  </div>
   <div class="data_user" id="golds">
-    <div class="title"><%= t 'board.coins' %></div>
-     <div class="value"> <%= current_user.player.coins %></div>
+    <div class="value"> <%= current_user.player.coins %></div>
   </div>
+  <div class="data_user" id="points">
+    <div class="value"><%= current_user.player.districts_on_game.length%></div>
+  </div>
+
 </div>
 
 
@@ -53,9 +50,9 @@
 
 <%if current_user.player.state == 'ACTION'%>
 
-<div id="finturno">
-  <h2><%= link_to 'finalizar turno', end_turn_path %></h2>
-</div>
+
+  <%= link_to 'finalizar turno', end_turn_path, :id=> 'finturno' %>
+
 <%end%>
 
 <script type="text/javascript">
@@ -74,8 +71,8 @@
     $('#cartas_mano .card_container').css('width',(num_cards * multiplier) + (num_cards * 5));
 
 
-            $('#distritos_construidos, #cartas_mano').jScrollPane({
-         autoReinitialise: true
+            $('#distritos_construidos, #cartas_mano, #lista_jugadores').jScrollPane({
+
                 });
 
 

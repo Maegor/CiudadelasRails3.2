@@ -1,19 +1,24 @@
 <% if @game.state != 'FINISHED'%>
 
-console.log (blocked);
+     var jspPanetop = $('#lista_jugadores .jspPane').css('top');
+     var jspDragtop = $('#lista_jugadores .jspDrag').css('top');
 
 
 <%if session[:refresh] %>
      $('#tablero').replaceWith("<%=escape_javascript (render :partial => 'tablero') %>");
-        <% if %w(TURN ACTION).include?(current_user.player.state)
-                session[:refresh] = false
-             end
-     else
-         unless %w(TURN ACTION).include?(current_user.player.state)
-                  session[:refresh] = true
-          end
-      end
-     %>
+
+        $('#lista_jugadores .jspPane').css({'top': jspPanetop});
+        $('#lista_jugadores .jspDrag').css({'top': jspDragtop} );
+
+<% if %w(TURN ACTION).include?(current_user.player.state)
+        session[:refresh] = false
+     end
+else
+ unless %w(TURN ACTION).include?(current_user.player.state)
+          session[:refresh] = true
+  end
+end
+%>
 
 <%else%>
         function enter_game(){

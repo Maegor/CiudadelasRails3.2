@@ -11,6 +11,10 @@ $card_height: 120px;
 /*FORM*/
 //div{ border: 1px solid;}
 
+body{
+  background-color: wheat;
+}
+
 #parties_content{
 
   font-family: 'Raleway', 'Lato', Arial, sans-serif;
@@ -134,7 +138,7 @@ $card_height: 120px;
 #tablero {
 
   //
-  border: 1px solid;
+ // border: 1px solid;
   background: #f6d6a5;
   padding-left: 5px;
 
@@ -146,13 +150,12 @@ $card_height: 120px;
 }
 
 #top_tablero{
-  margin-top: 150px;
+  //margin-top: 150px;
   //height: 250px;
   position: fixed;
-  bottom: 0px;
-  left: 0px;
-
-  width: 100%;
+  //bottom: 0px;
+  //left: 0px;
+  width: 1366px;
 
 }
 #top_tablero{
@@ -179,13 +182,6 @@ $card_height: 120px;
  // height: 125px;
 
 }
-
-#ficha_jugador {
-     float: left;
-
-}
-
-
 #descartes{
 
     // height: 250px;
@@ -257,6 +253,8 @@ $card_height: 120px;
 
 
 
+
+
 #nochar {
   background-image: url('characters/nochar.png');
 }
@@ -318,10 +316,27 @@ $card_height: 120px;
 #warlord{background-image: url('characters/warlord.png')}
 
 
+/*Characters for the player*/
+
+#assassin_ui{background-image: url('characters/assassin_ui.png')}
+#thief_ui{background-image: url('characters/thief_ui.png')}
+#magician_ui{background-image: url('characters/magician_ui.png')}
+#king_ui{background-image: url('characters/king_ui.png')}
+#bishop_ui{background-image: url('characters/bishop_ui.png')}
+#merchant_ui{background-image: url('characters/merchant_ui.png')}
+#architect_ui{background-image: url('characters/architect_ui.png')}
+#warlord_ui{background-image: url('characters/warlord_ui.png')}
+#nochar_ui{background-image: url('characters/nochar_ui.png')}
+
+.character_ui{
+  height: 174px;
+  width: 240px;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+}
+
 /*select characters*/
-
-
-
 
 .select_char{
 
@@ -473,8 +488,8 @@ $card_height: 120px;
 .action_icon{
   background-repeat: no-repeat ;
   background-size: cover;
-  height:60px;
-  width: 60px;
+  height:55px;
+  width: 55px;
   display: inline-block;
 
 
@@ -624,7 +639,7 @@ $card_height: 120px;
 
 .opponent_cards{
 
-  border: 1px solid;
+  //border: 1px solid;
   position: relative;
   width: 800px;
   left: 200px;
@@ -633,6 +648,7 @@ $card_height: 120px;
 
 .opponent{
   height: 145px;
+  margin-top:7px ;
 }
 
 /* Player style*/
@@ -650,6 +666,8 @@ $card_height: 120px;
 #ficha_jugador{
   width: 200px;
   height: 180px;
+  float: left;
+  margin-right: 50px;
 }
 
 #distritos_construidos .card, #cartas_mano .card{
@@ -674,9 +692,9 @@ $card_height: 120px;
 }
 
 #distritos_construidos{
-  margin-right: 150px;
+  margin-right: 240px;
   width: (($card_width + 3) * 4)  ;
-  height: 150px;
+ // height: 150px;
 }
 #cartas_mano{
 
@@ -695,10 +713,16 @@ $card_height: 120px;
   height: 30px;
   width: 75px;
   position: relative;
-  bottom: 130px;
-  left: 100px;
-  margin-bottom: 30px;
+  bottom: 142px;
+  left: 170px;
+  margin-bottom: 36px;
   text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+  text-shadow:
+    1px 1px 0 #CCC,
+    2px 2px 0 #CCC;
+
 
 }
 
@@ -706,20 +730,41 @@ $card_height: 120px;
 
 #icons_bar{
 
-  position: relative;
-  bottom: 262px;
-  height: 63px;
-  left: 200px;
-  width: 400px;
+  position: absolute;
+  bottom: 70px;
+  height: 130px;
+  left: 650px;
+  width: 233px;
 }
 
 
 #finturno{
   text-align: center;
-  position: relative;
-  bottom: 100px;
+  position: absolute;
+  bottom: 23px;
+  left: 651px;
+  background-image: url('nohover.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 231px;
+  height: 42px;
+  font-size: 26px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #000000;
+  padding-top: 8px;
+  padding-bottom: 15px;
+
 
 }
+
+#finturno:hover{
+  background-image: url('hover.png');
+  padding-bottom: 14px;
+}
+
+
+
 /* rejected */
 
 
@@ -760,6 +805,8 @@ $card_height: 120px;
 
 #lista_jugadores{
   margin-top: 20px;
+  //overflow: auto;
+  height: 460px;
 }
 
 .opponent_name{
