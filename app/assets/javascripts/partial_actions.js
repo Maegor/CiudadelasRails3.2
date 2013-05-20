@@ -56,7 +56,7 @@ function tabs (container_id){
 
     $('.tab').click(function(ev){
 
-            console.log(container_id);
+
         if ($(ev.currentTarget).hasClass("unselected")){
             var option = $($(ev.currentTarget));
             var no_option = $( '#' + container_id + ' .tab.selected');

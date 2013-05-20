@@ -1,6 +1,8 @@
-
+<div id="card_selected_id">
 <% @game.cards.characters.find(:all, :conditions => ["state = 'ONGAME' and player_id IS null"]).each do |select_char| %>
         <%= link_to (render :partial =>  'select_char', :object => select_char),
                     { :controller => :parties, :action => :select_card,:party_id => select_char.party_id, :card_id => select_char.id}%>
 
     <% end %>
+
+    </div>

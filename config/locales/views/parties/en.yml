@@ -199,3 +199,6 @@ en:
   take_2_gold: "TAKE 2 GOLD"
   take_cards: "TAKE CARDS"
   take_the_card: "TAKE"
+  choose_action: "Choose an action"
+  take_one_card: "Take a card"
+  take_two_cards: "Take two cards"

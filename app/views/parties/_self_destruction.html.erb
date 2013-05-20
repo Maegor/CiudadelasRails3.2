@@ -1,6 +1,7 @@
 <div id="self_destruction" class="hidden">
   <div class="popupContainer">
     <a  class="closePopup" title="close popup"></a>
+  <div class="popupContent">
 
     <% @game.players.each_with_index  do |player,index| %>
 
@@ -9,13 +10,13 @@
           <div class="<%=selected_class('tab', index)%>"><%= player.name %>
           </div>
           <div class="<%= visible_class('cards', index)%>">
-
+            <div class="container_cards_pop">
             <% player.districts_on_game.where("name <> 'powderhouse'").each do |district_card| %>
 
-                <%= link_to (render :partial => 'district_card', :object => district_card),
+                <%= link_to (render :partial => 'select_district_card', :object => district_card),
                             party_action_path(@game.id, [action.id, district_card.id]) %>
             <% end%>
-
+            </div>
 
           </div>
         </div>
@@ -26,9 +27,11 @@
         <div class="tab disabled" >
         </div>
     <% end %>
+
   </div>
 </div>
-
+</div>
 <script type="text/javascript">
     tabs("self_destruction");
+    $('.container_cards_pop').jScrollPane({autoReinitialise: true});
 </script>

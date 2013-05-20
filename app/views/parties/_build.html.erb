@@ -1,32 +1,26 @@
 <div id="build" class="hidden">
   <div class="popupContainer">
   <a  class="closePopup" title="close popup"></a>
-    <h2>Construir</h2>
+    <div class="popupContent">
 
     <div id="build_container">
+
+
+<div>
 <% player = current_user.player
    districts = player.district_to_construct
  if districts.size != 0 %>
 
 
-  <%districts.each do |district_card|%>
+  <%districts.each do |select_district_card|%>
 
         <%= #noinspection RubyResolve
-            link_to (render :partial => 'district_card', :object => district_card), party_action_path(@game.id, [action.id,district_card.id]) %>
-  <% end
+            link_to (render :partial => 'select_district_card', :object => select_district_card), party_action_path(@game.id, [action.id,select_district_card.id]) %>
+        <% end%>
 
-     if player.districts_on_game.exists?(["name = 'factory'"]) %>
-       <div>
-         Factoria: el coste de los edificio de los distritos púrpuras se reduce en uno
-       </div>
-    <% if player.districts_on_game.exists?(["name = 'quarry'"])%>
-        <div>
-          Cantera: Puedes construir distritos con el mismo nombre
-        </div>
+      </div>
 
-         <% end
-          end
-        else%>
+<%else%>
 
 
         <div>
@@ -36,5 +30,12 @@
           </div>
 
  <%end%>
+  </div>
 </div>
 </div>
+<script type="text/javascript">
+
+
+  $('#build_container').jScrollPane({autoReinitialise: true});
+
+</script>

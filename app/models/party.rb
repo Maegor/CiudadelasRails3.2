@@ -405,8 +405,6 @@ class Party < ActiveRecord::Base
     card_list.each do |card|
       Card.update(card.id, :state => 'SELECTABLE')
     end
-    card_list
-
   end
 
   def reorder_cards()

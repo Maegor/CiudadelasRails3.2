@@ -344,6 +344,7 @@ end
 
   def take_districts(action_array)
 
+    party.card_to_select(self)
     self.actions.create(:base_action_id => BaseAction.find_by_partialname("select_district").id)
     destroy_other_actions(action_array.first)
 

@@ -27,8 +27,8 @@ BaseAction.create!(description: 'destroy', partialname: 'destroy_building')
 BaseAction.create!(description: 'change', partialname: 'change_cards')
 BaseAction.create!(description: 'change_with_maze', partialname: 'change_with_maze')
 BaseAction.create!(description: 'change_with_player', partialname: 'change_with_player')
-BaseAction.create!(description: 'crown', partialname: 'crown')
-BaseAction.create!(description: 'protection', partialname: 'protection')
+#BaseAction.create!(description: 'crown', partialname: 'crown')
+#BaseAction.create!(description: 'protection', partialname: 'protection')
 BaseAction.create!(description: 'take_extra_cards', partialname: 'take_extra_cards')
 BaseAction.create!(description: 'build_severals', partialname: 'build_severals')
 
@@ -111,8 +111,8 @@ District.create!(name:'hospital', colour:'purple', cost:6, points:6, quantity:1,
 
 build_id = BaseAction.find_by_description('build').id
 # assasin's actions
-CardBaseAction.create!(base_action_id: build_id, base_card_id: BaseCard.find_by_name('assasin').id )
-CardBaseAction.create!(base_action_id: BaseAction.find_by_description('kill').id, base_card_id: BaseCard.find_by_name('assasin').id )
+CardBaseAction.create!(base_action_id: build_id, base_card_id: BaseCard.find_by_name('assassin').id )
+CardBaseAction.create!(base_action_id: BaseAction.find_by_description('kill').id, base_card_id: BaseCard.find_by_name('assassin').id )
 #thief's actions
 CardBaseAction.create!(base_action_id: build_id, base_card_id: BaseCard.find_by_name('thief').id )
 CardBaseAction.create!(base_action_id: BaseAction.find_by_description('steal').id, base_card_id: BaseCard.find_by_name('thief').id )
@@ -121,12 +121,12 @@ CardBaseAction.create!(base_action_id: build_id, base_card_id: BaseCard.find_by_
 CardBaseAction.create!(base_action_id: BaseAction.find_by_description('change').id, base_card_id: BaseCard.find_by_name('magician').id )
 #king's actions
 CardBaseAction.create!(base_action_id: build_id, base_card_id: BaseCard.find_by_name('king').id )
-CardBaseAction.create!(base_action_id: BaseAction.find_by_description('crown').id, base_card_id: BaseCard.find_by_name('king').id )
+#CardBaseAction.create!(base_action_id: BaseAction.find_by_description('crown').id, base_card_id: BaseCard.find_by_name('king').id )
 CardBaseAction.create!(base_action_id: BaseAction.find_by_description('take_yellow_taxes').id, base_card_id: BaseCard.find_by_name('king').id )
 #bishop's actions
 CardBaseAction.create!(base_action_id: build_id, base_card_id: BaseCard.find_by_name('bishop').id )
 CardBaseAction.create!(base_action_id: BaseAction.find_by_description('take_blue_taxes').id, base_card_id: BaseCard.find_by_name('bishop').id )
-CardBaseAction.create!(base_action_id: BaseAction.find_by_description('protection').id, base_card_id: BaseCard.find_by_name('bishop').id )
+#CardBaseAction.create!(base_action_id: BaseAction.find_by_description('protection').id, base_card_id: BaseCard.find_by_name('bishop').id )
 #merchant's actions
 CardBaseAction.create!(base_action_id: build_id, base_card_id: BaseCard.find_by_name('merchant').id )
 CardBaseAction.create!(base_action_id: BaseAction.find_by_description('take_green_taxes').id, base_card_id: BaseCard.find_by_name('merchant').id )

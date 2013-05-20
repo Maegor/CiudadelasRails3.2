@@ -45,12 +45,20 @@ module PartiesHelper
   def actions_tooltip(character_name)
     string = String.new
 
-    string << (t 'characters.' + character_name  + '.name')
-    string << "\n"
     string << (t 'characters.' + character_name + '.description')
 
 
   end
+
+  def district_name(district_card)
+    string = String.new
+    if district_card.base_card.colour == 'purple'
+      string << (t 'districts.' + district_card.base_card.name + '.name')
+    else
+      string << (t 'districts.' + district_card.base_card.name.downcase)
+    end
+  end
+
 
 
   def district_tooltip(district_card)
@@ -94,7 +102,7 @@ module PartiesHelper
     title = String.new
 
     if actions.count == 2
-      title << 'Elige una accion'
+      title << (t 'board.choose_action')
     else
        action = actions.first
        if action.player.districts_on_game.exists?(["name = 'library'"])

@@ -1,7 +1,7 @@
-<div id="change_cards" class="hidden" xmlns="http://www.w3.org/1999/html">
+<div id="change_cards" class="hidden">
     <div class="popupContainer">
       <a class="closePopup" title="close popup"></a>
-
+      <div class="popupContent">
       <% index = 0
          %w(change_with_player  change_with_maze ).each do |option| %>
           <div class="tab_data">
@@ -15,7 +15,7 @@
       <% end %>
     </div>
   </div>
-
+</div>
 <script type="text/javascript">
    tabs("change_cards");
 </script>

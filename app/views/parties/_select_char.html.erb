@@ -1,9 +1,8 @@
 <div class="select_char" id="<%= #noinspection RubyResolve
-                                 select_char.base_card.name%>_select" title="<%= #noinspection RubyResolve
-                                                                                actions_tooltip select_char.base_card.name %>">
+                                 select_char.base_card.name%>_select">
 
-
-  <div class="char_name"><%= #noinspection RubyResolve
-                             (t 'characters.' + select_char.base_card.name + '.name') %></div>
+  <div class="char_description"><%= actions_tooltip select_char.base_card.name %> </div>
+  <p class="char_name"><%= #noinspection RubyResolve
+                             (t 'characters.' + select_char.base_card.name + '.name') %></p>
 
 </div>

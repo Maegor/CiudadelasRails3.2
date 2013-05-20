@@ -1,16 +1,21 @@
 <div id="kill" class="hidden">
   <div class="popupContainer">
     <a  class="closePopup" title="close popup"></a>
-   <h2>Elige tu víctima</h2>
-    <div id="kill_container">
+    <div class="popupContent">
+    <div class="container_cards_pop">
+      <div id="card_selected_id">
   <%@game.players_to_kill.each do |select_char|%>
- <div class="character_target">
+
     <%= #noinspection RubyResolve
         link_to (render :partial => 'select_char', :object => select_char), party_action_path(@game.id, [action.id,select_char.id])%>
-
- </div>
- <% end %>
+    <% end %>
+        </div>
+      </div>
       </div>
   </div>
 </div>
 
+<script type="text/javascript">
+
+    $('.container_cards_pop').jScrollPane({autoReinitialise: true});
+</script>

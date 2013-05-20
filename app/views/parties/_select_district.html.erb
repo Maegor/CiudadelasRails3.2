@@ -1,24 +1,27 @@
-<%= form_tag form_action 'select_district' do %>
 
-    <% @game.card_to_select(current_user.player).each do |card|%>
+<%= form_tag form_action 'select_district' do %>
+      <div class="container_cards_pop">
+    <% @game.cards.where("state = 'SELECTABLE'").each do |card|%>
         <span class="image-checkbox-container">
         <%= check_box_tag 'cards[]', card.id %>
           <%#= label_tag 'cards[]', (t 'districts.' + card.base_card.name) %>
-          <%= (render :partial => 'district_card', :object => card)  %>
+          <%= (render :partial => 'select_district_card', :object => card)  %>
         </span>
     <% end %>
-    <div>
+
+      </div>
     <%= submit_tag  (t 'board.take_the_card') %>
-    </div>
+
 
 <% end %>
 
 <script type="text/javascript">
-    $('.image-checkbox-container div').css({'margin':'4px'});
+    $('.container_cards_pop').jScrollPane({autoReinitialise: true});
+    $('.image-checkbox-container .card_select').css({'margin':'4px'});
 
   max_selection =  <%= current_user.player.card_to_take  %>
 
-          $('.image-checkbox-container div').on('click', function(){
+          $('.image-checkbox-container .card_select').on('click', function(){
              var  check = $(this).prev('input[type="checkbox"]');
 
               if(!check.attr("disabled")) {
@@ -41,8 +44,5 @@
                       unchecked_checks.attr("disabled",bol);
               }
           });
-
-
-
 
 </script>

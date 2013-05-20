@@ -11,9 +11,7 @@ $card_height: 120px;
 /*FORM*/
 //div{ border: 1px solid;}
 
-body{
-  background-color: wheat;
-}
+
 
 #parties_content{
 
@@ -340,9 +338,9 @@ body{
 
 .select_char{
 
-  width: 135px;
-  height: 135px;
-  display: inline-block;
+  width: 140px;
+  height: 140px;
+  //display: inline-block;
 
 }
 
@@ -351,14 +349,65 @@ body{
 
 
 }
-#seleccion_personaje .cards{
-  width: 548px;
-  text-align: center;
-  top: 80px;
-  margin-left: 31px;
+
+
+.card_select {
+  height: 150px;
+  margin-top: 5px;
+
+ img{
+     height: inherit;
+     width: 90px;
+     //margin-left: 15px;
+     float:left;
+     }
+  p{
+    margin-top: 3px;
+    font-weight: bold;
+  }
 
 }
 
+
+.card_text_element_title{
+  width: 90px;
+  float: left;
+
+
+}
+
+.card_text_element_value{
+
+
+ }
+
+
+.card_text_elements{
+
+  color: #000000;
+  margin-left: 120px;
+  padding-top: 10px;
+
+}
+
+
+.card_text_element{
+
+
+  margin-top: 6px;
+
+}
+
+
+.char_description{
+  text-decoration: none;
+  width: 370px;
+  margin-left: 145px;
+  margin-top: 20px;
+  float:left;
+  color: #000000;
+
+}
 /*Select action*/
 
 #assassin_select{background-image: url('select_char/assassin_select.png')}
@@ -401,32 +450,9 @@ body{
     text-shadow:1px 1px 1px #472310;
 
    }
-  input[type=submit]{
-    border: none;
-    width: 160px;
-    height: 45px;
-    background:  url('nohover.png') no-repeat;
-    text-align: center;
-    padding-bottom: 10px;
-
-    text-shadow: 0px 1px 1px #4d4d4d;
-    color: #222;
-    font: 20px 'LeagueGothicRegular';
-  }
-
-  input[type=submit]:hover{
-   // border: none;
-    background:  url('hover.png') no-repeat;
-    padding-bottom: 8px;
-  }
-}
-#action_container{
-  width: 541px;
-  text-align: center;
-  margin-left: 28px;
-  margin-top: 50px;
 
 }
+
 
 
 .character_target{
@@ -457,29 +483,7 @@ body{
 
 }
 
-.popupContainer {
 
-
-  input[type=submit]{
-    border: none;
-    width: 160px;
-    height: 45px;
-    background:  url('nohover.png') no-repeat;
-    text-align: center;
-    padding-bottom: 10px;
-
-    text-shadow: 0px 1px 1px #4d4d4d;
-    color: #222;
-    font: 20px 'LeagueGothicRegular';
-  }
-
-  input[type=submit]:hover{
-    border: none;
-    background:  url('hover.png') no-repeat;
-    padding-bottom: 8px;
-  }
-
-}
 
 
 #cardback{background-image: url('cards/cardback.jpg')}
@@ -501,8 +505,9 @@ body{
 
 
   width: 541px;
-  text-align: center;
-  margin-left: 28px;
+  //text-align: center;
+  //margin-left: 28px;
+  height: 315px;
 
 }
 
@@ -525,13 +530,6 @@ body{
 
 #steal.action_icon{
   background-image: url('action_icons/steal.png');
-}
-
-#steal_container{
-
-  width: 541px;
-  text-align: center;
-  margin-left: 28px;
 }
 
 
@@ -615,8 +613,8 @@ body{
 
 .opponent_iu{
 
-  width: 190px;
-  height: 145px;
+  width: 195px;
+  height: 155px;
  // background-image: url("UIoponente.png");
   //background-repeat: no-repeat;
 
@@ -626,8 +624,8 @@ body{
   height: 40px;
   width: 40px;
   position: relative;
-  bottom: 124px;
-  left: 140px;
+  bottom: 133px;
+  left: 144px;
   text-align: center;
   margin-bottom: 10px;
   font-size: 20px;
@@ -643,11 +641,11 @@ body{
   position: relative;
   width: 800px;
   left: 200px;
-  bottom: 122px;
+  bottom: 130px;
 }
 
 .opponent{
-  height: 145px;
+  height: 155px;
   margin-top:7px ;
 }
 
@@ -656,7 +654,7 @@ body{
 .player_name{
  position: relative;
   left: 24%;
-  top: 79%;
+  top: 76%;
   color: black;
   font-size: 20px;
 
@@ -743,24 +741,34 @@ body{
   position: absolute;
   bottom: 23px;
   left: 651px;
-  background-image: url('nohover.png');
-  background-size: cover;
+  background-image: url('endturn.png');
+  background-size: contain;
   background-repeat: no-repeat;
-  width: 231px;
-  height: 42px;
+  width: 226px;
+  height: 60px;
   font-size: 26px;
   font-weight: bold;
   text-decoration: none;
   color: #000000;
-  padding-top: 8px;
-  padding-bottom: 15px;
 
 
+  a{
+    text-decoration:none;
+    color: #000000;
+  }
+
+  >div{
+    height: inherit;
+    padding-top: 5px;
+  }
+  > div:hover{
+           margin: 2px;
+  }
 }
 
 #finturno:hover{
-  background-image: url('hover.png');
-  padding-bottom: 14px;
+  background-image: url('endturnhover.png');
+
 }
 
 
@@ -787,13 +795,15 @@ body{
 
 .char_name{
 
-  margin-top: 106px;
+  padding-top: 105px;
   font-size: 20px;
   color: black;
+  text-align: center;
+  height: inherit;
 }
 .image-checkbox-container, .image-radio-container{
 
-  margin: 4px;
+  //margin: 4px;
 
 }
 

@@ -199,3 +199,6 @@ es:
   take_2_gold: "COGER 2 MONEDAS"
   take_cards: "COGER CARTAS"
   take_the_card: "COGER"
+  choose_action: "Elige una acción"
+  take_one_card: "Coge una carta"
+  take_two_cards: "Coge 2 cartas"

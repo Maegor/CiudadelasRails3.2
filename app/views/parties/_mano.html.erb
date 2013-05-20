@@ -50,9 +50,13 @@
 
 <%if current_user.player.state == 'ACTION'%>
 
+  <div id="finturno">
 
-  <%= link_to 'finalizar turno', end_turn_path, :id=> 'finturno' %>
+   <div>
+  <%= link_to 'finalizar turno', end_turn_path %>
+</div>
 
+  </div>
 <%end%>
 
 <script type="text/javascript">
