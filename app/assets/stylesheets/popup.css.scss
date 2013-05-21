@@ -271,7 +271,16 @@ a:visited
   background-size: 100%;
 }
 
+#taxes_recount  {
 
+text-align: center;
+> p {
+
+
+       font-size: 45px;
+
+}
+  }
 
 .player_data .cards{
 
@@ -280,8 +289,24 @@ a:visited
     top: 31%;
 }
 
+.actionMessage{
 
 
+  font-size: 31px;
+  margin-top: 171px;
+  text-align: center;
+  margin-left: 12px;
+}
+
+.actionOption{
+      margin-left: 35px;
+      margin-top: 80px;
+
+}
+.takeText{
+   text-align: right;
+
+}
 
 
 .popupContainer h1

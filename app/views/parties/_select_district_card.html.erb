@@ -6,19 +6,19 @@
 
 
   <div class="card_text_element">
-    <div class="card_text_element_title">Nombre:</div>
+    <div class="card_text_element_title"><%= t 'board.name' %>:</div>
     <div class="card_text_element_value"><%= district_name  select_district_card %></div>
 
   </div>
 
   <div class="card_text_element">
-    <div class="card_text_element_title">Color:</div>
-    <div class="card_text_element_value"><%= select_district_card.base_card.colour %></div>
+    <div class="card_text_element_title"><%= t 'board.colour' %>:</div>
+    <div class="card_text_element_value"><%= t ( 'board.' + select_district_card.base_card.colour) %></div>
   </div>
 
 
   <div class="card_text_element">
-    <div class="card_text_element_title">Coste:</div>
+    <div class="card_text_element_title"><%= t 'board.cost' %>:</div>
     <div class="card_text_element_value"><%=   select_district_card.base_card.cost %></div>
 
   </div>
@@ -26,7 +26,7 @@
   <% #noinspection RubyResolve
      if select_district_card.base_card.colour == 'purple' %>
   <div class="card_text_element">
-    <div class="card_text_element_title">Description:</div>
+    <div class="card_text_element_title"><%= t 'board.description' %>:</div>
     <div class="card_text_element_value"><%= (t  'districts.' + select_district_card.base_card.name + '.description')  %></div>
   </div>
   <% end %>

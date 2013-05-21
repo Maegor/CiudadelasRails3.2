@@ -270,10 +270,11 @@ end
  def calculate_taxes
 
    character_name = player_character.base_card.name
-
+   colour_recount = 0
    case character_name
      when 'merchant'
        colour = 'green'
+       colour_recount =  1
      when 'king'
        colour = 'yellow'
      when 'warlord'
@@ -282,7 +283,7 @@ end
        colour = 'blue'
    end
    purple_district = districts_on_game.where("colour = 'purple'")
-   colour_recount = cards.districts.where("state = 'ONGAME' AND colour = ?", colour).count + (purple_district.exists?(["name = 'school_magic'"])? 1:0)
+   colour_recount += cards.districts.where("state = 'ONGAME' AND colour = ?", colour).count + (purple_district.exists?(["name = 'school_magic'"])? 1:0)
  end
 
 def player_actions

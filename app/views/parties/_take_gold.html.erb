@@ -1,7 +1,7 @@
 <%= #noinspection RubyResolve
     link_to (party_action_path(@game.id, action.id)) do %>
-    <div  id="coins" title="<%= t 'actions.take_gold' %>">
+    <div  class="actionOption" id="coins" title="<%= t 'actions.take_gold' %>">
 
     </div>
-    <p><%= t 'board.take_2_gold' %></p>
+    <div class="takeText"><%= t 'board.take_2_gold' %></div>
 <%end%>

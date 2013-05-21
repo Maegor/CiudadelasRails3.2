@@ -3,31 +3,36 @@
   <div class="popupContainer">
     <a  class="closePopup" title="close popup"></a>
 
-    <h2>Contruye tus  distritos</h2>
-    <div id="build_severals_container">
+    <div class="popupContent">
+
  <% district_list = current_user.player.district_to_construct  %>
     <% if district_list.length > 0 %>
         <%= form_tag form_action 'build_severals' do %>
+                 <div class="container_cards_pop">
             <% district_list.each do |card|%>
                  <span class="image-checkbox-container">
-                <%= check_box_tag 'cards[]', card.id %>
-                 <%= (render :partial => 'district_card', :object => card)  %>
-
+                  <%=check_box_tag 'cards[]', card.id %>
+                  <%=(render :partial => 'select_district_card', :object => card)  %>
                 </span>
             <% end %>
+                 </div>
             <div id="submit">
                 <%= submit_tag  'Construir' %>
             </div>
 
         <% end %>
         <script type="text/javascript">
+            $('.container_cards_pop').jScrollPane({autoReinitialise: true});
             build_severals(<%= current_user.player.coins %> , <%= district_hash(district_list).to_json.html_safe %>);
         </script>
 
 
      <% else %>
-        <h3> No puedes construir en este turno</h3>
+             <div class="actionMessage">
+               <%= t 'board.cant_not_build' %>
+             </div>
     <%end %>
+
+    </div>
   </div>
-   </div>
 </div>

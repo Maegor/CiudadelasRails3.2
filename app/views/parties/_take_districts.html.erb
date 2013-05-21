@@ -1,7 +1,8 @@
-<%= link_to party_action_path(@game.id, action.id) do %>
-    <div  id="cardsback" title="<%= t 'actions.take_districts'%>">
+<%= #noinspection RubyResolve
+    link_to party_action_path(@game.id, action.id) do %>
+    <div  class="actionOption" id="cardsback" title="<%= t 'actions.take_districts'%>">
     </div>
-    <p><%= t 'board.take_cards' %></p>
+    <div class="takeText"><%= t 'board.take_cards' %></div>
 <%end%>
 
 

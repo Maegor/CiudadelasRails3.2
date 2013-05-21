@@ -1,25 +1,29 @@
 <div id="take_taxes" class="hidden">
   <div class="popupContainer">
     <a  class="closePopup" title="close popup"></a>
-
-    <h2>Recaudar impuestos</h2>
+    <div class="popupContent">
     <% taxes = current_user.player.calculate_taxes %>
 
       <% if taxes > 0 %>
         <div id="taxes_recount">
-          <p>Recibirás</p>
-              <%= taxes %>
-          <p>monedas</p>
-          <%= link_to 'Recibir', party_action_path(@game.id, [action.id])%>
-        </div>
+          <p><%= t 'board.will_get' %></p>
+           <p><%= taxes %></p>
+          <p><%= t 'board.coins' %></p>
 
+
+
+          <div class="ok_button">
+          <%= #noinspection RubyResolve
+              link_to (t 'board.collect'), party_action_path(@game.id, [action.id])%>
+          </div>
+        </div>
 
       <% else %>
 
-             <h2>No hay impuesto para recaudar</h2>
+             <div class="actionMessage"><%= t 'board.no_taxes' %></div>
 
        <%end%>
 
-
-      </div>
+    </div>
+  </div>
 </div>

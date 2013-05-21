@@ -10,7 +10,7 @@
 
 function build_severals(coins, cost_hash){
 
-$('.image-checkbox-container div').on('click', function(){
+$('.image-checkbox-container .card_select').on('click', function(){
     var  check = $(this).prev('input[type="checkbox"]');
 
     if(!check.attr("disabled")) {

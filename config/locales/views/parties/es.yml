@@ -189,7 +189,10 @@ es:
   university: "Universidad"
 
  board:
-  coins: "Monedas"
+  description: "Descripción"
+  cost: "Coste"
+  colour: "Color"
+  coins: "Moneda(s)"
   points: "Puntos"
   name: "Nombre"
   change_with_player: "Jugadores"
@@ -202,3 +205,14 @@ es:
   choose_action: "Elige una acción"
   take_one_card: "Coge una carta"
   take_two_cards: "Coge 2 cartas"
+  cant_not_build: "No puedes construir en este turno"
+  no_taxes: "No hay impuestos que recaudar"
+  will_get: "Recaudarás"
+  collect: "Recaudar"
+
+  #colours
+  green: "verde"
+  yellow: "amarillo"
+  red: "rojo"
+  blue: "azul"
+  purple: "púrpura"

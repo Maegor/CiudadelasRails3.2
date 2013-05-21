@@ -21,7 +21,7 @@ BaseAction.create!(description: 'take_yellow_taxes', partialname: 'take_taxes')
 BaseAction.create!(description: 'take_red_taxes', partialname: 'take_taxes')
 BaseAction.create!(description: 'take_blue_taxes', partialname: 'take_taxes')
 BaseAction.create!(description: 'take_green_taxes', partialname: 'take_taxes')
-BaseAction.create!(description: 'extra_gold', partialname: 'extra_coin')
+#BaseAction.create!(description: 'extra_gold', partialname: 'extra_coin')
 BaseAction.create!(description: 'build', partialname: 'build')
 BaseAction.create!(description: 'destroy', partialname: 'destroy_building')
 BaseAction.create!(description: 'change', partialname: 'change_cards')
@@ -130,7 +130,7 @@ CardBaseAction.create!(base_action_id: BaseAction.find_by_description('take_blue
 #merchant's actions
 CardBaseAction.create!(base_action_id: build_id, base_card_id: BaseCard.find_by_name('merchant').id )
 CardBaseAction.create!(base_action_id: BaseAction.find_by_description('take_green_taxes').id, base_card_id: BaseCard.find_by_name('merchant').id )
-CardBaseAction.create!(base_action_id: BaseAction.find_by_description('extra_gold').id, base_card_id: BaseCard.find_by_name('merchant').id )
+#CardBaseAction.create!(base_action_id: BaseAction.find_by_description('extra_gold').id, base_card_id: BaseCard.find_by_name('merchant').id )
 #architect's actions
 CardBaseAction.create!(base_action_id: BaseAction.find_by_description('take_extra_cards').id, base_card_id: BaseCard.find_by_name('architect').id )
 CardBaseAction.create!(base_action_id: BaseAction.find_by_description('build_severals').id, base_card_id: BaseCard.find_by_name('architect').id )

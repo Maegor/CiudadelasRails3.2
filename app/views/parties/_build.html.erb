@@ -3,14 +3,14 @@
   <a  class="closePopup" title="close popup"></a>
     <div class="popupContent">
 
-    <div id="build_container">
+
 
 
 <div>
 <% player = current_user.player
    districts = player.district_to_construct
  if districts.size != 0 %>
-
+      <div id="build_container">
 
   <%districts.each do |select_district_card|%>
 
@@ -19,18 +19,18 @@
         <% end%>
 
       </div>
-
+   </div>
 <%else%>
 
 
-        <div>
-          No puedes construir distritos en este turno
+        <div class="actionMessage">
+          <%= t 'board.cant_not_build' %>
         </div>
 
           </div>
 
  <%end%>
-  </div>
+
 </div>
 </div>
 <script type="text/javascript">
