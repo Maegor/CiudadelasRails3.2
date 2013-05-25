@@ -1,0 +1,37 @@
+<div class="card_select" >
+  <%= #noinspection RubyResolve
+      image_tag ('cards/' +  select_district_card.base_card.name.downcase + '.jpg') %>
+  <div class="card_text_elements">
+
+
+    <div class="card_text_element">
+      <div class="card_text_element_title"><%= t 'board.name' %>:</div>
+      <div class="card_text_element_value"><%= #noinspection RubyResolve
+                                               district_name  select_district_card %></div>
+
+    </div>
+
+    <div class="card_text_element">
+      <div class="card_text_element_title"><%= t 'board.colour' %>:</div>
+      <div class="card_text_element_value"><%=#noinspection RubyResolve
+                                              t ( 'board.' + select_district_card.base_card.colour) %></div>
+    </div>
+
+
+    <div class="card_text_element">
+      <div class="card_text_element_title"><%= t 'board.cost' %>:</div>
+      <div class="card_text_element_value"><%=  #noinspection RubyResolve
+                                                cost %></div>
+
+    </div>
+
+    <% #noinspection RubyResolve
+       if select_district_card.base_card.colour == 'purple' %>
+        <div class="card_text_element">
+          <div class="card_text_element_title"><%= t 'board.description' %>:</div>
+          <div class="card_text_element_value"><%= (t  'districts.' + select_district_card.base_card.name + '.description')  %></div>
+        </div>
+    <% end %>
+
+  </div>
+</div>

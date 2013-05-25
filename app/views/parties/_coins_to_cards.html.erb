@@ -2,10 +2,10 @@
 <div id="coins_to_cards" class="hidden">
   <div class="popupContainer">
     <a  class="closePopup" title="close popup"></a>
-    <h2>Forja</h2>
 
-    <div id="coins_to_cards_container">
-      <h3>Pagar 3 monedas para coger 3 distritos</h3>
+    <div class="popupContent">
+
+      <div class="actionMessage">Pagar 3 monedas para coger 3 distritos</div>
 
       <% if current_user.player.coins >= 4 %>
 
@@ -15,7 +15,7 @@
       </div>
 
       <% else %>
-          <h4>No tienes monedas suficiente</h4>
+          <div class="actionMessage">No tienes monedas suficiente</div>
       <% end %>
 
       </div>

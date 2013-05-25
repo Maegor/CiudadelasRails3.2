@@ -29,7 +29,7 @@ BaseAction.create!(description: 'change_with_maze', partialname: 'change_with_ma
 BaseAction.create!(description: 'change_with_player', partialname: 'change_with_player')
 #BaseAction.create!(description: 'crown', partialname: 'crown')
 #BaseAction.create!(description: 'protection', partialname: 'protection')
-BaseAction.create!(description: 'take_extra_cards', partialname: 'take_extra_cards')
+#BaseAction.create!(description: 'take_extra_cards', partialname: 'take_extra_cards')
 BaseAction.create!(description: 'build_severals', partialname: 'build_severals')
 
 #Actions of purple cards.
@@ -132,7 +132,7 @@ CardBaseAction.create!(base_action_id: build_id, base_card_id: BaseCard.find_by_
 CardBaseAction.create!(base_action_id: BaseAction.find_by_description('take_green_taxes').id, base_card_id: BaseCard.find_by_name('merchant').id )
 #CardBaseAction.create!(base_action_id: BaseAction.find_by_description('extra_gold').id, base_card_id: BaseCard.find_by_name('merchant').id )
 #architect's actions
-CardBaseAction.create!(base_action_id: BaseAction.find_by_description('take_extra_cards').id, base_card_id: BaseCard.find_by_name('architect').id )
+#CardBaseAction.create!(base_action_id: BaseAction.find_by_description('take_extra_cards').id, base_card_id: BaseCard.find_by_name('architect').id )
 CardBaseAction.create!(base_action_id: BaseAction.find_by_description('build_severals').id, base_card_id: BaseCard.find_by_name('architect').id )
 #warlord's actions
 CardBaseAction.create!(base_action_id: build_id, base_card_id: BaseCard.find_by_name('warlord').id )

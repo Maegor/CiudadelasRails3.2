@@ -3,21 +3,15 @@
   <a  class="closePopup" title="close popup"></a>
     <div class="popupContent">
 
-
-
-
-<div>
-<% player = current_user.player
-   districts = player.district_to_construct
- if districts.size != 0 %>
+   <div>
+         <% player = current_user.player
+           districts = player.district_to_construct
+         if districts.size != 0 %>
       <div id="build_container">
-
-  <%districts.each do |select_district_card|%>
-
-        <%= #noinspection RubyResolve
-            link_to (render :partial => 'select_district_card', :object => select_district_card), party_action_path(@game.id, [action.id,select_district_card.id]) %>
-        <% end%>
-
+            <%districts.each do |select_district_card|%>
+                <%= #noinspection RubyResolve
+                   link_to (render :partial => 'select_district_card', :object => select_district_card), party_action_path(@game.id, [action.id,select_district_card.id]) %>
+            <% end%>
       </div>
    </div>
 <%else%>
@@ -27,10 +21,10 @@
           <%= t 'board.cant_not_build' %>
         </div>
 
-          </div>
+
 
  <%end%>
-
+     </div>
 </div>
 </div>
 <script type="text/javascript">

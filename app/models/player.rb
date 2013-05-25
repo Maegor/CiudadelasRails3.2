@@ -53,7 +53,7 @@ class Player < ActiveRecord::Base
     end
     for index in 0..(cost_list.length-1)
         if cost_list[index] <= coins
-          cards_to_destroy[index] = list_cards[index]
+          cards_to_destroy[index] = [list_cards[index], cost_list[index]]
         end
     end
     cards_to_destroy.compact
@@ -243,6 +243,9 @@ end
 
 
   #Carga las acciones que puede realizar el jugador durante su turno
+  #Realiza acciones automaticas que se procuce despues de elegir la accion:
+  #-Arquitecto coge 2 cartas
+  #-Mercader coge una moneda
   def get_actions ()
 
     #acciones del personaje que esta jugando
@@ -260,6 +263,19 @@ end
     end
 
 
+    character = player_character.base_card.name
+
+    case character
+      when 'merchant'
+        current_coins = coins
+        update_attribute(:coins, current_coins + 1)
+      when 'architect'
+        card_list = party.cards.districts.where("player_id is NULL").order('position').limit(2)
+        card_list.each do |card|
+          Card.update(card.id, :state => 'ONHAND', :player_id => id)
+        end
+    end
+
 
 
   end
@@ -270,11 +286,11 @@ end
  def calculate_taxes
 
    character_name = player_character.base_card.name
-   colour_recount = 0
+
    case character_name
      when 'merchant'
        colour = 'green'
-       colour_recount =  1
+
      when 'king'
        colour = 'yellow'
      when 'warlord'
@@ -283,7 +299,7 @@ end
        colour = 'blue'
    end
    purple_district = districts_on_game.where("colour = 'purple'")
-   colour_recount += cards.districts.where("state = 'ONGAME' AND colour = ?", colour).count + (purple_district.exists?(["name = 'school_magic'"])? 1:0)
+   colour_recount = cards.districts.where("state = 'ONGAME' AND colour = ?", colour).count + (purple_district.exists?(["name = 'school_magic'"])? 1:0)
  end
 
 def player_actions
@@ -549,19 +565,11 @@ end
       cards.each do |card|
         card.update_attribute(:state, 'ONGAME')
 
+         card_actions = card.base_card.base_actions
 
-        card_name = card.base_card.name
-
-        case card_name
-          when 'lighthouse'
-            action = BaseAction.find_by_description('search_card')
-            actions.create!(base_action_id: action.id)
-          when 'powderhouse'
-            action = BaseAction.find_by_description('self_destruction')
-            actions.create!(base_action_id: action.id)
+        unless card_actions.empty?
+          actions.create!(base_action_id: card_actions[0].id)
         end
-
-
       end
         update_attribute(:coins , current_coins)
     end

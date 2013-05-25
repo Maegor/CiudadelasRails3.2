@@ -1,41 +1,39 @@
 <div id="destroy_building" class="hidden">
   <div class="popupContainer">
     <a  class="closePopup" title="close popup"></a>
-
+ <div class="popupContent">
 <%@game.players.each_with_index do |player,index| %>
 
  <div class="tab_data">
 
-    <div class="<%=selected_class('tab', index)%>"><%= player.name %>
+    <div class="<%=selected_class('tab', index)%>"><%= player.name.capitalize %>
     </div>
         <div class="<%= visible_class('cards', index)%>">
-
+          <div class="container_cards_pop">
           <% #noinspection RubyResolve
              if player.player_character.base_card.name != 'bishop' %>
               <% cards = current_user.player.get_destrutible_building(player)
-                 cards.each do |district_card|
-
-                   if district_card.state == 'ONGAME' %>
+                 cards.each do |district_card| %>
                       <%= #noinspection RubyResolve
-                          link_to (render :partial => 'district_card', :object => district_card),
-                                  party_action_path(@game.id, [action.id, district_card.id]) %>
-                   <%end%>
+                          link_to (render :partial => 'destroy_district_card', :locals => {:select_district_card => district_card[0], :cost => district_card[1]}),
+                                  party_action_path(@game.id, [action.id, district_card[0].id]) %>
+
               <%end%>
           <% else %>
               <h2>No puesdes destruir edificios del Obispo</h2>
           <% end %>
          </div>
- </div>
-<%end%>
-
-
+        </div>
+       </div>
+  <%end%>
     <%  (7 - @game.players_to_destroy.count).times do %>
         <div class="tab disabled" >
         </div>
     <% end %>
   </div>
+ </div>
 </div>
-
   <script type="text/javascript">
         tabs("destroy_building");
+        $('.container_cards_pop').jScrollPane({autoReinitialise: true});
  </script>

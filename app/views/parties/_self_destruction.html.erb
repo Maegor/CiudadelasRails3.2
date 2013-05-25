@@ -13,7 +13,8 @@
             <div class="container_cards_pop">
             <% player.districts_on_game.where("name <> 'powderhouse'").each do |district_card| %>
 
-                <%= link_to (render :partial => 'select_district_card', :object => district_card),
+                <%= #noinspection RubyResolve
+                    link_to (render :partial => 'select_district_card', :object => district_card),
                             party_action_path(@game.id, [action.id, district_card.id]) %>
             <% end%>
             </div>

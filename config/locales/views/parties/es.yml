@@ -58,79 +58,79 @@ es:
   #purple
   imperial_treasure:
    name: "Tesoro imperial"
-   description: "El Tesoro Imperial tiene un coste de 4 monedas de oro para ser construido, pero te reporta tantos puntos como monedas de oro tengas en tu posesión al final de la partida."
+   description: "el Tesoro Imperial tiene un coste de 4 monedas de oro para ser construido, pero te reporta tantos puntos como monedas de oro tengas en tu posesión al final de la partida."
   haunted_city:
    name: "Ciudad encantada"
-   description: "Cuando se cuentan los puntos del final de la partida, el patio de los milagros se considera un Distrito de un color a tu elección. No podrás usar esta capacidad si construiste el Patio de los Milagros en tu último turno de la partida."
+   description: "cuando se cuentan los puntos del final de la partida, el patio de los milagros se considera un Distrito de un color a tu elección. No podrás usar esta capacidad si construiste el Patio de los Milagros en tu último turno de la partida."
   keep:
    name: "Torreón"
-   description: "El Torreón no puede ser destruido por el Condotiero."
+   description: "el Torreón no puede ser destruido por el Condotiero."
   lighthouse:
    name: "Faro"
-   description: "Cuando jueges el Faro, busca una carta en el mazo, ponla en tu mano y luego baraja el mazo"
+   description: "cuando jueges el Faro, busca una carta en el mazo, ponla en tu mano y luego baraja el mazo"
   powderhouse:
    name: "Polvorín"
-   description: "Durante tu turno, puedes destruir el polvorín para poder destruir otro distrito de cualquier jugador."
+   description: "durante tu turno, puedes destruir el polvorín para poder destruir otro distrito de cualquier jugador."
   museum:
    name: "Museo"
-   description: "Una vez por turno, puedes poner una carta de Distrito de tu mano debajo del Museo. Al final del juego, ganas un punto de victoria adicional por cada carta debajo del Museo."
+   description: "una vez por turno, puedes poner una carta de Distrito de tu mano debajo del Museo. Al final del juego, ganas un punto de victoria adicional por cada carta debajo del Museo."
   poorhouse:
    name: "Hospicio"
-   description: "Si no tienes monedas al final de tu turno, ganas una moneda."
+   description: "si no tienes monedas al final de tu turno, ganas una moneda."
   bell_tower:
    name: "Campanario"
-   description: "Cuando juegas el Campanario en tu ciudad, puedes decidir acortar el juego en un Distrito. Esto funciona aunque el  Campanario sea tu último distrito. Si el Condotiero te destruye el Campanario, el juego vuelve a la normalidad."
+   description: "cuando juegas el Campanario en tu ciudad, puedes decidir acortar el juego en un Distrito. Esto funciona aunque el  Campanario sea tu último distrito. Si el Condotiero te destruye el Campanario, el juego vuelve a la normalidad."
   smithy:
    name: "Forja"
-   description: "Una vez por turno, puedes pagar tres monedas de oro para robar tres cartas."
+   description: "una vez por turno, puedes pagar tres monedas de oro para robar tres cartas."
   quarry:
    name: "Cantera"
-   description: "Puedes construir Distritos con el mismo nombre que otros que ya tengas en juego. No perderás las construcciones realizadas de esta forma si la Cantera es destruida."
+   description: "puedes construir Distritos con el mismo nombre que otros que ya tengas en juego. No perderás las construcciones realizadas de esta forma si la Cantera es destruida."
   map_room:
    name: "Sala de mapa"
-   description: "Al final de la partida, añade un punto de victoria adicional por cada Distrito que tengas en tu mano."
+   description: "al final de la partida, añade un punto de victoria adicional por cada Distrito que tengas en tu mano."
   fountain_wishes:
    name: "Fuente de los deseos"
-   description: "Al final de la partida, la Fuente de los Deseos te da 5 puntos equivalentes a su coste, y además te da un punto adicional por cada otro distrito violeta en tu posesión."
+   description: "al final de la partida, te da 5 puntos equivalentes a su coste, y además te da un punto adicional por cada otro distrito violeta en tu posesión."
   observatory:
    name: "Observatorio"
-   description: "Si decides robar dos cartas al principio de tu turno, coges en su lugar tres, te quedas con una de ellas y descartas las otras dos."
+   description: "si decides robar dos cartas al principio de tu turno, coges en su lugar tres, te quedas con una de ellas y descartas las otras dos."
   laboratory:
    name: "Laboratorio"
-   description: "Una vez por turno, puedes descartar una carta de Distrito de tu mano y recibir una moneda de oro a cambio."
+   description: "una vez por turno, puedes descartar una carta de Distrito de tu mano y recibir una moneda de oro a cambio."
   factory:
    name: "Fábrica"
-   description: "El coste de construcción para otros Distritos Purpuras en tu ciudad es reducido en uno. Esto no afecta al precio del Condotiero para destruirlo."
+   description: "el coste de construcción para otros Distritos Purpuras en tu ciudad es reducido en uno. Esto no afecta al precio del Condotiero para destruirlo."
   graveyard:
    name: "Cementerio"
-   description: "Cuando el Condotiero destruye un Distrito, puedes pagar una moneda de oro para cogerlo y ponerlo en tu mano. No puedes hacer esto si eres el Condotiero."
+   description: "luando el Condotiero destruye un Distrito, puedes pagar una moneda de oro para cogerlo y ponerlo en tu mano. No puedes hacer esto si eres el Condotiero."
   library:
    name: "Biblioteca"
-   description: "Si escoges recibir dos cartas al principio de tu turno, te quedas con las dos cartas que cojas."
+   description: "li escoges recibir dos cartas al principio de tu turno, te quedas con las dos cartas que cojas."
   school_magic:
    name: "Escuela de magia"
-   description: "En lo que respecta a los ingresos, la escuela de magia es considerada como un Distrito de un color a tu elección."
+   description: "en lo que respecta a los ingresos, la escuela de magia es considerada como un Distrito de un color a tu elección."
   ballroom:
    name: "Sala de baile"
-   description: "Cuando tengas la Corona, los otros jugadores deben decir 'Gracias, su Excelencia' cuando su personaje se revele. Si algún jugador se olvida, pierde su turno."
+   description: "cuando tengas la Corona, los otros jugadores deben decir 'Gracias, su Excelencia' cuando su personaje se revele. Si algún jugador se olvida, pierde su turno."
   park:
    name: "Parque"
-   description: "Si no tienes cartas al final de tu turno, roba dos cartas."
+   description: "si no tienes cartas al final de tu turno, roba dos cartas."
   hospital:
    name: "Hospital"
-   description: "Si tu eres asesinado, aún puedes hacer tu acción normal de coger moneda o carta. Inmediatamente después termina tu turno."
+   description: "si tu eres asesinado, aún puedes hacer tu acción normal de coger moneda o carta. Inmediatamente después termina tu turno."
   great_wall:
    name: "Gran muralla"
-   description: "El precio que debe pagar el Condotiero para destruir tus Distritos se incrementan en 1."
+   description: "el precio que debe pagar el Condotiero para destruir tus Distritos se incrementan en 1."
   throne_hall:
    name: "Sala del trono"
-   description: "Cada vez que la Corona cambia de un jugador a otro, ganas una moneda."
+   description: "cada vez que la Corona cambia de un jugador a otro, ganas una moneda."
   dragon_gate:
    name: "Puerta del dragón"
-   description: "La construcción de esta Maravilla - ningún dragón ha sido visto en el reino desde hace cientos de años - cuesta seis monedas de oro pero proporciona ocho puntos al final del juego."
+   description: "la construcción de esta Maravilla  cuesta seis monedas de oro pero proporciona ocho puntos al final del juego."
   university:
    name: "Universidad"
-   description: "La construcción de esta Maravilla - nunca nadie comprendió completamente para que puede servir una Universidad - cuesta seis monedas de oro pero proporciona ocho puntos al final del juego."
+   description: "la construcción de esta Maravilla  cuesta seis monedas de oro pero proporciona ocho puntos al final del juego."
 
  actions:
   take_gold: "Coger 2 monedas del banco."

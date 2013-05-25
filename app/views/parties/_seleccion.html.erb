@@ -25,7 +25,7 @@
 
 
     </script>
-    coins
+
 
 <% elsif current_user.player.state == 'TURN'%>
 
@@ -58,7 +58,7 @@
             <div class="actiondiv">
             <%= #noinspection RubyResolve
                 render :partial => action.base_action.partialname, :locals => {:action => action} %>
-        </div>
+            </div>
 
       <%end%>
 

@@ -2,11 +2,15 @@
 <div id="card_to_coin" class="hidden">
   <div class="popupContainer">
     <a  class="closePopup" title="close popup"></a>
-    <h2>Laboratorio</h2>
-    <div id="card_to_coin_container">
+    <div class="popupContent">
+      <div class="container_cards_pop">
      <% current_user.player.districts_on_hand.each do |district_card| %>
-        <%= link_to (render :partial => 'district_card', :object => district_card), party_action_path(@game.id, [action.id,district_card.id]) %>
+        <%= link_to (render :partial => 'select_district_card', :object => district_card), party_action_path(@game.id, [action.id,district_card.id]) %>
      <%end%>
-    </div>
+   </div>
   </div>
+ </div>
 </div>
+<script type="text/javascript">
+    $('.container_cards_pop').jScrollPane({autoReinitialise: true});
+</script>

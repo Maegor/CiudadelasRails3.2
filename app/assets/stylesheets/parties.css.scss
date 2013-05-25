@@ -384,9 +384,10 @@ $card_height: 120px;
 
 .card_text_elements{
 
+  font-size: 17px;
   color: #000000;
   margin-left: 120px;
-  padding-top: 10px;
+  padding-top: 1px;
 
 }
 
@@ -401,11 +402,13 @@ $card_height: 120px;
 
 .char_description{
   text-decoration: none;
-  width: 370px;
-  margin-left: 145px;
+  width: 384px;
+  margin-left: 133px;
   margin-top: 20px;
-  float:left;
+  //float:left;
   color: #000000;
+  height: 98px;
+  position: relative;
 
 }
 /*Select action*/
@@ -586,7 +589,7 @@ $card_height: 120px;
   background-image: url("action_icons/coins_to_cards.png");
 }
 
-#coins_to_cards_container{
+#coins_to_cards{
      text-align: center;
 }
 
@@ -791,11 +794,12 @@ $card_height: 120px;
 
 .char_name{
 
-  padding-top: 105px;
+  //padding-top: 105px;
   font-size: 20px;
   color: black;
   text-align: center;
-  height: inherit;
+ // height: inherit;
+  margin-top: 8px;
 }
 .image-checkbox-container, .image-radio-container{
 

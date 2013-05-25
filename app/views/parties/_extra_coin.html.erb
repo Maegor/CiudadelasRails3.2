@@ -3,6 +3,7 @@
   <div class="popupContainer">
     <a  class="closePopup" title="close popup"></a>
     <h2>Coger moneda de oro</h2>
-    <%= link_to  'Coger', party_action_path(@game.id, [action.id]) %>
+    <%= #noinspection RubyResolve
+        link_to  'Coger', party_action_path(@game.id, [action.id]) %>
   </div>
 </div>

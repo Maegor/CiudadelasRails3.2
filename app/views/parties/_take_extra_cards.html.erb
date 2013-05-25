@@ -4,7 +4,8 @@
 
     <h2>Coger cartas extra</h2>
     <div id="take_extra_cards_container">
-    <%= link_to (image_tag 'popup_background/bocabajo.png' ), party_action_path(@game.id, [action.id]) %>
+    <%= #noinspection RubyResolve
+        link_to (image_tag 'popup_background/bocabajo.png' ), party_action_path(@game.id, [action.id]) %>
 
     </div>
   </div>

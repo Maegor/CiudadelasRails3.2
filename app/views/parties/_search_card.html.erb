@@ -2,32 +2,35 @@
   <div class="popupContainer">
     <a class="closePopup" title="close popup"></a>
 
-
+     <div class="popupContent">
     <% index = 0
        @game.cards_in_deck.each do |colour, array| %>
         <div class="tab_data">
 
-          <div class="<%= selected_class('tab', index) %>"><%= colour %> </div>
+          <div class="<%= selected_class('tab', index) %>"><%= t ('board.' +  colour) %> </div>
           <div class="<%= visible_class('cards', index) %>">
-
+            <div class="container_cards_pop">
             <% index += 1
                array.each do |district_card| %>
 
-                <%= link_to (render :partial => 'district_card', :object => district_card),
+                <%= #noinspection RubyResolve
+                    link_to (render :partial => 'select_district_card', :object => district_card),
                             party_action_path(@game.id, [action.id, district_card.id]) %>
 
             <% end %>
+              </div>
           </div>
         </div>
 
     <% end %>
     </div>
     </div>
-
-
+</div>
+</div>
 
 <script type="text/javascript">
 
+$('.container_cards_pop').jScrollPane({autoReinitialise: true});
 tabs("search_card");
 
 
