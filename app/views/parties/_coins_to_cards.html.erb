@@ -5,17 +5,17 @@
 
     <div class="popupContent">
 
-      <div class="actionMessage">Pagar 3 monedas para coger 3 distritos</div>
+
 
       <% if current_user.player.coins >= 4 %>
-
-      <div class="ok_button">
-      <%= #noinspection RubyResolve
-         link_to 'Vale', party_action_path(@game.id, [action.id]) %>
-      </div>
+       <div class="actionMessage"><%= t 'actions.coins_to_cards' %></div>
+       <div class="ok_button">
+        <%= #noinspection RubyResolve
+          link_to (t 'board.accept'), party_action_path(@game.id, [action.id]) %>
+        </div>
 
       <% else %>
-          <div class="actionMessage">No tienes monedas suficiente</div>
+          <div class="actionMessage"><%= t 'board.no_money' %></div>
       <% end %>
 
       </div>

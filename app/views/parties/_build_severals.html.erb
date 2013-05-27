@@ -22,7 +22,7 @@
 
         <% end %>
         <script type="text/javascript">
-            $('.container_cards_pop').jScrollPane({autoReinitialise: true});
+          //  $('.container_cards_pop').jScrollPane({autoReinitialise: true});
             build_severals(<%= current_user.player.coins %> , <%= district_hash(district_list).to_json.html_safe %>);
         </script>
 

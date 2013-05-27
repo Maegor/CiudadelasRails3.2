@@ -195,7 +195,7 @@ $card_height: 120px;
 
  .image-radio-container{
 
-   display: inline-block;
+   //display: inline-block;
 
  }
 .image-radio-container input[type="radio"]{
@@ -468,6 +468,8 @@ $card_height: 120px;
   height: 45px;
   width: 160px;
   margin-left: 189px;
+  position: absolute;
+  top: 335px;
   a{
     color: #000000;
 
@@ -482,8 +484,24 @@ $card_height: 120px;
 
 }
 
+#leaveParty{
+  background: url('nohover.png') no-repeat center;
+  padding-top: 10px;
+  height: 45px;
+  width: 160px;
+  margin-left: 450px;
+  a{
+    color: #000000;
+    text-decoration: none;
+    font-size: 23px;
+    margin-left: 58px;
+  }
+}
+#leaveParty:hover{
+  background: url('hover.png') no-repeat center;
+  padding-top: 12px;
 
-
+}
 
 #cardback{background-image: url('cards/cardback.jpg')}
 
@@ -651,11 +669,13 @@ $card_height: 120px;
 /* Player style*/
 
 .player_name{
- position: relative;
-  left: 24%;
-  top: 76%;
   color: black;
   font-size: 20px;
+  left: 10px;
+  position: relative;
+  text-align: center;
+  top: 116px;
+  width: 140px;
 
 }
 
@@ -777,8 +797,9 @@ $card_height: 120px;
 
 #resumen_content{
 
- position: relative;
-  left:  25%;
+ //position: relative;
+  margin-left:  11%;
+  width: 1100px;
 }
 
 .options{
@@ -793,13 +814,14 @@ $card_height: 120px;
 
 
 .char_name{
-
-  //padding-top: 105px;
+  height: inherit;
+  padding-top: 105px;
   font-size: 20px;
   color: black;
   text-align: center;
- // height: inherit;
-  margin-top: 8px;
+  //position: relative;
+ // top: 105px;
+  width: 140px;
 }
 .image-checkbox-container, .image-radio-container{
 
@@ -842,4 +864,31 @@ $card_height: 120px;
 
   padding-left: 77px;
   padding-top: 50px;
+}
+
+#final_points{
+  background-image: url("points_ball.png");
+  background-repeat: no-repeat;
+  height: 39px;
+  left: -18px;
+  position: relative;
+  top: -48px;
+  width: 39px;;
+  text-align: center;
+  text-shadow: 1px 1px 0 #CCCCCC, 2px 2px 0 #CCCCCC;
+  font-size: 27px;
+  font-weight: bold;
+}
+
+.data_opponent_final{
+  bottom: 172px;
+  font-size: 20px;
+  font-weight: bold;
+  height: 40px;
+  left: 144px;
+  margin-bottom: 10px;
+  position: relative;
+  text-align: center;
+  text-shadow: 1px 1px 0 #CCCCCC, 2px 2px 0 #CCCCCC;
+  width: 40px;
 }

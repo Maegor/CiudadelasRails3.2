@@ -1,40 +1,63 @@
 <%= form_tag form_action('change_cards','change_with_player') do %>
-
-
-  <% current_user.player.opponents.each do |opponent|  %>
+    <div class="container_cards_pop">
+    <% current_user.player.opponents.each do |opponent|  %>
 
          <div class="image-radio-container">
            <%= radio_button_tag 'opponent[]', opponent.id %>
 
            <%if   %w(ACTION TURN WAITINGENDROUND).include?(opponent.state)%>
-               <div class="select_char" id="<%= #noinspection RubyResolve
+
+              <div class="change_player_content">
+                <div class="select_char" id="<%= #noinspection RubyResolve
                                                 opponent.player_character.base_card.name%>_select" >
 
-                 <div class="char_name"><%= #noinspection RubyResolve
-                                            opponent.name  %></div>
+                   <div class="player_name_popup"><%= #noinspection RubyResolve
+                                            opponent.name.capitalize  %>
+                   </div>
+                </div>
+                 <div class="faceback_cards">
+                        <%  num_cards = opponent.districts_on_hand.size
+                        while num_cards > 0%>
+                             <%= image_tag 'cards/cardback.jpg', :class => 'card_over' %>
+                             <% num_cards -= 1
+                        end%>
+                 </div>
 
-               </div>
-
+              </div>
                <% else %>
-           <div class="select_char" id="nochar_select">
-             <div class="char_name"><%= #noinspection RubyResolve
-                                        opponent.name %></div>
-           </div>
-           <%end%>
 
-</div>
+               <div class="change_player_content">
+                    <div class="select_char" id="nochar_select">
+                        <div class="player_name_popup"><%= #noinspection RubyResolve
+                                        opponent.name.capitalize %>
+                         </div>
+                    </div>
+                 <div class="faceback_cards">
+                   <%  num_cards = opponent.districts_on_hand.size
+                       while num_cards > 0%>
+                       <%= image_tag 'cards/cardback.jpg', :class => 'card_over'  %>
+                   <% num_cards -= 1
+                      end%>
+                 </div>
+               </div>
+           <%end%>
+         </div>
 
 
   <%end%>
+ </div>
 <div id="submit">
-<%= submit_tag  'Cambiar' %>
+<%= submit_tag  (t 'board.change') %>
 </div>
 <%end%>
 
 
 
 <script type="text/javascript">
-    var auxi
+
+   // $('.container_cards_pop').jScrollPane({autoReinitialise: true});
+
+    var auxi;
     $('.image-radio-container').on('click', function(){
         auxi = this;
 
@@ -52,8 +75,6 @@
                             margin: '4px'
                     })
                 });
-
-
             });
 
             $(this).children('input[type="radio"]').prop('checked', true).attr('checked','checked');

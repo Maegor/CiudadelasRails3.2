@@ -73,7 +73,7 @@ es:
    description: "durante tu turno, puedes destruir el polvorín para poder destruir otro distrito de cualquier jugador."
   museum:
    name: "Museo"
-   description: "una vez por turno, puedes poner una carta de Distrito de tu mano debajo del Museo. Al final del juego, ganas un punto de victoria adicional por cada carta debajo del Museo."
+   description: "una vez por turno, puedes poner una carta de Distrito de tu mano debajo del Museo. Ganas un punto de victoria adicional por cada carta debajo del Museo."
   poorhouse:
    name: "Hospicio"
    description: "si no tienes monedas al final de tu turno, ganas una moneda."
@@ -85,7 +85,7 @@ es:
    description: "una vez por turno, puedes pagar tres monedas de oro para robar tres cartas."
   quarry:
    name: "Cantera"
-   description: "puedes construir Distritos con el mismo nombre que otros que ya tengas en juego. No perderás las construcciones realizadas de esta forma si la Cantera es destruida."
+   description: "puedes construir Distritos con el mismo nombre que otros que ya tengas en juego."
   map_room:
    name: "Sala de mapa"
    description: "al final de la partida, añade un punto de victoria adicional por cada Distrito que tengas en tu mano."
@@ -161,7 +161,7 @@ es:
  points_recount:
   districts_points: "Puntos por distritos"
   all_colors: "Todos los colores"
-  first_eight: "Primer jugador ocho distritos"
+  first_eight: "Primer jugador con ocho distritos"
   imperial_treasure: "Tesoro imperial"
   haunted_city: "Ciudad encantada"
   keep: "Torreón"
@@ -209,6 +209,11 @@ es:
   no_taxes: "No hay impuestos que recaudar"
   will_get: "Recaudarás"
   collect: "Recaudar"
+  destroy_bishop: "No se puede destruir edificios del Obispo"
+  no_money: "No tienes suficientes monedas"
+  accept: "Aceptar"
+  change: "Intercambiar"
+  no_available_card: "No cartas hay disponibles."
 
   #colours
   green: "verde"

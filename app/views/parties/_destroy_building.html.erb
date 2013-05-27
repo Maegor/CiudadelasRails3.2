@@ -9,9 +9,11 @@
     <div class="<%=selected_class('tab', index)%>"><%= player.name.capitalize %>
     </div>
         <div class="<%= visible_class('cards', index)%>">
-          <div class="container_cards_pop">
           <% #noinspection RubyResolve
-             if player.player_character.base_card.name != 'bishop' %>
+          if player.player_character.base_card.name != 'bishop' %>
+          <div class="container_cards_pop">
+
+
               <% cards = current_user.player.get_destrutible_building(player)
                  cards.each do |district_card| %>
                       <%= #noinspection RubyResolve
@@ -19,10 +21,12 @@
                                   party_action_path(@game.id, [action.id, district_card[0].id]) %>
 
               <%end%>
+          </div>
           <% else %>
-              <h2>No puesdes destruir edificios del Obispo</h2>
+                <div class="actionMessage"><%= t 'board.destroy_bishop' %></div>
+
           <% end %>
-         </div>
+
         </div>
        </div>
   <%end%>
@@ -35,5 +39,5 @@
 </div>
   <script type="text/javascript">
         tabs("destroy_building");
-        $('.container_cards_pop').jScrollPane({autoReinitialise: true});
+     //   $('.container_cards_pop').jScrollPane({autoReinitialise: true});
  </script>

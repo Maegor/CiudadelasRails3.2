@@ -4,13 +4,19 @@
     <a  class="closePopup" title="close popup"></a>
     <div class="popupContent">
       <div class="container_cards_pop">
-     <% current_user.player.districts_on_hand.each do |district_card| %>
-        <%= link_to (render :partial => 'select_district_card', :object => district_card), party_action_path(@game.id, [action.id,district_card.id]) %>
-     <%end%>
+     <% player_district_list = current_user.player.districts_on_hand
+        if player_district_list.size != 0
+            player_district_list.each do |district_card| %>
+                <%= link_to (render :partial => 'select_district_card', :object => district_card), party_action_path(@game.id, [action.id,district_card.id]) %>
+            <%end
+        else%>
+            <div class="actionMessage"><%= t 'board.no_available_card' %></div>
+      <%end%>
+
    </div>
   </div>
  </div>
 </div>
 <script type="text/javascript">
-    $('.container_cards_pop').jScrollPane({autoReinitialise: true});
+   // $('.container_cards_pop').jScrollPane({autoReinitialise: true});
 </script>

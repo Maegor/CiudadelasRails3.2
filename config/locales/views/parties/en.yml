@@ -74,7 +74,7 @@ en:
    description: "During your turn, you can destroy the powderhouse and destroy another district card of your choice in any player´s city."
   museum:
    name: "Museum"
-   description: "On your turn, you may place one district card from your hand, face down, under the Museum. At the end of the game, you score 1 extra victory point for each card under the Museum."
+   description: "On your turn, you may place one district card from your hand, face down, under the Museum. You score 1 extra victory point for each card under the Museum."
   poorhouse:
    name: "Poorhouse"
    description: "If you have no gold at the end of your turn, get 1 gold from the bank."
@@ -86,7 +86,7 @@ en:
    description: "Once per turn, you may pay 3 gold to draw 3 cards."
   quarry:
    name: "Quarry"
-   description: "Allows you to build Districts named as others you\'ve already built."
+   description: "Allows you to build Districts named as others you've already built."
   map_room:
    name: "Map Room"
    description: "At the end of the game, you score 1 victory point bonus for each card in your hand."
@@ -209,6 +209,11 @@ en:
   no_taxes: "There are not taxes to collect"
   will_get: "You'll collect"
   collect: "Collect"
+  destroy_bishop: "You can not destroy Bishop's buildings"
+  no_money: "You don't have enough coins"
+  accept: "Accept"
+  change: "Exchange"
+  no_available_card: "There are not available cards"
 
   #colours
   green: "green"

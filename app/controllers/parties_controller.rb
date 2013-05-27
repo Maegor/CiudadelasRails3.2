@@ -59,7 +59,7 @@ class PartiesController < ApplicationController
  def resumen
 
    @game = Party.find(params[:party_id])
-   render :layout=> 'game_table'
+  #render :layout=> 'game_table'
  end
 
   def create

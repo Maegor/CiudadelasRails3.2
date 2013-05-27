@@ -1,15 +1,13 @@
 
 <%= form_tag form_action('change_cards','change_with_maze') do %>
       <div class="container_cards_pop">
-  <% current_user.player.districts_on_hand.each do |card|%>
-        <span class="image-checkbox-container">
-        <%= check_box_tag 'cards[]', card.id %>
-        <%#= label_tag 'cards[]', (t 'districts.' + card.base_card.name) %>
-          <%= (render :partial => 'select_district_card', :object => card)  %>
-        </span>
-        <% end %>
-
-
+            <% current_user.player.districts_on_hand.each do |card|%>
+                <span class="image-checkbox-container">
+                <%= check_box_tag 'cards[]', card.id %>
+                <%#= label_tag 'cards[]', (t 'districts.' + card.base_card.name) %>
+                  <%= (render :partial => 'select_district_card', :object => card)  %>
+                </span>
+                <% end %>
       </div>
     <div id="submid">
 <%= submit_tag  'Cambiar' %>
@@ -18,8 +16,6 @@
 <% end %>
 
 <script type="text/javascript">
-
-    $('.container_cards_pop').jScrollPane({autoReinitialise: true});
 
   $('.image-checkbox-container .card_select').on('click', function(){
         if(!$(this).prev('input[type="checkbox"]').prop('checked')){

@@ -2,8 +2,7 @@
 
     <div id="lista_personajes" class="popupContainer" class="hidden">
      <div class="popupContent">
-      <h2>Elige Personaje</h2>
-      <% %w(characters_list  faceup).each_with_index do |option,index| %>
+    <% %w(characters_list  faceup).each_with_index do |option,index| %>
       <div class="tab_data">
         <div class="<%= selected_class('tab', index) %>"><%=t ('board.' + option)%></div>
         <div class="<%= visible_class('cards', index) %> container_cards_pop">
@@ -17,7 +16,7 @@
     </div>
     <script type="text/javascript">
 
-        $('.container_cards_pop').jScrollPane({autoReinitialise: true});
+     //   $('.container_cards_pop').jScrollPane({autoReinitialise: true});
         loadPopup();
         tabs("lista_personajes");
 
