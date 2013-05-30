@@ -7,7 +7,7 @@ function center(){
     console.log(popupHeight);
 	var popupWidth = $(".popupContainer").width();
 	$(".popupContainer").css({
-		"position": "absolute",
+		"position": "fixed",
 		"top": windowHeight/2-popupHeight/2,
 		"left": windowWidth/2-popupWidth/2
 
@@ -22,19 +22,46 @@ function loadPopup(){
     center();
 }
 
+
+
+
+
+
+
+
 $(function (){
 
 var currentPopup= "";
 
+
+
+$('#messages_icon').click(function (){
+
+
+    if(currentPopup == ""){
+        currentPopup = "messages_container";
+        $("#"+currentPopup + ".hidden").fadeIn("slow");
+        $("#"+currentPopup + " .popupContainer").fadeIn("slow");
+        $("#"+currentPopup + ".closePopup").fadeIn("slow");
+        $("#overlayEffect").fadeIn("slow");
+        center(currentPopup);
+
+    }
+
+});
+
+
+
+
 $('.action_icon').click(function (ev){
 
-         console.log(currentPopup);
+
     if(currentPopup == ""){
-        currentPopup = ev.currentTarget.id
+        currentPopup = ev.currentTarget.id;
         $("#" + currentPopup + ".hidden").fadeIn("slow");
         $("#" + currentPopup + " .popupContainer").fadeIn("slow");
         $("#" + currentPopup + ".closePopup").fadeIn("slow");
-        console.log(currentPopup);
+        $("#overlayEffect").fadeIn("slow");
         center(currentPopup);
 
 }
@@ -42,17 +69,16 @@ $('.action_icon').click(function (ev){
 });
 
     $(".closePopup").click(function(){
-        console.log("cllss");
         hidePopup();
     });
 
 
     function hidePopup(){
-        console.log(currentPopup);
-        if(currentPopup != ""){
 
+        if(currentPopup != ""){
             $("#" + currentPopup + ".hidden").fadeOut("slow");
             $("#close").fadeOut("slow");
+            $("#overlayEffect").fadeOut("slow");
             currentPopup = "";
         }
     }
@@ -66,15 +92,13 @@ $('.action_icon').click(function (ev){
         var windowHeight = $(document).height();
 
         var popupHeight = container.height();
-        console.log(popupHeight);
         var popupWidth =  container.width();
 
 
         container.css({
-            "position": "absolute",
+            "position": "fixed",
             "top": windowHeight/2-popupHeight/2,
             "left": windowWidth/2-popupWidth/2
-
         });
 
     }

@@ -8,6 +8,7 @@ class Party < ActiveRecord::Base
 
   has_many :players
   has_many :cards
+  has_many :game_messages
 
 
   validates :name, :presence => true, :uniqueness => true

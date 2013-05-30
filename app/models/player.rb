@@ -355,6 +355,7 @@ end
       get_actions
     end
     update_attributes(:coins => self.coins + 2, :state => new_state)
+    party.game_messages.create(:message => 'message.take_gold', :actor_player => user.name.capitalize)
     true
   end
 
@@ -384,6 +385,8 @@ end
       get_actions
     end
      update_attribute(:state, new_state)
+
+    party.game_messages.create(:message => 'message.select_district', :actor_player => user.name.capitalize, :quantity => cards.size)
     exist = true
     end
     exist
@@ -391,16 +394,21 @@ end
 
  def steal(action_array)
 
-  exist = true
+  exist = false
   card = Card.characters.find(:first,:conditions => ["cards.id = ? AND name <> 'assasin' AND state <> 'BACKS'", action_array[1]])
 
   if (card && card.party_id == party.id )
     Card.update(card.id, :stolen => 'TRUE')
-   if card.player_id
-    Player.update(card.player_id,:stolen => 'TRUE')
-   end
-  else
-   exist = false
+    if card.player_id
+     Player.update(card.player_id,:stolen => 'TRUE')
+    end
+
+   target_name = 'characters.' + card.base_card.name + '.name'
+   party.game_messages.create(:message => 'message.steal',:actor_player => user.name.capitalize, :target_district => target_name)
+
+    exist = true
+
+
   end
    exist
  end
@@ -409,8 +417,10 @@ end
   def take_taxes(action_array)
 
 
+    collected_taxes = calculate_taxes
+    update_attribute(:coins, coins + collected_taxes)
+    party.game_messages.create(:message => 'message.taxes',:actor_player => user.name.capitalize, :quantity => collected_taxes)
 
-    update_attribute(:coins, coins + calculate_taxes)
   end
 
   def extra_coin(action_array)
@@ -421,7 +431,7 @@ end
 
   def kill(action_array)
 
-    exist = true
+    exist = false
     card = Card.find_by_id(action_array[1])
 
     if (card && card.party_id == self.party_id)
@@ -429,8 +439,11 @@ end
      if card.player_id
       Player.update(card.player_id,:murdered => 'TRUE')
      end
-    else
-       exist = false
+       exist = true
+
+     target_name = 'characters.' + card.base_card.name + '.name'
+     party.game_messages.create(:message => 'message.kill',:actor_player => user.name.capitalize, :target_district => target_name)
+
     end
     exist
   end
@@ -447,9 +460,11 @@ end
    exist = false
    #card = Card.districts.where("name <> 'keep' AND cards.id = ? AND state = 'ONGAME'", action_array[1]).first
    card =  Card.districts.find(:first, :conditions =>  ["name <> 'keep' AND cards.id = ? AND state = 'ONGAME'", action_array[1]])
+
    current_coins = self.coins
 
    if (card && card.party_id == self.party_id)
+     card_owner = card.player.user.name
     if (card.player.player_character.base_card.name != 'bishop')
      current_coins -= card.base_card.cost - 1 +(1 * (card.player.districts_on_game.exists?(["name = 'great_wall'"])? 1:0 ))
      if current_coins >= 0
@@ -461,6 +476,13 @@ end
       Card.update(card.id,:state => 'INDECK', :position => position[0], :player_id => nil)
       update_attribute(:coins, current_coins)
       exist = true
+
+       if card.base_card.colour == 'purple'
+         target_district = 'districts.' + card.base_card.name + '.name'
+       else
+         target_district = 'districts.' + card.base_card.name
+       end
+       party.game_messages.create(:message => 'message.destroy',:actor_player => user.name.capitalize, :target_player => card_owner.capitalize, :target_district => target_district)
      end
     end
    end
@@ -519,6 +541,8 @@ end
         Card.update(card.id, :player_id => opponent.id)
      end
     end
+
+    party.game_messages.create(:message => 'message.change_with_player', :actor_player => user.name.capitalize, :target_player => opponent.user.name)
   end
 
   def take_extra_cards(action_array)
@@ -570,13 +594,24 @@ end
         unless card_actions.empty?
           actions.create!(base_action_id: card_actions[0].id)
         end
+
+        #construimos el mensaje teniendo encuenta el tipo
+        if card.base_card.colour == 'purple'
+          target_district = 'districts.' + card.base_card.name + '.name'
+        else
+          target_district = 'districts.' + card.base_card.name
+        end
+        party.game_messages.create(:message => 'message.build',:actor_player => user.name.capitalize, :target_player => card.player.user.name.capitalize, :target_district => target_district)
       end
         update_attribute(:coins , current_coins)
+
     end
 
 
   exist
   end
+
+
 
 
   def destroy_other_actions(action_id)
@@ -591,6 +626,7 @@ end
     #discard, the selected card return to the deck at last position
      Card.update(action_array[1], :state => 'INDECK', :position => party.last_position, :player_id => nil)
      update_attribute(:coins, coins + 1)
+     party.game_messages.create(:message => 'message.laboratory',:actor_player => user.name.capitalize)
 
   end
 
@@ -603,7 +639,9 @@ end
       Card.update(card.id, :player_id => id, :state => 'ONHAND')
     end
     update_attribute(:coins, coins - 3)
-      exists = true
+    exists = true
+
+    party.game_messages.create(:message => 'message.smithy',:actor_player => user.name.capitalize)
     end
   end
 
@@ -615,7 +653,7 @@ end
     if card && card.party_id == party_id
 
       #actualizamos el target
-
+      card_owner = card.player.user.name
       position = Array.new(1, party.last_position) #Necesitamos pasar la position como referencia a la funcion update_museum
       card.update_attributes(:state => 'INDECK', :player_id => nil, :position => position[0])
       position[0] += 1
@@ -629,6 +667,14 @@ end
       powderhouse = cards.districts.find(:first, :conditions => ["name = 'powderhouse'"], :readonly => false)
       powderhouse.update_attributes(:state => 'INDECK', :player_id => nil, :position => position[0])
       exist = true
+
+      if card.base_card.colour == 'purple'
+        target_district = 'districts.' + card.base_card.name + '.name'
+      else
+        target_district = 'districts.' + card.base_card.name
+      end
+      party.game_messages.create(:message => 'message.destroy',:actor_player => user.name.capitalize, :target_player => card_owner.capitalize, :target_district => target_district)
+
     end
     exist
   end
@@ -655,6 +701,7 @@ end
     if card && card.party_id == party_id
 
        card.update_attributes(:state => 'ONHAND', :player_id => id)
+       party.game_messages.create(:message => 'message.lighthouse',:actor_player => user.name.capitalize)
        exist = true
     end
     exist
@@ -668,6 +715,7 @@ end
 
     if card && card.party_id == party_id
       card.update_attributes(:state => 'INMUSEUM')
+      party.game_messages.create(:message => 'message.museum',:actor_player => user.name.capitalize)
       exist = true
     end
     exist

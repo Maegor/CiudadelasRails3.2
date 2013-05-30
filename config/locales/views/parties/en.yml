@@ -56,6 +56,7 @@ en:
   barracks: "Barracks"
   fortress: "Fortress"
 
+
   #purple
   imperial_treasure:
    name: "Imperial Treasure"
@@ -214,6 +215,7 @@ en:
   accept: "Accept"
   change: "Exchange"
   no_available_card: "There are not available cards"
+  finish: "Finish"
 
   #colours
   green: "green"
@@ -221,5 +223,20 @@ en:
   red: "red"
   blue: "blue"
   purple: "purple"
+
+  #mensajes
+ message:
+  build: "%{actor_player}  builds %{target_district}"
+  destroy: "%{actor_player} destroys %{target_player} 's %{target_district}"
+  kill: "%{actor_player} kills %{target_district}"
+  steal: "%{actor_player} steals %{target_district}"
+  taxes: "%{actor_player} collects %{quantity} coin(s)"
+  smithy: "%{actor_player} uses Smithy"
+  laboratory: "%{actor_player} uses Laboratory"
+  museum: "%{actor_player} uses Museum"
+  lighthouse: "%{actor_player} uses Lighthouse"
+  change_with_player: "%{actor_player} exchanges his cards with %{target_player}"
+  select_district: "%{actor_player} draws districts"
+  take_gold: "%{actor_player} takes gold"
 
 

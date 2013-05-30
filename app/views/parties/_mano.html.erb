@@ -1,9 +1,6 @@
-
-
-
 <div  id="ficha_jugador" class="player_lane">
   <div id="char">
-
+     <%= image_tag 'scroll_icon.png', :id => 'messages_icon' %>
     <% if (character_ui = current_user.player.player_character) %>
         <%= render :partial => 'character_ui', :object => character_ui %>
 
@@ -53,11 +50,26 @@
   <div id="finturno">
 
    <div>
-  <%= link_to 'finalizar turno', end_turn_path %>
+  <%= link_to (t 'board.finish'), end_turn_path %>
 </div>
 
   </div>
 <%end%>
+
+
+<div id="messages_container" class="hidden">
+  <div class="popupContainer">
+    <a  class="closePopup" title="close popup"></a>
+
+    <div class="popupContent">
+         <% @game.game_messages.order('id DESC').each do |message|%>
+            <p><%= t message.message ,:actor_player => message.actor_player, :target_player => message.target_player, :target_district => (t message.target_district), :quantity => message.quantity %></p>
+        <%end%>
+    </div>
+  </div>
+</div>
+<div id="overlayEffect">
+</div>
 
 <script type="text/javascript">
 

@@ -130,4 +130,14 @@ module PartiesHelper
 
   end
 
+
+  def message_translator (message)
+
+    out_string = String.new()
+    message.message.split(' ').each do |string|
+      out_string << (t string ,:actor_player => message.actor_player, :target_player => message.target_player)
+    end
+    out_string
+  end
+
 end

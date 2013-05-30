@@ -11,7 +11,9 @@ $card_height: 120px;
 /*FORM*/
 //div{ border: 1px solid;}
 
-
+body{
+  background-color: #F6D6A5;
+}
 
 #parties_content{
 
@@ -674,7 +676,7 @@ $card_height: 120px;
   left: 10px;
   position: relative;
   text-align: center;
-  top: 116px;
+  top: 118px;
   width: 140px;
 
 }
@@ -814,8 +816,9 @@ $card_height: 120px;
 
 
 .char_name{
-  height: inherit;
-  padding-top: 105px;
+  //height: inherit;
+  margin-top: 7px;
+  //padding-top: 105px;
   font-size: 20px;
   color: black;
   text-align: center;
@@ -891,4 +894,21 @@ $card_height: 120px;
   text-align: center;
   text-shadow: 1px 1px 0 #CCCCCC, 2px 2px 0 #CCCCCC;
   width: 40px;
+}
+
+#messages_container{
+  width: 400px;
+  height: 200px;
+  overflow: auto;
+   p{
+     margin:0;
+   }
+
+}
+
+#messages_icon{
+  left: 68px;
+  top: 58px;
+  position: absolute;
+
 }

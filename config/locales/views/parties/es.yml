@@ -103,10 +103,10 @@ es:
    description: "el coste de construcción para otros Distritos Purpuras en tu ciudad es reducido en uno. Esto no afecta al precio del Condotiero para destruirlo."
   graveyard:
    name: "Cementerio"
-   description: "luando el Condotiero destruye un Distrito, puedes pagar una moneda de oro para cogerlo y ponerlo en tu mano. No puedes hacer esto si eres el Condotiero."
+   description: "cuando el Condotiero destruye un Distrito, puedes pagar una moneda de oro para cogerlo y ponerlo en tu mano. No puedes hacer esto si eres el Condotiero."
   library:
    name: "Biblioteca"
-   description: "li escoges recibir dos cartas al principio de tu turno, te quedas con las dos cartas que cojas."
+   description: "si escoges recibir dos cartas al principio de tu turno, te quedas con las dos cartas que cojas."
   school_magic:
    name: "Escuela de magia"
    description: "en lo que respecta a los ingresos, la escuela de magia es considerada como un Distrito de un color a tu elección."
@@ -214,6 +214,7 @@ es:
   accept: "Aceptar"
   change: "Intercambiar"
   no_available_card: "No cartas hay disponibles."
+  finish: "Terminar"
 
   #colours
   green: "verde"
@@ -221,3 +222,17 @@ es:
   red: "rojo"
   blue: "azul"
   purple: "púrpura"
+
+ message:
+  build: "%{actor_player}  construye %{target_district}"
+  destroy: "%{actor_player} destruye %{target_district} de %{target_player}"
+  kill: "%{actor_player} asesina al %{target_district}"
+  steal: "%{actor_player} roba al %{target_district}"
+  taxes: "%{actor_player} recauda %{quantity} moneda(s)"
+  smithy: "%{actor_player} utiliza Forja"
+  laboratory: "%{actor_player} utiliza Laboratorio"
+  museum: "%{actor_player} utiliza Museo"
+  lighthouse: "%{actor_player} utiliza Faro"
+  change_with_player: "%{actor_player} intercambia sus cartas con %{target_player}"
+  select_district: "%{actor_player} coge distritos"
+  take_gold: "%{actor_player} coge oro"
