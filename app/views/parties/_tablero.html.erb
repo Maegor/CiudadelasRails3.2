@@ -1,3 +1,4 @@
+<div>
 <div id="tablero">
 
 
@@ -37,4 +38,17 @@
 
   </div>
 </div>
+<div id="messages_container" class="hidden">
+  <div class="popupContainer">
+    <a  id="closeme" class="closePopup" title="close popup"></a>
 
+    <div class="popupContent">
+      <% @game.game_messages.order('id DESC').each do |message|%>
+          <p><%= t message.message ,:actor_player => message.actor_player, :target_player => message.target_player, :target_district => (t message.target_district), :quantity => message.quantity %></p>
+      <%end%>
+    </div>
+  </div>
+</div>
+<div id="overlayEffect">
+</div>
+</div>

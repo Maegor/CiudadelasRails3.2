@@ -1,4 +1,4 @@
-﻿
+﻿var currentPopup= "";
 function center(){
 
 	var windowWidth = $(document).width();
@@ -27,11 +27,48 @@ function loadPopup(){
 
 
 
+ function AddListenerToButton(button){
+     var messages_container = "messages_container";
+     $('#' + button).click(function (){
+         if(currentPopup == ""){
+             currentPopup = messages_container;
+             $("#"+messages_container + ".hidden").fadeIn("slow");
+             $("#"+messages_container + " .popupContainer").fadeIn("slow");
+             $("#"+messages_container + ".closePopup").fadeIn("slow");
+             $("#overlayEffect").fadeIn("slow");
+             console.log("peneee");
+             center2(messages_container);
+         }
+
+       });
+ }
+
+function center2(currentPopup){
+
+
+    var container =  $("#" + currentPopup + " .popupContainer");
+    var windowWidth = $(document).width();
+    var windowHeight = $(document).height();
+
+    var popupHeight = container.height();
+    var popupWidth =  container.width();
+
+
+    container.css({
+        "position": "fixed",
+        "top": windowHeight/2-popupHeight/2,
+        "left": windowWidth/2-popupWidth/2
+    });
+
+}
+
+
+
 
 
 $(function (){
 
-var currentPopup= "";
+
 
 
 
