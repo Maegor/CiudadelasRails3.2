@@ -1,6 +1,8 @@
 <div  id="ficha_jugador" class="player_lane">
   <div id="char">
-     <%= image_tag 'scroll_icon.png', :id => 'messages_icon' %>
+
+    <div id="messages_icon"></div>
+
     <% if (character_ui = current_user.player.player_character) %>
         <%= render :partial => 'character_ui', :object => character_ui %>
 
@@ -61,24 +63,27 @@
 
 <script type="text/javascript">
 
-   var multiplier = 76;
-   var num_cards = $('#distritos_construidos .card').size();
+    var distrcts = $('#distritos_construidos');
+    var multiplier = 76;
+
+   var num_cards = distrcts.find('.card').size();
    // card_width = $('#distritos_construidos .card').css('width');
    // multiplier = parseInt(card_width.substring(0, card_width.length));
 
 
-  $('#distritos_construidos .card_container').css('width',(num_cards * multiplier) + (num_cards * 5)) ;
+    distrcts.find('.card_container').css('width',(num_cards * multiplier) + (num_cards * 5)) ;
 
-    num_cards = $('#cartas_mano .card').size();
+    var cards = $('#cartas_mano');
+    num_cards = cards.find('.card').size();
   //  card_width = $('#cartas_mano .card').css('width');
    // multiplier = parseInt(card_width.substring(0, card_width.length - 2));
-    $('#cartas_mano .card_container').css('width',(num_cards * multiplier) + (num_cards * 5));
+    cards.find('.card_container').css('width',(num_cards * multiplier) + (num_cards * 5));
 
 
             $('#distritos_construidos, #cartas_mano, #lista_jugadores').jScrollPane({
 
                 });
      //activamos todos los scrollbars.
-   $('.container_cards_pop').jScrollPane({autoReinitialise: true});
+
 
 </script>

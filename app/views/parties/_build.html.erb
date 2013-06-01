@@ -1,32 +1,36 @@
 <div id="build" class="hidden">
   <div class="popupContainer">
-  <a  class="closePopup" title="close popup"></a>
-    <div class="popupContent">
+    <a class="closePopup" title="close popup"></a>
 
-   <div>
+     <div class="popupContent">
+       <div>
          <% player = current_user.player
-           districts = player.district_to_construct
-         if districts.size != 0 %>
-      <div class="container_cards_pop">
-            <%districts.each do |select_district_card|%>
-                <%= #noinspection RubyResolve
-                   link_to (render :partial => 'select_district_card', :object => select_district_card), party_action_path(@game.id, [action.id,select_district_card.id]) %>
-            <% end%>
-      </div>
-   </div>
-<%else%>
+            districts = player.district_to_construct
+            if districts.size != 0 %>
+             <div class="container_cards_pop">
+               <% districts.each do |select_district_card| %>
+                   <%= #noinspection RubyResolve
+                       link_to (render :partial => 'select_district_card', :object => select_district_card), party_action_path(@game.id, [action.id, select_district_card.id]) %>
+               <% end %>
+             </div>
+
+         <% else %>
 
 
-        <div class="actionMessage">
-          <%= t 'board.cant_not_build' %>
-        </div>
+             <div class="actionMessage">
+               <%= t 'board.cant_not_build' %>
+             </div>
 
 
+         <% end %>
+         </div>
+    </div>
+  </div>
 
- <%end%>
-     </div>
+  <div class="overlayEffect">
+  </div>
 </div>
-</div>
+
 <script type="text/javascript">
 
    // $('.container_cards_pop').jScrollPane({autoReinitialise: true});

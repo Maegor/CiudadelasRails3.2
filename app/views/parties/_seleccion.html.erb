@@ -1,67 +1,67 @@
-<% if current_user.player.state == 'SELECTION_TURN'  %>
+<% if current_user.player.state == 'SELECTION_TURN' %>
 
-    <div id="lista_personajes" class="popupContainer" class="hidden">
-     <div class="popupContent">
-    <% %w(characters_list  faceup).each_with_index do |option,index| %>
-      <div class="tab_data">
-        <div class="<%= selected_class('tab', index) %>"><%=t ('board.' + option)%></div>
-        <div class="<%= visible_class('cards', index) %> container_cards_pop">
+    <div id="lista_personajes" class="hidden">
+      <div class="popupContainer">
+        <div class="popupContent">
+          <% %w(characters_list  faceup).each_with_index do |option, index| %>
+              <div class="tab_data">
+                <div class="<%= selected_class('tab', index) %>"><%= t ('board.' + option) %></div>
+                <div class="<%= visible_class('cards', index) %> container_cards_pop">
 
-          <%= render :partial => option %>
+                  <%= render :partial => option %>
 
-       </div>
+                </div>
+              </div>
+          <% end %>
+        </div>
       </div>
-    <% end %>
-     </div>
+      <div class="overlayEffect">
+      </div>
     </div>
     <script type="text/javascript">
 
-     //   $('.container_cards_pop').jScrollPane({autoReinitialise: true});
-        loadPopup();
+        loadPopup("lista_personajes");
         tabs("lista_personajes");
-
-
-
-
     </script>
 
 
-<% elsif current_user.player.state == 'TURN'%>
+<% elsif current_user.player.state == 'TURN' %>
 
 
-<div id="acciones" class="popupContainer" class="hidden">
-  <div class="popupContent">
+    <div id="acciones" class="hidden">
+      <div class="popupContainer">
+        <div class="popupContent">
 
-<% action_list = current_user.player.actions%>
-  <!--<h2><%#= action_title(action_list) %></h2>-->
+          <% action_list = current_user.player.actions %>
+          <h2><%= action_title(action_list) %></h2>
 
-  <% action_list.each do |action|%>
-        <%= #noinspection RubyResolve
-            render :partial => action.base_action.partialname, :locals => {:action => action}%>
-     <% end %>
+          <% action_list.each do |action| %>
+              <%= #noinspection RubyResolve
+                  render :partial => action.base_action.partialname, :locals => {:action => action} %>
+          <% end %>
 
- </div>
-</div>
+        </div>
+      </div>
+      <div class="overlayEffect">
+      </div>
+    </div>
 
     <script type="text/javascript">
-        loadPopup();
+        loadPopup("acciones");
     </script>
 
 <% elsif current_user.player.state == 'ACTION'
 
-     action_list = current_user.player.actions%>
+     action_list = current_user.player.actions %>
 
 
 
-      <%action_list.each do |action|%>
-            <div class="actiondiv">
-            <%= #noinspection RubyResolve
-                render :partial => action.base_action.partialname, :locals => {:action => action} %>
-            </div>
+    <% action_list.each do |action| %>
+        <div class="actiondiv">
+          <%= #noinspection RubyResolve
+              render :partial => action.base_action.partialname, :locals => {:action => action} %>
+        </div>
 
-      <%end%>
+    <% end %>
 
 <% end %>
-
-
-

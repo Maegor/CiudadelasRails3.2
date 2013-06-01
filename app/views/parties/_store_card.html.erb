@@ -1,24 +1,27 @@
 <div id="store_card" class="hidden">
   <div class="popupContainer">
-    <a  class="closePopup" title="close popup"></a>
+    <a class="closePopup" title="close popup"></a>
+
     <div class="popupContent">
-    <%districts = current_user.player.districts_on_hand
-      if districts.size != 0 %>
+      <% districts = current_user.player.districts_on_hand
+         if districts.size != 0 %>
           <div class="container_cards_pop">
-        <%districts.each do |district_card|%>
-            <%= #noinspection RubyResolve
-                link_to (render :partial => 'select_district_card', :object => district_card), party_action_path(@game.id, [action.id,district_card.id]) %>
-        <%end%>
-        </div>
+            <% districts.each do |district_card| %>
+                <%= #noinspection RubyResolve
+                    link_to (render :partial => 'select_district_card', :object => district_card), party_action_path(@game.id, [action.id, district_card.id]) %>
+            <% end %>
+          </div>
       <% else %>
 
-         <div class="actionMessage"><%= t 'board.no_available_card' %></div>
+          <div class="actionMessage"><%= t 'board.no_available_card' %></div>
 
       <% end %>
     </div>
   </div>
+  <div class="overlayEffect">
+  </div>
 </div>
 
 <script type="text/javascript">
-   // $('.container_cards_pop').jScrollPane({autoReinitialise: true});
+    // $('.container_cards_pop').jScrollPane({autoReinitialise: true});
 </script>

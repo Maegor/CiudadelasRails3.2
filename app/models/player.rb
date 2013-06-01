@@ -199,6 +199,14 @@ end
   end
 
 
+
+  def cards_from_graveyard
+
+    party.cards.find(:first,:conditions => ["wasdestroyed = true and round_update= ?", (party.current_round - 1)])
+
+
+  end
+
   #En esta funcion hay que tener en cuenta las cartas Factoria y Cantera
   #Factoria reduce el coste de los edificios purpuras en uno
   #Cantera permite costruir edificios repetidos
@@ -473,7 +481,7 @@ end
        if card.base_card.name == 'museum'
          update_museum(card, position)
        end
-      Card.update(card.id,:state => 'INDECK', :position => position[0], :player_id => nil)
+      Card.update(card.id,:state => 'INDECK', :position => position[0], :player_id => nil, :round_update => party.current_round, :wasdestroyed => true)
       update_attribute(:coins, current_coins)
       exist = true
 
@@ -507,20 +515,18 @@ end
 
    last_position = party.last_position
    unless cards_to_change.nil?
-
      cards_to_change.each do |id|
-
        Card.update(id, :state => 'INDECK', :position => last_position, :player_id => nil)
        last_position += 1
-
      end
-
      card_to_take = party.cards.districts.where("state = 'INDECK'").order("position ASC").limit(cards_to_change.size)
-
      card_to_take.each do |card|
        Card.update(card.id,:state => 'ONHAND', :player_id => id )
      end
    end
+
+   party.game_messages.create(:message => 'message.change_with_maze', :actor_player => user.name.capitalize, :quantity => cards_to_change.size)
+
   end
 
   def change_with_player(action_array)
@@ -703,6 +709,21 @@ end
        card.update_attributes(:state => 'ONHAND', :player_id => id)
        party.game_messages.create(:message => 'message.lighthouse',:actor_player => user.name.capitalize)
        exist = true
+    end
+    exist
+  end
+
+
+  def graveyard(action_array)
+    exist  = false
+    card = action_array.drop(1)
+    card = Card.districts.find(:first, :conditions => ["cards.id = ? AND wasdestroyed = true AND party_id = ?", action_array[1], party.id], :readonly => false)
+
+    if card
+      card.update_attributes(:state => 'ONHAND', :wasdestroyed => false, :player_id => id)
+      update_attribute(:coins, coins - 1)
+      party.game_messages.create(:message => 'message.graveyard',:actor_player => user.name.capitalize)
+      exist = true
     end
     exist
   end

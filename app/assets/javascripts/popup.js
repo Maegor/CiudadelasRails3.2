@@ -1,12 +1,12 @@
 ﻿var currentPopup= "";
 function center(){
-
+    var popup = $(".popupContainer");
 	var windowWidth = $(document).width();
 	var windowHeight = $(document).height();
-	var popupHeight = $(".popupContainer").height();
+	var popupHeight = popup.height();
     console.log(popupHeight);
-	var popupWidth = $(".popupContainer").width();
-	$(".popupContainer").css({
+	var popupWidth = popup.width();
+    popup.css({
 		"position": "fixed",
 		"top": windowHeight/2-popupHeight/2,
 		"left": windowWidth/2-popupWidth/2
@@ -16,9 +16,13 @@ function center(){
 	}
 
 
-function loadPopup(){
-    $(".popupContainer").fadeIn("slow");
-    $(".closePopup").fadeIn("slow");
+function loadPopup(popupToload){
+    var  popup =  $("#" + popupToload);
+    popup.fadeIn("slow");
+   // $(".closePopup").fadeIn("slow");
+    popup.find(".overlayEffect").fadeIn("slow");
+
+
     center();
 }
 
@@ -36,7 +40,7 @@ function loadPopup(){
              $("#"+messages_container + " .popupContainer").fadeIn("slow");
              $("#"+messages_container + ".closePopup").fadeIn("slow");
              $("#overlayEffect").fadeIn("slow");
-             console.log("peneee");
+
              center2(messages_container);
          }
 
@@ -80,7 +84,7 @@ $('#messages_icon').click(function (){
         $("#"+currentPopup + ".hidden").fadeIn("slow");
         $("#"+currentPopup + " .popupContainer").fadeIn("slow");
         $("#"+currentPopup + ".closePopup").fadeIn("slow");
-        $("#overlayEffect").fadeIn("slow");
+        $("#"+currentPopup).find(".overlayEffect").fadeIn("slow");
         center(currentPopup);
 
     }
@@ -98,7 +102,7 @@ $('.action_icon').click(function (ev){
         $("#" + currentPopup + ".hidden").fadeIn("slow");
         $("#" + currentPopup + " .popupContainer").fadeIn("slow");
         $("#" + currentPopup + ".closePopup").fadeIn("slow");
-        $("#overlayEffect").fadeIn("slow");
+        $("#" + currentPopup).find(".overlayEffect").fadeIn("fast");
         center(currentPopup);
 
 }
@@ -113,6 +117,7 @@ $('.action_icon').click(function (ev){
     function hidePopup(){
 
         if(currentPopup != ""){
+
             $("#" + currentPopup + ".hidden").fadeOut("slow");
             $("#close").fadeOut("slow");
             $("#overlayEffect").fadeOut("slow");

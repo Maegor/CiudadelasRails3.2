@@ -118,7 +118,7 @@ es:
    description: "si no tienes cartas al final de tu turno, roba dos cartas."
   hospital:
    name: "Hospital"
-   description: "si tu eres asesinado, aún puedes hacer tu acción normal de coger moneda o carta. Inmediatamente después termina tu turno."
+   description: "si eres asesinado, aún puedes hacer tu acción normal de coger moneda o carta. Inmediatamente después termina tu turno."
   great_wall:
    name: "Gran muralla"
    description: "el precio que debe pagar el Condotiero para destruir tus Distritos se incrementan en 1."
@@ -157,6 +157,7 @@ es:
   search_card: "Search a card in the deck and put it on your hands"
   self_destruction: "Destruye el Polvorín para destruir otro edificio"
   store_card: "Poner una carta debajo del museo"
+  graveyard: "Coger carta del Cementerio"
 
  points_recount:
   districts_points: "Puntos por distritos"
@@ -215,6 +216,7 @@ es:
   change: "Intercambiar"
   no_available_card: "No cartas hay disponibles."
   finish: "Terminar"
+  warlod_cannot_take: "El guerrero no puede usar esta habilidad"
 
   #colours
   green: "verde"
@@ -236,3 +238,5 @@ es:
   change_with_player: "%{actor_player} intercambia sus cartas con %{target_player}"
   select_district: "%{actor_player} coge distritos"
   take_gold: "%{actor_player} coge oro"
+  change_with_maze: "%{actor_player} cambia %{quantity} carta(s)"
+  graveyard: "%{actor_player} utiliza Cementerio"

@@ -1,43 +1,46 @@
 <div id="destroy_building" class="hidden">
   <div class="popupContainer">
-    <a  class="closePopup" title="close popup"></a>
- <div class="popupContent">
-<%@game.players.each_with_index do |player,index| %>
+    <a class="closePopup" title="close popup"></a>
 
- <div class="tab_data">
+    <div class="popupContent">
+      <% @game.players.each_with_index do |player, index| %>
 
-    <div class="<%=selected_class('tab', index)%>"><%= player.name.capitalize %>
-    </div>
-        <div class="<%= visible_class('cards', index)%>">
-          <% #noinspection RubyResolve
-          if player.player_character.base_card.name != 'bishop' %>
-          <div class="container_cards_pop">
+          <div class="tab_data">
+
+            <div class="<%= selected_class('tab', index) %>"><%= player.name.capitalize %>
+            </div>
+            <div class="<%= visible_class('cards', index) %>">
+              <% #noinspection RubyResolve
+                 if player.player_character.base_card.name != 'bishop' %>
+                  <div class="container_cards_pop">
 
 
-              <% cards = current_user.player.get_destrutible_building(player)
-                 cards.each do |district_card| %>
-                      <%= #noinspection RubyResolve
-                          link_to (render :partial => 'destroy_district_card', :locals => {:select_district_card => district_card[0], :cost => district_card[1]}),
-                                  party_action_path(@game.id, [action.id, district_card[0].id]) %>
+                    <% cards = current_user.player.get_destrutible_building(player)
+                       cards.each do |district_card| %>
+                        <%= #noinspection RubyResolve
+                            link_to (render :partial => 'destroy_district_card', :locals => {:select_district_card => district_card[0], :cost => district_card[1]}),
+                                    party_action_path(@game.id, [action.id, district_card[0].id]) %>
 
-              <%end%>
+                    <% end %>
+                  </div>
+              <% else %>
+                  <div class="actionMessage"><%= t 'board.destroy_bishop' %></div>
+
+              <% end %>
+
+            </div>
           </div>
-          <% else %>
-                <div class="actionMessage"><%= t 'board.destroy_bishop' %></div>
-
-          <% end %>
-
-        </div>
-       </div>
-  <%end%>
-    <%  (7 - @game.players_to_destroy.count).times do %>
-        <div class="tab disabled" >
-        </div>
-    <% end %>
+      <% end %>
+      <% (7 - @game.players_to_destroy.count).times do %>
+          <div class="tab disabled">
+          </div>
+      <% end %>
+    </div>
   </div>
- </div>
+  <div class="overlayEffect">
+  </div>
 </div>
-  <script type="text/javascript">
-        tabs("destroy_building");
-     //   $('.container_cards_pop').jScrollPane({autoReinitialise: true});
- </script>
+<script type="text/javascript">
+    tabs("destroy_building");
+    //   $('.container_cards_pop').jScrollPane({autoReinitialise: true});
+</script>

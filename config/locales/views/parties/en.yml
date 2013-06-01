@@ -159,6 +159,7 @@ en:
   search_card: "Search a card in the deck and put it on your hands"
   self_destruction: "Destroy the powderhouse and destroy another district card of your choice in any player´s city."
   store_card: "Put a card under the museum"
+  graveyard: "Take card from Graveyard"
 
  points_recount:
   districts_points: "Points by districts"
@@ -216,6 +217,7 @@ en:
   change: "Exchange"
   no_available_card: "There are not available cards"
   finish: "Finish"
+  warlod_cannot_take: "The warlord can not use this ability"
 
   #colours
   green: "green"
@@ -238,5 +240,7 @@ en:
   change_with_player: "%{actor_player} exchanges his cards with %{target_player}"
   select_district: "%{actor_player} draws districts"
   take_gold: "%{actor_player} takes gold"
+  change_with_maze: "%{actor_player} changes %{quantity} card(s)"
+  graveyard: "%{actor_player} uses Graveyard"
 
 

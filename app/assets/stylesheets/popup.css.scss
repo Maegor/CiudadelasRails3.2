@@ -62,9 +62,10 @@ a:visited
 	 text-decoration:none; }
 /**styling for the popup
 **/
-#overlayEffect
+.overlayEffect
 {
-	display:none;
+    z-index:1;
+	//display:none;
 	position:fixed;
 	opacity:0.7;
 	height:100%;
@@ -73,7 +74,7 @@ a:visited
 	left:0;
 	background: -moz-linear-gradient(rgba(23, 23, 23, 0.9), rgba(11,11,11,0.6)) repeat-x rgba(11,11,11,0.2);
 	background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(23, 23, 23, 0.9)), to(rgba(11,11,11,0.6))) repeat-x rgba(11,11,11,0.2);
-	z-index:1;
+
 }
 .popupContainer
 {
@@ -374,5 +375,10 @@ text-align: center;
 #messages_container .popupContent{
 
   //height: 400px;
-  overflow: auto;
+  //overflow: auto;
+}
+
+.actiondiv{
+
+   z-index: 2;
 }

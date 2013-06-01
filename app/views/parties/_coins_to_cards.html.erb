@@ -1,21 +1,22 @@
-
 <div id="coins_to_cards" class="hidden">
   <div class="popupContainer">
-    <a  class="closePopup" title="close popup"></a>
+    <a class="closePopup" title="close popup"></a>
 
     <div class="popupContent">
 
-      <% if current_user.player.coins >= 4 %>
-       <div class="actionMessage"><%= t 'actions.coins_to_cards' %></div>
-       <div class="ok_button">
-        <%= #noinspection RubyResolve
-          link_to (t 'board.accept'), party_action_path(@game.id, [action.id]) %>
-        </div>
+      <% if current_user.player.coins >= 3 %>
+          <div class="actionMessage"><%= t 'actions.coins_to_cards' %></div>
+          <div class="ok_button">
+            <%= #noinspection RubyResolve
+                link_to (t 'board.accept'), party_action_path(@game.id, [action.id]) %>
+          </div>
 
       <% else %>
           <div class="actionMessage"><%= t 'board.no_money' %></div>
       <% end %>
 
-      </div>
     </div>
+  </div>
+  <div class="overlayEffect">
+  </div>
 </div>

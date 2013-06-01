@@ -1,8 +1,20 @@
 <% if @game.state != 'FINISHED'%>
 
-     var jspPanetop = $('#lista_jugadores .jspPane').css('top');
-     var jspDragtop = $('#lista_jugadores .jspDrag').css('top');
-     var listButon = jQuery._data(messages_icon, "events");
+
+     //Datos del  scroll vertical de la lista de jugadores
+     var listOriginal = $('#lista_jugadores');
+     var jspPanetop = listOriginal.find('.jspPane').css('top');
+     var jspDragtop = listOriginal.find('.jspDrag').css('top');
+
+     var build_district = $("#distritos_construidos");
+     var jspBuildTop =   build_district.find('.jspPane').css('left');
+     var jspBuildDrag =   build_district.find('.jspDrag').css('left');
+
+    var build_district = $("#cartas_mano");
+    var jspBuildTop =   build_district.find('.jspPane').css('left');
+    var jspBuildDrag =   build_district.find('.jspDrag').css('left');
+
+
 
 <%if session[:refresh] %>
      //$('#tablero').replaceWith("<%#=escape_javascript (render :partial => 'tablero') %>");
@@ -11,19 +23,25 @@
       //$('#tablero').replaceWith(response[0]);
       //$('#messages_container .popupContent').replaceWith($(response[2]).find(".popupContent"));
       $('#tablero').replaceWith(response.find("#tablero"));
-      $('#messages_container .popupContent').replaceWith(response.find("#messages_container .popupContent"));
+      $('#messages_container').find('.popupContent').replaceWith(response.find("#messages_container .popupContent"));
 
       AddListenerToButton('messages_icon');
 
+       var listNew = $('#lista_jugadores');
+       var buildNew = $("#distritos_construidos");
+       var handNew = $("#cartas_mano");
+       listNew.find('.jspPane').css({'top': jspPanetop});
+       listNew.find('.jspDrag').css({'top': jspDragtop} );
+       buildNew.find('.jspPane').css({'left': jspBuildTop});
+       buildNew.find('.jspDrag').css({'left': jspBuildDrag});
+       handNew.find('.jspPane').css({'left': jspBuildTop});
+       handNew.find('.jspDrag').css({'left': jspBuildDrag});
 
-       $('#lista_jugadores .jspPane').css({'top': jspPanetop});
-       $('#lista_jugadores .jspDrag').css({'top': jspDragtop} );
-
-<% if %w(TURN ACTION).include?(current_user.player.state)
+<% if %w(TURN ACTION SELECTION_TURN).include?(current_user.player.state)
         session[:refresh] = false
      end
 else
- unless %w(TURN ACTION).include?(current_user.player.state)
+ unless %w(TURN ACTION SELECTION_TURN).include?(current_user.player.state)
           session[:refresh] = true
   end
 end
@@ -31,7 +49,8 @@ end
 
 <%else%>
         function enter_game(){
-            window.location.replace("<%= party_resumen_path(@game.id) %>");
+
+            window.location.replace("<%=party_resumen_path(@game.id) %>");
             window.location = "<%=party_resumen_path(@game.id) %>";
         }
         enter_game();

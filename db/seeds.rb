@@ -38,6 +38,7 @@ BaseAction.create!(description: 'coins_to_cards', partialname: 'coins_to_cards')
 BaseAction.create!(description: 'self_destruction', partialname: 'self_destruction')
 BaseAction.create!(description: 'search_card', partialname: 'search_card')
 BaseAction.create!(description: 'store_card', partialname: 'store_card')
+BaseAction.create!(description: 'graveyard', partialname: 'graveyard')
 
 
 ### Init base_cards
@@ -104,6 +105,8 @@ District.create!(name:'lighthouse', colour:'purple', cost:3, points:3, quantity:
 District.create!(name:'observatory', colour:'purple', cost:5, points:5, quantity:1, type:'District')
 District.create!(name:'museum', colour:'purple', cost:4, points:4, quantity:1, type:'District')
 District.create!(name:'hospital', colour:'purple', cost:6, points:6, quantity:1, type:'District')
+District.create!(name:'graveyard', colour:'purple', cost:5, points:5, quantity:1, type:'District')
+
 
 
 
@@ -151,6 +154,8 @@ CardBaseAction.create!(base_action_id: BaseAction.find_by_description('self_dest
 CardBaseAction.create!(base_action_id: BaseAction.find_by_description('search_card').id, base_card_id: BaseCard.find_by_name('lighthouse').id)
 #museum
 CardBaseAction.create!(base_action_id: BaseAction.find_by_description('store_card').id, base_card_id: BaseCard.find_by_name('museum').id)
+#graveyard
+CardBaseAction.create!(base_action_id: BaseAction.find_by_description('graveyard').id, base_card_id: BaseCard.find_by_name('graveyard').id)
 
 
 

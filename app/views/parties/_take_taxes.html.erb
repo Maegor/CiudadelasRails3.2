@@ -1,29 +1,33 @@
 <div id="take_taxes" class="hidden">
   <div class="popupContainer">
-    <a  class="closePopup" title="close popup"></a>
+    <a class="closePopup" title="close popup"></a>
+
     <div class="popupContent">
-    <% taxes = current_user.player.calculate_taxes %>
+      <% taxes = current_user.player.calculate_taxes %>
 
       <% if taxes > 0 %>
-        <div id="taxes_recount">
-          <p><%= t 'board.will_get' %></p>
-           <p><%= taxes %></p>
-          <p><%= t 'board.coins' %></p>
+          <div id="taxes_recount">
+            <p><%= t 'board.will_get' %></p>
+
+            <p><%= taxes %></p>
+
+            <p><%= t 'board.coins' %></p>
 
 
-
-          <div class="ok_button">
-          <%= #noinspection RubyResolve
-              link_to (t 'board.collect'), party_action_path(@game.id, [action.id])%>
+            <div class="ok_button">
+              <%= #noinspection RubyResolve
+                  link_to (t 'board.collect'), party_action_path(@game.id, [action.id]) %>
+            </div>
           </div>
-        </div>
 
       <% else %>
 
-             <div class="actionMessage"><%= t 'board.no_taxes' %></div>
+          <div class="actionMessage"><%= t 'board.no_taxes' %></div>
 
-       <%end%>
+      <% end %>
 
     </div>
+  </div>
+  <div class="overlayEffect">
   </div>
 </div>
