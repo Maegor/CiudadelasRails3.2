@@ -7,8 +7,13 @@ class Player < ActiveRecord::Base
   has_many :actions
 
 
-  attr_accessible :coins,:position, :turn, :age, :name, :party_id, :user_id, :crown, :stolen, :murdered, :state, :points, :current
+  attr_accessible :coins,:position, :turn, :age, :name, :party_id, :user_id, :crown, :stolen, :murdered, :state, :points, :current, :points_hash, :bell_affected
   attr_reader :numdistricts
+  serialize :points_hash, Hash
+
+
+
+
 
 
   def numdistricts
@@ -117,28 +122,73 @@ end
 
     end
 
+
+    #recuento por colores
     player_districts =   districts_on_game.count(:colour, :distinct => :colour)
 
-    if player_districts >= 5
-      points += 3
+    if player_districts >=5
+      #points += 3
       points_distribution[:all_colors] = 3
+
+    else
+      purple_districts = districts_on_game.where("colour = 'purple'")
+      if player_districts == 4 && purple_districts.exists? && purple_districts.size >=2
+        haunted_city = purple_districts.find(:first, :conditions =>["name = 'haunted_city'"])
+        if haunted_city && (haunted_city.round_update < party.current_round)
+          points_distribution[:haunted_city] = 3
+        end
+      end
     end
-     points
+     #points
 
-    previous_players = party.players.order('turn ASC').take_while{|player| player.id != self.id}
-    exist_player = previous_players.index{|player| player.districts_on_game.size >= 8}
 
-    if (exist_player.nil? and districts_on_game.size >= 8)
-      points += 4
-      points_distribution[:first_eight] = 4
-    elsif  districts_on_game.size >= 8
-      points += 2
-      points_distribution[:eight] = 2
+    #puntos por ser el primero en construir 7 u 8 distritos
+    #tener en cuenta si bell tower esta en juego y activa
+    #y si algun jugador fue affectado por ella.
+
+    base_bell_tower = BaseCard.find_by_name('bell_tower')
+    bell_tower = party.cards.find(:first, :conditions => ["base_card_id = ?", base_bell_tower.id])
+    if bell_tower.ability_activated
+
+      bell_affected_players = party.players.find(:all, :conditions => ["bell_affected = true"])
+      if bell_affected_players.size > 0
+        if bell_affected == true
+            points_distribution[:bell_affected] = 4
+           elsif districts_on_game.size >= 2
+             points_distribution[:seven] = 2
+        end
+      else
+        previous_players = party.players.order('turn ASC').take_while{|player| player.id != self.id}
+        exist_player = previous_players.index{|player| player.districts_on_game.size >= 2}
+
+        if (exist_player.nil? and districts_on_game.size >= 2)
+          #points += 4
+          points_distribution[:first_seven] = 4
+        elsif  districts_on_game.size >= 2
+          #points += 2
+          points_distribution[:seven] = 2
+        end
+      end
+
+
+   else
+      previous_players = party.players.order('turn ASC').take_while{|player| player.id != self.id}
+      exist_player = previous_players.index{|player| player.districts_on_game.size >= 8}
+
+      if (exist_player.nil? and districts_on_game.size >= 8)
+        #points += 4
+        points_distribution[:first_eight] = 4
+      elsif  districts_on_game.size >= 8
+        #points += 2
+        points_distribution[:eight] = 2
+      end
     end
-
 
     check_special_card(points_distribution)
+    logger.info("###################")
+    logger.info(points_distribution)
     points_distribution
+
   end
 
  def check_special_card(points_distribution)
@@ -263,7 +313,7 @@ end
 
     #acciones por distritos morados
 
-    purple_districts = districts_on_game.where("colour = 'purple' AND name <> 'lighthouse'")
+    purple_districts = districts_on_game.where("colour = 'purple' AND name not in ('lighthouse', 'bell_tower')")
     purple_districts.each do |district|
       district.base_card.base_actions.each do |action|
         actions.create!(base_action_id: action.id)
@@ -481,7 +531,7 @@ end
        if card.base_card.name == 'museum'
          update_museum(card, position)
        end
-      Card.update(card.id,:state => 'INDECK', :position => position[0], :player_id => nil, :round_update => party.current_round, :wasdestroyed => true)
+      Card.update(card.id,:state => 'INDECK', :position => position[0], :player_id => nil, :round_update => party.current_round, :wasdestroyed => true, :ability_activated => false)
       update_attribute(:coins, current_coins)
       exist = true
 
@@ -573,29 +623,29 @@ end
     able_to_build = district_to_construct
 
     purple_districts = districts_on_game.where("colour = 'purple'")
-    factory =  purple_districts.exists?(["name = 'factory'"])
+    factory = purple_districts.exists?(["name = 'factory'"])
 
-   index = 0
-   while (exist && index <= cards.length - 1) do
-     district_id = districts_to_build[index]
-     card = Card.find(district_id)
-     if able_to_build.include?(card) && ( current_coins >= 0)
+    index = 0
+    while (exist && index <= cards.length - 1) do
+      district_id = districts_to_build[index]
+      card = Card.find(district_id)
+      if able_to_build.include?(card) && (current_coins >= 0)
 
-        current_coins  -= card.base_card.cost + (1 * ((factory && card.base_card.colour == 'purple')? 1:0 ))
+        current_coins -= card.base_card.cost + (1 * ((factory && card.base_card.colour == 'purple') ? 1 : 0))
         cards[index] = card
 
-     else
+      else
         exist = false
-     end
-     index += 1
-   end
+      end
+      index += 1
+    end
 
 
     if  exist && (current_coins >= 0)
       cards.each do |card|
-        card.update_attribute(:state, 'ONGAME')
+        card.update_attributes(:state => 'ONGAME', :round_update => party.current_round)
 
-         card_actions = card.base_card.base_actions
+        card_actions = card.base_card.base_actions
 
         unless card_actions.empty?
           actions.create!(base_action_id: card_actions[0].id)
@@ -607,14 +657,14 @@ end
         else
           target_district = 'districts.' + card.base_card.name
         end
-        party.game_messages.create(:message => 'message.build',:actor_player => user.name.capitalize, :target_player => card.player.user.name.capitalize, :target_district => target_district)
+        party.game_messages.create(:message => 'message.build', :actor_player => user.name.capitalize, :target_player => card.player.user.name.capitalize, :target_district => target_district)
       end
-        update_attribute(:coins , current_coins)
+      update_attribute(:coins, current_coins)
 
     end
 
 
-  exist
+    exist
   end
 
 
@@ -717,7 +767,7 @@ end
   def graveyard(action_array)
     exist  = false
     card = action_array.drop(1)
-    card = Card.districts.find(:first, :conditions => ["cards.id = ? AND wasdestroyed = true AND party_id = ?", action_array[1], party.id], :readonly => false)
+    card = Card.districts.find(:first, :conditions => ["cards.id = ? AND state = 'INDECK' AND wasdestroyed = true AND party_id = ?", action_array[1], party.id], :readonly => false)
 
     if card
       card.update_attributes(:state => 'ONHAND', :wasdestroyed => false, :player_id => id)
@@ -727,6 +777,27 @@ end
     end
     exist
   end
+
+  def bell_tower(action_array)
+    exist = false
+    response = action_array.drop(1)
+    bell_tower = districts_on_game.find(:first,:conditions => ["name = 'bell_tower'"])
+
+    if response[0] == "true" && bell_tower
+      Card.update(bell_tower.id, :ability_activated => true)
+      party.players.each do |player|
+        player.update_attribute(:bell_affected, false)
+        if player.districts_on_game.size >= 7
+          player.update_attribute(:bell_affected, true)
+        end
+      end
+      exist = true
+    elsif response[0] == "false"
+      exist = true
+    end
+    exist
+  end
+
 
 
   def store_card(action_array)

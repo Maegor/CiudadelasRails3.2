@@ -4,7 +4,6 @@ module PartiesHelper
     points = 0
     array_points.each do |key,value|
       points += value
-
     end
       points
 
@@ -15,7 +14,7 @@ module PartiesHelper
     array_points.each do |key, value|
 
     string << (t key, :scope => [:points_recount])
-    string << " " + value.to_s
+    string << ' ' + value.to_s
     string << "\n"
 
     end

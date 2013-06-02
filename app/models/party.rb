@@ -50,7 +50,7 @@ class Party < ActiveRecord::Base
 
     player_list = players.shuffle
     player_list.each_with_index do |player, index|
-    player.update_attributes(:turn => index,:position => index, :state => 'WAITING_SELECTION', :stolen => 'FALSE', :murdered => 'FALSE' )
+    player.update_attributes(:turn => index,:position => index, :state => 'WAITING_SELECTION', :stolen => 'FALSE', :murdered => 'FALSE', :bell_affected => false )
 
     end
 
@@ -108,7 +108,7 @@ class Party < ActiveRecord::Base
 
       district.quantity.times do
 
-        cards.create!(state: 'INDECK', base_card_id: district.id)
+        cards.create!(state: 'INDECK', base_card_id: district.id, :wasdestroyed => false, :ability_activated => false)
 
       end
     end
@@ -129,7 +129,7 @@ class Party < ActiveRecord::Base
       end
     end
   end
-
+  #TODO implementar algoritmo de barajdo
   def shuffle_cards(card_list)
 
     positions_array = Array.new(card_list.length)
@@ -205,27 +205,27 @@ class Party < ActiveRecord::Base
   def tick
     if self.state == 'SELECTION_CHAR_STARTED'
 
-      cards_with_player = cards.characters.where("player_id IS NOT NULL" )
+      cards_with_player = cards.characters.where("player_id IS NOT NULL")
       if cards_with_player.count == numplayer
 
-          players.each do |player|
+        players.each do |player|
 
-              player.turn = player.cards.characters.first.base_card.turn
-              player.save
-          end
+          player.turn = player.cards.characters.first.base_card.turn
+          player.save
+        end
 
-       player_list = players.order('turn ASC')
+        player_list = players.order('turn ASC')
 
-          player_list.each_with_index do |player,index|
+        player_list.each_with_index do |player, index|
 
-            player.turn = index
-            player.save
-          end
+          player.turn = index
+          player.save
+        end
 
-          next_player = players.order('turn ASC').first
+        next_player = players.order('turn ASC').first
 
-           next_player.update_attribute(:state, 'TURN' )
-           next_player.player_actions
+        next_player.update_attribute(:state, 'TURN')
+        next_player.player_actions
 
         self.state = "GAME_PLAY_START"
 
@@ -241,20 +241,21 @@ class Party < ActiveRecord::Base
 
     if self.state == 'GAME_PLAY_START'
 
-      players_waiting_end_round  = players.where(:state => 'WAITINGENDROUND')
+      players_waiting_end_round = players.where(:state => 'WAITINGENDROUND')
 
       if players_waiting_end_round.size == numplayer
-             player_max_district = players.sort{|x,y| y.districts_on_game.count <=> x.districts_on_game.count}.first
-
-         if   player_max_district.districts_on_game.count >= 8
-           #points_recount
-           self.state='FINISHED'
-           self.save
-         else
-           initialize_players
-           round_initialization
-           self.next_player
-         end
+        player_max_district = players.sort { |x, y| y.districts_on_game.count <=> x.districts_on_game.count }.first
+        #TODO volver a poner 3 como 8
+        if   player_max_district.districts_on_game.count >= 8
+          points_recount
+          classification
+          self.state='FINISHED'
+          self.save
+        else
+          initialize_players
+          round_initialization
+          self.next_player
+        end
 
       else
         self.next_character
@@ -267,7 +268,7 @@ class Party < ActiveRecord::Base
 
     player_list = self.players.order('turn ASC').to_a
 
-    waiting_players = player_list.count {|player| player.state == 'WAITING_SELECTION'}
+    waiting_players = player_list.count { |player| player.state == 'WAITING_SELECTION' }
 
     #si todos estan esperando cogemos al rey para que elija
     if waiting_players == self.numplayer
@@ -278,18 +279,17 @@ class Party < ActiveRecord::Base
       player.save
     elsif waiting_players > 0
 
-      selecting_player = player_list.index{|player|player.state == 'SELECTION_TURN'}
+      selecting_player = player_list.index { |player| player.state == 'SELECTION_TURN' }
 
       if selecting_player.nil?
 
-        player_index = player_list.index{|player|player.state == 'WAITING_SELECTION'}
+        player_index = player_list.index { |player| player.state == 'WAITING_SELECTION' }
         player = player_list[player_index]
         player.state= 'SELECTION_TURN'
         player.save
       end
 
     end
-
 
 
   end
@@ -333,16 +333,56 @@ class Party < ActiveRecord::Base
   end
 
 
-   def points_recount
+  def points_recount
+    players.each do |player|
+      hashed_points = player.recount
+      points = count_points(player.recount)
+      player.update_attributes(:points => points, :points_hash => hashed_points)
+    end
+  end
 
-     player_list = players
+  def count_points(array_points)
+    points = 0
+    array_points.each do |key, value|
+      points += value
+    end
+    points
+  end
 
-         player_list.each do |player|
-           player.total_recount()
-           end
-   end
 
+  #Asignamos posicion en el ranking segun su puntucacion
+  #se buscan posible empates con el primero
+  def classification
 
+    player_by_points = players.order('points DESC')
+    player_by_points.each_with_index do |player, index|
+      logger.info(index)
+      player.position = index
+      player.update_attribute(:position, index)
+    end
+    first_player = players.order('position ASC').first
+    player_with_same_points = players.where("points  = ?", first_player.points).drop(1)
+
+    player_with_same_points.each do |player|
+
+      if first_player.points_hash[:districts_points] < player.points_hash[:districts_points]
+
+        position_aux = first_player.position
+        first_player.update_attribute(:position, player.position)
+        player.update_attribute(:position, position_aux)
+        first_player = player
+
+      elsif first_player.points_hash[:districts_points] == player.points_hash[:districts_points]
+
+        if first_player.coins < player.coins
+          position_aux = first_player.position
+          first_player.update_attribute(:position, player.position)
+          player.update_attribute(:position, position_aux)
+          first_player = player
+        end
+      end
+    end
+  end
 
 
   def round_initialization

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130601171131) do
+ActiveRecord::Schema.define(:version => 20130602163646) do
 
   create_table "actions", :force => true do |t|
     t.integer  "round"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(:version => 20130601171131) do
     t.integer  "base_card_id"
     t.integer  "round_update"
     t.boolean  "wasdestroyed"
+    t.boolean  "ability_activated"
   end
 
   create_table "game_messages", :force => true do |t|
@@ -100,6 +101,8 @@ ActiveRecord::Schema.define(:version => 20130601171131) do
     t.integer  "points"
     t.string   "murdered"
     t.string   "stolen"
+    t.text     "points_hash"
+    t.boolean  "bell_affected"
   end
 
   create_table "users", :force => true do |t|

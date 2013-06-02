@@ -39,6 +39,7 @@ BaseAction.create!(description: 'self_destruction', partialname: 'self_destructi
 BaseAction.create!(description: 'search_card', partialname: 'search_card')
 BaseAction.create!(description: 'store_card', partialname: 'store_card')
 BaseAction.create!(description: 'graveyard', partialname: 'graveyard')
+BaseAction.create!(description: 'bell_tower', partialname: 'bell_tower')
 
 
 ### Init base_cards
@@ -106,6 +107,8 @@ District.create!(name:'observatory', colour:'purple', cost:5, points:5, quantity
 District.create!(name:'museum', colour:'purple', cost:4, points:4, quantity:1, type:'District')
 District.create!(name:'hospital', colour:'purple', cost:6, points:6, quantity:1, type:'District')
 District.create!(name:'graveyard', colour:'purple', cost:5, points:5, quantity:1, type:'District')
+District.create!(name:'haunted_city', colour:'purple', cost:2, points:2, quantity:1, type:'District')
+District.create!(name:'bell_tower', colour:'purple', cost:5, points:5, quantity:1, type:'District')
 
 
 
@@ -156,6 +159,8 @@ CardBaseAction.create!(base_action_id: BaseAction.find_by_description('search_ca
 CardBaseAction.create!(base_action_id: BaseAction.find_by_description('store_card').id, base_card_id: BaseCard.find_by_name('museum').id)
 #graveyard
 CardBaseAction.create!(base_action_id: BaseAction.find_by_description('graveyard').id, base_card_id: BaseCard.find_by_name('graveyard').id)
+#bell tower
+CardBaseAction.create!(base_action_id: BaseAction.find_by_description('bell_tower').id, base_card_id: BaseCard.find_by_name('bell_tower').id)
 
 
 

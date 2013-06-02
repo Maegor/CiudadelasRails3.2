@@ -63,7 +63,7 @@ en:
    description: "The Imperial Treasure has a cost of 4 gold pieces, but gives you points equal to the amount of gold you have at the end of the game."
   haunted_city:
    name: "Miracle Courtyard"
-   description: "At the end of the game, the Miracle Courtyard counts as a colour of your choice. You cannot use this if you have built the Miracle Courtyard in the last turn of the game."
+   description: "the Miracle Courtyard counts as a colour of your choice. You cannot use this if you have built it in the last turn of the game."
   keep:
    name: "Keep"
    description: "The Keep cannot be destroyed by the Warlord."
@@ -81,7 +81,7 @@ en:
    description: "If you have no gold at the end of your turn, get 1 gold from the bank."
   bell_tower:
    name: "Tower Bell"
-   description: "When you play the Tower Bell in your city, you may shorten the game and decide that it will end at the end of the turn in which a player builds one less district than the specified in the game. You can do this even if the Tower Bell is your last district. If the Tower bell is later destroyed by the Warlord, end conditions go back to normal."
+   description: "When you play the Tower Bell in your city, you decide that it will end at the end of the turn in which a player builds one less district than the specified in the game. If it's destroyed by the Warlord, end conditions go back to normal."
   smithy:
    name: "Workshop"
    description: "Once per turn, you may pay 3 gold to draw 3 cards."
@@ -160,13 +160,19 @@ en:
   self_destruction: "Destroy the powderhouse and destroy another district card of your choice in any player´s city."
   store_card: "Put a card under the museum"
   graveyard: "Take card from Graveyard"
+  bell_tower: "cut down the game"
+
 
  points_recount:
   districts_points: "Points by districts"
   all_colors: "All colours"
   first_eight: "First player with eight districts"
+  eight: "build eight districts"
+  first_seven: "First player with seven districts"
+  seven: "build seven districts"
+  bell_affected: "Bell Tower. build seven districts"
   imperial_treasure: "Imperial Treasure"
-  haunted_city: "Miracle Courtyard"
+  haunted_city: "All colour by Haunted City"
   keep: "Keep"
   lighthouse: "Lighthouse"
   powderhouse: "Powderhouse"
@@ -218,6 +224,7 @@ en:
   no_available_card: "There are not available cards"
   finish: "Finish"
   warlod_cannot_take: "The warlord can not use this ability"
+  cut_down_game: "Do you want to cut down the game?"
 
   #colours
   green: "green"

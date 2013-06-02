@@ -61,7 +61,7 @@ es:
    description: "el Tesoro Imperial tiene un coste de 4 monedas de oro para ser construido, pero te reporta tantos puntos como monedas de oro tengas en tu posesión al final de la partida."
   haunted_city:
    name: "Ciudad encantada"
-   description: "cuando se cuentan los puntos del final de la partida, el patio de los milagros se considera un Distrito de un color a tu elección. No podrás usar esta capacidad si construiste el Patio de los Milagros en tu último turno de la partida."
+   description: "el patio de los milagros se considera un Distrito de un color a tu elección. No podrás usar esta capacidad lo construiste en tu último turno de la partida."
   keep:
    name: "Torreón"
    description: "el Torreón no puede ser destruido por el Condotiero."
@@ -79,7 +79,7 @@ es:
    description: "si no tienes monedas al final de tu turno, ganas una moneda."
   bell_tower:
    name: "Campanario"
-   description: "cuando juegas el Campanario en tu ciudad, puedes decidir acortar el juego en un Distrito. Esto funciona aunque el  Campanario sea tu último distrito. Si el Condotiero te destruye el Campanario, el juego vuelve a la normalidad."
+   description: "cuando juegas el Campanario en tu ciudad, puedes decidir acortar el juego en un Distrito. Si el Condotiero lo destruye, el juego vuelve a la normalidad."
   smithy:
    name: "Forja"
    description: "una vez por turno, puedes pagar tres monedas de oro para robar tres cartas."
@@ -158,13 +158,18 @@ es:
   self_destruction: "Destruye el Polvorín para destruir otro edificio"
   store_card: "Poner una carta debajo del museo"
   graveyard: "Coger carta del Cementerio"
+  bell_tower: "Acortar la partida"
 
  points_recount:
   districts_points: "Puntos por distritos"
   all_colors: "Todos los colores"
   first_eight: "Primer jugador con ocho distritos"
+  eight: "construir ocho distritos"
+  first_seven: "primer jugador con siete distritos"
+  seven: "construir siete distritos"
+  bell_affected: "campanario: construir siete distritos"
   imperial_treasure: "Tesoro imperial"
-  haunted_city: "Ciudad encantada"
+  haunted_city: "Todos los colores por Ciudad encantada"
   keep: "Torreón"
   lighthouse: "Faro"
   powderhouse: "Polvorín"
@@ -217,6 +222,7 @@ es:
   no_available_card: "No cartas hay disponibles."
   finish: "Terminar"
   warlod_cannot_take: "El guerrero no puede usar esta habilidad"
+  cut_down_game: "¿Deseas acortar el juego?"
 
   #colours
   green: "verde"

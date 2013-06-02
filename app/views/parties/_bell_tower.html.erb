@@ -1,0 +1,19 @@
+<div id="bell_tower" class="hidden">
+  <div class="popupContainer">
+    <a class="closePopup" title="close popup"></a>
+
+    <div class="popupContent">
+      <div>
+
+           <div class="actionMessage"><%= t  'board.cut_down_game'%></div>
+             <%= link_to "YES", party_action_path(@game.id, [action.id, true]) %>
+             <%= link_to "NO", party_action_path(@game.id, [action.id, false]) %>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div class="overlayEffect">
+  </div>
+</div>

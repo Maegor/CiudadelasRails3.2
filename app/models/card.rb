@@ -7,7 +7,7 @@ class Card < ActiveRecord::Base
   scope :districts, joins(:base_card).where("type = 'District'")
   scope :characters, joins(:base_card).where("type = 'Character'")
 
-  attr_accessible  :state, :party_id, :turn, :stolen, :murdered, :player_id, :base_card_id, :position, :round_update, :wasdestroyed
+  attr_accessible  :state, :party_id, :turn, :stolen, :murdered, :player_id, :base_card_id, :position, :round_update, :wasdestroyed, :ability_activated
 
 
 

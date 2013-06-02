@@ -11,8 +11,8 @@
 
 
 
-  <%
-      @game.players.order('points DESC').each do |opponent|  %>
+  <% #TODO ordenar jugadores por puntos
+      @game.players.order('position ASC').each do |opponent|  %>
       <div class="opponent">
 
         <div class="opponent_iu">
@@ -24,7 +24,7 @@
           </div>
 
           <div id="final_points">
-            <div class="value" title="<%= tooltip opponent.recount %>"> <%= count_points opponent.recount %></div>
+            <div class="value" title="<%= tooltip opponent.points_hash %>"> <%= opponent.points %></div>
           </div>
 
           <div class="data_opponent_final" id="points">
