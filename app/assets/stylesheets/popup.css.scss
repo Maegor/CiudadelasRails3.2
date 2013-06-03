@@ -382,3 +382,55 @@ text-align: center;
 
    z-index: 2;
 }
+
+.action_info{
+  color: #ffffff;
+  font-size: 34px;
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 600px;
+  margin-top: -40px;
+
+
+}
+
+.action_info_tabs{
+
+  color: #ffffff;
+  font-size: 34px;
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  margin-left: -30px;
+  width: 600px;
+  margin-top: -72px;
+
+}
+#options{
+   position: absolute;
+   left: 146px;
+   top: 242px;
+}
+
+.option_button{
+  background: url('nohover.png') no-repeat center;
+  float: left;
+  height: 45px;
+  float: left;
+  width: 160px;
+  padding-top: 15px;
+  text-align: center;
+  a{
+    color: #000000;
+
+  }
+}
+
+
+
+.option_button:hover{
+  background: url('hover.png') no-repeat center;
+  padding-top: 17px;
+
+}

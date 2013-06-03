@@ -1,13 +1,5 @@
 module PartiesHelper
 
-  def count_points(array_points)
-    points = 0
-    array_points.each do |key,value|
-      points += value
-    end
-      points
-
-  end
 
   def tooltip(array_points)
     string = String.new
@@ -21,17 +13,7 @@ module PartiesHelper
     string
   end
 
-
-
-  def character_img_steal(opponent)
-
-    opponent_char = opponent.player_character
-
-
-  end
-
-
-  def character_img(opponent)
+ def character_img(opponent)
 
     opponent_char = opponent.player_character
     if   %w(ACTION TURN WAITINGENDROUND).include?(opponent.state)
@@ -51,6 +33,7 @@ module PartiesHelper
 
   def district_name(district_card)
     string = String.new
+    #noinspection RubyResolve
     if district_card.base_card.colour == 'purple'
       string << (t 'districts.' + district_card.base_card.name + '.name')
     else
@@ -64,10 +47,15 @@ module PartiesHelper
     string = String.new
     #noinspection RubyResolve
     if district_card.base_card.colour == 'purple'
-        string << (t 'districts.' + district_card.base_card.name + '.name')
+        string << (t 'districts.' + district_card.base_card.name + '.name').capitalize
         string << "\n"
-        string << (t 'districts.' + district_card.base_card.name + '.description')
-
+        string << (t 'districts.' + district_card.base_card.name + '.description').capitalize
+        if district_card.base_card.name == 'museum'
+          #noinspection RubyResolve
+          quantity = district_card.party.cards.find(:all, :conditions=>["state = 'INMUSEUM'"]).size
+          string << "\n"
+          string << (t 'board.district_under_museum', :quantity => quantity)
+        end
     else
 
       string << (t 'districts.' + district_card.base_card.name)
@@ -106,10 +94,10 @@ module PartiesHelper
        action = actions.first
        if action.player.districts_on_game.exists?(["name = 'library'"])
 
-         title << 'Coge dos cartas'
+         title << (t 'board.draw_two_cards')
 
        else
-         title << 'Coge una carta'
+         title << (t 'board.draw_one_card')
       end
 
     end
@@ -122,6 +110,7 @@ module PartiesHelper
     district_hash = Hash.new
 
     districts.each do |district|
+      #noinspection RubyResolve
       district_hash[district.id] = district.base_card.cost
     end
 

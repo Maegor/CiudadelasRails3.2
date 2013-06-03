@@ -154,17 +154,17 @@ end
       if bell_affected_players.size > 0
         if bell_affected == true
             points_distribution[:bell_affected] = 4
-           elsif districts_on_game.size >= 2
+           elsif districts_on_game.size >= 7
              points_distribution[:seven] = 2
         end
       else
         previous_players = party.players.order('turn ASC').take_while{|player| player.id != self.id}
-        exist_player = previous_players.index{|player| player.districts_on_game.size >= 2}
+        exist_player = previous_players.index{|player| player.districts_on_game.size >= 7}
 
-        if (exist_player.nil? and districts_on_game.size >= 2)
+        if (exist_player.nil? and districts_on_game.size >= 7)
           #points += 4
           points_distribution[:first_seven] = 4
-        elsif  districts_on_game.size >= 2
+        elsif  districts_on_game.size >= 7
           #points += 2
           points_distribution[:seven] = 2
         end
@@ -185,8 +185,6 @@ end
     end
 
     check_special_card(points_distribution)
-    logger.info("###################")
-    logger.info(points_distribution)
     points_distribution
 
   end
@@ -792,6 +790,7 @@ end
         end
       end
       exist = true
+      party.game_messages.create(:message => 'message.bell_tower',:actor_player => user.name.capitalize)
     elsif response[0] == "false"
       exist = true
     end

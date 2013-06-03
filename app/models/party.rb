@@ -245,12 +245,13 @@ class Party < ActiveRecord::Base
 
       if players_waiting_end_round.size == numplayer
         player_max_district = players.sort { |x, y| y.districts_on_game.count <=> x.districts_on_game.count }.first
-        #TODO volver a poner 3 como 8
-        if   player_max_district.districts_on_game.count >= 8
+
+        base_bell_tower = BaseCard.find_by_name('bell_tower')
+        bell_tower = cards.find(:first, :conditions => ["base_card_id = ?", base_bell_tower.id])
+        if   player_max_district.districts_on_game.count >= ( (bell_tower.ability_activated == true) ? 7 :8)
           points_recount
           classification
-          self.state='FINISHED'
-          self.save
+          update_attribute(:state,'FINISHED' )
         else
           initialize_players
           round_initialization

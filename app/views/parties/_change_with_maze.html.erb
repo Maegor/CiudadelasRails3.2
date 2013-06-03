@@ -1,4 +1,4 @@
-
+<div class="action_info_tabs"><%=(t 'board.select_a_character') %></div>
 <%= form_tag form_action('change_cards','change_with_maze') do %>
       <div class="container_cards_pop">
             <% current_user.player.districts_on_hand.each do |card|%>
@@ -10,13 +10,12 @@
                 <% end %>
       </div>
     <div id="submid">
-<%= submit_tag  'Cambiar' %>
+<%= submit_tag  (t 'board.change') %>
     </div>
 
 <% end %>
 
 <script type="text/javascript">
-
   $('.image-checkbox-container .card_select').on('click', function(){
         if(!$(this).prev('input[type="checkbox"]').prop('checked')){
             $(this).prev('input[type="checkbox"]').prop('checked', true).attr('checked','checked');
@@ -28,6 +27,4 @@
             this.style.margin = '4px';
         }
     });
-
-
 </script>

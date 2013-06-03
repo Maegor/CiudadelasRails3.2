@@ -4,16 +4,14 @@ function center(){
 	var windowWidth = $(document).width();
 	var windowHeight = $(document).height();
 	var popupHeight = popup.height();
-    console.log(popupHeight);
-	var popupWidth = popup.width();
+ 	var popupWidth = popup.width();
     popup.css({
 		"position": "fixed",
 		"top": windowHeight/2-popupHeight/2,
 		"left": windowWidth/2-popupWidth/2
+            });
 
-	});
-	
-	}
+}
 
 
 function loadPopup(popupToload){
@@ -53,7 +51,6 @@ function center2(currentPopup){
     var container =  $("#" + currentPopup + " .popupContainer");
     var windowWidth = $(document).width();
     var windowHeight = $(document).height();
-
     var popupHeight = container.height();
     var popupWidth =  container.width();
 

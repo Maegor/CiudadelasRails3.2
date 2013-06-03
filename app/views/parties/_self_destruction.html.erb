@@ -1,36 +1,40 @@
 <div id="self_destruction" class="hidden">
   <div class="popupContainer">
-    <a  class="closePopup" title="close popup"></a>
-  <div class="popupContent">
+    <div class="action_info"><%= (t 'board.select_one_district') %></div>
+    <a class="closePopup" title="close popup"></a>
 
-    <% @game.players.each_with_index  do |player,index| %>
+    <div class="popupContent">
 
-        <div class="tab_data">
+      <% @game.players.each_with_index do |player, index| %>
 
-          <div class="<%=selected_class('tab', index)%>"><%= player.name.capitalize %>
-          </div>
-          <div class="<%= visible_class('cards', index)%>">
-            <div class="container_cards_pop">
-            <% player.districts_on_game.where("name <> 'powderhouse'").each do |district_card| %>
+          <div class="tab_data">
 
-                <%= #noinspection RubyResolve
-                    link_to (render :partial => 'select_district_card', :object => district_card),
-                            party_action_path(@game.id, [action.id, district_card.id]) %>
-            <% end%>
+            <div class="<%= selected_class('tab', index) %>"><%= player.name.capitalize %>
             </div>
+            <div class="<%= visible_class('cards', index) %>">
+              <div class="container_cards_pop">
+                <% player.districts_on_game.where("name <> 'powderhouse'").each do |district_card| %>
 
+                    <%= #noinspection RubyResolve
+                        link_to (render :partial => 'select_district_card', :object => district_card),
+                                party_action_path(@game.id, [action.id, district_card.id]) %>
+                <% end %>
+              </div>
+
+            </div>
           </div>
-        </div>
-    <% end%>
+      <% end %>
 
 
-    <%  (7 - @game.players_to_destroy.count).times do %>
-        <div class="tab disabled" >
-        </div>
-    <% end %>
+      <% (7 - @game.players_to_destroy.count).times do %>
+          <div class="tab disabled">
+          </div>
+      <% end %>
 
+    </div>
   </div>
-</div>
+  <div class="overlayEffect">
+  </div>
 </div>
 <script type="text/javascript">
     tabs("self_destruction");

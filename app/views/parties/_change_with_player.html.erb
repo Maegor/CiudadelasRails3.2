@@ -1,3 +1,4 @@
+<div class="action_info_tabs"><%=(t 'board.select_player') %></div>
 <%= form_tag form_action('change_cards','change_with_player') do %>
     <div class="container_cards_pop">
     <% current_user.player.opponents.each do |opponent|  %>

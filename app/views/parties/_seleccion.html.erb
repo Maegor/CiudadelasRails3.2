@@ -29,11 +29,14 @@
 
 
     <div id="acciones" class="hidden">
+      <% action_list = current_user.player.actions %>
+
       <div class="popupContainer">
+        <div class="action_info"><%= action_title(action_list) %></div>
         <div class="popupContent">
 
-          <% action_list = current_user.player.actions %>
-          <h2><%= action_title(action_list) %></h2>
+
+
 
           <% action_list.each do |action| %>
               <%= #noinspection RubyResolve
