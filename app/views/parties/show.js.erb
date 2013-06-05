@@ -14,9 +14,10 @@
     var jspBuildTop =   build_district.find('.jspPane').css('left');
     var jspBuildDrag =   build_district.find('.jspDrag').css('left');
 
+      console.log(<%= session[:refresh] %>);
+      console.log("<%= session[:refresh_prev] %>");
 
-
-<%if session[:refresh] %>
+<%  if session[:refresh] %>
      //$('#tablero').replaceWith("<%#=escape_javascript (render :partial => 'tablero') %>");
      var response = $("<%=escape_javascript (render :partial => 'tablero') %>");
 
@@ -37,15 +38,25 @@
        handNew.find('.jspPane').css({'left': jspBuildTop});
        handNew.find('.jspDrag').css({'left': jspBuildDrag});
 
-<% if %w(TURN ACTION SELECTION_TURN).include?(current_user.player.state)
-        session[:refresh] = false
-     end
-else
- unless %w(TURN ACTION SELECTION_TURN).include?(current_user.player.state)
-          session[:refresh] = true
-  end
-end
-%>
+ <%  end
+
+
+=begin
+        if (session[:refresh_prev] == 'SELECTION_TURN' || session[:refresh_prev] == 'TURN') and session[:refresh] == false
+           session[:refresh_prev] = ''
+           session[:refresh] = true
+        elsif %w(TURN ACTION SELECTION_TURN).include?(current_user.player.state)
+            if session[:refresh_prev] != ''
+            session[:refresh_prev] = current_user.player.state
+            end
+            session[:refresh] = false
+          else
+          session[:refresh_prev] = current_user.player.state
+            session[:refresh] = true
+
+        end
+=end
+        %>
 
 <%else%>
         function enter_game(){

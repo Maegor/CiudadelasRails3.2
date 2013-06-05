@@ -58,7 +58,7 @@ es:
   #purple
   imperial_treasure:
    name: "Tesoro imperial"
-   description: "el Tesoro Imperial tiene un coste de 4 monedas de oro para ser construido, pero te reporta tantos puntos como monedas de oro tengas en tu posesión al final de la partida."
+   description: "te reporta tantos puntos como monedas de oro tengas en tu posesión al final de la partida."
   haunted_city:
    name: "Ciudad encantada"
    description: "el patio de los milagros se considera un Distrito de un color a tu elección. No podrás usar esta capacidad lo construiste en tu último turno de la partida."
@@ -79,7 +79,7 @@ es:
    description: "si no tienes monedas al final de tu turno, ganas una moneda."
   bell_tower:
    name: "Campanario"
-   description: "cuando juegas el Campanario en tu ciudad, puedes decidir acortar el juego en un Distrito. Si el Condotiero lo destruye, el juego vuelve a la normalidad."
+   description: "cuando lo juegas, puedes decidir acortar el juego en un Distrito. Si es destruido el juego vuelve a la normalidad."
   smithy:
    name: "Forja"
    description: "una vez por turno, puedes pagar tres monedas de oro para robar tres cartas."
@@ -232,6 +232,9 @@ es:
   select_player: "Elige un jugador"
   select_severals_cards: "Elige varios distritos"
   select_an_option: "Elige una opción"
+  take_taxes: "Recauda impuestos"
+  yes: "Yes"
+  no: "No"
 
   #colours
   green: "verde"

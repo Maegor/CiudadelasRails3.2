@@ -16,6 +16,7 @@
 <% end %>
 
 <script type="text/javascript">
+    $('.image-checkbox-container .card_select').css({'margin':'4px'});
   $('.image-checkbox-container .card_select').on('click', function(){
         if(!$(this).prev('input[type="checkbox"]').prop('checked')){
             $(this).prev('input[type="checkbox"]').prop('checked', true).attr('checked','checked');

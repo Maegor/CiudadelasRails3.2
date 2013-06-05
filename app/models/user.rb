@@ -10,17 +10,20 @@ belongs_to :waiting_room
 
 
 attr_accessible :name, :email, :password, :password_confirmation, :lang
-validates :email, :presence => true, :uniqueness => true
+validates :email, :presence => true, :uniqueness => { :case_sensitive => false }
 validates :name,
           :presence => true,
-          :uniqueness =>  true,
-          :length => {:in => 3..12}
+          :uniqueness => { :case_sensitive => false }
+validates :name,
+          :length => {:in => 3..12}, :unless => Proc.new{|a| a.name.blank?}
 validates :password,
           :confirmation => true,
-          :presence => true,
-          :length => {:in => 6..12}
+          :presence => true
+validates :password,
+          :length => {:in => 6..12}, :unless => Proc.new{|a| a.password.blank?}
 
-validates :email, :format => {:with => /^.+@.+$/}
+validates :email,
+          :format => {:with => /^.+@.+$/}, :unless => Proc.new{|a| a.email.blank?}
 attr_accessor :password_confirmation
 attr_reader :password
 
@@ -36,7 +39,7 @@ end
 
 class << self
   def authenticate(email, password)
-    if (user = find_by_email(email))
+    if (user = find(:first, :conditions => ['lower(email) = ?',email.downcase]))
       if user.hashed_password == encrypt_password(password, user.salt)
         user
       end

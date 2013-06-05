@@ -3,13 +3,14 @@ class WaitingRoom < ActiveRecord::Base
 
   validates :name,
             :presence => true,
-            :uniqueness => true,
-            :length => {:within => 3..12}
+            :uniqueness => true
+  validates :name,
+            :length => {:in => 3..12}, :unless => Proc.new{|a| a.name.blank?}
+
   validates :user,
-            :presence => true,
             :inclusion => {:in => [2,3,4,5,6,7,8]}
 
-  attr_accessible :name, :user,:visible
+  attr_accessible :name, :user ,:visible
 
 
 

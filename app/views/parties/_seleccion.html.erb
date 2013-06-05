@@ -1,4 +1,5 @@
-<% if current_user.player.state == 'SELECTION_TURN' %>
+<% if current_user.player.state == 'SELECTION_TURN'
+session[:refresh] = false%>
 
     <div id="lista_personajes" class="hidden">
       <div class="popupContainer">
@@ -19,7 +20,7 @@
       </div>
     </div>
     <script type="text/javascript">
-
+        $('.container_cards_pop').jScrollPane({autoReinitialise: true});
         loadPopup("lista_personajes");
         tabs("lista_personajes");
     </script>
@@ -29,16 +30,14 @@
 
 
     <div id="acciones" class="hidden">
-      <% action_list = current_user.player.actions %>
+
+      <% action_list = current_user.player.actions
+         session[:refresh] = false%>
 
       <div class="popupContainer">
         <div class="action_info"><%= action_title(action_list) %></div>
         <div class="popupContent">
-
-
-
-
-          <% action_list.each do |action| %>
+         <% action_list.each do |action| %>
               <%= #noinspection RubyResolve
                   render :partial => action.base_action.partialname, :locals => {:action => action} %>
           <% end %>
@@ -54,7 +53,7 @@
     </script>
 
 <% elsif current_user.player.state == 'ACTION'
-
+     session[:refresh] = false
      action_list = current_user.player.actions %>
 
 

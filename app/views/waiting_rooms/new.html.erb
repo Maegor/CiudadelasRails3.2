@@ -12,7 +12,7 @@
 
 <% if @waiting_room.errors.any? %>
     <div class="error_explanation">
-      <h2><%= pluralize(@waiting_room.errors.count, 'error') %> prohibited this user from being saved:</h2>
+      <h2><%=t 'new.fields_with_erros' %></h2>
 
       <ul>
         <% @waiting_room.errors.full_messages.each do |msg| %>
@@ -44,3 +44,25 @@
     <%= link_to (t 'back'), root_path %>
 
 <% end%>
+<script type="text/javascript">
+  //TODO terminar de arreglar el select box
+  $('select#waiting_room_user').change(function(){
+
+      $(this).children(":selected").css({
+          "color": "black"
+      });
+
+      console.log("sdsd");
+/*       if ($(this).val() == ""){
+          console.log("sdsd");
+          $(this).parent().removeAttr('style');
+      }else{
+
+          $(this).parent().css({
+          "color": "black"
+      });
+  }*/
+
+  })
+
+</script>

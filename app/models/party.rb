@@ -2,7 +2,7 @@
 class Party < ActiveRecord::Base
 
 
-  PLAYERS_ENABLE = [2,3,4,5,6,7,8,9]
+  PLAYERS_ENABLE = [2,3,4,5,6,7,8]
 
 
 
@@ -129,7 +129,8 @@ class Party < ActiveRecord::Base
       end
     end
   end
-  #TODO implementar algoritmo de barajdo
+
+
   def shuffle_cards(card_list)
 
     positions_array = Array.new(card_list.length)
@@ -158,18 +159,6 @@ class Party < ActiveRecord::Base
   end
 
 
-  def save_cards(cards)
-
-     cards.each do |card|
-       card.save
-     end
-  end
-
-  def change_card_status (card, status)
-    card.state = status
-    card.save
-  end
-
 
 
   def select_next_player(state)
@@ -194,10 +183,6 @@ class Party < ActiveRecord::Base
     end
    end
   end
-
-
-
-
 
 
 
@@ -397,11 +382,8 @@ class Party < ActiveRecord::Base
       backs = 0
     end
 
-
     cards_list.each do |card|
-
      Card.update(card.id, :player_id => nil, :stolen => 'FALSE', :murdered => 'FALSE', :state => nil )
-
     end
 
 
@@ -419,9 +401,7 @@ class Party < ActiveRecord::Base
    cards_to_game =  cards_to_change_status.drop(backs)
 
     cards_to_game.each do |card|
-
       Card.update(card.id, :state => 'ONGAME')
-
     end
 
 

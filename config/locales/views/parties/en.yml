@@ -60,7 +60,7 @@ en:
   #purple
   imperial_treasure:
    name: "Imperial Treasure"
-   description: "The Imperial Treasure has a cost of 4 gold pieces, but gives you points equal to the amount of gold you have at the end of the game."
+   description: "it gives you points equal to the amount of gold you have at the end of the game."
   haunted_city:
    name: "Miracle Courtyard"
    description: "the Miracle Courtyard counts as a colour of your choice. You cannot use this if you have built it in the last turn of the game."
@@ -81,7 +81,7 @@ en:
    description: "If you have no gold at the end of your turn, get 1 gold from the bank."
   bell_tower:
    name: "Tower Bell"
-   description: "When you play the Tower Bell in your city, you decide that it will end at the end of the turn in which a player builds one less district than the specified in the game. If it's destroyed by the Warlord, end conditions go back to normal."
+   description: "When you play it, you decide that it will end at the end of the turn in which a player builds one less district than the specified in the game. If it's destroyed, end conditions go back to normal."
   smithy:
    name: "Workshop"
    description: "Once per turn, you may pay 3 gold to draw 3 cards."
@@ -234,6 +234,9 @@ en:
   select_player: "Choose a player"
   select_severals_cards: "Choose severals districts"
   select_an_option: "Choose an option"
+  take_taxes: "Collect taxes"
+  yes: "Yes"
+  no: "No"
 
   #colours
   green: "green"

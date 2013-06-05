@@ -62,7 +62,7 @@ District.create!(name:'docks', colour:'green', cost:3, points:3, quantity:3, typ
 District.create!(name:'harbor', colour:'green', cost:4, points:4, quantity:3, type:'District')
 District.create!(name:'town_hall', colour:'green', cost:5, points:5, quantity:2, type:'District')
 
-=begin
+
 #blue districts
 District.create!(name:'temple', colour:'blue', cost:1, points:1, quantity:3, type:'District')
 
@@ -79,11 +79,10 @@ District.create!(name:'palace', colour:'yellow', cost:5, points:5, quantity:2, t
 
 #red districts
 District.create!(name:'watchtower', colour:'red', cost:1, points:1, quantity:3, type:'District')
-
 District.create!(name:'prison', colour:'red', cost:2, points:2, quantity:3, type:'District')
 District.create!(name:'barracks', colour:'red', cost:3, points:3, quantity:3, type:'District')
 District.create!(name:'fortress', colour:'red', cost:5, points:5, quantity:3, type:'District')
-=end
+
 #purple
 District.create!(name:'imperial_treasure', colour:'purple', cost:4, points:4, quantity:1, type:'District')
 District.create!(name:'map_room', colour:'purple', cost:5, points:5, quantity:1, type:'District')

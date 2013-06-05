@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-
-
+  skip_before_filter :authorize, :only => [:create,:new]
   
   def index
   end
@@ -29,16 +28,10 @@ class UsersController < ApplicationController
     if @user.save 
          #@player.user_id = @user.id
         # @player.save
-         
          redirect_to root_path
-      
      else 
        render :action => 'new'
      end
-       
-  
-    
-    
   end
   
   def new

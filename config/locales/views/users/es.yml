@@ -6,3 +6,4 @@ es:
   password: 'Contraseña'
   repeat_password: 'Repetir contraseña'
   create_user: 'Crear usuario'
+  fields_with_erros: 'Algunos campos contienen errores:'

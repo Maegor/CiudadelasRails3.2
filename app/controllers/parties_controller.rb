@@ -9,9 +9,9 @@ class PartiesController < ApplicationController
   @game = Party.find(params[:id])
   @game.tick
 
-  if session[:refresh].nil?
+  if session[:refresh].nil?  &&  session[:refresh_prev].nil?
     session[:refresh] = true
-
+    session[:refresh_prev] = 'ffff'
   end
 
 
@@ -101,6 +101,7 @@ class PartiesController < ApplicationController
   end
 
   def select_card
+    session[:refresh] = true
 
     user = session[:user_id]
     player = current_user.player
@@ -139,7 +140,7 @@ class PartiesController < ApplicationController
 
  def end_turn
 
-
+   session[:refresh] = true
     player = current_user.player
     player.action_end_turn
     player.update_attribute(:state, "WAITINGENDROUND")

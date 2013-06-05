@@ -6,3 +6,4 @@ en:
   password: 'Password'
   repeat_password: 'Repeat password'
   create_user: 'Create user'
+  fields_with_erros: 'Some fields contain errors:'
