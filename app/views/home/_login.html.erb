@@ -2,17 +2,17 @@
 
 
 
-<%=  label_tag 'email', "Email" %>
+<%=  label_tag 'email', 'Email' %>
 <%=  text_field_tag 'email',nil, {:placeholder =>'Enter your email'} %>
 </p>
-<%=  label_tag 'password', "Password" %>
+<%=  label_tag 'password', 'Password' %>
 <%=  text_field_tag 'password',nil, {:placeholder =>'Enter your password'} %>
 
-  <%= submit_tag "Login"%>
+  <%= submit_tag 'Login'%>
 
 
   
-<%= link_to "Do you not have an account?" ,  new_user_path %>  
+<%= link_to 'Do you not have an account?',  new_user_path %>
   
 <% end %>
 	

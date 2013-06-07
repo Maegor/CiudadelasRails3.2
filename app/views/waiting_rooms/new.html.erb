@@ -45,24 +45,19 @@
 
 <% end%>
 <script type="text/javascript">
-  //TODO terminar de arreglar el select box
+
   $('select#waiting_room_user').change(function(){
 
-      $(this).children(":selected").css({
-          "color": "black"
-      });
-
-      console.log("sdsd");
-/*       if ($(this).val() == ""){
-          console.log("sdsd");
-          $(this).parent().removeAttr('style');
+     if ($(this).val() == ""){
+         $(this).removeAttr('style');
       }else{
-
-          $(this).parent().css({
-          "color": "black"
-      });
-  }*/
-
+         $(this).css({
+             "color": "black"
+         });
+         $(this).children(":selected").css({
+             "color": "black"
+         });
+     }
   })
 
 </script>

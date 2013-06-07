@@ -7,16 +7,16 @@
 
 
 
-      <%=  label_tag 'email', "Correo" %>
+      <%=  label_tag 'email', 'Correo' %>
       <%=  text_field_tag 'email',nil, {:placeholder =>'Enter your email'} %>
 
-      <%=  label_tag 'password', "Contraseña" %>
+      <%=  label_tag 'password', 'Contraseña' %>
       <%=  password_field_tag 'password',nil, {:placeholder =>'Enter your password'} %>
 
-      <%= submit_tag "Login"%>
+      <%= submit_tag 'Login'%>
 
       </div>
 
-      <%= link_to "Crear cuenta" ,  new_user_path %>
+      <%= link_to 'Crear cuenta',  new_user_path %>
 
   <% end %>

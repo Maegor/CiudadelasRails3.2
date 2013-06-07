@@ -5,7 +5,7 @@ class BaseAction < ActiveRecord::Base
   has_many :actions
   has_many :players, :through => :actions
 
-  attr_accessible :description, :name, :partialname
+  attr_accessible :description, :partialname
 
 
 end

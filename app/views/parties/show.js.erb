@@ -7,12 +7,12 @@
      var jspDragtop = listOriginal.find('.jspDrag').css('top');
 
      var build_district = $("#distritos_construidos");
-     var jspBuildTop =   build_district.find('.jspPane').css('left');
+     var jspBuildLeft =   build_district.find('.jspPane').css('left');
      var jspBuildDrag =   build_district.find('.jspDrag').css('left');
 
-    var build_district = $("#cartas_mano");
-    var jspBuildTop =   build_district.find('.jspPane').css('left');
-    var jspBuildDrag =   build_district.find('.jspDrag').css('left');
+    var build_district_hand = $("#cartas_mano");
+    var jspBuildLeft_hand =   build_district_hand.find('.jspPane').css('left');
+    var jspBuildDrag_hand =   build_district_hand.find('.jspDrag').css('left');
 
       console.log(<%= session[:refresh] %>);
       console.log("<%= session[:refresh_prev] %>");
@@ -33,36 +33,20 @@
        var handNew = $("#cartas_mano");
        listNew.find('.jspPane').css({'top': jspPanetop});
        listNew.find('.jspDrag').css({'top': jspDragtop} );
-       buildNew.find('.jspPane').css({'left': jspBuildTop});
+       buildNew.find('.jspPane').css({'left': jspBuildLeft});
        buildNew.find('.jspDrag').css({'left': jspBuildDrag});
-       handNew.find('.jspPane').css({'left': jspBuildTop});
-       handNew.find('.jspDrag').css({'left': jspBuildDrag});
+       handNew.find('.jspPane').css({'left': jspBuildLeft_hand});
+       handNew.find('.jspDrag').css({'left': jspBuildDrag_hand});
 
- <%  end
-
-
-=begin
-        if (session[:refresh_prev] == 'SELECTION_TURN' || session[:refresh_prev] == 'TURN') and session[:refresh] == false
-           session[:refresh_prev] = ''
-           session[:refresh] = true
-        elsif %w(TURN ACTION SELECTION_TURN).include?(current_user.player.state)
-            if session[:refresh_prev] != ''
-            session[:refresh_prev] = current_user.player.state
-            end
-            session[:refresh] = false
-          else
-          session[:refresh_prev] = current_user.player.state
-            session[:refresh] = true
-
-        end
-=end
-        %>
+ <%  end %>
 
 <%else%>
         function enter_game(){
 
-            window.location.replace("<%=party_resumen_path(@game.id) %>");
-            window.location = "<%=party_resumen_path(@game.id) %>";
+            window.location.replace("<%=#noinspection RubyResolve
+                                        party_resumen_path(@game.id) %>");
+            window.location = "<%=#noinspection RubyResolve
+                                   party_resumen_path(@game.id) %>";
         }
         enter_game();
 

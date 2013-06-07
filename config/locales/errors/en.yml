@@ -1,0 +1,13 @@
+en:
+ activerecord:
+
+  attributes:
+
+   waiting_room:
+
+    user: "Number of player"
+
+
+
+
+

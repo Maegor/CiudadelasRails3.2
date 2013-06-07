@@ -12,7 +12,10 @@ class Player < ActiveRecord::Base
   serialize :points_hash, Hash
 
 
+ def get_action_from_partial(partial)
+   actions.find_by_base_action_id(BaseAction.find_by_partialname(partial))
 
+ end
 
 
 

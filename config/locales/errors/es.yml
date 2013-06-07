@@ -11,7 +11,7 @@ es:
     repeat_password: "Repetir contraseña"
    waiting_room:
     name: "Nombre"
-    user: "Jugadores"
+    user: "Número de jugadores"
   errors:
    models:
     user:

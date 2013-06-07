@@ -2,7 +2,7 @@ CiudadelsRails32::Application.routes.draw do
 
 
 
-  get "waiting_rooms/leave"
+  get 'waiting_rooms/leave'
 
   match 'home/get_menu' => 'home#get_menu'
 
@@ -42,15 +42,17 @@ CiudadelsRails32::Application.routes.draw do
 
   end
 
-   resources :parties do
+   resources :parties, :except => [:index] do
      get 'leave_game'
      get 'resumen'
      get 'action(/*path)' => 'actions#action', :as => :action
      post 'action(/*path)' => 'actions#action', :as => :action
 
+=begin
      resources :cards do
        get 'murder'
      end
+=end
    end
 
    resources :players do

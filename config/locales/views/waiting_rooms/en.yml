@@ -18,6 +18,7 @@ en:
   users: 'Users'
   waiting: 'Waiting player'
   leave: 'Leave'
+  start: "Start"
   leave_game_ok: "You've left the game"
   leave_game_error: 'Accion denied'
  back: 'Back'

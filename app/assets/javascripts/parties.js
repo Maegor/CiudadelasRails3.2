@@ -7,7 +7,7 @@ function scrolify(tblAsJQueryObject, height){
     var oTblDiv = $("<div/>");
     oTblDiv.css('height', height);
     oTblDiv.css('overflow','auto');
-    oTblDiv.attr('class','scroll-pane')
+    oTblDiv.attr('class','scroll-pane');
     oTbl.wrap(oTblDiv);
 
     // save original width

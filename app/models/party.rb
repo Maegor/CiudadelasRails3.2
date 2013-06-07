@@ -376,7 +376,7 @@ class Party < ActiveRecord::Base
     update_attribute(:state, 'ROUND_INIT' )
 
     cards_list = cards.characters.shuffle.to_a
-    #TODO quitar el +1
+
     backs = 6 - (numplayer)
     if backs < 0
       backs = 0

@@ -19,6 +19,7 @@ es:
   users: 'Usuarios'
   waiting: 'Esperando jugadores'
   leave: 'Abandonar'
+  start: "Empezar"
   leave_game_ok: "Has dejado la sala"
   leave_game_error: 'Acción denegada'
  back: 'Atrás'

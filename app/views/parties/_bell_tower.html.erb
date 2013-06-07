@@ -9,10 +9,14 @@
            <div class="actionMessage"><%= t  'board.cut_down_game'%></div>
         <div id="options">
           <div class="option_button">
-          <%= link_to (t 'board.yes'), party_action_path(@game.id, [action.id, true]) %>
+          <%=
+              #noinspection RubyResolve
+              link_to (t 'board.yes'), party_action_path(@game.id, [action.id, true]) %>
           </div>
           <div class="option_button">
-          <%= link_to (t 'board.no'), party_action_path(@game.id, [action.id, false]) %>
+          <%=
+              #noinspection RubyResolve
+              link_to (t 'board.no'), party_action_path(@game.id, [action.id, false]) %>
           </div>
         </div>
 

@@ -95,7 +95,7 @@ License URI: http://www.opensource.org/licenses/mit-license.php
 }
 
 #polyglotLanguageSwitcher a.current:link span.trigger, #polyglotLanguageSwitcher a.current:visited span.trigger {
-	background: url(arrow-down.gif) no-repeat left top;
+	background: url('arrow-down.gif') no-repeat left top;
 }
 
 #polyglotLanguageSwitcher a.current:hover span.trigger, #polyglotLanguageSwitcher a.current:active span.trigger, #polyglotLanguageSwitcher a.active span.trigger {
@@ -125,22 +125,22 @@ License URI: http://www.opensource.org/licenses/mit-license.php
 
 /* Flags */
 
-#en { 
-	background-image: url(flags/gb.png);
+#en {
+	background-image: url('flags/gb.png');
 }
 
-#fr { 
-	background-image: url(flags/fr.png);	
+#fr {
+	background-image: url('flags/fr.png');
 }
 
-#de { 
-	background-image: url(flags/de.png);	
+#de {
+	background-image: url('flags/de.png');
 }
 
-#it { 
-	background-image: url(flags/it.png);	
+#it {
+	background-image: url('flags/it.png');
 }
 
-#es { 
-	background-image: url(flags/es.png);	
+#es {
+	background-image: url('flags/es.png');
 }
