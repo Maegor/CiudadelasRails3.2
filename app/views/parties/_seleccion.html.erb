@@ -6,7 +6,7 @@ session[:refresh] = false%>
         <div class="popupContent">
           <% %w(characters_list  faceup).each_with_index do |option, index| %>
               <div class="tab_data">
-                <div class="<%= selected_class('tab', index) %>"><%= t ('board.' + option) %></div>
+                <div class="<%= selected_class('tab', index) %> no_prompt"><%= t ('board.' + option) %></div>
                 <div class="<%= visible_class('cards', index) %> container_cards_pop">
 
                   <%= render :partial => option %>

@@ -37,6 +37,21 @@ class Player < ActiveRecord::Base
 
   end
 
+
+  def districts_on_hand_for_view
+
+    cards.find(:all, :joins => :base_card, :select => 'base_cards.name AS name, base_cards.colour AS colour, cards.party_id', :conditions => ["state = 'ONHAND' AND type = 'District'"])
+
+  end
+
+  def districts_on_game_for_view
+
+    cards.find(:all, :joins => :base_card, :select => 'base_cards.name AS name, base_cards.colour AS colour, cards.party_id', :conditions => ["state = 'ONGAME' AND type = 'District'"])
+
+  end
+
+
+
   def player_character
     Card.characters.where("player_id = ?",id).first
   end

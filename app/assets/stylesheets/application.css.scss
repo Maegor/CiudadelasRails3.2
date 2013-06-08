@@ -2,9 +2,9 @@
 
 body{
 
-   background: url("fondoprueba1.jpg") no-repeat;
-
-  background-color: #e1c192;
+   background: url("fondo_inicio_identificacion.jpg") no-repeat;
+   background-position: center top;
+   background-color: #17212b;
 
 }
 
@@ -44,23 +44,25 @@ body{
 .error_explanation{
 
 
-  background-color: #E50919;
+  //background-color: #E50919;
   color: white;
   font-family: 'Raleway','Lato',Arial,sans-serif;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 5%;
+  color: red;
+  //margin-left: auto;
+  //margin-right: auto;
+  margin-top: 55px;
   text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
-  width: 600px;
-  -webkit-border-radius: 34px;
-  -moz-border-radius: 34px;
-  border-radius: 34px;
-  padding-top: 1px;
-  padding-bottom: 1px;
+  width: 400px;
+  //-webkit-border-radius: 34px;
+ // -moz-border-radius: 34px;
+ // border-radius: 34px;
+  //padding-top: 1px;
+ // padding-bottom: 1px;
+  position: absolute;
 }
 
 .error_explanation > h2 {
-  text-align: center;
+  //text-align: center;
 
 
 }

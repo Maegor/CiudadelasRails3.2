@@ -9,7 +9,7 @@ es:
    invalid_user_pass: "Combinación Usuario/Clave inválida"
  main_menu:
   play: "Jugar"
-  search: "Buscar"
-  create: "Crear"
+  search: "Buscar partida"
+  create: "Crear partida"
   profile: "Perfil"
   logout: "Cerrar sesión"

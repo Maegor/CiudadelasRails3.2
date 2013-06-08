@@ -1,5 +1,6 @@
 <div id="search_card" class="hidden">
   <div class="popupContainer">
+    <div class="action_info"><%=(t 'board.select_one_district') %></div>
     <a class="closePopup" title="close popup"></a>
 
     <div class="popupContent">
@@ -7,7 +8,7 @@
          @game.cards_in_deck.each do |colour, array| %>
           <div class="tab_data">
 
-            <div class="<%= selected_class('tab', index) %>"><%= t ('board.' + colour) %> </div>
+            <div class="<%= selected_class('tab', index) %> no_prompt"><%= (t ('board.' + colour)).capitalize %> </div>
             <div class="<%= visible_class('cards', index) %>">
               <div class="container_cards_pop">
                 <% index += 1

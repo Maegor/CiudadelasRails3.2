@@ -13,11 +13,11 @@
 
      <div class="data_opponent" id="points">
 
-       <div class="value"> <%= opponent.coins   %></div>
+       <div class="value no_prompt"> <%= opponent.coins   %></div>
      </div>
      <div class="data_opponent" id="cards">
 
-       <div class="value"> <%= opponent.districts_on_game.length%></div>
+       <div class="value no_prompt"> <%= opponent.districts_on_game.length%></div>
      </div>
 
 
@@ -25,7 +25,7 @@
 
    </div>
    <div class="opponent_cards">
-       <% cards = opponent.districts_on_game
+       <% cards = opponent.districts_on_game_for_view
           cards.each do |district_card|%>
 
 

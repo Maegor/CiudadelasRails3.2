@@ -346,7 +346,7 @@ body{
 
 .card_select {
   height: 150px;
-  margin-top: 5px;
+  margin-top: 7px;
 
  img{
      height: inherit;
@@ -369,11 +369,6 @@ body{
 
 }
 
-.card_text_element_value{
-
-
- }
-
 
 .card_text_elements{
 
@@ -388,7 +383,7 @@ body{
 .card_text_element{
 
 
-  margin-top: 6px;
+  //margin-top: 6px;
 
 }
 
@@ -505,6 +500,7 @@ body{
   height:55px;
   width: 55px;
   display: inline-block;
+  cursor: pointer;
 
 
 }
@@ -647,6 +643,8 @@ body{
   text-shadow:
     1px 1px 0 #CCC,
     2px 2px 0 #CCC;
+  cursor: default;
+
 }
 
 .opponent_cards{
@@ -680,6 +678,9 @@ body{
   text-align: center;
   top: 118px;
   width: 140px;
+  cursor: default;
+
+
 
 }
 
@@ -744,6 +745,7 @@ body{
   text-shadow:
     1px 1px 0 #CCC,
     2px 2px 0 #CCC;
+  cursor: default;
 
 
 }
@@ -918,3 +920,15 @@ body{
   height: 42px;
   background-image: url('scroll_icon.png');
 }
+
+.no_prompt{
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+}
+
+

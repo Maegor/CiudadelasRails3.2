@@ -20,7 +20,7 @@ validates :password,
           :confirmation => true,
           :presence => true
 validates :password,
-          :length => {:in => 6..12}, :unless => Proc.new{|a| a.password.blank?}
+          :length => {:in => 6..20}, :unless => Proc.new{|a| a.password.blank?}
 
 validates :email,
           :format => {:with => /^.+@.+$/}, :unless => Proc.new{|a| a.email.blank?}

@@ -41,10 +41,8 @@
 
         </div>
         <div class="opponent_cards">
-          <% cards = opponent.districts_on_game
+          <% cards = opponent.districts_on_hand_for_view
              cards.each do |district_card|%>
-
-
 
               <%= render :partial => 'district_card', :object => district_card %>
 

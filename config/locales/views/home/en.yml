@@ -9,7 +9,7 @@ en:
    invalid_user_pass: "Invalid user/pass name combination"
  main_menu:
   play: "Play"
-  search: "Search"
-  create: "Create"
+  search: "Search game"
+  create: "Create game"
   profile: "Profile"
   logout: "Logout"

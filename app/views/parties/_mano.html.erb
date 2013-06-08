@@ -12,10 +12,10 @@
 
   </div>
   <div class="data_user" id="golds">
-    <div class="value"> <%= current_user.player.coins %></div>
+    <div class="value no_prompt"> <%= current_user.player.coins %></div>
   </div>
   <div class="data_user" id="points">
-    <div class="value"><%= current_user.player.districts_on_game.length%></div>
+    <div class="value no_prompt"><%= current_user.player.districts_on_game.length%></div>
   </div>
 
 </div>
@@ -25,7 +25,7 @@
 
 <div id="distritos_construidos" class="player_lane">
   <div class="card_container">
-  <% current_user.player.districts_on_game.each do |district_card|%>
+  <% current_user.player.districts_on_game_for_view.each do |district_card|%>
 
       <%= render :partial => 'district_card', :object => district_card %>
 
@@ -36,7 +36,7 @@
 
 <div id="cartas_mano" class="player_lane">
 <div class="card_container">
-  <% current_user.player.districts_on_hand.each do |district_card|%>
+  <% current_user.player.districts_on_hand_for_view.each do |district_card|%>
 
         <%= render :partial => 'district_card', :object => district_card %>
   <% end %>

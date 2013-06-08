@@ -6,7 +6,7 @@
       <% index = 0
          %w(change_with_player  change_with_maze ).each do |option| %>
           <div class="tab_data">
-            <div class="<%= selected_class('tab', index) %>"><%= t ('board.' + option) %></div>
+            <div class="<%= selected_class('tab', index) %> no_prompt"><%= t ('board.' + option) %></div>
             <div class="<%= visible_class('cards', index) %>">
 
               <% index += 1 %>
@@ -20,6 +20,5 @@
   </div>
 </div>
 <script type="text/javascript">
-    //$('.container_cards_pop').jScrollPane({autoReinitialise: true});
-    tabs("change_cards");
+     tabs("change_cards");
 </script>

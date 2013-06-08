@@ -4,7 +4,7 @@
             <% current_user.player.districts_on_hand.each do |card|%>
                 <span class="image-checkbox-container">
                 <%= check_box_tag 'cards[]', card.id %>
-                <%#= label_tag 'cards[]', (t 'districts.' + card.base_card.name) %>
+
                   <%= (render :partial => 'select_district_card', :object => card)  %>
                 </span>
                 <% end %>
@@ -16,8 +16,9 @@
 <% end %>
 
 <script type="text/javascript">
-    $('.image-checkbox-container .card_select').css({'margin':'4px'});
-  $('.image-checkbox-container .card_select').on('click', function(){
+  var checkboxes =  $('#change_cards').find('.card_select');
+  checkboxes.css({'margin':'4px'});
+  checkboxes.on('click', function(){
         if(!$(this).prev('input[type="checkbox"]').prop('checked')){
             $(this).prev('input[type="checkbox"]').prop('checked', true).attr('checked','checked');
             this.style.border = '4px solid #38A';

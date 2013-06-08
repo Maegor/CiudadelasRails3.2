@@ -43,14 +43,20 @@ module PartiesHelper
 
 
 
+
+
+
+
+
+
   def district_tooltip(district_card)
     string = String.new
     #noinspection RubyResolve
-    if district_card.base_card.colour == 'purple'
-        string << (t 'districts.' + district_card.base_card.name + '.name').capitalize
+    if district_card.colour == 'purple'
+        string << (t 'districts.' + district_card.name + '.name').capitalize
         string << "\n"
-        string << (t 'districts.' + district_card.base_card.name + '.description').capitalize
-        if district_card.base_card.name == 'museum'
+        string << (t 'districts.' + district_card.name + '.description').capitalize
+        if district_card.name == 'museum'
           #noinspection RubyResolve
           quantity = district_card.party.cards.find(:all, :conditions=>["state = 'INMUSEUM'"]).size
           string << "\n"
@@ -58,7 +64,7 @@ module PartiesHelper
         end
     else
 
-      string << (t 'districts.' + district_card.base_card.name)
+      string << (t 'districts.' + district_card.name)
 
     end
 
