@@ -190,7 +190,7 @@
   width: 624px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 13%;
+  margin-top: 225px;
   background-color: #10151b;
 }
 
@@ -203,10 +203,11 @@
 
 #login_character{
 
-    background-image: url('ladronidentificacion.png');
-  width: 312px;
-  height: 381px;
+  background-image: url('ladronidentificacion.png');
+  width: 245px;
+  height: 300px;
   margin-left: auto;
+  background-size: cover;
 }
 
 #login_form{
@@ -218,6 +219,7 @@
 
 #login_form_character{
   margin-top: -60px;
+  height: 300px;
 }
 
 .form_button:nth-child(n+1){
