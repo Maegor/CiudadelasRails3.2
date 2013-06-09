@@ -3,17 +3,50 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.form-4 select {
+  background: none repeat scroll 0 0 #F6D6A5;
+  border: 1px solid rgba(78, 48, 67, 0.8);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 1px rgba(0, 0, 0, 0.1) inset;
+  //margin-bottom: 15px;
+  padding: 8px 4px 8px 10px;
+  transition: all 0.3s ease-out 0s;
+  width: 100%;
+}
+.form-4 select:hover {
+  border-color: #333333;
+}
+.form-4 select {
+  color: rgba(37, 21, 26, 0.5);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+.form-4 select:focus {
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 1px rgba(0, 0, 0, 0.1) inset, 0 0 0 3px rgba(255, 255, 255, 0.15);
+  outline: medium none;
+}
+.no-boxshadow .form-4 select:focus {
+  outline: 1px solid white;
+}
+
+
 
 #room_container{
 
   width: 400px;
-  margin: 0 auto;
+  margin-left: 100px;
+  margin-top: 30px;
+  float:left
 }
 
 table {
   *border-collapse: collapse; /* IE7 and lower */
   border-spacing: 0;
-  width: 100%;
+  width: 260px;
+  margin-bottom: 15px;
+  color: #ffffff;
+  font-family: 'Raleway', 'Lato', Arial, sans-serif;
+  color: white;
+  text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+
 }
 
 .bordered {
@@ -41,16 +74,17 @@ table {
   border-top: 1px solid #ccc;
   padding: 10px;
   text-align: left;
+  //background-color: #f6d6a5;
 }
 
 .bordered th {
-  background-color: #dce9f9;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
+  //background-color: #dce9f9;
+/*  background-image: -webkit-gradient(linear, left top, left bottom, from(#ebf3fc), to(#dce9f9));
   background-image: -webkit-linear-gradient(top, #ebf3fc, #dce9f9);
   background-image:    -moz-linear-gradient(top, #ebf3fc, #dce9f9);
   background-image:     -ms-linear-gradient(top, #ebf3fc, #dce9f9);
   background-image:      -o-linear-gradient(top, #ebf3fc, #dce9f9);
-  background-image:         linear-gradient(top, #ebf3fc, #dce9f9);
+  background-image:         linear-gradient(top, #ebf3fc, #dce9f9);*/
   -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
   -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;
   box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
@@ -113,7 +147,6 @@ table {
   font-size: 13px;
   text-align: center;
 
-
   /* Background & effects */
   background: #de8333;
   background: -moz-linear-gradient(rgba(241, 174, 0, 0.5), rgba(204, 151, 57, 0.7));
@@ -122,13 +155,302 @@ table {
   background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(241, 174, 0, 0.5)), to(rgba(204, 151, 57, 0.7)));
   background: -webkit-linear-gradient(rgba(241, 174, 0, 0.5), rgba(204, 151, 57, 0.7));
   background: linear-gradient(rgba(241, 174, 0, 0.5), rgba(204, 151, 57, 0.7));
-
 }
 
 .button_room:hover {
-
   box-shadow:
     inset 0 1px rgba(255,255,255,0.2),
     inset 0 20px 30px rgba(99,64,86,0.5);
+}
 
+
+
+
+
+#game_new_container{
+  width: 624px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 225px;
+  background-color: #10151b;
+}
+
+
+#game_new_header{
+
+  background-image: url('barra_cuadro_identificacion.png');
+  height: 96px;
+}
+
+#game_new_character{
+
+  background-image: url('fondopersonaje1.png');
+  width: 245px;
+  height: 300px;
+  margin-left: 379px;
+  margin-top: 35px;
+  background-size: cover;
+  position: absolute;
+}
+
+
+#game_new_form{
+  margin-top: 45px;
+  float:left;
+  width: 300px;
+  margin-left: 30px;
+  position: absolute;
+  height: 240px;
+}
+
+#game_new_form_character{
+  margin-top: -85px;
+  height: 335px;
+}
+
+.form_button:nth-child( 1){
+  margin-left: 10px;
+}
+
+#new_game_error_explanation{
+
+  color: red;
+  //font-family: 'Raleway','Lato',Arial,sans-serif;
+  font-size: 19px;
+  margin-top: 60px;
+  margin-left: 3px;
+  position: absolute;
+  text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+  width: 400px;
+  p{
+    margin: 0px;
+    width: 400px;
+  }
+}
+input, select{
+  margin-bottom: 10px;
+}
+
+#room_container h1{
+
+  font-family: 'Raleway', 'Lato', Arial, sans-serif;
+  color: white;
+  text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+}
+
+
+
+#waiting_room_container{
+  width: 624px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 225px;
+  background-color: #10151b;
+}
+
+
+#waiting_room_header{
+
+  background-image: url('barra_cuadro_identificacion.png');
+  height: 96px;
+}
+
+#waiting_room_character{
+
+  background-image: url('fondopersonaje1.png');
+  width: 245px;
+  height: 300px;
+  margin-left: 379px;
+  margin-top: 215px;
+  background-size: cover;
+  position: absolute;
+}
+
+
+#waiting_room_form{
+  margin-top: 45px;
+  float:left;
+  width: 300px;
+  margin-left: 30px;
+  position: absolute;
+  height: 240px;
+}
+
+#waiting_room_form_character{
+  margin-top: -85px;
+  height: 515px;
+}
+
+.form_button {
+  /* Size and position */
+  //width: 100%;
+  padding: 8px 5px;
+  float: left;
+
+
+
+  /* Styles */
+
+  background: #634056;
+  background: -moz-linear-gradient(rgba(241, 174, 0, 0.5), rgba(204, 151, 57, 0.7));
+  background: -ms-linear-gradient(rgba(241, 174, 0, 0.5), rgba(204, 151, 57, 0.7));
+  background: -o-linear-gradient(rgba(241, 174, 0, 0.5), rgba(204, 151, 57, 0.7));
+  //background: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(241, 174, 0, 0.5)), to(rgba(204, 151, 57, 0.7)));
+  background: -webkit-linear-gradient(rgba(241, 174, 0, 0.5), rgba(204, 151, 57, 0.7));
+  background: linear-gradient(rgba(241, 174, 0, 0.5), rgba(204, 151, 57, 0.7));
+  border-radius: 5px;
+  border: 1px solid #4e3043;
+  box-shadow: inset 0 1px rgba(255,255,255,0.4), 0 2px 1px rgba(0,0,0,0.1);
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+
+  /* Font styles */
+  color: white;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Raleway', 'Lato', Arial, sans-serif;
+  text-decoration: none;
+}
+
+#tblNeedsScrolling{
+  *border-collapse: collapse; /* IE7 and lower */
+  border-spacing: 0;
+  width: 360px;
+  margin-bottom: 12px;
+  color: #ffffff;
+  font-family: 'Raleway', 'Lato', Arial, sans-serif;
+  color: white;
+  text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+
+}
+
+h1{
+  font-size: 29px;
+}
+
+
+#parties_content{
+
+  font-family: 'Raleway', 'Lato', Arial, sans-serif;
+  color: white;
+  text-shadow: 0 2px 1px rgba(0,0,0,0.3);
+
+}
+  .room_line {
+         margin-left: 15px;
+
+  div{
+  display: table-cell;
+    }
+}
+
+  .game_name {
+    width: 125px;
+  }
+
+  .users_number{
+
+    width: 122px;
+  }
+
+
+#parties_content tbody{
+
+
+  overflow: auto;
+
+}
+#parties_content tbody,thead{
+
+  //display: compact;
+}
+#parties_content tbody td{
+  width: 175px;
+
+}
+
+#parties_content thead th{
+
+  width: 175px;
+  background: #e1c192;
+}
+
+#parties_content thead th {
+
+
+  background: #e69835;
+}
+
+#parties_content .right_side {
+
+  text-align: center;
+}
+
+#scroll-pane,.scroll-pane{position:relative}
+.scroll-content {position:absolute;top:0;left:0}
+.slider-wrap{position:absolute;right:0;top:0;background-color:lightgrey;width:20px;border-left:1px solid gray;}
+.slider-vertical{position:relative;height:100%}
+.ui-slider-handle{width:20px;height:10px;margin:0 auto;background-color:darkgray;display:block;position:absolute}
+.ui-slider-handle img{border:none}
+.scrollbar-top{position:absolute;top:0;}
+.scrollbar-bottom{position:absolute;bottom:0;}
+.scrollbar-grip{position:absolute;top:50%;margin-top:-6px;}
+.ui-slider-range{position:absolute;width:100%;background-color:lightgrey
+}
+
+
+
+
+
+
+#game_index_container{
+  width: 624px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 225px;
+  background-color: #10151b;
+}
+
+
+#game_index_header{
+
+  background-image: url('barra_cuadro_identificacion.png');
+  height: 96px;
+}
+
+#game_index_character{
+
+  background-image: url('fondopersonaje1.png');
+  width: 245px;
+  height: 300px;
+  margin-left: 379px;
+  margin-top: 80px;
+  background-size: cover;
+  position: absolute;
+}
+
+
+#game_index_form{
+  margin-top: 30px;
+  float:left;
+  width: 375px;
+  margin-left: 30px;
+  position: absolute;
+  height: 240px;
+  z-index: 2;
+}
+
+#game_index_form_character{
+  margin-top: -85px;
+  height: 380px;
+}
+
+#waiting_rooms_list{
+
+  height: 165px;
 }

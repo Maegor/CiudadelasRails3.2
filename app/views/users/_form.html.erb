@@ -1,42 +1,54 @@
 
-<% if @user.errors.any? %>
-    <div class="error_explanation">
-      <h2><%= t 'new.fields_with_erros' %></h2>
+<div id="signup_container">
 
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-<% end %>
-<%= form_for @user, :html =>{:class=> 'form-4'} do |f| %>
+  <div id="signup_header">
+  </div>
+  <div id="signup_form_character">
+    <div id="signup_form">
+
+<%= form_for @user, :html =>{:class=> %w(form-4 register)} do |f| %>
 <h1><%= t 'new.title' %></h1>
-<p></p>
+
 <%= f.label :name %>
 <%= f.text_field :name, :size => 40, :placeholder =>(t 'new.name'),:autocomplete => :off %>
-    </p>
 
-<p>
+
+
 <%= f.label :email %>
 <%= f.text_field :email, :size => 40,:placeholder =>(t 'new.email'),:autocomplete => :off %>
-</p>
 
 
 
-<p>
+
+
 <%= f.label :password, 'Password' %>
 <%= f.password_field :password, :size => 40, :placeholder =>(t 'new.password'),:autocomplete => :off %>
-</p>
 
-<p>
+
+
 <%= f.label :password_confirmation, 'Confirm' %>
 <%= f.password_field :password_confirmation, :size => 40, :placeholder => (t 'new.repeat_password'),:autocomplete => :off %>
-</p>
 
 
-<p>
+
+
 <%= f.submit (t 'new.create_user')%>
-</p>
-    <%= link_to (t 'back'), root_path %>
+
+
 <% end %>
+      <button class="form_button" onclick="window.location.href='<%= root_path %>'"><%= (t 'back') %></button>
+      <% if @user.errors.any? %>
+          <div id="register_error_explanation">
+            <%= t 'new.fields_with_erros' %>
+
+            <% @user.errors.full_messages.each do |msg| %>
+                <p>- <%= msg %></p>
+            <% end %>
+
+          </div>
+      <% end %>
+    </div>
+    <div id="signup_character">
+    </div>
+  </div>
+</div>

@@ -41,8 +41,8 @@ function scrolify(tblAsJQueryObject, height){
         $(this).width($(this).attr("data-item-original-width"));
     });
 }
-
+/*
 $(document).ready(function(){
-    scrolify($('#tblNeedsScrolling'), 140);
+    scrolify($('#tblNeedsScrolling'), 10);
     $('.scroll-pane').jScrollPane();// 160 is height
-});
+});*/

@@ -44,21 +44,18 @@ body{
 .error_explanation{
 
 
-  //background-color: #E50919;
-  color: white;
-  font-family: 'Raleway','Lato',Arial,sans-serif;
   color: red;
-  //margin-left: auto;
-  //margin-right: auto;
-  margin-top: 55px;
+  //font-family: 'Raleway','Lato',Arial,sans-serif;
+  font-size: 19px;
+  margin-top: 60px;
+  margin-left: 3px;
+  position: absolute;
   text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
   width: 400px;
-  //-webkit-border-radius: 34px;
- // -moz-border-radius: 34px;
- // border-radius: 34px;
-  //padding-top: 1px;
- // padding-bottom: 1px;
-  position: absolute;
+  p{
+    margin: 0px;
+    width: 400px;
+  }
 }
 
 .error_explanation > h2 {

@@ -1,7 +1,6 @@
 <% content_for :head do%>
 
-
-    <%= stylesheet_link_tag  'parties', 'style' , 'home', 'menu', 'polyglot-language-switcher' %>
+    <%= stylesheet_link_tag   'style' , 'home', 'menu','waiting_rooms', 'polyglot-language-switcher' %>
     <%= javascript_include_tag 'jquery.polyglot.language.switcher' %>
 
 <% end %>
@@ -10,54 +9,53 @@
 
 
 
-<% if @waiting_room.errors.any? %>
-    <div class="error_explanation">
-      <h2><%=t 'new.fields_with_erros' %></h2>
 
-      <ul>
-        <% @waiting_room.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-<% end %>
+<div id="game_new_container">
+
+  <div id="game_new_header">
+  </div>
+  <div id="game_new_form_character">
+    <div id="game_new_form">
 
 
-
-<%= form_for @waiting_room, :html =>{:class=> 'form-4'} do |f| %>
+      <%= form_for @waiting_room, :html =>{:class=> 'form-4'} do |f| %>
 
 
     <h1><%= t 'new.create_game' %></h1>
-    <p>
+
       <%=  f.label 'name' %>
       <%=  f.text_field 'name', {:placeholder =>(t 'new.name')} %>
-    </p>
-    <p>
+
+
       <%=  f.label 'user' %>
       <%=  f.select 'user', Party::PLAYERS_ENABLE,{:prompt =>(t 'new.players')}%>
-    </p>
 
-    <p>
       <%= f.submit (t 'new.create')%>
-    </p>
-
-    <%= link_to (t 'back'), root_path %>
 
 <% end%>
-<script type="text/javascript">
 
-  $('select#waiting_room_user').change(function(){
 
-     if ($(this).val() == ""){
-         $(this).removeAttr('style');
-      }else{
-         $(this).css({
-             "color": "black"
-         });
-         $(this).children(":selected").css({
-             "color": "black"
-         });
-     }
-  })
 
-</script>
+      <button class="form_button" onclick="window.location.href='<%= root_path %>'"><%= (t 'back') %></button>
+
+      <% if @waiting_room.errors.any? %>
+          <div id="new_game_error_explanation">
+            <%= t 'new.fields_with_erros' %>
+
+            <% @waiting_room.errors.full_messages.each do |msg| %>
+                <p>- <%= msg %></p>
+            <% end %>
+
+          </div>
+      <% end %>
+
+    </div>
+    <div id="game_new_character">
+    </div>
+
+
+  </div>
+</div>      
+      
+      
+      

@@ -2,6 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
+#login{
+
+
+
+
+}
 .form-4 {
   /* Size and position */
   //width: 300px;
@@ -186,6 +194,7 @@
   display: block;
 }
 
+/** login **/
 #login_container{
   width: 624px;
   margin-left: auto;
@@ -224,4 +233,31 @@
 
 .form_button:nth-child(n+1){
   margin-left: 10px;
+}
+
+/** menu **/
+
+#menu_character{
+  background-image: url('castillo_fondo.png');
+  width: 245px;
+  height: 300px;
+  margin-left: auto;
+  background-size: cover;
+}
+
+#menu_container{
+  width: 624px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 225px;
+  background-color: #10151b;
+}
+
+#menu_buttoms_character{
+  margin-top: -45px;
+
+
+}
+input, select{
+  margin-bottom: 10px;
 }

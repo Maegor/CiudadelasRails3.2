@@ -1,55 +1,65 @@
 
 <% content_for :head do%>
 
-    <%= stylesheet_link_tag 'menu', 'parties', 'polyglot-language-switcher' %>
-    <%= javascript_include_tag 'menu', 'jquery.jscrollpane', 'jquery.mousewheel', 'jquery.polyglot.language.switcher' %>
+    <%= stylesheet_link_tag 'menu', 'waiting_rooms', 'polyglot-language-switcher','jquery.jscrollpane' %>
+    <%= javascript_include_tag 'menu','parties', 'jquery.jscrollpane.js', 'jquery.polyglot.language.switcher' %>
 
 <% end %>
 
 
 <%= render :partial => 'shared/langs' %>
 
-<% if flash[:notice] %>
-    <div class="error_explanation"><h2><%= flash[:notice] %></h2></div>
-<% end %>
 
-<div id="parties_content" xmlns="http://www.w3.org/1999/html">
+
+<div id="game_index_container">
+
+  <div id="game_index_header">
+  </div>
+  <div id="game_index_form_character">
+    <div id="game_index_form">
+
+
+<div id="parties_content">
   <h1><%= t 'index.available_games' %></h1>
-  <div  style="width:550px;">
-    <table  id="tblNeedsScrolling">
-
-      <thead>
+    <table  id="rooms_list">
       <tr>
         <th><%= t 'index.game_name' %></th>
         <th><%= t 'index.num_players'  %></th>
-        <th></th>
-
       </tr>
-      </thead>
-      <tbody>
+    </table>
+
+  <div id="waiting_rooms_list">
+    <div>
       <% @rooms.each do |room|
 
       if room.users.count > 0 && room.visible %>
-
-          <tr>
-            <td> <%=  room.name %> </td>
-            <td align="center"> <%= room.users.count  %>   (<%= room.user  %>)</td>
-
-
-
+          <div class="room_line">
+            <div class="game_name"><%=  room.name %></div>
+            <div class="users_number"><%= room.users.count  %>   (<%= room.user  %>)</div>
             <% if room.users.count <  room.user %>
-                <td class="right_side"> <%= link_to (t 'index.join'), join_waiting_room_path(room.id)%></td>
+                <div class="join"><%= link_to (t 'index.join'), join_waiting_room_path(room.id)%></div>
             <% else %>
-                <td class="right_side"> <%= t 'index.full_room' %> </td>
+                <div class="join"> <%= t 'index.full_room' %> </div>
             <% end %>
+          </div>
 
-          </tr>
       <% end
       end%>
-      </tbody>
-
-    </table>
+    </div>
+    </div>
   </div>
   <p>
-    <%= link_to (t 'index.back'), root_path %>
+
+    <button class="form_button" onclick="window.location.href='<%= root_path %>'"><%= (t 'index.back') %></button>
+
 </div>
+    <div id="game_index_character">
+    </div>
+    </div>
+
+  </div>
+</div>
+<script type="text/javascript">
+    $('#waiting_rooms_list').jScrollPane({ });
+
+</script>

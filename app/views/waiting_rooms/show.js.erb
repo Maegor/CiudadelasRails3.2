@@ -2,7 +2,16 @@
 <%if current_user.player.nil? || current_user.player.party.state.nil?%>
     $('#table_container').html("<%=escape_javascript (render :partial => 'users_table') %>")
     <% if @room.users.count == @room.user  && current_user.id == @room.owner_id%>
-      .append("<%=escape_javascript(link_to (t 'show.start'), start_waiting_room_path, :class => 'button_room')%>");
+
+
+    var start = $('#start');
+   if  (start.length() > 0){
+       start.html("<%=escape_javascript(render :partial=> 'start_button')%>");
+   }else{
+
+       start.append("<%=escape_javascript(render :partial=> 'start_button')%>");
+
+   }
     <%end%>
 
 <%else%>

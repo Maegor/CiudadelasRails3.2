@@ -64,4 +64,9 @@ CiudadelsRails32::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  #remove field_with_errors
+  config.action_view.field_error_proc = Proc.new { |html_tag, instance|
+    "#{html_tag}".html_safe
+  }
 end

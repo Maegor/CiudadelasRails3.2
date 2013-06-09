@@ -16,30 +16,29 @@
 <% if session[:user_id].nil? %>
 
    <!--- formulario de loggin -->
-  <div id="login_container">
+    <div id="login_container">
 
-    <div id="login_header">
-    </div>
-    <div id="login_form_character">
+      <div id="login_header">
+      </div>
+      <div id="login_form_character">
         <div id="login_form">
-        <%= form_tag 'login', :class => 'form-4' do %>
+          <%= form_tag 'login', :class => 'form-4', :id => 'login' do %>
 
-          <h1><%= t 'login_menu.login' %></h1>
-          <p>
-        <%=  label_tag 'email', (t 'login_menu.email') %>
-        <%=  text_field_tag 'email',nil, {:placeholder => (t 'login_menu.email')} %>
-          </p>
-          <p>
-        <%=  label_tag 'password', (t 'login_menu.password') %>
-        <%=  password_field_tag 'password',nil, {:placeholder => (t 'login_menu.password')} %>
-          </p>
-          <p>
-        <%= submit_tag (t 'login_menu.login_button')%>
-          </p>
+              <h1><%= t 'login_menu.login' %></h1>
 
 
+                <%= label_tag 'email', (t 'login_menu.email') %>
+                <%= text_field_tag 'email', nil, {:placeholder => (t 'login_menu.email')} %>
 
-        <% end%>
+
+                <%= label_tag 'password', (t 'login_menu.password') %>
+                <%= password_field_tag 'password', nil, {:placeholder => (t 'login_menu.password')} %>
+
+
+             <%= submit_tag (t 'login_menu.login_button') %>
+
+
+          <% end %>
           <button class="form_button" onclick="window.location.href='<%= new_user_path %>'"><%= (t 'login_menu.signup') %></button>
 
           <% if flash[:notice] %>
@@ -51,52 +50,57 @@
         </div>
 
 
+      </div>
     </div>
-  </div>
 
-   <%else%>
- <div id="menucontent">
-     <ul id="menu">
-       <%if current_user.waiting_room && current_user.player.nil?%>
+<%else%>
+    <div id="menu_container">
 
-           <li><%= link_to (t 'main_menu.play'), waiting_room_path(current_user.waiting_room_id) %></li>
+      <div id="login_header">
+      </div>
+      <div id="menu_buttoms_character">
+        <div id="menucontent">
+          <ul id="menu">
+            <% if current_user.waiting_room && current_user.player.nil? %>
 
-       <% elsif current_user.player.nil? %>
+                <li><%= link_to (t 'main_menu.play'), waiting_room_path(current_user.waiting_room_id) %></li>
 
-      <li>
-        <a href="#"><%= t 'main_menu.play' %></a>
-        <ul>
-          <li><%= link_to (t 'main_menu.search'), waiting_rooms_path  %></li>
-          <li><%= link_to (t 'main_menu.create'), new_waiting_room_path  %></li>
-        </ul>
-      </li>
+            <% elsif current_user.player.nil? %>
 
-       <% elsif  current_user.player %>
+                <li>
+                  <a href="#"><%= t 'main_menu.play' %></a>
+                  <ul>
+                    <li><%= link_to (t 'main_menu.search'), waiting_rooms_path %></li>
+                    <li><%= link_to (t 'main_menu.create'), new_waiting_room_path %></li>
+                  </ul>
+                </li>
 
-           <li><%= link_to (t 'main_menu.play'), party_path(current_user.player.party.id) %></li>
+            <% elsif  current_user.player %>
 
-
-      <% end %>
-
-
-
-      <li><%= link_to (t 'main_menu.profile'), user_path(current_user) %></li>
-      <li> <%= link_to (t 'main_menu.logout'), logout_path, :method => :delete %>    </li>
-
-    </ul>
+                <li><%= link_to (t 'main_menu.play'), party_path(current_user.player.party.id) %></li>
 
 
+            <% end %>
 
+            <li><%= link_to (t 'main_menu.profile'), user_path(current_user) %></li>
+            <li> <%= link_to (t 'main_menu.logout'), logout_path, :method => :delete %></li>
+          </ul>
+        </div>
+        <div id="menu_character">
+        </div>
+      </div>
+
+    </div>
 
 <% end %>
 
 
-    </div>
+
+
 
 
 
 
 <script type="text/javascript">
 $('input, textarea').placeholder();
-
 </script>

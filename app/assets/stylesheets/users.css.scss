@@ -1,3 +1,124 @@
 // Place all the styles related to the User controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.form-4 select
+{
+  /* Size and position */
+  width: 100%;
+  padding: 8px 4px 8px 10px;
+  margin-bottom: 15px;
+
+  /* Styles */
+  border: 1px solid #4e3043; /* Fallback */
+  border: 1px solid rgba(78,48,67, 0.8);
+  background: #f6d6a5;
+
+
+  //border-radius: 2px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.2),
+    inset 0 1px 1px rgba(0,0,0,0.1);
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+
+  /* Font styles */
+  ;
+
+}
+
+.form-4 select:hover
+{
+  border-color: #333;
+}
+
+.form-4 select {
+
+  color: rgba(37,21,26,0.5);
+  text-shadow: 0 1px 0 rgba(255,255,255,0.15);
+
+}
+
+.form-4 select option:nth-child(n+2) {
+
+  //color: #fff;
+
+}
+
+.form-4 select:focus
+{
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.2),
+    inset 0 1px 1px rgba(0,0,0,0.1),
+    0 0 0 3px rgba(255,255,255,0.15);
+  outline: none;
+}
+
+.no-boxshadow .form-4 select:focus
+{
+  outline: 1px solid white;
+}
+
+
+
+#signup_container{
+  width: 624px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 225px;
+  background-color: #10151b;
+  }
+
+
+#signup_header{
+
+  background-image: url('barra_cuadro_identificacion.png');
+  height: 96px;
+}
+
+#signup_character{
+
+  background-image: url('ladronidentificacion.png');
+  width: 245px;
+  height: 300px;
+  margin-left: 379px;
+  background-size: cover;
+  position: absolute;
+  margin-top: 190px;
+
+}
+
+#signup_form{
+  margin-top: 45px;
+  float:left;
+  width: 300px;
+  margin-left: 30px;
+  p{
+    margin-top: 3px;
+  }
+}
+
+#signup_form_character{
+  margin-top: -60px;
+  height: 490px;
+}
+
+#register_error_explanation{
+
+  color: red;
+  //font-family: 'Raleway','Lato',Arial,sans-serif;
+  font-size: 19px;
+  margin-top: 60px;
+  margin-left: 3px;
+  position: absolute;
+  text-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+  width: 400px;
+  p{
+    margin: 0px;
+    width: 400px;
+  }
+}
+

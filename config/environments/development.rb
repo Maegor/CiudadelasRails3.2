@@ -34,4 +34,9 @@ CiudadelsRails32::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  #remove field_with_errors
+  config.action_view.field_error_proc = Proc.new { |html_tag, instance|
+    "#{html_tag}".html_safe
+  }
 end
