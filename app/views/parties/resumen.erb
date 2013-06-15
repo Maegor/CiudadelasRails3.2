@@ -1,66 +1,37 @@
 
 <% content_for :head do%>
-
-
     <%= stylesheet_link_tag  'parties' %>
-
-
+    <%= javascript_include_tag 'imagePreview' %>
 <%end%>
 
 <div id="resumen_content">
 
-
-
-  <%
-      @game.players.order('position ASC').each do |opponent|  %>
+  <%@game.players.order('position ASC').each do |opponent|
+  opponent_districts = opponent.districts_on_game_for_view %>
       <div class="opponent">
+        <div id="final_points">
+          <div class="value" title="<%= tooltip opponent.points_hash %>"><%= opponent.points %></div>
+        </div>
+        <div class="opponent_ui">
 
-        <div class="opponent_iu">
-
-          <div class="oppent_char">
-
+          <div class="opponent_char">
             <%= character_img opponent %>
-
           </div>
-
-          <div id="final_points">
-            <div class="value" title="<%= tooltip opponent.points_hash %>"> <%= opponent.points %></div>
+          <div class="data_opponent" id="cards">
+            <div class="value"> <%= opponent_districts.length%></div>
           </div>
-
-          <div class="data_opponent_final" id="points">
-
+          <div class="data_opponent" id="points">
             <div class="value"> <%= opponent.coins%></div>
           </div>
-          <div class="data_opponent_final" id="cards">
-
-            <div class="value"> <%= opponent.districts_on_game.length%></div>
-          </div>
-
-
-
 
         </div>
         <div class="opponent_cards">
-          <% cards = opponent.districts_on_hand_for_view
-             cards.each do |district_card|%>
-
+          <% opponent_districts.each do |district_card|%>
               <%= render :partial => 'district_card', :object => district_card %>
-
-
-
           <% end%>
-
         </div>
-
-
-
       </div>
   <%end%>
-
-
-
-
-
 
   <div id="leaveParty">
       <%=#noinspection RubyResolve

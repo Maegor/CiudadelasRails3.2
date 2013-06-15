@@ -19,7 +19,7 @@ module PartiesHelper
     if   %w(ACTION TURN WAITINGENDROUND).include?(opponent.state)
       render :partial => 'parties/opponent_char', :locals => {:opponent_char => opponent_char, :name => opponent.user.name}
     else
-       ('<div class="opponent_iu" id="nochar"><div class="player_name">' + opponent.user.name.capitalize  + '</div></div>').html_safe
+       ('<div class="opponent_ui" id="nochar"><div class="player_name no_prompt">' + opponent.user.name.capitalize  + '</div></div>').html_safe
     end
   end
 
@@ -53,8 +53,8 @@ module PartiesHelper
     string = String.new
     #noinspection RubyResolve
     if district_card.colour == 'purple'
-        string << (t 'districts.' + district_card.name + '.name').capitalize
-        string << "\n"
+        #string << (t 'districts.' + district_card.name + '.name').capitalize
+        #string << "\n"
         string << (t 'districts.' + district_card.name + '.description').capitalize
         if district_card.name == 'museum'
           #noinspection RubyResolve
@@ -64,7 +64,7 @@ module PartiesHelper
         end
     else
 
-      string << (t 'districts.' + district_card.name)
+      #string << (t 'districts.' + district_card.name)
 
     end
 

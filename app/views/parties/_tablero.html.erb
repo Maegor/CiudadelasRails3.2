@@ -2,24 +2,30 @@
 
   <div id="tablero">
 
-    <div id="lista_jugadores" class="hueco_tablero">
-      <div id="player_containter">
-        <%= render :partial => 'oponentes' %>
+    <div id="board_top">
+
+      <div id="lista_jugadores" class="hueco_tablero">
+        <div id="player_containter">
+          <%= render :partial => 'oponentes' %>
+        </div>
+      </div>
+
+      <div id="log_container">
       </div>
     </div>
 
-
-    <div id="top_tablero">
+    <div id="board_bottom">
       <div id="player_elements_container" class="hueco_tablero">
         <%= render :partial => 'mano' %>
       </div>
+      <div id="messages_icon"></div>
     </div>
     <div id="seleccion_personaje" class="hueco_tablero">
       <%= render :partial => 'seleccion' %>
     </div>
 
   </div>
-
+  <!-- log -->
   <div id="messages_container" class="hidden">
     <div class="popupContainer">
 
@@ -32,7 +38,7 @@
           <% end %>
         </div>
         <script type="text/javascript">
-
+                   //TODO descomentar
             $('.container_cards_pop').jScrollPane({autoReinitialise: true});
 
         </script>

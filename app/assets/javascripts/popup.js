@@ -70,9 +70,6 @@ function center2(currentPopup){
 $(function (){
 
 
-
-
-
 $('#messages_icon').click(function (){
 
 
@@ -95,7 +92,8 @@ $('.action_icon').click(function (ev){
 
 
     if(currentPopup == ""){
-        currentPopup = ev.currentTarget.id;
+        var icon_name = ev.currentTarget.id
+        currentPopup = icon_name.substr(0,icon_name.length - 5);
         $("#" + currentPopup + ".hidden").fadeIn("slow");
         $("#" + currentPopup + " .popupContainer").fadeIn("slow");
         $("#" + currentPopup + ".closePopup").fadeIn("slow");

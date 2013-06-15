@@ -1,23 +1,23 @@
-<div  id="ficha_jugador" class="player_lane">
+<div id="ficha_jugador" class="player_lane">
   <div id="char">
 
-    <div id="messages_icon"></div>
+
 
     <% if (character_ui = current_user.player.player_character) %>
         <%= render :partial => 'character_ui', :object => character_ui %>
 
-    <% else%>
-        <div class="character_ui" id="nochar_ui"></div>
-    <%end%>
+    <% else %>
+        <div class="character_ui" id="nochar_ui">
+          <div class="data_user" id="golds">
+            <div class="value no_prompt"><%= current_user.player.coins %></div>
+          </div>
+          <div class="data_user" id="points">
+            <div class="value no_prompt"><%= current_user.player.districts_on_game.length %></div>
+          </div>
+        </div>
+    <% end %>
 
   </div>
-  <div class="data_user" id="golds">
-    <div class="value no_prompt"> <%= current_user.player.coins %></div>
-  </div>
-  <div class="data_user" id="points">
-    <div class="value no_prompt"><%= current_user.player.districts_on_game.length%></div>
-  </div>
-
 </div>
 
 
@@ -33,30 +33,35 @@
   </div>
 </div>
 
+<div id="central_block" class="player_lane">
+  <%= render :partial => 'action_icons' %>
+
+  <% if current_user.player.state == 'ACTION' %>
+      <div id="finturno">
+        <div>
+          <%= link_to (t 'board.finish'), end_turn_path %>
+        </div>
+      </div>
+  <% end %>
+
+</div>
+
+
 
 <div id="cartas_mano" class="player_lane">
-<div class="card_container">
-  <% current_user.player.districts_on_hand_for_view.each do |district_card|%>
-
+  <div class="card_container">
+    <% current_user.player.districts_on_hand_for_view.each do |district_card| %>
         <%= render :partial => 'district_card', :object => district_card %>
-  <% end %>
-</div>
-
-</div>
-
-<%= render :partial => 'action_icons' %>
-
-
-<%if current_user.player.state == 'ACTION'%>
-
-  <div id="finturno">
-
-   <div>
-  <%= link_to (t 'board.finish'), end_turn_path %>
-</div>
-
+    <% end %>
   </div>
-<%end%>
+
+</div>
+
+
+
+
+
+
 
 
 
@@ -80,9 +85,7 @@
     cards.find('.card_container').css('width',(num_cards * multiplier) + (num_cards * 5));
 
 
-            $('#distritos_construidos, #cartas_mano, #lista_jugadores').jScrollPane({
-
-                });
+            $('#distritos_construidos, #cartas_mano, #lista_jugadores').jScrollPane({ });
      //activamos todos los scrollbars.
 
 

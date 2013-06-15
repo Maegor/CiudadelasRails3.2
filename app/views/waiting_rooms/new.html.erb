@@ -55,7 +55,27 @@
 
 
   </div>
-</div>      
+</div>
+
+<script type="text/javascript">
+
+
+
+    $('select#waiting_room_user').change(function(){
+
+        if ($(this).val() == ""){
+            $(this).removeAttr('style');
+        }else{
+            $(this).css({
+                "color": "black"
+            });
+            $(this).children(":selected").css({
+                "color": "black"
+            });
+        }
+    })
+
+</script>
       
       
       

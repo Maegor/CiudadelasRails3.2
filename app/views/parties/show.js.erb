@@ -14,8 +14,6 @@
     var jspBuildLeft_hand =   build_district_hand.find('.jspPane').css('left');
     var jspBuildDrag_hand =   build_district_hand.find('.jspDrag').css('left');
 
-      console.log(<%= session[:refresh] %>);
-      console.log("<%= session[:refresh_prev] %>");
 
 <%  if session[:refresh] %>
      //$('#tablero').replaceWith("<%#=escape_javascript (render :partial => 'tablero') %>");
@@ -27,7 +25,7 @@
       $('#messages_container').find('.popupContent').replaceWith(response.find("#messages_container .popupContent"));
 
       AddListenerToButton('messages_icon');
-
+      imagePreview();
        var listNew = $('#lista_jugadores');
        var buildNew = $("#distritos_construidos");
        var handNew = $("#cartas_mano");

@@ -41,15 +41,15 @@
 </div>
 
 <script type="text/javascript">
-/*
+
   $(document).ready(
            function(){
                setInterval(function(){
                    $.ajax({
-                       url: "<%#= waiting_room_path(@room.id)%>",
+                       url: "<%= waiting_room_path(@room.id)%>",
                        type: "GET",
                        dataType: "script"
                    });
                }, 5000 );
-           });*/
+           });
 </script>

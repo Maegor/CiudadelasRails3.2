@@ -2,9 +2,9 @@
    oppenents.each do |opponent|  %>
  <div class="opponent">
 
-   <div class="opponent_iu">
+   <div class="opponent_ui">
 
-     <div class="oppent_char">
+     <div class="opponent_char">
 
        <%= character_img opponent %>
 
@@ -27,15 +27,8 @@
    <div class="opponent_cards">
        <% cards = opponent.districts_on_game_for_view
           cards.each do |district_card|%>
-
-
-
             <%= render :partial => 'district_card', :object => district_card %>
-
-
-
        <% end%>
-
    </div>
 
 

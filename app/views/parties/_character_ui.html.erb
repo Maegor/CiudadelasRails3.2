@@ -1,5 +1,11 @@
 <div class="character_ui" id="<%= #noinspection RubyResolve
                                     character_ui.base_card.name%>_ui" title="<%= #noinspection RubyResolve
                                                                                 actions_tooltip character_ui.base_card.name %>">
+  <div class="data_user" id="golds">
+    <div class="value no_prompt"><%= current_user.player.coins %></div>
+  </div>
+  <div class="data_user" id="points">
+    <div class="value no_prompt"><%= current_user.player.districts_on_game.length%></div>
+  </div>
 
 </div>
