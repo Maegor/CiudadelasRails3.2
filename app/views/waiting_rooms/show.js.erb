@@ -1,15 +1,16 @@
 
 <%if current_user.player.nil? || current_user.player.party.state.nil?%>
-    $('#table_container').html("<%=escape_javascript (render :partial => 'users_table') %>")
+    $('#table_container').html("<%=escape_javascript (render :partial => 'users_table') %>");
     <% if @room.users.count == @room.user  && current_user.id == @room.owner_id%>
 
 
     var start = $('#start');
-   if  (start.length() > 0){
-       start.html("<%=escape_javascript(render :partial=> 'start_button')%>");
+
+   if  (start.length == 0){
+       $('#room_container').append("<%=escape_javascript(render :partial=> 'start_button')%>");
    }else{
 
-       start.append("<%=escape_javascript(render :partial=> 'start_button')%>");
+       start.replaceWith("<%=escape_javascript(render :partial=> 'start_button')%>");
 
    }
     <%end%>

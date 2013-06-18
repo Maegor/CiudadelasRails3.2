@@ -12,6 +12,7 @@ User.create!(name: 'molero3', email: 'molero3@pfc.net', password: '123456', pass
 
 ### Init base_actions
 
+BaseAction.create!(description: 'select_character', partialname: 'select_character')
 BaseAction.create!(description: 'take_gold', partialname: 'take_gold')
 BaseAction.create!(description: 'take_districts', partialname: 'take_districts')
 BaseAction.create!(description: 'select_district', partialname: 'select_district')

@@ -1,4 +1,3 @@
-
 <%= form_tag form_action 'select_district' do %>
       <div class="container_cards_pop">
     <% @game.cards.where("state = 'SELECTABLE'").each do |card|%>

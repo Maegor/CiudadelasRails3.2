@@ -9,12 +9,11 @@ class PartiesController < ApplicationController
   @game = Party.find(params[:id])
   @game.tick
 
-  if session[:refresh].nil?  &&  session[:refresh_prev].nil?
+  #TODO poner aqui toda la causitica de update
+  if session[:refresh].nil?
     session[:refresh] = true
-    session[:refresh_prev] = 'ffff'
+
   end
-
-
 
     respond_to do |format|
 

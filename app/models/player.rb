@@ -413,6 +413,22 @@ end
 
 ### Actions
  private
+
+
+   #adaptar metodo al model
+  def select_character(action_array)
+
+    cards = action_array.drop(1)
+    card = Card.find(cards[0])
+    card.update_attribute(:player_id, id)
+
+    update_attribute(:state, 'WAITING_TURN')
+
+
+  end
+
+
+
   def build (action_array)
 
    build_district(action_array)
@@ -781,6 +797,7 @@ end
 
 
   def graveyard(action_array)
+    #revisar codigo, hay que actulizar el wasdestroyed
     exist  = false
     card = action_array.drop(1)
     card = Card.districts.find(:first, :conditions => ["cards.id = ? AND state = 'INDECK' AND wasdestroyed = true AND party_id = ?", action_array[1], party.id], :readonly => false)

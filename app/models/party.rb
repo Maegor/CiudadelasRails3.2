@@ -252,27 +252,36 @@ class Party < ActiveRecord::Base
   #selecciona al próximo jugador en elegir personaje
   def next_player
 
-    player_list = self.players.order('turn ASC').to_a
+    player_list = players.order('turn ASC').to_a
 
     waiting_players = player_list.count { |player| player.state == 'WAITING_SELECTION' }
 
     #si todos estan esperando cogemos al rey para que elija
-    if waiting_players == self.numplayer
-
+    if waiting_players == numplayer
 
       player = player_list[0]
+      player.actions.create(:base_action_id => BaseAction.find_by_partialname("select_character").id)
       player.state = 'SELECTION_TURN'
       player.save
+
     elsif waiting_players > 0
 
       selecting_player = player_list.index { |player| player.state == 'SELECTION_TURN' }
+
+      #TODO punto de entrada a la elección automática de personaje
+      if selecting_player != nil
+        select_player = players.find(:first, :conditions => ["state = 'SELECTION_TURN'"])
+        auto_char_selection(select_player)
+      end
+
+
 
       if selecting_player.nil?
 
         player_index = player_list.index { |player| player.state == 'WAITING_SELECTION' }
         player = player_list[player_index]
-        player.state= 'SELECTION_TURN'
-        player.save
+        player.actions.create(:base_action_id => BaseAction.find_by_partialname("select_character").id)
+        player.update_attribute(:state,'SELECTION_TURN')
       end
 
     end
@@ -284,33 +293,33 @@ class Party < ActiveRecord::Base
   def next_character
 
     player_list = players.order('turn ASC').to_a
-    players_end = player_list.count {|player| player.state == 'WAITINGENDROUND'}
+    players_end = player_list.count { |player| player.state == 'WAITINGENDROUND' }
     if players_end < numplayer
-        waiting_players = player_list.count {|player| player.state == 'WAITING_TURN'}
+      waiting_players = player_list.count { |player| player.state == 'WAITING_TURN' }
 
-        if waiting_players > 0
-          player_turn = player_list.index {|player| player.state == 'TURN' || player.state == 'ACTION'}
+      if waiting_players > 0
+        player_turn = player_list.index { |player| player.state == 'TURN' || player.state == 'ACTION' }
 
-          if player_turn.nil?
+        if player_turn.nil?
 
-            player_index = player_list.index {|player| player.state == 'WAITING_TURN'}
+          player_index = player_list.index { |player| player.state == 'WAITING_TURN' }
 
-            #Comprobamos si el jugador tiene en juego la carta hospital
-            player = player_list[player_index]
+          #Comprobamos si el jugador tiene en juego la carta hospital
+          player = player_list[player_index]
 
-            hospital = player.districts_on_game.find(:first, :conditions => ["name = 'hospital'"])
+          hospital = player.districts_on_game.find(:first, :conditions => ["name = 'hospital'"])
 
-            if player.murdered == 'TRUE' && hospital.nil?
-              player.update_attribute(:state,'WAITINGENDROUND')
-              next_character
-            else
-              player.update_attribute(:state,'TURN')
-              player.player_actions
-              player.special_status
+          if player.murdered == 'TRUE' && hospital.nil?
+            player.update_attribute(:state, 'WAITINGENDROUND')
+            next_character
+          else
+            player.update_attribute(:state, 'TURN')
+            player.player_actions
+            player.special_status
 
-            end
           end
         end
+      end
     else
 
       tick
@@ -523,6 +532,17 @@ end
   end
 
 
+  def auto_char_selection(selecting_player)
 
+    logger.info(selecting_player)
+
+    if (selecting_player.updated_at + 1.minutes) <  Time.now
+      logger.info(selecting_player)
+
+    end
+
+
+
+  end
 end
 
