@@ -6,7 +6,7 @@ en:
   login_button: "Log In"
   signup: "Sign up"
   errors:
-   invalid_user_pass: "Invalid user/pass name combination"
+  invalid_user_pass: "Invalid user/pass name combination"
  main_menu:
   play: "Play"
   search: "Search game"

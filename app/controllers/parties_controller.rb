@@ -11,9 +11,18 @@ class PartiesController < ApplicationController
 
   #TODO poner aqui toda la causitica de update
   if session[:refresh].nil?
-    session[:refresh] = true
-
+     session[:refresh] = true
   end
+
+  player_status = current_user.player.state
+
+  if %w(SELECTION_TURN ACTION TURN).include?(player_status)  && %w(SELECTION_TURN ACTION TURN).include?(session[:previous_state])
+    session[:refresh] = false
+  else
+    session[:refresh] = true
+  end
+
+  session[:previous_state] = player_status
 
     respond_to do |format|
 
