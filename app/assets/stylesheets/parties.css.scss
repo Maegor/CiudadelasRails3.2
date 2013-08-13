@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /* Variables*/
-$card_width: 75px;
+$card_width: 77px;
 $card_height: 120px;
 
 /*FORM*/
@@ -140,14 +140,15 @@ body {
 }
 
 #board_bottom {
-
+  position: relative;
+  z-index: 0;
   height: 216px;
   width: 1196px;
   background-image: url('manojugador.png');
   background-repeat: no-repeat;
   margin-left: auto;
   margin-right: auto;
-  margin-top: -19px;
+  margin-top: -9px;
 
 
 
@@ -169,7 +170,7 @@ body {
 
 }
 .player_lane:first-child{
-  margin-top: -19px;
+  margin-top: -9px;
 
 }
 
@@ -236,8 +237,8 @@ body {
 
 .opponent_cards .card {
   // margin-right: -30px ;
-  width: 60px;
-  height: 95px;
+  width: 82px;
+  height: 128px;
 
 }
 
@@ -247,171 +248,171 @@ body {
 
 /* District */
 #tavern {
-  background-image: url('cards/tavern.jpg');
+  background-image: url('cards/tavern.png');
 }
 
 #store {
-  background-image: url('cards/store.jpg');
+  background-image: url('cards/store.png');
 }
 
 #market {
-  background-image: url('cards/market.jpg');
+  background-image: url('cards/market.png');
 }
 
 #harbor {
-  background-image: url('cards/harbor.jpg')
+  background-image: url('cards/harbor.png')
 }
 
 #docks {
-  background-image: url('cards/docks.jpg')
+  background-image: url('cards/docks.png')
 }
 
 #town_hall {
-  background-image: url('cards/town_hall.jpg')
+  background-image: url('cards/town_hall.png')
 }
 
 #temple {
-  background-image: url('cards/temple.jpg')
+  background-image: url('cards/temple.png')
 }
 
 #church {
-  background-image: url('cards/church.jpg')
+  background-image: url('cards/church.png')
 }
 
 #monastery {
-  background-image: url('cards/monastery.jpg')
+  background-image: url('cards/monastery.png')
 }
 
 #cathedral {
-  background-image: url('cards/cathedral.jpg')
+  background-image: url('cards/cathedral.png')
 }
 
 #domain {
-  background-image: url('cards/domain.jpg')
+  background-image: url('cards/domain.png')
 }
 
 #castle {
-  background-image: url('cards/castle.jpg')
+  background-image: url('cards/castle.png')
 }
 
 #palace {
-  background-image: url('cards/palace.jpg')
+  background-image: url('cards/palace.png')
 }
 
 #watchtower {
-  background-image: url('cards/watchtower.jpg')
+  background-image: url('cards/watchtower.png')
 }
 
 #prison {
-  background-image: url('cards/prison.jpg')
+  background-image: url('cards/prison.png')
 }
 
 #barracks {
-  background-image: url('cards/barracks.jpg')
+  background-image: url('cards/barracks.png')
 }
 
 #fortress {
-  background-image: url('cards/fortress.jpg')
+  background-image: url('cards/fortress.png')
 }
 
 #imperial_treasure {
-  background-image: url('cards/imperial_treasure.jpg')
+  background-image: url('cards/imperial_treasure.png')
 }
 
 #haunted_city {
-  background-image: url('cards/haunted_city.jpg')
+  background-image: url('cards/haunted_city.png')
 }
 
 #keep {
-  background-image: url('cards/keep.jpg')
+  background-image: url('cards/keep.png')
 }
 
 #lighthouse {
-  background-image: url('cards/lighthouse.jpg')
+  background-image: url('cards/lighthouse.png')
 }
 
 #powderhouse {
-  background-image: url('cards/powderhouse.jpg')
+  background-image: url('cards/powderhouse.png')
 }
 
 #museum {
-  background-image: url('cards/museum.jpg')
+  background-image: url('cards/museum.png')
 }
 
 #poorhouse {
-  background-image: url('cards/poorhouse.jpg')
+  background-image: url('cards/poorhouse.png')
 }
 
 #bell_tower {
-  background-image: url('cards/bell_tower.jpg')
+  background-image: url('cards/bell_tower.png')
 }
 
 #smithy {
-  background-image: url('cards/smithy.jpg')
+  background-image: url('cards/smithy.png')
 }
 
 #quarry {
-  background-image: url('cards/quarry.jpg')
+  background-image: url('cards/quarry.png')
 }
 
 #map_room {
-  background-image: url('cards/map_room.jpg')
+  background-image: url('cards/map_room.png')
 }
 
 #fountain_wishes {
-  background-image: url('cards/fountain_wishes.jpg')
+  background-image: url('cards/fountain_wishes.png')
 }
 
 #observatory {
-  background-image: url('cards/observatory.jpg')
+  background-image: url('cards/observatory.png')
 }
 
 #laboratory {
-  background-image: url('cards/laboratory.jpg')
+  background-image: url('cards/laboratory.png')
 }
 
 #factory {
-  background-image: url('cards/factory.jpg')
+  background-image: url('cards/factory.png')
 }
 
 #graveyard {
-  background-image: url('cards/graveyard.jpg')
+  background-image: url('cards/graveyard.png')
 }
 
 #library {
-  background-image: url('cards/library.jpg')
+  background-image: url('cards/library.png')
 }
 
 #school_magic {
-  background-image: url('cards/school_magic.jpg')
+  background-image: url('cards/school_magic.png')
 }
 
 #ballroom {
-  background-image: url('cards/ballroom.jpg')
+  background-image: url('cards/ballroom.png')
 }
 
 #park {
-  background-image: url('cards/park.jpg')
+  background-image: url('cards/park.png')
 }
 
 #hospital {
-  background-image: url('cards/hospital.jpg')
+  background-image: url('cards/hospital.png')
 }
 
 #great_wall {
-  background-image: url('cards/great_wall.jpg')
+  background-image: url('cards/great_wall.png')
 }
 
 #throne_hall {
-  background-image: url('cards/throne_hall.jpg')
+  background-image: url('cards/throne_hall.png')
 }
 
 #dragon_gate {
-  background-image: url('cards/dragon_gate.jpg')
+  background-image: url('cards/dragon_gate.png')
 }
 
 #university {
-  background-image: url('cards/university.jpg')
+  background-image: url('cards/university.png')
 }
 
 /* Characters */
@@ -515,7 +516,7 @@ body {
 
   img {
     height: inherit;
-    width: 90px;
+    //width: 90px;
     //margin-left: 15px;
     float: left;
   }
@@ -812,6 +813,18 @@ body {
 
 }
 
+
+.current_player{
+  border:solid 1px green;
+}
+.waiting_player{
+  border:solid 1px yellow;
+}
+
+.end_player{
+  border:solid 1px red;
+}
+
 .data_opponent {
 
   width: 40px;
@@ -832,7 +845,7 @@ body {
   //border: 1px solid;
 
   width: 800px;
-  padding-top: 20px;
+  //padding-top: 20px;
   height: 126px;
   margin-left: 88px;
 
@@ -840,8 +853,8 @@ body {
 }
 
 .opponent {
-  height: 155px;
-  margin-top: 7px;
+  //height: 155px;
+  margin-bottom: 13px;
 
 }
 
@@ -853,7 +866,7 @@ body {
 /* Player style*/
 
 .player_name {
-  color: black;
+  color: white;
   font-size: 16px;
   left: 3px;
   position: relative;
@@ -1111,7 +1124,7 @@ body {
 
 #log_container {
 
-  background-image: url('log_board.png');
+  //background-image: url('log_board.png');
   width: 345px;
   height: 440px;
   margin-left: 644px;

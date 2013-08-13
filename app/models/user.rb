@@ -10,6 +10,7 @@ belongs_to :waiting_room
 
 
 attr_accessible :name, :email, :password, :password_confirmation, :lang
+
 validates :email, :presence => true, :uniqueness => { :case_sensitive => false }
 validates :name,
           :presence => true,
@@ -17,13 +18,17 @@ validates :name,
 validates :name,
           :length => {:in => 3..12}, :unless => Proc.new{|a| a.name.blank?}
 validates :password,
-          :confirmation => true,
-          :presence => true
+          :presence => true,
+          :on => :create
+validates  :password,
+           :confirmation => true
+
 validates :password,
           :length => {:in => 6..20}, :unless => Proc.new{|a| a.password.blank?}
 
 validates :email,
           :format => {:with => /^.+@.+$/}, :unless => Proc.new{|a| a.email.blank?}
+
 attr_accessor :password_confirmation
 attr_reader :password
 

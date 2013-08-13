@@ -235,8 +235,8 @@ en:
   select_severals_cards: "Choose severals districts"
   select_an_option: "Choose an option"
   take_taxes: "Collect taxes"
-  yes: "Yes"
-  no: "No"
+  agree: "Yes"
+  disagree: "No"
 
   #colours
   green: "green"

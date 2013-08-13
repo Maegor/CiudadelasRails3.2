@@ -212,7 +212,7 @@ class Party < ActiveRecord::Base
         next_player.update_attribute(:state, 'TURN')
         next_player.player_actions
 
-        self.state = "GAME_PLAY_START"
+        self.state = 'GAME_PLAY_START'
 
         self.save
 
@@ -271,7 +271,7 @@ class Party < ActiveRecord::Base
       #TODO punto de entrada a la elección automática de personaje
       if selecting_player != nil
         select_player = players.find(:first, :conditions => ["state = 'SELECTION_TURN'"])
-        auto_char_selection(select_player)
+        #auto_char_selection(select_player)
       end
 
 

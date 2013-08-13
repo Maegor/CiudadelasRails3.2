@@ -1,6 +1,20 @@
 module PartiesHelper
 
 
+
+  def add_class(opponent)
+
+    game_state = opponent.party.state
+
+    if %w(SELECTION_TURN ACTION TURN).include?(opponent.state)
+      ('class="opponent_ui current_player"').html_safe
+    elsif  (opponent.state == 'WAITING_TURN' && game_state == 'GAME_PLAY_START') || (opponent.state == 'WAITING_SELECTION')
+      ('class="opponent_ui waiting_player"').html_safe
+    else
+      ('class="opponent_ui end_player"').html_safe
+    end
+  end
+
   def tooltip(array_points)
     string = String.new
     array_points.each do |key, value|

@@ -6,17 +6,17 @@
 
     <script type="text/javascript">
 
-/*    TODO quitar comentarios*/
+/*    TODO quitar comentarios
       $(document).ready(function (){
 
             setInterval(function(){
 
-                $.getScript("/parties/<%= current_user.player.party.id %>");
+                $.getScript("/parties/<%#= current_user.player.party.id %>");
 
            }, 5000);
       });
 
-
+*/
     </script>
 
 <% end %>

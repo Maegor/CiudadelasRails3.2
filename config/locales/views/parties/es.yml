@@ -233,8 +233,8 @@ es:
   select_severals_cards: "Elige varios distritos"
   select_an_option: "Elige una opción"
   take_taxes: "Recauda impuestos"
-  yes: "Yes"
-  no: "No"
+  agree: "Si"
+  disagree: "No"
 
   #colours
   green: "verde"

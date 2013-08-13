@@ -11,12 +11,12 @@
           <div class="option_button">
           <%=
               #noinspection RubyResolve
-              link_to (t 'board.yes'), party_action_path(@game.id, [action.id, true]) %>
+              link_to (t 'board.agree'), party_action_path(@game.id, [action.id, true]) %>
           </div>
           <div class="option_button">
           <%=
               #noinspection RubyResolve
-              link_to (t 'board.no'), party_action_path(@game.id, [action.id, false]) %>
+              link_to (t 'board.disagree'), party_action_path(@game.id, [action.id, false]) %>
           </div>
         </div>
 

@@ -1,8 +1,8 @@
 
 
 <% content_for :head do %>
-    <%= stylesheet_link_tag  'polyglot-language-switcher'%>
-    <%= javascript_include_tag 'jquery.polyglot.language.switcher' %>
+    <%= stylesheet_link_tag    'home','users', 'polyglot-language-switcher' %>
+    <%= javascript_include_tag 'menu', 'jquery.placeholder.min', 'jquery.polyglot.language.switcher' %>
 <% end %>
 
 <%= render 'shared/langs' %>
@@ -53,4 +53,58 @@
 <%#end%>
 </div>
 -->
-<%= link_to (t 'index.back'), root_path %>
+
+
+<div id="signup_container">
+
+  <div id="signup_header">
+  </div>
+  <div id="signup_form_character">
+    <div id="signup_form">
+
+      <%= form_for @user, :html =>{:class=> %w(form-4 register)} do |f| %>
+          <h1><%= t 'new.title' %></h1>
+
+          <%= f.label :name %>
+          <%= f.text_field :name, :size => 40, :placeholder =>(t 'new.name'),:autocomplete => :off %>
+
+
+
+          <%= f.label :email %>
+          <%= f.text_field :email, :size => 40,:placeholder =>(t 'new.email'),:autocomplete => :off %>
+
+
+
+
+
+          <%= f.label :password, 'Password' %>
+          <%= f.password_field :password, :size => 40, :placeholder =>(t 'new.password'),:autocomplete => :off %>
+
+
+
+          <%= f.label :password_confirmation, 'Confirm' %>
+          <%= f.password_field :password_confirmation, :size => 40, :placeholder => (t 'new.repeat_password'),:autocomplete => :off %>
+
+
+
+
+          <%= f.submit (t 'new.update_user')%>
+
+
+      <% end %>
+      <button class="form_button" onclick="window.location.href='<%= root_path %>'"><%= (t 'back') %></button>
+      <% if @user.errors.any? %>
+          <div id="register_error_explanation">
+            <%= t 'new.fields_with_erros' %>
+
+            <% @user.errors.full_messages.each do |msg| %>
+                <p>- <%= msg %></p>
+            <% end %>
+
+          </div>
+      <% end %>
+    </div>
+    <div id="signup_character">
+    </div>
+  </div>
+</div>

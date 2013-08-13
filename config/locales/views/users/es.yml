@@ -7,3 +7,4 @@ es:
   repeat_password: 'Repetir contraseña'
   create_user: 'Crear usuario'
   fields_with_erros: 'Algunos campos contienen errores:'
+  update_user: 'Enviar'

@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
 
   def show
-    current_user
+   @user =  current_user
   end
 
   def create
@@ -43,10 +43,11 @@ class UsersController < ApplicationController
 
   def update
 
-    lang = params[:lang]
-    current_user.update_attribute(:lang,lang)
-    I18n.locale = lang
-    redirect_to user_path(current_user)
+
+    @user = User.find(params[:id])
+    @user.update_attributes(params[:user])
+
+   render :action => 'show'
 
    ## respond_to do |format|
      # format.html
