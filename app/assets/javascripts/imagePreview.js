@@ -22,7 +22,7 @@ function imagePreview(){
 		this.t = this.title;
 		this.title = "";
 		var c = (this.t != "") ?  this.t : "";
-		$("#tablero").append("<div id='preview'><img  width='200' height='312' src='../../assets/cards/hd/"+ $(this).attr('id') +
+		$("#tablero, #resumen_content").append("<div id='preview'><img  width='200' height='312' src='../../assets/cards/hd/"+ $(this).attr('id') +
             ".png' alt='Image preview' />" +
             "<div class='preview_description'>"+ c +"</div>" + "</div>");
 		$("#preview")

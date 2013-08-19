@@ -519,6 +519,7 @@ body {
     //width: 90px;
     //margin-left: 15px;
     float: left;
+    border: 0px;
   }
   p {
     margin-top: 3px;
@@ -907,6 +908,7 @@ body {
 
   width: $card_width;
   height: $card_height;
+  margin-right: -1px;
   //display: inline-block;
 }
 
@@ -1018,6 +1020,11 @@ body {
   margin-right: auto;
   margin-left: auto;
   width: 950px;
+  h1{
+    color: white;
+    text-align: center;
+    margin-top: 60px;
+  }
 }
 
 .options {
@@ -1096,6 +1103,7 @@ body {
   float: left;
   margin-right: -4px;
   margin-top: 85px;
+  cursor: default;
 }
 
 .data_opponent_final {

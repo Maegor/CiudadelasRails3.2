@@ -60,7 +60,7 @@ es:
    name: "Tesoro imperial"
    description: "te reporta tantos puntos como monedas de oro tengas en tu posesión al final de la partida."
   haunted_city:
-   name: "Ciudad encantada"
+   name: "Patio de los milagros"
    description: "el patio de los milagros se considera un Distrito de un color a tu elección. No podrás usar esta capacidad lo construiste en tu último turno de la partida."
   keep:
    name: "Torreón"
@@ -152,7 +152,7 @@ es:
   protection: "Tus distritos no pueden ser destruidos por el Guerrero"
   take_extra_cards: "Robar dos cartas de distritos extra"
   build_severals: "Puedes construir hasta 3 distritos en tu turno"
-  card_to_coin: "Descartar un dsitrito ha cambio de una moneda de oro"
+  card_to_coin: "Descartar un distrito ha cambio de una moneda de oro"
   coins_to_cards: "Pagar 3 monedas para conseguir 3 distritos"
   search_card: "Search a card in the deck and put it on your hands"
   self_destruction: "Destruye el Polvorín para destruir otro edificio"
@@ -238,7 +238,7 @@ es:
   murdered_character: "Personaje asesinado"
   stolen_character: "Personaje robado"
   game_progress: "Progreso del juego"
-
+  win_messages: "¡%{winner} ha ganado!"
   #colours
   green: "verde"
   yellow: "amarillo"

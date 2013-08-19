@@ -4,9 +4,13 @@
     <%= javascript_include_tag 'imagePreview' %>
 <%end%>
 
+
+
 <div id="resumen_content">
 
-  <%@game.players.order('position ASC').each do |opponent|
+  <% players = @game.players.order('position ASC') %>
+  <h1> <%= t 'board.win_messages', :winner => players.first.user.name.capitalize %></h1>
+  <%players.each do |opponent|
   opponent_districts = opponent.districts_on_game_for_view %>
       <div class="opponent">
         <div id="final_points">
@@ -43,3 +47,5 @@
 
 
 </div>
+
+

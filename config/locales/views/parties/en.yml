@@ -105,7 +105,7 @@ en:
    description:  "The building cost for any other purple building you build in your city is reduced by one. This doesn´t affect the price paid by the Warlord to destroy it."
   graveyard:
    name: "Graveyard"
-   description: " When the Warlord destroys a District, you may pay a gold piece to take the destroyed District into your hand. You cannot do this if you are the Warlord."
+   description: "When the Warlord destroys a District, you may pay a gold piece to take the destroyed District into your hand. You cannot do this if you are the Warlord."
   library:
    name: "Library"
    description: "If you choose to draw cards at the begining of your turn, you keep the two cards you have drawn."
@@ -240,6 +240,7 @@ en:
   murdered_character: "Murdered character"
   stolen_character: "Stolen character"
   game_progress: "Game progress"
+  win_messages: "%{winner} wins!"
   #colours
   green: "green"
   yellow: "yellow"
