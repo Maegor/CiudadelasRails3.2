@@ -235,6 +235,9 @@ es:
   take_taxes: "Recauda impuestos"
   agree: "Si"
   disagree: "No"
+  murdered_character: "Personaje asesinado"
+  stolen_character: "Personaje robado"
+  game_progress: "Progreso del juego"
 
   #colours
   green: "verde"

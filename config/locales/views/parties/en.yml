@@ -237,7 +237,9 @@ en:
   take_taxes: "Collect taxes"
   agree: "Yes"
   disagree: "No"
-
+  murdered_character: "Murdered character"
+  stolen_character: "Stolen character"
+  game_progress: "Game progress"
   #colours
   green: "green"
   yellow: "yellow"

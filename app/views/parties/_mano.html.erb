@@ -1,10 +1,9 @@
+<%current_player =  current_user.player%>
 <div id="ficha_jugador" class="player_lane">
   <div id="char">
 
-
-
-    <% if (character_ui = current_user.player.player_character) %>
-        <%= render :partial => 'character_ui', :object => character_ui %>
+    <% if (character_ui = current_player.player_character) %>
+        <%= render :partial => 'character_ui', :object => character_ui, :locals => {:current_player => current_player} %>
 
     <% else %>
         <div class="character_ui" id="nochar_ui">
@@ -14,6 +13,10 @@
           <div class="data_user" id="points">
             <div class="value no_prompt"><%= current_user.player.districts_on_hand.length %></div>
           </div>
+          <%if current_player.crown == 'TRUE'%>
+            <div id="crown_player"></div>
+          <% end %>
+
         </div>
     <% end %>
 
@@ -25,7 +28,7 @@
 
 <div id="distritos_construidos" class="player_lane">
   <div class="card_container">
-  <% current_user.player.districts_on_game_for_view.each do |district_card|%>
+  <% current_player.districts_on_game_for_view.each do |district_card|%>
 
       <%= render :partial => 'district_card', :object => district_card %>
 
@@ -36,7 +39,7 @@
 <div id="central_block" class="player_lane">
   <%= render :partial => 'action_icons' %>
 
-  <% if current_user.player.state == 'ACTION' %>
+  <% if current_player.state == 'ACTION' %>
       <div id="finturno">
         <div>
           <%= link_to (t 'board.finish'), end_turn_path %>
@@ -50,7 +53,7 @@
 
 <div id="cartas_mano" class="player_lane">
   <div class="card_container">
-    <% current_user.player.districts_on_hand_for_view.each do |district_card| %>
+    <% current_player.districts_on_hand_for_view.each do |district_card| %>
         <%= render :partial => 'district_card', :object => district_card %>
     <% end %>
   </div>

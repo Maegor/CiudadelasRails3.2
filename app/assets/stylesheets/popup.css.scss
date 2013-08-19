@@ -150,13 +150,6 @@ a:visited
 }
 
 
-#crown{
-
-
- // width:700px;
-
-}
-
  h5{
   margin: 4px;
 }
@@ -203,14 +196,62 @@ a:visited
   margin-top: 30px;
   width: 530px;
   height: 344px;
+}
+
+#messages_container .container_cards_pop{
+  width: 535px;
+  height: 280px;
+  top: 31px;
+}
 
 
+#character_special_status{
+
+  //border: 1px solid;
+  height: 54px;
+  margin-left: 10px;
+  margin-top: 3px;
+}
+
+
+#murdered_icon{
+  background-image: url("action_icons/kill.png");
+}
+#stolen_icon{
+  background-image: url("action_icons/steal.png");
+}
+.special_status_icon{
+    background-size: cover;
+    width: 54px;
+    height: 54px;
+}
+
+.special_status_container{
+ // border: 1px solid;
+  //height: 54px;
+}
+.special_status_character{
+  height: inherit;
+  width: 170px;
+  float: right;
+  margin-left: 31px;
+  margin-top: 10px;
+  font-size: 30px;
+  font-family: serif;
 
 
 }
 
-.container_cards_pop{
 
+
+.special_status_element{
+
+  display: inline-table;
+
+}
+
+
+.container_cards_pop{
   width: 535px;
   height: 315px;
   top: 31px;
@@ -218,11 +259,8 @@ a:visited
 }
 
 #action_container{
-
-
   margin-left: 28px;
   margin-top: 50px;
-
 }
 
 

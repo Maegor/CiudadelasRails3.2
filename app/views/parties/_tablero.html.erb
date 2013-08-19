@@ -18,7 +18,7 @@
       <div id="player_elements_container" class="hueco_tablero">
         <%= render :partial => 'mano' %>
       </div>
-      <div id="messages_icon" title="Progreso del juego"></div>
+      <div id="messages_icon" title="<%= t 'board.game_progress' %>"></div>
     </div>
     <div id="seleccion_personaje" class="hueco_tablero">
       <%= render :partial => 'seleccion' %>
@@ -37,6 +37,36 @@
               <p><%= t message.message, :actor_player => message.actor_player, :target_player => message.target_player, :target_district => (t message.target_district), :quantity => message.quantity %></p>
           <% end %>
         </div>
+
+        <div id="character_special_status">
+          <div  class="special_status_element special_status_container">
+            <div id="murdered_icon" class="special_status_element special_status_icon" title="<%= t 'board.murdered_character' %>">
+
+            </div>
+            <div class="special_status_character special_status_element">
+              <% murdered = @game.cards.characters.find(:first, :conditions => ["murdered = 'TRUE'"])
+                 if murdered %>
+              <%= t 'characters.' + murdered.base_card.name + '.name'%>
+              <% end %>
+
+
+            </div>
+          </div>
+          <div class="special_status_element special_status_container">
+            <div id="stolen_icon" class="special_status_element special_status_icon" title="<%= t 'board.stolen_character' %>">
+
+            </div>
+            <div class="special_status_character special_status_element">
+              <% stolen = @game.cards.characters.find(:first, :conditions => ["stolen = 'TRUE'"])
+                 if stolen %>
+                  <%= t 'characters.' + stolen.base_card.name + '.name'%>
+              <% end %>
+
+
+            </div>
+          </div>
+        </div>
+
         <script type="text/javascript">
                    //TODO descomentar
             $('.container_cards_pop').jScrollPane({autoReinitialise: true});

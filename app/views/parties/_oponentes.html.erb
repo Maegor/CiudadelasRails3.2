@@ -2,6 +2,12 @@
    oppenents.each do |opponent|  %>
  <div class="opponent">
    <div <%= add_class(opponent) %>>
+
+     <% if opponent.crown == 'TRUE'%>
+               <div id="crown"></div>
+         <% end %>
+
+
      <div class="opponent_char">
        <%= character_img opponent %>
      </div>

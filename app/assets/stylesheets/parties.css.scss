@@ -709,6 +709,24 @@ body {
 
 }
 
+#crown{
+  width: 38px;
+  height: 16px;
+  background-image: url('corona.png');
+  position: absolute;
+  left: 54px;
+
+}
+
+#crown_player{
+
+  width: 43px;
+  height: 25px;
+  background-image: url('corona_girada.png');
+  background-size: cover;
+  margin-left: 138px;
+  margin-top: 76px;
+}
 #crown_icon.action_icon{
   background-image: url('action_icons/crown.png');
 
@@ -1105,8 +1123,8 @@ body {
 
 #messages_icon {
   float: left;
-  margin-left: 35px;
-  margin-top: 22px;
+  margin-left: 19px;
+  margin-top: 27px;
   width: 32px;
   height: 42px;
   background-image: url('scroll_icon.png');
