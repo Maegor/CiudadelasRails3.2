@@ -17,7 +17,7 @@
 
     <div id="acciones" class="hidden">
 
-      <% action_list = current_player.actions
+      <% action_list = current_player.actions.includes(:base_action)
          session[:refresh] = false %>
 
       <div class="popupContainer">
@@ -40,16 +40,18 @@
 
 <% elsif current_player.state == 'ACTION'
      session[:refresh] = false
-     action_list = current_player.actions %>
+     action_list = current_player.actions.includes(:base_action) %>
 
 
 
-    <% action_list.each do |action| %>
+    <%
+       action_list.each do |action| %>
         <div class="actiondiv">
           <%= #noinspection RubyResolve
               render :partial => action.base_action.partialname, :locals => {:action => action} %>
         </div>
 
-    <% end %>
+    <% end
+    %>
 
 <% end %>

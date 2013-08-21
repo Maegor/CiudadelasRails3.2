@@ -262,3 +262,6 @@ es:
   change_with_maze: "%{actor_player} cambia %{quantity} carta(s)."
   graveyard: "%{actor_player} utiliza Cementerio."
   bell_tower: "%{actor_player} utiliza Campanario, el juego termina con 7 distritos."
+  park: "%{actor_player} recibe dos cartas."
+  poorhouse: "%{actor_player} recibe una moneda."
+  throne_hall: "%{actor_player} recibe una moneda."

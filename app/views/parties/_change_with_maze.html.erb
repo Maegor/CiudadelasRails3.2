@@ -1,7 +1,7 @@
 <div class="action_info_tabs"><%=(t 'board.select_severals_cards') %></div>
 <%= form_tag form_action('change_cards','change_with_maze') do %>
       <div class="container_cards_pop">
-            <% current_user.player.districts_on_hand.each do |card|%>
+            <% current_user.player.districts_on_hand.includes(:base_card).each do |card|%>
                 <span class="image-checkbox-container">
                 <%= check_box_tag 'cards[]', card.id %>
 

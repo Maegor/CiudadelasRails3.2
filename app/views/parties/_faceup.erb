@@ -1,5 +1,5 @@
 
-  <% backscards = @game.cards.characters.where("state = 'BACKS'")
+  <% backscards = @game.cards.characters.where("state = 'BACKS'").includes(:base_card)
      backscards.each do |select_char|%>
       <%= render :partial =>  'parties/select_char', :object => select_char %>
     <% end %>

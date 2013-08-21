@@ -3,28 +3,26 @@
     <div class="action_info"><%=(t 'board.select_one_district') %></div>
     <a class="closePopup" title="close popup"></a>
 
-     <div class="popupContent">
-       <div>
-         <% player = current_user.player
+    <div class="popupContent">
+      <div>
+        <%  player = current_user.player
             districts = player.district_to_construct
-            if districts.size != 0 %>
-             <div class="container_cards_pop">
-               <% districts.each do |select_district_card| %>
-                   <%= #noinspection RubyResolve
-                       link_to (render :partial => 'select_district_card', :object => select_district_card), party_action_path(@game.id, [action.id, select_district_card.id]) %>
-               <% end %>
-             </div>
+            if districts.size != 0%>
+                <div class="container_cards_pop">
+                  <% districts.each do |select_district_card| %>
+                      <%= #noinspection RubyResolve
+                          fast_link(@game.id, action.id, select_district_card.id)%>
+                      <%=(render :partial => 'select_district_card', :object => select_district_card) %>
+                      </a>
+                  <% end %>
+                </div>
 
-         <% else %>
-
-
-             <div class="actionMessage">
-               <%= t 'board.cant_not_build' %>
-             </div>
-
-
-         <% end %>
-         </div>
+            <% else %>
+            <div class="actionMessage">
+              <%= t 'board.cant_not_build' %>
+            </div>
+        <% end%>
+      </div>
     </div>
   </div>
 

@@ -17,7 +17,7 @@ es:
 
  show:
   users: 'Usuarios'
-  waiting: 'Esperando jugadores'
+  waiting: 'Esperando jugador'
   leave: 'Abandonar'
   start: "Empezar"
   leave_game_ok: "Has dejado la sala"

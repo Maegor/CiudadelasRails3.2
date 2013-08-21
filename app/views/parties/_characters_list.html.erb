@@ -1,7 +1,7 @@
 <div id="card_selected_id">
-<% @game.cards.characters.find(:all, :conditions => ["state = 'ONGAME' and player_id IS null"]).each do |select_char| %>
-        <%= link_to (render :partial =>  'select_char', :object => select_char),  party_action_path(@game.id, [action.id, select_char.id])%>
-
-    <% end %>
-
+      <% @game.cards.characters.where("state = 'ONGAME' and player_id IS null").includes(:base_card).each do |select_char| %>
+          <a href="/parties/<%= @game.id %>/action/<%= action.id %>/<%= select_char.id %>">
+            <%= (render :partial =>  'select_char', :object => select_char)%>
+          </a>
+      <% end %>
     </div>

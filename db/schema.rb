@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130602163646) do
+ActiveRecord::Schema.define(:version => 20130821183903) do
 
   create_table "actions", :force => true do |t|
     t.integer  "round"
@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(:version => 20130602163646) do
     t.string   "stolen"
     t.text     "points_hash"
     t.boolean  "bell_affected"
+    t.integer  "board_position"
   end
 
   create_table "users", :force => true do |t|

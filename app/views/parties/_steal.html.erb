@@ -1,18 +1,15 @@
 <div id="steal" class="hidden">
   <div class="popupContainer">
-    <div class="action_info"><%=(t 'board.select_a_character') %></div>
+    <div class="action_info"><%= (t 'board.select_a_character') %></div>
     <a class="closePopup" title="close popup"></a>
 
     <div class="popupContent">
       <div id="steal_container">
         <div class="container_cards_pop">
           <% @game.players_to_steal.each do |select_char| %>
-
-              <%= #noinspection RubyResolve
-                  link_to (render :partial => 'select_char', :object => select_char),
-                          party_action_path(@game.id, [action.id, select_char.id]) %>
-
-
+              <%= fast_link(@game.id, action.id, select_char.id) %>
+              <%= (render :partial => 'select_char', :object => select_char) %>
+              </a>
           <% end %>
         </div>
       </div>

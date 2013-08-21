@@ -2,13 +2,13 @@
 <div id="icons_bar" >
 <%if current_user.player.state == 'ACTION'
 
-action_list = current_user.player.actions%>
+action_list = current_user.player.actions.includes(:base_action)%>
 
 
 
 <%action_list.each do |action|%>
     <div class="action_icon" id="<%=#noinspection RubyResolve
-                                    action.base_action.partialname  %>_icon" title="<%= t ('actions.' + action.base_action.description.to_s) %>">
+                                    action.base_action.partialname%>_icon" title="<%= t ('actions.' + action.base_action.description.to_s) %>">
     </div>
 
 <%end

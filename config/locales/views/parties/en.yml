@@ -129,10 +129,10 @@ en:
    description: "Every time the crown moves from a player to another, you receive 1 gold from the bank."
   dragon_gate:
    name: "Dragon gate"
-   description: "This is a sign of prestige - the kingdom has not seen a dragon in over 1000 years. It costs 6 gold to build, but it´s worth 8 points at the end of the game."
+   description: "It costs 6 gold to build, but it´s worth 8 points at the end of the game."
   university:
    name: "University"
-   description: "This is a sign of prestige - nobody ever understood what it´s for. It costs 6 gold to build, but it´s worth 8 points at the end of the game."
+   description: "It costs 6 gold to build, but it´s worth 8 points at the end of the game."
 
  actions:
   take_gold: "Take two gold from the bank."
@@ -209,7 +209,7 @@ en:
   characters_list: "Available"
   take_2_gold: "TAKE 2 GOLD"
   take_cards: "TAKE CARDS"
-  take_the_card: "Coger"
+  take_the_card: "Draw"
   draw_one_card: "Draw one card"
   draw_two_cards: "Draw two cards"
   choose_action: "Choose an action"
@@ -265,5 +265,7 @@ en:
   change_with_maze: "%{actor_player} changes %{quantity} card(s)."
   graveyard: "%{actor_player} uses Graveyard."
   bell_tower: "%{actor_player} uses Bell Tower, the game finishes with 7 districts."
-
+  park: "%{actor_player} receives two cards."
+  poorhouse: "%{actor_player} receives a coin."
+  throne_hall: "%{actor_player} receives a coin."
 

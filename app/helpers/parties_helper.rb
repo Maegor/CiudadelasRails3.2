@@ -4,11 +4,11 @@ module PartiesHelper
 
   def add_class(opponent)
 
-    game_state = opponent.party.state
+
 
     if %w(SELECTION_TURN ACTION TURN).include?(opponent.state)
       ('class="opponent_ui current_player"').html_safe
-    elsif  (opponent.state == 'WAITING_TURN' && game_state == 'GAME_PLAY_START') || (opponent.state == 'WAITING_SELECTION')
+    elsif  (opponent.state == 'WAITING_TURN' && @game.state == 'GAME_PLAY_START') || (opponent.state == 'WAITING_SELECTION')
       ('class="opponent_ui waiting_player"').html_safe
     else
       ('class="opponent_ui end_player"').html_safe
@@ -72,7 +72,7 @@ module PartiesHelper
         string << (t 'districts.' + district_card.name + '.description').capitalize
         if district_card.name == 'museum'
           #noinspection RubyResolve
-          quantity = district_card.party.cards.find(:all, :conditions=>["state = 'INMUSEUM'"]).size
+          quantity = @game.cards.where("state = 'INMUSEUM'").size
           string << "\n"
           string << (t 'board.district_under_museum', :quantity => quantity)
         end
@@ -146,6 +146,11 @@ module PartiesHelper
       out_string << (t string ,:actor_player => message.actor_player, :target_player => message.target_player)
     end
     out_string
+  end
+
+
+  def fast_link(game,action,target)
+    %(<a href="/parties/#{game}/action/#{action}/#{target}">).html_safe
   end
 
 end

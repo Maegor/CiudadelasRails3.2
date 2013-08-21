@@ -12,22 +12,26 @@
             </div>
             <div class="<%= visible_class('cards', index) %>">
               <% #noinspection RubyResolve
+
                  if player.player_character.base_card.name != 'bishop' %>
                   <div class="container_cards_pop">
 
 
-                    <% cards = current_user.player.get_destrutible_building(player)
+                    <%
+                       cards = current_user.player.get_destrutible_building(player)
                        cards.each do |district_card| %>
                         <%= #noinspection RubyResolve
                             link_to (render :partial => 'destroy_district_card', :locals => {:select_district_card => district_card[0], :cost => district_card[1]}),
                                     party_action_path(@game.id, [action.id, district_card[0].id]) %>
 
-                    <% end %>
+                    <% end
+                    %>
                   </div>
               <% else %>
                   <div class="actionMessage"><%= t 'board.destroy_bishop' %></div>
 
-              <% end %>
+              <% end
+                 %>
 
             </div>
           </div>

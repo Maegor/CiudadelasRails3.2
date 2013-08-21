@@ -1,34 +1,30 @@
-<% oppenents =    current_user.player.opponents
-   oppenents.each do |opponent|  %>
- <div class="opponent">
-   <div <%= add_class(opponent) %>>
-
-     <% if opponent.crown == 'TRUE'%>
-               <div id="crown"></div>
-         <% end %>
-
-
-     <div class="opponent_char">
-       <%= character_img opponent %>
-     </div>
-     <div class="data_opponent" id="points">
-       <div class="value no_prompt"><%= opponent.districts_on_hand.length%> </div>
-     </div>
-     <div class="data_opponent" id="cards">
-       <div class="value no_prompt"> <%= opponent.coins %></div>
-     </div>
-   </div>
-   <div class="opponent_cards">
-       <% cards = opponent.districts_on_game_for_view
-          cards.each do |district_card|%>
-            <%= render :partial => 'district_card', :object => district_card %>
-       <% end%>
-   </div>
-
-
-
- </div>
-<%end%>
+ <% #noinspection RubyResolve
+    @game.players.order('board_position ASC').includes(:user).each do |opponent|
+      if opponent.user.id != current_user.id%>
+            <div class="opponent">
+              <div <%= add_class(opponent) %>>
+                <% if opponent.crown == 'TRUE' %>
+                    <div id="crown"></div>
+                <% end %>
+                <div class="opponent_char">
+                  <%= character_img opponent %>
+                </div>
+                <div class="data_opponent" id="points">
+                  <div class="value no_prompt"><%= opponent.districts_on_hand.size %> </div>
+                </div>
+                <div class="data_opponent" id="cards">
+                  <div class="value no_prompt"> <%= opponent.coins %></div>
+                </div>
+              </div>
+              <div class="opponent_cards">
+                <% cards = opponent.districts_on_game_for_view
+                   cards.each do |district_card| %>
+                    <%= render :partial => 'district_card', :object => district_card %>
+                <% end %>
+              </div>
+            </div>
+    <%end
+ end%>
 
 
 

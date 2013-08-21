@@ -37,7 +37,8 @@
             <div class="game_name"><%=  room.name %></div>
             <div class="users_number"><%= room.users.count  %>   (<%= room.user  %>)</div>
             <% if room.users.count <  room.user %>
-                <div class="join"><%= link_to (t 'index.join'), join_waiting_room_path(room.id)%></div>
+                <div class="join"><button class="join_button" onclick="window.location.href='<%= join_waiting_room_path(room.id) %>'"><%= (t 'index.join') %></button>
+                  <%#= link_to (t 'index.join'), join_waiting_room_path(room.id)%></div>
             <% else %>
                 <div class="join"> <%= t 'index.full_room' %> </div>
             <% end %>

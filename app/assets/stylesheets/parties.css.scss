@@ -512,7 +512,7 @@ body {
 
 .card_select {
   height: 150px;
-  margin-top: 7px;
+  //margin-top: 7px;
 
   img {
     height: inherit;
@@ -553,7 +553,7 @@ body {
   text-decoration: none;
   width: 384px;
   margin-left: 133px;
-  margin-top: 20px;
+  margin-top: 16px;
   //float:left;
   color: #000000;
   height: 98px;
@@ -747,7 +747,7 @@ body {
 
 //TODO cambiar icono
 #bell_tower_icon.action_icon{
-  background-image: url('action_icons/protection.png');
+  background-image: url('action_icons/bell_tower.png');
 }
 
 #kill_icon.action_icon{
@@ -1039,7 +1039,7 @@ body {
 
 .char_name {
   //height: inherit;
-  margin-top: 7px;
+  margin-top: 9px;
   //padding-top: 105px;
   font-size: 20px;
   color: black;

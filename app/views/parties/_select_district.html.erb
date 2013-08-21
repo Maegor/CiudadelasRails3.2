@@ -1,6 +1,6 @@
 <%= form_tag form_action 'select_district' do %>
       <div class="container_cards_pop">
-    <% @game.cards.where("state = 'SELECTABLE'").each do |card|%>
+    <% @game.cards.where("state = 'SELECTABLE'").includes(:base_card).each do |card|%>
         <span class="image-checkbox-container">
         <%= check_box_tag 'cards[]', card.id %>
           <%#= label_tag 'cards[]', (t 'districts.' + card.base_card.name) %>
@@ -16,7 +16,7 @@
 
 <script type="text/javascript">
    // $('.container_cards_pop').jScrollPane({autoReinitialise: true});
-    $('.image-checkbox-container .card_select').css({'margin':'4px'});
+    $('.image-checkbox-container .card_select').css({'border':'solid 4px transparent'});
 
   max_selection =  <%= current_user.player.card_to_take  %>
 
@@ -26,14 +26,14 @@
               if(!check.attr("disabled")) {
                   if(!check.prop('checked') ){
                       check.prop('checked', true).attr('checked','checked');
-                      this.style.border = '4px solid  #38A';
-                      this.style.margin = '0px';
+                      this.style.border = 'solid 4px   #38A';
+                      //this.style.margin = '0px';
 
 
                   }else{
                       check.prop('checked', false).removeAttr('checked');
-                      this.style.border = '0';
-                      this.style.margin = '4px';
+                      this.style.border = 'solid 4px transparent';
+                      //this.style.margin = '4px';
 
                   }
 

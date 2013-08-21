@@ -38,7 +38,6 @@
 
 <div id="central_block" class="player_lane">
   <%= render :partial => 'action_icons' %>
-
   <% if current_player.state == 'ACTION' %>
       <div id="finturno">
         <div>
@@ -46,29 +45,14 @@
         </div>
       </div>
   <% end %>
-
 </div>
-
-
-
 <div id="cartas_mano" class="player_lane">
   <div class="card_container">
     <% current_player.districts_on_hand_for_view.each do |district_card| %>
         <%= render :partial => 'district_card', :object => district_card %>
     <% end %>
   </div>
-
 </div>
-
-
-
-
-
-
-
-
-
-
 <script type="text/javascript">
 
     var distrcts = $('#distritos_construidos');

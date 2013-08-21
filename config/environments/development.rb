@@ -1,3 +1,4 @@
+#noinspection RubyResolve
 CiudadelsRails32::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -36,7 +37,19 @@ CiudadelsRails32::Application.configure do
   config.assets.debug = true
 
   #remove field_with_errors
+  #noinspection RubyResolve
   config.action_view.field_error_proc = Proc.new { |html_tag, instance|
     "#{html_tag}".html_safe
   }
+
+  #config.log_level = :warn
+
+  config.after_initialize do
+    Bullet.enable = false
+    Bullet.alert = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    Bullet.rails_logger = true
+
+  end
 end

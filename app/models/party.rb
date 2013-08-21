@@ -50,7 +50,7 @@ class Party < ActiveRecord::Base
 
     player_list = players.shuffle
     player_list.each_with_index do |player, index|
-    player.update_attributes(:turn => index,:position => index, :state => 'WAITING_SELECTION', :stolen => 'FALSE', :murdered => 'FALSE', :bell_affected => false )
+    player.update_attributes(:turn => index,:position => index, :state => 'WAITING_SELECTION', :stolen => 'FALSE', :murdered => 'FALSE', :bell_affected => false, :board_position => index )
 
     end
 
@@ -63,37 +63,15 @@ class Party < ActiveRecord::Base
 
   def initialize_players
 
-    king_id = cards.characters.where("name = 'king'").first.player_id
-    previous_king = players.where(:crown => 'TRUE').first
-    player_list = players.order("position ASC")
+
+
+    king = players.find_by_crown('TRUE')
+    update_king(king)
     position_array = Array.new(self.numplayer){|i| i}
-
-     #Si el rey ha cambiado de mano rotamos la posiciones para que el rey
-     #nuevo este en primera posicion
-     #throne_room: cuando el rey cambia de manos el jugador que posee esta carta
-     #recibe 1 oro
-    if king_id and  king_id != previous_king.id
-
-      throne_hall = cards.districts.find(:first, :conditions => ["name = 'throne_hall'"])
-
-      player_id = throne_hall.player_id
-
-      unless player_id.nil?
-        player = Player.find(player_id)
-        player.update_attribute(:coins, player.coins + 1)
-      end
+    position_array = position_array.rotate(-1 * king.position)
 
 
-     king = Player.find(king_id)
-
-     position_array = position_array.rotate(-1 * king.position)
-
-     king.update_attribute(:crown, 'TRUE')
-     previous_king.update_attribute(:crown, 'FALSE')
-
-    end
-
-    player_list.each_with_index do |player, index|
+    players.order("position ASC").each_with_index do |player, index|
       player.update_attributes(:position => position_array[index], :turn => position_array[index], :state => 'WAITING_SELECTION', :stolen => 'FALSE', :murdered => 'FALSE')
     end
  end
@@ -208,9 +186,9 @@ class Party < ActiveRecord::Base
         end
 
         next_player = players.order('turn ASC').first
-
         next_player.update_attribute(:state, 'TURN')
         next_player.player_actions
+        update_king(next_player)
 
         self.state = 'GAME_PLAY_START'
 
@@ -304,25 +282,53 @@ class Party < ActiveRecord::Base
 
           player_index = player_list.index { |player| player.state == 'WAITING_TURN' }
 
-          #Comprobamos si el jugador tiene en juego la carta hospital
+
+          #cogemos el primer jugador esperando turno
           player = player_list[player_index]
 
+          #Comprobamos si el jugador tiene en juego la carta hospital
           hospital = player.districts_on_game.find(:first, :conditions => ["name = 'hospital'"])
 
           if player.murdered == 'TRUE' && hospital.nil?
             player.update_attribute(:state, 'WAITINGENDROUND')
+            update_king(player)
             next_character
           else
             player.update_attribute(:state, 'TURN')
             player.player_actions
             player.special_status
-
+            update_king(player)
           end
         end
       end
     else
 
       tick
+
+    end
+  end
+
+  def  update_king(player)
+    if player.player_character.base_card.name == "king"
+      king_id = cards.characters.where("name = 'king'").first.player_id
+      previous_king = players.where(:crown => 'TRUE').first
+      player_list = players.order("position ASC")
+
+      if king_id and  king_id != previous_king.id
+
+        throne_hall = cards.districts.find(:first, :conditions => ["name = 'throne_hall'"])
+        player_id = throne_hall.player_id
+
+        unless player_id.nil?
+          player = Player.find(player_id)
+          player.update_attribute(:coins, player.coins + 1)
+          game_messages.create(:message => 'message.throne_hall',:actor_player => player.user.name.capitalize)
+        end
+
+        king = Player.find(king_id)
+        king.update_attribute(:crown, 'TRUE')
+        previous_king.update_attribute(:crown, 'FALSE')
+      end
 
     end
   end
@@ -525,7 +531,7 @@ end
   end
 
   def players_to_kill
-    cards.characters.find(:all,:conditions => ["name <> 'assassin' AND state <> 'BACKS'"])
+    cards.characters.where("name <> 'assassin' AND state <> 'BACKS'").includes(:base_card)
   end
   def players_to_steal
     cards.characters.find(:all, :conditions => ["name <> 'assassin' AND name <> 'thief' AND murdered <> 'TRUE'  AND state <> 'BACKS'"])

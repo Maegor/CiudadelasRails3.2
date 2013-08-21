@@ -7,7 +7,7 @@ class Player < ActiveRecord::Base
   has_many :actions
 
 
-  attr_accessible :coins,:position, :turn, :age, :name, :party_id, :user_id, :crown, :stolen, :murdered, :state, :points, :current, :points_hash, :bell_affected
+  attr_accessible :coins,:position, :turn, :age, :name, :party_id, :user_id, :crown, :stolen, :murdered, :state, :points, :current, :points_hash, :bell_affected, :board_position
   attr_reader :numdistricts
   serialize :points_hash, Hash
 
@@ -66,7 +66,7 @@ class Player < ActiveRecord::Base
 
   def get_destrutible_building(target_player)
 
-    list_cards = target_player.districts_on_game.find(:all, :conditions =>["name <> 'keep'"])
+    list_cards = target_player.districts_on_game.where("name <> 'keep'").includes(:base_card)
     great_wall = target_player.districts_on_game.exists?(["name = 'great_wall'"]) ? 1 : 0
     cost_list = Array.new(list_cards.length)
     cards_to_destroy = Array.new(list_cards.length)
@@ -236,6 +236,7 @@ end
 
     if purple_districts.exists?(["name = 'poorhouse'"]) && coins == 0
       update_attribute(:coins, coins + 1)
+      party.game_messages.create(:message => 'message.poorhouse',:actor_player => user.name.capitalize)
     end
 
     if purple_districts.exists?(["name = 'park'"]) && districts_on_hand.count == 0
@@ -244,6 +245,8 @@ end
       cards.each do |card|
         Card.update(card.id, :state => 'ONHAND', :player_id => id)
       end
+
+      party.game_messages.create(:message => 'message.park',:actor_player => user.name.capitalize)
     end
   end
 
