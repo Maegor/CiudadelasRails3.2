@@ -2,7 +2,7 @@
 class Party < ActiveRecord::Base
 
 
-  PLAYERS_ENABLE = [2,3,4,5,6,7,8]
+  PLAYERS_ENABLE = [3,4,5,6,7]
 
 
 
@@ -231,7 +231,6 @@ class Party < ActiveRecord::Base
   def next_player
 
     player_list = players.order('turn ASC').to_a
-
     waiting_players = player_list.count { |player| player.state == 'WAITING_SELECTION' }
 
     #si todos estan esperando cogemos al rey para que elija
@@ -252,19 +251,20 @@ class Party < ActiveRecord::Base
         #auto_char_selection(select_player)
       end
 
-
-
       if selecting_player.nil?
 
         player_index = player_list.index { |player| player.state == 'WAITING_SELECTION' }
         player = player_list[player_index]
         player.actions.create(:base_action_id => BaseAction.find_by_partialname("select_character").id)
         player.update_attribute(:state,'SELECTION_TURN')
+
+        #En partidas de 7 jugadores la carta bocabajo puede ser elegida por el ultimo en elegir
+        if player_index == 6
+          reject_card = cards.find(:first, :conditions => ["state = 'REJECTED'"])
+          reject_card.update_attribute(:state, 'ONGAME')
+        end
       end
-
     end
-
-
   end
 
   #selecciona el próximo personaje en jugar su turno
@@ -406,8 +406,7 @@ class Party < ActiveRecord::Base
 
     Card.update(first_card.id, :state => 'REJECTED')
 
-      cards_to_change_status = cards_list.drop(1)
-
+    cards_to_change_status = cards_list.drop(1)
     cards_to_backs = cards_to_change_status.take(backs)
     cards_to_backs.each do |card|
       Card.update(card.id, :state => 'BACKS')

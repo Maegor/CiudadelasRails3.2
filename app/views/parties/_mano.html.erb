@@ -39,9 +39,9 @@
 <div id="central_block" class="player_lane">
   <%= render :partial => 'action_icons' %>
   <% if current_player.state == 'ACTION' %>
-      <div id="finturno">
+      <div id="finturno" onclick="window.location= '/parties/end_turn'">
         <div>
-          <%= link_to (t 'board.finish'), end_turn_path %>
+          <%=(t 'board.finish')%>
         </div>
       </div>
   <% end %>

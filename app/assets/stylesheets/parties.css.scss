@@ -993,20 +993,17 @@ body {
   font-weight: bold;
   text-decoration: none;
   color: #000000;
+  cursor: pointer;
 
-  a {
-    text-decoration: none;
-    color: #000000;
-  }
-
-   div {
+  div {
     height: inherit;
     padding-top: 5px;
 
   }
-   div:hover {
+  div:hover {
     margin-top: 2px;
-     padding-top: 8px;
+    padding-top: 8px;
+
   }
 }
 

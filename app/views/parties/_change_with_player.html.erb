@@ -57,6 +57,7 @@
 <script type="text/javascript">
 
    // $('.container_cards_pop').jScrollPane({autoReinitialise: true});
+   $('#change_cards .image-radio-container').css({'border':'solid 4px transparent'});
 
     var auxi;
     $('.image-radio-container').on('click', function(){
@@ -72,8 +73,7 @@
                 $(this).parent('.image-radio-container').each(function(){
                     console.log(this);
                     $(this).css({
-                            border: '0px',
-                            margin: '4px'
+                        border: 'solid 4px transparent'
                     })
                 });
             });
@@ -81,8 +81,8 @@
             $(this).children('input[type="radio"]').prop('checked', true).attr('checked','checked');
             //this.style.border = '4px solid #38A';
             $(this).css({
-                border: '4px solid #38A',
-                margin: '0px'
+
+                border: 'solid 4px   #38A'
             });
         }
     });
