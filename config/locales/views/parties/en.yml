@@ -268,4 +268,6 @@ en:
   park: "%{actor_player} receives two cards."
   poorhouse: "%{actor_player} receives a coin."
   throne_hall: "%{actor_player} receives a coin."
-
+  select_character: "%{actor_player} select character"
+ resumen:
+  exit: "Exit"

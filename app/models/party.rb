@@ -245,7 +245,7 @@ class Party < ActiveRecord::Base
 
       selecting_player = player_list.index { |player| player.state == 'SELECTION_TURN' }
 
-      #TODO punto de entrada a la elección automática de personaje
+
       if selecting_player != nil
         select_player = players.find(:first, :conditions => ["state = 'SELECTION_TURN'"])
         #auto_char_selection(select_player)

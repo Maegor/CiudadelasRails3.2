@@ -427,6 +427,7 @@ end
 
     update_attribute(:state, 'WAITING_TURN')
 
+    party.game_messages.create(:message => 'message.select_character', :actor_player => user.name.capitalize)
 
   end
 

@@ -6,53 +6,6 @@
 <% end %>
 
 <%= render 'shared/langs' %>
-<!--<script type="text/javascript">
-    $(document).ready(function() {
-        $('#polyglotLanguageSwitcher').polyglotLanguageSwitcher({
-            effect: 'fade',
-
-            testMode: false,
-            onChange: function(evt){
-               // alert("The selected language is: "+evt.selectedItem);
-               // $(this).load('/users/1');
-                $.ajax({
-                    type: "POST",
-                    url: "<%#= user_path(current_user.id) %>",
-                    data: { _method: "PUT", lang: evt.selectedItem},
-                    //success: success,
-                    dataType: "html"
-                });
-
-            }
-//                ,afterLoad: function(evt){
-//                    alert("The selected language has been loaded");
-//                },
-//                beforeOpen: function(evt){
-//                    alert("before open");
-//                },
-//                afterOpen: function(evt){
-//                    alert("after open");
-//                },
-//                beforeClose: function(evt){
-//                    alert("before close");
-//                },
-//                afterClose: function(evt){
-//                    alert("after close");
-//                }
-        });
-    });
-</script>-->
-
-
-
-
-<!--
-<div id="polyglotLanguageSwitcher">
-<%#= form_tag ("#") do %>
-<%#= select_tag(:polyglot, options_for_select([['English', "en", {:id => "en"}], ['Español', "es", {:id => "es"}]], current_user.lang), :id => "polyglot-language-options") %>
-<%#end%>
-</div>
--->
 
 
 <div id="signup_container">
@@ -63,7 +16,7 @@
     <div id="signup_form">
 
       <%= form_for @user, :html =>{:class=> %w(form-4 register)} do |f| %>
-          <h1><%= t 'new.title' %></h1>
+          <h1><%= t 'update.profile' %></h1>
 
           <%= f.label :name %>
           <%= f.text_field :name, :size => 40, :placeholder =>(t 'new.name'),:autocomplete => :off %>

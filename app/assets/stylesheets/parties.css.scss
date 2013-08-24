@@ -165,7 +165,7 @@ body {
 .player_lane {
 
   float: left;
-  margin-left: 10px;
+  margin-left: 6px;
 
 
 }
@@ -225,6 +225,16 @@ body {
   //height: 120px;
   display: inline-block;
   //border: 1px solid;
+}
+
+.temporal_card{
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  width: 80px;
+  height: 126px;
+  border: 1px inset Background;
+  display: inline-block;
 }
 
 .character_card {
@@ -512,6 +522,7 @@ body {
 
 .card_select {
   height: 150px;
+  cursor: pointer;
   //margin-top: 7px;
 
   img {
@@ -659,10 +670,9 @@ body {
   height: 45px;
   width: 160px;
   margin-left: 450px;
-  a {
-    color: #000000;
-    text-decoration: none;
-    font-size: 23px;
+  cursor: pointer;
+  font-size: 23px;
+  div{
     margin-left: 58px;
   }
 }
@@ -745,7 +755,6 @@ body {
   background-image: url('action_icons/graveyard.png');
 }
 
-//TODO cambiar icono
 #bell_tower_icon.action_icon{
   background-image: url('action_icons/bell_tower.png');
 }
@@ -851,10 +860,10 @@ body {
   bottom: 56px;
   left: 25px;
   text-align: center;
-
+   color: white;
   font-size: 20px;
-  font-weight: bold;
-  text-shadow: 1px 1px 0 #CCC, 2px 2px 0 #CCC;
+  //font-weight: bold;
+  //text-shadow: 1px 1px 0 #CCC, 2px 2px 0 #CCC;
   cursor: default;
 
 }
@@ -863,7 +872,7 @@ body {
 
   //border: 1px solid;
 
-  width: 800px;
+  width: 866px;
   //padding-top: 20px;
   height: 126px;
   margin-left: 88px;
@@ -908,7 +917,7 @@ body {
 
   width: $card_width;
   height: $card_height;
-  margin-right: -1px;
+  //margin-right: -1px;
   //display: inline-block;
 }
 
@@ -923,20 +932,25 @@ body {
 
 #distritos_construidos {
 
-  width: (($card_width + 3) * 4);
-
+  width: (($card_width + 4) * 4);
+  background-image: url("fondoconstruidos.png");
+  background-position: center bottom;
+ // border: 1px inset;
 }
 
 #cartas_mano {
 
-  width: (($card_width + 5) * 4);
-
+  width: (($card_width + 4) * 4);
+  background-image: url("fondoconstruidos.png");
+  background-position: center bottom;
+  //border: 1px inset;
 }
 
 .card_container {
 
   height: $card_height;
   margin-bottom: 20px;
+
   //display: inline-block;
 
 }
@@ -976,6 +990,7 @@ body {
 #icons_bar {
   height: 130px;
   width: 233px;
+  background-image: url("fondoacciones.png");
 }
 
 #central_block{
@@ -1128,7 +1143,7 @@ body {
 
 #messages_icon {
   float: left;
-  margin-left: 19px;
+  margin-left: 30px;
   margin-top: 27px;
   width: 32px;
   height: 42px;

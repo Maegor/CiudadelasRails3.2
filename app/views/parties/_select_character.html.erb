@@ -1,8 +1,8 @@
 <div id="lista_personajes" class="hidden">
   <div class="popupContainer">
+    <div class="action_info"><%= (t 'board.select_a_character') %></div>
     <div class="popupContent">
-      <% %w(characters_list  faceup).each_with_index do |option, index|%>
-
+      <% %w(characters_list  faceup).each_with_index do |option, index| %>
           <div class="tab_data">
             <div class="<%= selected_class('tab', index) %> no_prompt"><%= t ('board.' + option) %></div>
             <div class="<%= visible_class('cards', index) %> container_cards_pop">

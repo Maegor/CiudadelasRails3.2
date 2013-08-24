@@ -26,7 +26,7 @@ es:
    name: "Arquitecto"
    description: "Recibe dos cartas adicionales. Puedes construir hasta tres Distritos este turno."
   warlord:
-   name: "Guerrero"
+   name: "Condotiero"
    description: "Puede destruir un Distrito de su elección pagando a la banca su coste de construcción menos uno. Cada Distrito red que poseas te reporta una moneda de oro."
 
  districts:
@@ -223,7 +223,7 @@ es:
   change: "Intercambiar"
   no_available_card: "No cartas hay disponibles."
   finish: "Terminar"
-  warlod_cannot_take: "El guerrero no puede usar esta habilidad."
+  warlod_cannot_take: "El Condotiero no puede usar esta habilidad."
   cut_down_game: "¿Deseas acortar el juego?"
   district_under_museum: "Hay %{quantity} distrito(s) bajo el museo."
   select_one_district: "Elige un distrito"
@@ -265,3 +265,7 @@ es:
   park: "%{actor_player} recibe dos cartas."
   poorhouse: "%{actor_player} recibe una moneda."
   throne_hall: "%{actor_player} recibe una moneda."
+  select_character: "%{actor_player} elige personaje"
+
+ resumen:
+  exit: "Exit"

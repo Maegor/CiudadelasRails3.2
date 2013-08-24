@@ -21,11 +21,32 @@
                    cards.each do |district_card| %>
                     <%= render :partial => 'district_card', :object => district_card %>
                 <% end %>
+
+
+
+                <% (10 - cards.size).times do %>
+                        <div class="temporal_card"></div>
+                <% end %>
               </div>
             </div>
     <%end
  end%>
 
+<script type="text/javascript">
+    $('.player_name').each(function(){
+           var textSize = $(this).textWidth();
+        console.log(textSize)
+        if ((textSize > 80) && (textSize <= 90)){
+            $(this).css('font-size', 14);
+        }else if (textSize > 90 && textSize <= 113){
+            $(this).css('font-size', 12);
+        }else if (textSize > 113 ){
+            $(this).css('font-size', 10);
 
+        }
+    })
+
+
+</script>
 
 

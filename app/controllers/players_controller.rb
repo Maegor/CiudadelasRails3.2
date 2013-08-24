@@ -1,29 +1,5 @@
 class PlayersController < ApplicationController
 
-#TODO borrar
-=begin
-  def take_extra_gold
-
-    player = Player.find(params[:player_id])
-    player.add_coins(1)
-
-
-
-    round = player.party.current_round
-    action = player.actions.where(:name => "OROEXTRA", :round => round).first
-    action.quantity -= 1
-    action.save
-
-
-    player.update_actions(["OROEXTRA"])
-
-    redirect_to party_path(player.party.id)
-
-
-  end
-=end
-
-
   def take_extra_cards
     player = Player.find(params[:player_id])
     party = player.party

@@ -8,3 +8,5 @@ en:
   create_user: 'Create user'
   fields_with_erros: 'Some fields contain errors:'
   update_user: 'Send'
+ update:
+  profile: "Profile"

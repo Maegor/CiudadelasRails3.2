@@ -16,7 +16,7 @@ validates :name,
           :presence => true,
           :uniqueness => { :case_sensitive => false }
 validates :name,
-          :length => {:in => 3..12}, :unless => Proc.new{|a| a.name.blank?}
+          :length => {:in => 3..10}, :unless => Proc.new{|a| a.name.blank?}
 validates :password,
           :presence => true,
           :on => :create

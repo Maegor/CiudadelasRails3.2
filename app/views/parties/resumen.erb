@@ -37,9 +37,9 @@
       </div>
   <%end%>
 
-  <div id="leaveParty">
-      <%=#noinspection RubyResolve
-         link_to 'Salir', party_leave_game_path(@game.id) %>
+  <div id="leaveParty" onclick="window.location= '/parties/<%= @game.id %>/leave_game'">
+
+       <div><%= (t 'resumen.exit') %></div>
   </div>
 
 

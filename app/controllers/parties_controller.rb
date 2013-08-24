@@ -9,7 +9,6 @@ class PartiesController < ApplicationController
   @game = Party.find(params[:id])
   @game.tick
 
-  #TODO poner aqui toda la causitica de update
   if session[:refresh].nil?
      session[:refresh] = true
   end
