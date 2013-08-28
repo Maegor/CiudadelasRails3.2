@@ -61,7 +61,7 @@ es:
    description: "te reporta tantos puntos como monedas de oro tengas en tu posesión al final de la partida."
   haunted_city:
    name: "Patio de los milagros"
-   description: "el patio de los milagros se considera un Distrito de un color a tu elección. No podrás usar esta capacidad lo construiste en tu último turno de la partida."
+   description: "el patio de los milagros se considera un Distrito de un color a tu elección. No podrás usar esta si capacidad lo construiste en tu último turno de la partida."
   keep:
    name: "Torreón"
    description: "el Torreón no puede ser destruido por el Condotiero."
@@ -100,10 +100,10 @@ es:
    description: "una vez por turno, puedes descartar una carta de Distrito de tu mano y recibir una moneda de oro a cambio."
   factory:
    name: "Fábrica"
-   description: "el coste de construcción para otros Distritos Purpuras en tu ciudad es reducido en uno. Esto no afecta al precio del Condotiero para destruirlo."
+   description: "el coste de construcción para otros distritos púrpuras en tu ciudad es reducido en uno. Esto no afecta al precio del Condotiero para destruirlo."
   graveyard:
    name: "Cementerio"
-   description: "cuando el Condotiero destruye un Distrito, puedes pagar una moneda de oro para cogerlo y ponerlo en tu mano. No puedes hacer esto si eres el Condotiero."
+   description: "cuando el Condotiero destruye un Distrito, puedes pagar una moneda de oro para cogerlo y ponerlo en tu mano, no puedes hacer esto si eres el Condotiero."
   library:
    name: "Biblioteca"
    description: "si escoges recibir dos cartas al principio de tu turno, te quedas con las dos cartas que cojas."
@@ -152,12 +152,12 @@ es:
   protection: "Tus distritos no pueden ser destruidos por el Guerrero"
   take_extra_cards: "Robar dos cartas de distritos extra"
   build_severals: "Puedes construir hasta 3 distritos en tu turno"
-  card_to_coin: "Descartar un distrito ha cambio de una moneda de oro"
-  coins_to_cards: "Pagar 3 monedas para conseguir 3 distritos"
-  search_card: "Search a card in the deck and put it on your hands"
+  card_to_coin: "Descarta un distrito a cambio de una moneda de oro"
+  coins_to_cards: "Paga 3 monedas para conseguir 3 distritos"
+  search_card: "Busca una carta en el mazo y ponla en tu mano"
   self_destruction: "Destruye el Polvorín para destruir otro edificio"
   store_card: "Poner una carta debajo del museo"
-  graveyard: "Coger carta del Cementerio"
+  graveyard: "Coger una carta del Cementerio"
   bell_tower: "Acortar la partida"
 
  points_recount:
@@ -218,7 +218,7 @@ es:
   will_get: "Recaudarás"
   collect: "Recaudar"
   destroy_bishop: "No se puede destruir edificios del Obispo"
-  no_money: "No tienes suficientes monedas"
+  no_money: "No tienes suficientes monedas."
   accept: "Aceptar"
   change: "Intercambiar"
   no_available_card: "No cartas hay disponibles."
@@ -237,7 +237,7 @@ es:
   disagree: "No"
   murdered_character: "Personaje asesinado"
   stolen_character: "Personaje robado"
-  game_progress: "Progreso del juego"
+  game_progress: "Información del juego"
   win_messages: "¡%{winner} ha ganado!"
   #colours
   green: "verde"
@@ -245,6 +245,8 @@ es:
   red: "rojo"
   blue: "azul"
   purple: "púrpura"
+  round: "Ronda"
+  playing: "jugando"
 
  message:
   build: "%{actor_player}  construye %{target_district}."
@@ -266,6 +268,7 @@ es:
   poorhouse: "%{actor_player} recibe una moneda."
   throne_hall: "%{actor_player} recibe una moneda."
   select_character: "%{actor_player} elige personaje"
+  new_round: "Comienza la ronda %{quantity}"
 
  resumen:
-  exit: "Exit"
+  exit: "Salir"

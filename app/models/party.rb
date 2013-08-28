@@ -431,6 +431,8 @@ class Party < ActiveRecord::Base
     end
 
     update_attributes(:state => 'SELECTION_CHAR_STARTED', :current_round => current_round + 1 )
+    game_messages.create!(:message => 'message.new_round', :quantity => current_round)
+
   end
 
 

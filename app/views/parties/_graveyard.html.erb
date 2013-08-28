@@ -1,33 +1,33 @@
 <div id="graveyard" class="hidden">
   <div class="popupContainer">
-    <div class="action_info"><%=(t 'board.select_one_district') %></div>
+    <div class="action_info"><%= (t 'board.select_one_district') %></div>
     <a class="closePopup"></a>
 
     <div class="popupContent">
       <div>
         <% #noinspection RubyResolve
-           if current_user.player.player_character.base_card.name != 'warlord'
-
            player = current_user.player
-           district = player.cards_from_graveyard
-           if district != nil %>
-            <div class="container_cards_pop">
-              <%= #noinspection RubyResolve
-                  link_to (render :partial => 'select_district_card', :object => district), party_action_path(@game.id, [action.id, district.id]) %>
-            </div>
-
-        <% else %>
-            <div class="actionMessage">
-              <%= t 'board.no_available_card' %>
-            </div>
-        <% end
-        else%>
-
+           if player.player_character.base_card.name != 'warlord'
+             if player.coins > 0
+               district = player.cards_from_graveyard
+               if district != nil %>
+                    <div class="container_cards_pop">
+                      <%= #noinspection RubyResolve
+                          link_to (render :partial => 'select_district_card', :object => district), party_action_path(@game.id, [action.id, district.id]) %>
+                    </div>
+               <%else%>
+                    <div class="actionMessage">
+                      <%= t 'board.no_available_card' %>
+                    </div>
+               <%end
+             else %>
+                <div class="actionMessage"><%= t 'board.no_money' %></div>
+            <%end
+           else %>
             <div class="actionMessage">
               <%= t 'board.warlod_cannot_take' %>
             </div>
-
-        <%end%>
+        <% end %>
       </div>
     </div>
   </div>

@@ -28,11 +28,12 @@
   <!-- log -->
   <div id="messages_container" class="hidden">
     <div class="popupContainer">
-
+      <div class="action_info"><%= game_info @game %></div>
       <a id="closeme" class="closePopup"></a>
 
       <div class="popupContent">
         <div class="container_cards_pop">
+
           <% @game.game_messages.order('id DESC').each do |message| %>
               <p><%= t message.message, :actor_player => message.actor_player, :target_player => message.target_player, :target_district => (t message.target_district), :quantity => message.quantity %></p>
           <% end %>

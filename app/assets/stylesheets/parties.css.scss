@@ -725,7 +725,7 @@ body {
   height: 16px;
   background-image: url('corona.png');
   position: absolute;
-  left: 54px;
+  left: 24px;
 
 }
 
@@ -736,7 +736,7 @@ body {
   background-image: url('corona_girada.png');
   background-size: cover;
   margin-left: 138px;
-  margin-top: 76px;
+  margin-top: 23px;
 }
 #crown_icon.action_icon{
   background-image: url('action_icons/crown.png');
@@ -887,9 +887,11 @@ body {
 }
 
 #player_container {
-  width: 1000px;
-
+  width: 989px;
+  margin-left: 10px;
 }
+
+
 
 /* Player style*/
 
@@ -935,7 +937,8 @@ body {
   width: (($card_width + 4) * 4);
   background-image: url("fondoconstruidos.png");
   background-position: center bottom;
- // border: 1px inset;
+  border-top: 1px solid none;
+  border-radius: 4px;
 }
 
 #cartas_mano {
@@ -943,8 +946,9 @@ body {
   width: (($card_width + 4) * 4);
   background-image: url("fondoconstruidos.png");
   background-position: center bottom;
-  //border: 1px inset;
-}
+  border-top: 1px solid none;
+  border-radius: 6px;
+ }
 
 .card_container {
 
@@ -1009,6 +1013,7 @@ body {
   text-decoration: none;
   color: #000000;
   cursor: pointer;
+  margin-left: 5px;
 
   div {
     height: inherit;
@@ -1076,8 +1081,9 @@ body {
   margin-top: 20px;
   float: left;
   height: 440px;
-  padding-left: 30px;
-  width: 1000px;
+  padding-left: 35px;
+  margin-left: 20px;
+  width: 935px;
 }
 
 .opponent_name {
@@ -1148,6 +1154,7 @@ body {
   width: 32px;
   height: 42px;
   background-image: url('scroll_icon.png');
+  cursor: pointer;
 }
 
 .no_prompt {
@@ -1183,5 +1190,20 @@ body {
   background-color: #28222D;
   color: white;
   text-align: center;
-
 }
+
+.status_icon{
+  width: 30px;
+  height: 32px;
+  margin-left: 152px;
+  margin-top: 21px;
+}
+
+#murdered {
+  background-image: url('iconoasesinado.png');
+}
+
+#stolen {
+  background-image: url('iconorobado.png');
+}
+

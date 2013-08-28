@@ -239,7 +239,7 @@ en:
   disagree: "No"
   murdered_character: "Murdered character"
   stolen_character: "Stolen character"
-  game_progress: "Game progress"
+  game_progress: "Info of game"
   win_messages: "%{winner} wins!"
   #colours
   green: "green"
@@ -247,6 +247,8 @@ en:
   red: "red"
   blue: "blue"
   purple: "purple"
+  round: "Round"
+  playing: "playing"
 
   #mensajes
  message:
@@ -269,5 +271,6 @@ en:
   poorhouse: "%{actor_player} receives a coin."
   throne_hall: "%{actor_player} receives a coin."
   select_character: "%{actor_player} select character"
+  new_round: "Begin round %{quantity} "
  resumen:
   exit: "Exit"

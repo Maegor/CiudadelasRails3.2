@@ -16,6 +16,10 @@
 	position: absolute;
 }
 
+
+#lista_jugadores .jspPane{
+  margin: 0px;
+}
 .jspVerticalBar
 {
 	position: absolute;
@@ -28,8 +32,8 @@
 }
 
 #lista_jugadores .jspVerticalBar{
-  margin-right: 35px;
-
+  //position: inherit;
+  //margin-left: 13px;
 }
 
 

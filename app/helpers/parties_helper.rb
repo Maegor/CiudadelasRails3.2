@@ -4,8 +4,6 @@ module PartiesHelper
 
   def add_class(opponent)
 
-
-
     if %w(SELECTION_TURN ACTION TURN).include?(opponent.state)
       ('class="opponent_ui current_player"').html_safe
     elsif  (opponent.state == 'WAITING_TURN' && @game.state == 'GAME_PLAY_START') || (opponent.state == 'WAITING_SELECTION')
@@ -54,15 +52,6 @@ module PartiesHelper
       string << (t 'districts.' + district_card.base_card.name.downcase)
     end
   end
-
-
-
-
-
-
-
-
-
   def district_tooltip(district_card)
     string = String.new
     #noinspection RubyResolve
@@ -151,6 +140,26 @@ module PartiesHelper
 
   def fast_link(game,action,target)
     %(<a href="/parties/#{game}/action/#{action}/#{target}">).html_safe
+  end
+
+
+  def status_icon(player)
+
+    if player.murdered == 'TRUE'
+      'murdered'
+    elsif player.stolen == 'TRUE'
+     'stolen'
+    else
+      'no_status'
+    end
+  end
+
+
+  def game_info(game)
+    player_playing =  game.players.where("state IN ('ACTION', 'TURN', 'SELECTION_TURN')").first
+
+  "%s %s, %s %s" % [(t 'board.round'), game.current_round, (t 'board.playing'), player_playing.name]
+
   end
 
 end

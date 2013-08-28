@@ -7,6 +7,9 @@
   <div class="data_user" id="points">
     <div class="value no_prompt"><%= current_user.player.districts_on_hand.length%></div>
   </div>
+
+  <div id="<%= status_icon current_player %>" class="status_icon"></div>
+
   <%if current_player.crown == 'TRUE'%>
       <div id="crown_player"></div>
   <% end %>

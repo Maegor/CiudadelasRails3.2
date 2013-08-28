@@ -13,25 +13,24 @@
           <div class="data_user" id="points">
             <div class="value no_prompt"><%= current_user.player.districts_on_hand.length %></div>
           </div>
+
+
+
+          <div id="<%= status_icon current_player %>" class="status_icon"></div>
+
           <%if current_player.crown == 'TRUE'%>
             <div id="crown_player"></div>
           <% end %>
-
         </div>
     <% end %>
 
   </div>
 </div>
 
-
-
-
 <div id="distritos_construidos" class="player_lane">
   <div class="card_container">
   <% current_player.districts_on_game_for_view.each do |district_card|%>
-
       <%= render :partial => 'district_card', :object => district_card %>
-
   <% end %>
   </div>
 </div>
@@ -58,22 +57,22 @@
     var distrcts = $('#distritos_construidos');
     var multiplier = 78;
 
-   var num_cards = distrcts.find('.card').size();
-   // card_width = $('#distritos_construidos .card').css('width');
-   // multiplier = parseInt(card_width.substring(0, card_width.length));
+    var num_cards = distrcts.find('.card').size();
+    // card_width = $('#distritos_construidos .card').css('width');
+    // multiplier = parseInt(card_width.substring(0, card_width.length));
 
 
-    distrcts.find('.card_container').css('width',(num_cards * multiplier) + (num_cards * 5)) ;
+    distrcts.find('.card_container').css('width', (num_cards * multiplier) + (num_cards * 5));
 
     var cards = $('#cartas_mano');
     num_cards = cards.find('.card').size();
-  //  card_width = $('#cartas_mano .card').css('width');
-   // multiplier = parseInt(card_width.substring(0, card_width.length - 2));
-    cards.find('.card_container').css('width',(num_cards * multiplier) + (num_cards * 5));
+    //  card_width = $('#cartas_mano .card').css('width');
+    // multiplier = parseInt(card_width.substring(0, card_width.length - 2));
+    cards.find('.card_container').css('width', (num_cards * multiplier) + (num_cards * 5));
 
 
-            $('#distritos_construidos, #cartas_mano, #lista_jugadores').jScrollPane({ });
-     //activamos todos los scrollbars.
+    $('#distritos_construidos, #cartas_mano, #lista_jugadores').jScrollPane({ });
+    //activamos todos los scrollbars.
 
 
 </script>
