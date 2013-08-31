@@ -13,15 +13,19 @@ module PartiesHelper
     end
   end
 
-  def tooltip(array_points)
+  def tooltip(array_points, total)
     string = String.new
+
     array_points.each do |key, value|
 
     string << (t key, :scope => [:points_recount])
-    string << ' ' + value.to_s
+    string << ' +' + value.to_s
     string << "\n"
 
     end
+    string << '-----------------------------------'
+    string << "\n"
+    string << 'Total: ' + total.to_s  + ' ' +(t 'board.points')
     string
   end
 
@@ -144,21 +148,22 @@ module PartiesHelper
 
 
   def status_icon(player)
-
+    out_string = String.new()
     if player.murdered == 'TRUE'
-      'murdered'
+      out_string << %(id="murdered" title="%s" ) % [(t 'board.murdered_icon')]
     elsif player.stolen == 'TRUE'
-     'stolen'
+      out_string << %(id="stolen" title="%s" ) % [(t 'board.stolen_icon')]
     else
-      'no_status'
+      out_string << %(id="no_status")
     end
+    out_string.html_safe
   end
 
 
   def game_info(game)
     player_playing =  game.players.where("state IN ('ACTION', 'TURN', 'SELECTION_TURN')").first
 
-  "%s %s, %s %s" % [(t 'board.round'), game.current_round, (t 'board.playing'), player_playing.name]
+  "%s %s, %s %s" % [(t 'board.round'), game.current_round, (t 'board.playing'), player_playing.user.name]
 
   end
 

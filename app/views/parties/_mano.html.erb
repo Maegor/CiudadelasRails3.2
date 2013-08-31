@@ -16,10 +16,10 @@
 
 
 
-          <div id="<%= status_icon current_player %>" class="status_icon"></div>
+          <div <%= status_icon current_player %> class="status_icon"></div>
 
           <%if current_player.crown == 'TRUE'%>
-            <div id="crown_player"></div>
+            <div id="crown_player" title="<%= t 'board.crown_icon' %>"></div>
           <% end %>
         </div>
     <% end %>

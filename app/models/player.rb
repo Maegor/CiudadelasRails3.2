@@ -14,7 +14,6 @@ class Player < ActiveRecord::Base
 
  def get_action_from_partial(partial)
    actions.find_by_base_action_id(BaseAction.find_by_partialname(partial))
-
  end
 
 
@@ -408,7 +407,7 @@ end
     thief_id = party.cards.characters.where("name = 'thief'").first.player_id
     thief = Player.find(thief_id)
     thief.update_attribute(:coins, thief.coins + self.coins)
-    update_attributes(:coins => 0, :stolen => 'FALSE')
+    #update_attributes(:coins => 0, :stolen => 'FALSE')
 
    end
   end

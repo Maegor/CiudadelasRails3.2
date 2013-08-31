@@ -1,7 +1,7 @@
 
 <% content_for :head do%>
     <%= stylesheet_link_tag  'parties' %>
-    <%= javascript_include_tag 'imagePreview' %>
+    <%= javascript_include_tag 'imagePreview', 'parties' %>
 <%end%>
 
 
@@ -14,7 +14,7 @@
   opponent_districts = opponent.districts_on_game_for_view %>
       <div class="opponent">
         <div id="final_points">
-          <div class="value" title="<%= tooltip opponent.points_hash %>"><%= opponent.points %></div>
+          <div class="value" title="<%= tooltip(opponent.points_hash, opponent.points) %>"><%= opponent.points %></div>
         </div>
         <div class="opponent_ui">
 
@@ -41,11 +41,25 @@
 
        <div><%= (t 'resumen.exit') %></div>
   </div>
-
-
-
-
-
 </div>
+
+<script type="text/javascript">
+    $('.player_name').each(function(){
+        var textSize = $(this).textWidth();
+
+        if ((textSize > 80) && (textSize <= 90)){
+            $(this).css('font-size', 14);
+        }else if (textSize > 90 && textSize <= 113){
+            $(this).css('font-size', 12);
+        }else if (textSize > 113 ){
+            $(this).css('font-size', 10);
+
+        }
+    })
+
+
+</script>
+
+
 
 

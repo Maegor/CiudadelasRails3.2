@@ -1,6 +1,5 @@
 <div class="character_ui" id="<%= #noinspection RubyResolve
-                                    character_ui.base_card.name%>_ui" title="<%= #noinspection RubyResolve
-                                                                                actions_tooltip character_ui.base_card.name %>">
+                                    character_ui.base_card.name%>_ui">
   <div class="data_user" id="golds">
     <div class="value no_prompt"><%= current_user.player.coins %></div>
   </div>
@@ -8,9 +7,9 @@
     <div class="value no_prompt"><%= current_user.player.districts_on_hand.length%></div>
   </div>
 
-  <div id="<%= status_icon current_player %>" class="status_icon"></div>
+  <div <%= status_icon current_player %>class="status_icon"></div>
 
   <%if current_player.crown == 'TRUE'%>
-      <div id="crown_player"></div>
+      <div id="crown_player" title="<%= t 'board.crown_icon' %>"></div>
   <% end %>
 </div>
