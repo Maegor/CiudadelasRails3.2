@@ -218,10 +218,11 @@ es:
   will_get: "Recaudarás"
   collect: "Recaudar"
   destroy_bishop: "No se puede destruir edificios del Obispo"
+  destroy_complete: "No puedes destruir distritos en ciudades completadas."
   no_money: "No tienes suficientes monedas."
   accept: "Aceptar"
   change: "Intercambiar"
-  no_available_card: "No cartas hay disponibles."
+  no_available_card: "No hay cartas disponibles."
   finish: "Terminar"
   warlod_cannot_take: "El Condotiero no puede usar esta habilidad."
   cut_down_game: "¿Deseas acortar el juego?"
@@ -245,7 +246,7 @@ es:
   #player ui tooltip
   murdered_icon: "El Asesino te ha matado. Pierdes tu turno"
   stolen_icon: "El Ladrón te ha robado. Pierdes tu oro."
-  crown_icon: "Serás el primero en elegir personaje en la siguete ronda"
+  crown_icon: "Serás el primero en elegir personaje en la siguiente ronda"
 
   #colours
   green: "verde"

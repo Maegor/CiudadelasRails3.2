@@ -220,6 +220,7 @@ en:
   will_get: "You'll collect"
   collect: "Collect"
   destroy_bishop: "You can not destroy Bishop's buildings."
+  destroy_complete: "You may not destroy a district in a completed city."
   no_money: "You don't have enough coins."
   accept: "Accept"
   change: "Exchange"

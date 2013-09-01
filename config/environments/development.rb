@@ -42,7 +42,7 @@ CiudadelsRails32::Application.configure do
     "#{html_tag}".html_safe
   }
 
-  config.log_level = :warn
+  config.log_level = :debug
 
   config.after_initialize do
     Bullet.enable = false
